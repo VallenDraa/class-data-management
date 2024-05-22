@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Domain\Mahasiswa\Models\Mahasiswa;
 
 return new class extends Migration
 {
@@ -14,7 +15,7 @@ return new class extends Migration
         Schema::create('history_mahasiswas', function (Blueprint $table) {
             $table->id();
             $table->string('aksi');
-            $table->foreignId('mahasiswa_id');
+            $table->foreignIdFor(Mahasiswa::class)->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
     }

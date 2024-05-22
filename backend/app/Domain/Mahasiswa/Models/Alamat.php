@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Models;
+namespace Domain\Mahasiswa\Models;
 
+use Domain\Shared\Models\BaseModel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Alamat extends Model
+class Alamat extends BaseModel
 {
     use HasFactory;
 

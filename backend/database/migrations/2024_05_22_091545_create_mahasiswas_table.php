@@ -3,6 +3,8 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Domain\Mahasiswa\Models\Alamat;
+use Domain\Shared\Models\User;
 
 return new class extends Migration
 {
@@ -18,8 +20,8 @@ return new class extends Migration
             $table->timestamp('tanggal_lahir')->nullable();
             $table->string('no_telepon')->nullable();
             $table->json('list_kesukaan')->nullable();
-            $table->foreignId('alamat_id');
-            $table->foreignId('users_id');
+            $table->foreignIdFor(Alamat::class)->constrained()->cascadeOnDelete();
+            $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
     }

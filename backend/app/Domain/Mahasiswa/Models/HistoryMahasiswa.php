@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Models;
+namespace Domain\Mahasiswa\Models;
 
+use Domain\Shared\Models\BaseModel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class HistoryMahasiswa extends Model
+class HistoryMahasiswa extends BaseModel
 {
     use HasFactory;
 
