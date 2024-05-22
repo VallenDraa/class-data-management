@@ -1,16 +1,14 @@
 <?php
 
-namespace Domain\Cashier\Models;
+namespace App\Models;
 
-use Domain\Shared\Models\BaseModel;
-use Domain\Shared\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Cashiers extends BaseModel
+class Admin extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory;
 
     /**
      * The attributes that are mass assignable.
@@ -18,10 +16,8 @@ class Cashiers extends BaseModel
      * @var array
      */
     protected $fillable = [
-        'username',
-        'visibility_state',
-        'social_media',
-        'bio',
+        'email',
+        'jabatan',
         'users_id',
     ];
 
@@ -37,6 +33,6 @@ class Cashiers extends BaseModel
 
     public function users(): BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Users::class);
     }
 }

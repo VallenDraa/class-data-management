@@ -1,11 +1,12 @@
 <?php
 
-namespace Domain\Product\Models;
+namespace App\Models;
 
-use Domain\Shared\Models\BaseModel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Products extends BaseModel
+class HistoryMahasiswa extends Model
 {
     use HasFactory;
 
@@ -15,10 +16,8 @@ class Products extends BaseModel
      * @var array
      */
     protected $fillable = [
-        'name',
-        'description',
-        'price',
-        'stock',
+        'aksi',
+        'mahasiswa_id',
     ];
 
     /**
@@ -28,5 +27,11 @@ class Products extends BaseModel
      */
     protected $casts = [
         'id' => 'integer',
+        'mahasiswa_id' => 'integer',
     ];
+
+    public function mahasiswa(): BelongsTo
+    {
+        return $this->belongsTo(Mahasiswa::class);
+    }
 }

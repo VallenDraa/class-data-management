@@ -1,39 +1,29 @@
 models:
-  owners:
-    visibility_state: string:255
-    social_media: string:255 nullable
-    bio: longText nullable
+  admin:
+    id
+    email: string
+    jabatan: string nullable
     relationships:
-      belongsTo: users
+      belongsTo: alamat, users
 
-  cashiers:
-    username: string:255
-    visibility_state: string:255
-    social_media: string:255 nullable
-    bio: longText nullable
+  mahasiswa:
+    id
+    foto_profile: string nullable
+    nim: string
+    tanggal_lahir: timestamp nullable
+    no_telepon: string nullable
+    list_kesukaan: json nullable
     relationships:
-      belongsTo: users
+      belongsTo: alamat, users
 
-  orders:
-    status: string:255
+  alamat:
+    id
+    alamat: string
+    latitude: float
+    longitude: float
 
-  products:
-    name: string:255
-    description: longText nullable
-    price: integer
-    stock: integer
-
-  carts:
-    quantity: integer
+  history_mahasiswa:
+    id
+    aksi: string
     relationships:
-      hasMany: costumers, products
-
-  order_product:
-    quantity: integer
-    relationships:
-      hasMany: orders, products
-
-  order_confirmation:
-    confirmation_at: timestamp
-    relationships:
-      hasMany: orders, cashiers
+      belongsTo: mahasiswa

@@ -1,11 +1,11 @@
 <?php
 
-namespace Domain\Order\Models;
+namespace App\Models;
 
-use Domain\Shared\Models\BaseModel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
-class Orders extends BaseModel
+class Alamat extends Model
 {
     use HasFactory;
 
@@ -15,7 +15,9 @@ class Orders extends BaseModel
      * @var array
      */
     protected $fillable = [
-        'status',
+        'alamat',
+        'latitude',
+        'longitude',
     ];
 
     /**
@@ -25,5 +27,7 @@ class Orders extends BaseModel
      */
     protected $casts = [
         'id' => 'integer',
+        'latitude' => 'float',
+        'longitude' => 'float',
     ];
 }

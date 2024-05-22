@@ -1,16 +1,14 @@
 <?php
 
-namespace Domain\Owner\Models;
+namespace App\Models;
 
-use Domain\Shared\Models\BaseModel;
-use Domain\Shared\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Owners extends BaseModel
+class Mahasiswa extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory;
 
     /**
      * The attributes that are mass assignable.
@@ -18,9 +16,12 @@ class Owners extends BaseModel
      * @var array
      */
     protected $fillable = [
-        'visibility_state',
-        'social_media',
-        'bio',
+        'foto_profile',
+        'nim',
+        'tanggal_lahir',
+        'no_telepon',
+        'list_kesukaan',
+        'alamat_id',
         'users_id',
     ];
 
@@ -31,11 +32,19 @@ class Owners extends BaseModel
      */
     protected $casts = [
         'id' => 'integer',
+        'tanggal_lahir' => 'timestamp',
+        'list_kesukaan' => 'array',
+        'alamat_id' => 'integer',
         'users_id' => 'integer',
     ];
 
+    public function alamat(): BelongsTo
+    {
+        return $this->belongsTo(Alamat::class);
+    }
+
     public function users(): BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Users::class);
     }
 }
