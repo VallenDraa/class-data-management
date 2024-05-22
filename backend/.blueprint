@@ -1,0 +1,30 @@
+created:
+    - database/factories/OwnersFactory.php
+    - database/factories/CashiersFactory.php
+    - database/factories/OrdersFactory.php
+    - database/factories/ProductsFactory.php
+    - database/factories/CartsFactory.php
+    - database/factories/OrderProductFactory.php
+    - database/factories/OrderConfirmationFactory.php
+    - database/migrations/2024_04_28_173655_create_owners_table.php
+    - database/migrations/2024_04_28_173656_create_cashiers_table.php
+    - database/migrations/2024_04_28_173657_create_orders_table.php
+    - database/migrations/2024_04_28_173658_create_products_table.php
+    - database/migrations/2024_04_28_173659_create_carts_table.php
+    - database/migrations/2024_04_28_173700_create_order_products_table.php
+    - database/migrations/2024_04_28_173701_create_order_confirmations_table.php
+    - app/Models/owners.php
+    - app/Models/cashiers.php
+    - app/Models/orders.php
+    - app/Models/products.php
+    - app/Models/carts.php
+    - app/Models/order_product.php
+    - app/Models/order_confirmation.php
+models:
+    owners: { visibility_state: 'string:255', social_media: 'string:255 nullable', bio: 'longText nullable', relationships: { belongsTo: users } }
+    cashiers: { username: 'string:255', visibility_state: 'string:255', social_media: 'string:255 nullable', bio: 'longText nullable', relationships: { belongsTo: users } }
+    orders: { status: 'string:255' }
+    products: { name: 'string:255', description: 'longText nullable', price: integer, stock: integer }
+    carts: { quantity: integer, relationships: { hasMany: 'costumers, products' } }
+    order_product: { quantity: integer, relationships: { hasMany: 'orders, products' } }
+    order_confirmation: { confirmation_at: timestamp, relationships: { hasMany: 'orders, cashiers' } }
