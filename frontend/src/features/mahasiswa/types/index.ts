@@ -1,4 +1,4 @@
-import { Alamat } from '~/types';
+import { type Alamat } from '~/types';
 
 export type Mahasiswa = {
 	id: number;
@@ -21,8 +21,9 @@ export type HistoryMahasiswa = {
 	aksi: string;
 };
 
+export type MahasiswaSearchSortType = 'newest' | 'asc' | 'desc';
 export type GetMahasiswaSearchParams = {
 	keyword?: string;
 	page?: number;
-	sort?: 'asc' | 'desc' | 'newest';
+	sort?: MahasiswaSearchSortType;
 };
