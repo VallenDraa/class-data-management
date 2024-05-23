@@ -4,10 +4,56 @@ info:
   version: "1.0"
 servers:
   - url: http://localhost:8000/api
-tags:
-  - name: Pusat autentikasi
-    description: Untuk melakukan Autentikasi
 paths:
+  /admin/login:
+    post:
+      tags:
+        - Pusat autentikasi
+      summary: Tidak memerlukan Auth token
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+      responses:
+        201:
+          description: CREATED
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: object
+                    properties:
+                      message:
+                        type: string
+                      token:
+                        type: string
+                      expires_at:
+                        type: string
+                        format: date-time
+        400:
+          description: BAD REQUEST
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: object
+                    properties:
+                      message:
+                        type: string
+              example:
+                errors:
+                  message: "Data ... tidak valid"
   /mahasiswa/login:
     post:
       tags:
@@ -421,17 +467,19 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  nim:
-                    type: string
-                  nama:
-                    type: string
-                  aksi:
-                    type: string
-                  waktu:
-                    type: string
-                    format: date-time
+                type: array
+                items:
+                  type: object
+                  properties:
+                    nim:
+                      type: string
+                    nama:
+                      type: string
+                    aksi:
+                      type: string
+                    waktu:
+                      type: string
+                      format: date-time
         404:
           description: NOT FOUND
           content:
@@ -466,11 +514,8 @@ paths:
             schema:
               type: object
               properties:
-                activity:
+                aksi:
                   type: string
-                timestamp:
-                  type: string
-                  format: date-time
       responses:
         201:
           description: CREATED
