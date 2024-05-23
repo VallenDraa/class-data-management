@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('nim');
             $table->timestamp('tanggal_lahir')->nullable();
             $table->string('no_telepon')->nullable();
-            $table->json('list_kesukaan')->nullable();
+            $table->text('list_kesukaan')->nullable();
             $table->foreignIdFor(Alamat::class)->constrained()->cascadeOnDelete();
             $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete();
             $table->timestamps();

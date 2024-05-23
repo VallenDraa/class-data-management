@@ -2,8 +2,12 @@
 
 namespace Database\Seeders;
 
-use Domain\Product\Models\Products;
 use Illuminate\Database\Seeder;
+use Faker\Factory as Faker;
+use Domain\Shared\Models\User;
+use Domain\Mahasiswa\Models\Alamat;
+use Domain\Mahasiswa\Models\Mahasiswa;
+use Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -12,8 +16,25 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
+        /**
+         * Inisiasi faker
+         */
+        $faker = Faker::create();
 
-        Products::factory(10)->create();
+        $user = User::create([
+            'nama' => $faker->name,
+            'password' => Hash::make('123456'),
+            'role' => 'Mahasiswa'
+        ]);
+
+        $alamat = Alamat::create([
+            'alamat' => $faker->address,
+        ]);
+
+        Mahasiswa::create([
+            'nim' => $faker->numerify('19241010####'),
+            'user_id' => $user->id,
+            'alamat_id' => $alamat->id
+        ]);
     }
 }
