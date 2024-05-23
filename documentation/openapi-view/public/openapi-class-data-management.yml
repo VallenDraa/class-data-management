@@ -12,9 +12,8 @@ paths:
     post:
       tags:
         - Pusat autentikasi
-      summary: MELAKUKAN login
+      summary: Tidak memerlukan Auth token
       requestBody:
-        description: Pusat autentikasi untuk melakukan login
         required: true
         content:
           application/json:
@@ -61,7 +60,7 @@ paths:
     post:
       tags:
         - Pusat autentikasi
-      summary: MELAKUKAN logout
+      summary: Memerlukan Auth token
       responses:
         201:
           description: CREATED
@@ -69,7 +68,7 @@ paths:
             application/json:
               example:
                 success:
-                  message: "Berhasil logout"
+                  message: "Berhasil logout!"
         400:
           description: BAD REQUEST
           content:
@@ -77,21 +76,28 @@ paths:
               example:
                 errors:
                   message: "Data ... tidak valid"
-  /refresh:
+  /refresh-token:
     post:
       tags:
         - Pusat autentikasi
-      summary: MEMERIKSA Autentikasi
+      summary: Memerlukan Auth token
       responses:
-        200:
+        201:
           description: CREATED
           content:
             application/json:
               schema:
                 type: object
                 properties:
-                  id_admin:
-                    type: integer
+                  success:
+                    type: object
+                    properties:
+                      message:
+                        type: string
+                      token:
+                        type: string
+                      expires_at:
+                        type: integer
         400:
           description: BAD REQUEST
           content:
@@ -112,7 +118,7 @@ paths:
     get:
       tags:
         - Data mahasiswa
-      summary: MENDAPATKAN data mahasiswa
+      summary: Memerlukan Auth token
       requestBody:
         description: Data mahasiswa untuk mendapatkan daftar mahasiswa
         required: true
@@ -135,24 +141,28 @@ paths:
               schema:
                 type: object
                 properties:
-                  jumlah_data:
+                  jumlah:
                     type: integer
                   mahasiswa:
                     type: array
                     items:
                       type: object
                       properties:
-                        id_mahasiswa:
-                          type: string
+                        id:
+                          type: integer
                         nim:
                           type: string
-                        nama_lengkap:
+                        nama:
                           type: string
-                        email:
+                        foto_profile:
                           type: string
-                        jurusan:
+                        tanggal_lahir:
                           type: string
-                        angkatan:
+                        no_telepon:
+                          type: string
+                        list_kesukaan:
+                          type: string
+                        alamat:
                           type: string
         400:
           description: BAD REQUEST
@@ -187,7 +197,7 @@ paths:
     post:
       tags:
         - Data mahasiswa
-      summary: MENAMBAHKAN data mahasiswa
+      summary: Memerlukan Admin authorization
       requestBody:
         description: Data mahasiswa untuk menambahkan mahasiswa baru
         required: true
@@ -240,7 +250,7 @@ paths:
     put:
       tags:
         - Data mahasiswa
-      summary: MENGUBAH data mahasiswa
+      summary: Memerlukan Auth token
       requestBody:
         description: Data mahasiswa untuk mengubah informasi mahasiswa
         required: true
@@ -249,7 +259,7 @@ paths:
             schema:
               type: object
               properties:
-                id_mahasiswa:
+                id:
                   type: string
                 nim:
                   type: string
@@ -310,7 +320,7 @@ paths:
     delete:
       tags:
         - Data mahasiswa
-      summary: MENGHAPUS data mahasiswa
+      summary: Memerlukan Admin authorization
       requestBody:
         description: Data mahasiswa untuk menghapus mahasiswa
         required: true
@@ -319,7 +329,7 @@ paths:
             schema:
               type: object
               properties:
-                id_mahasiswa:
+                id:
                   type: string
       responses:
         200:
@@ -352,3 +362,39 @@ paths:
               example:
                 errors:
                   message: "Data dengan id tersebut tidak ditemukan"
+  /mahasiswa/{id}:
+    get:
+      tags:
+        - Data mahasiswa
+      summary: Memerlukan Auth token
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  nim:
+                    type: string
+                  nama:
+                    type: string
+                  foto_profile:
+                    type: string
+                  tanggal_lahir:
+                    type: string
+                  no_telepon:
+                    type: string
+                  list_kesukaan:
+                    type: string
+                  alamat:
+                    type: string
+        400:
+          description: BAD REQUEST
+          content:
+            application/json:
+              example:
+                errors:
+                  message: "Data ... tidak valid"
