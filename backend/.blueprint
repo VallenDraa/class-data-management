@@ -1,0 +1,28 @@
+created:
+    - database/factories/AdminFactory.php
+    - database/factories/MahasiswaFactory.php
+    - database/factories/AlamatFactory.php
+    - database/factories/HistoryMahasiswaFactory.php
+    - database/migrations/2024_05_22_091544_create_admins_table.php
+    - database/migrations/2024_05_22_091545_create_mahasiswas_table.php
+    - database/migrations/2024_05_22_091546_create_alamats_table.php
+    - database/migrations/2024_05_22_091547_create_history_mahasiswas_table.php
+    - app/Models/admin.php
+    - app/Models/mahasiswa.php
+    - app/Models/alamat.php
+    - app/Models/history_mahasiswa.php
+models:
+    owners: { visibility_state: 'string:255', social_media: 'string:255 nullable', bio: 'longText nullable', relationships: { belongsTo: users } }
+    cashiers: { username: 'string:255', visibility_state: 'string:255', social_media: 'string:255 nullable', bio: 'longText nullable', relationships: { belongsTo: users } }
+    orders: { status: 'string:255' }
+    products: { name: 'string:255', description: 'longText nullable', price: integer, stock: integer }
+    carts: { quantity: integer, relationships: { hasMany: 'costumers, products' } }
+    order_product: { quantity: integer, relationships: { hasMany: 'orders, products' } }
+    order_confirmation: { confirmation_at: timestamp, relationships: { hasMany: 'orders, cashiers' } }
+    Mahasiswa: { id: id, nama: string, foto_profile: 'string nullable', nim: string, tanggal_lahir: 'timestamp nullable', no_telepon: 'string nullable', list_kesukaan: 'json nullable', relationships: { belongsTo: Alamat } }
+    Alamat: { alamat: string, latitude: float, longitude: float }
+    HistoryMahasiswa: { id: id, mahasiswa_id: integer, aksi: string, relationships: { belongsTo: Mahasiswa } }
+    admin: { id: id, email: string, jabatan: 'string nullable', relationships: { belongsTo: 'alamat, users' } }
+    mahasiswa: { id: id, foto_profile: 'string nullable', nim: string, tanggal_lahir: 'timestamp nullable', no_telepon: 'string nullable', list_kesukaan: 'json nullable', relationships: { belongsTo: 'alamat, users' } }
+    alamat: { id: id, alamat: string, latitude: float, longitude: float }
+    history_mahasiswa: { id: id, aksi: string, relationships: { belongsTo: mahasiswa } }

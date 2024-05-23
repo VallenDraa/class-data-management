@@ -1,0 +1,29 @@
+models:
+  admin:
+    id
+    email: string
+    jabatan: string nullable
+    relationships:
+      belongsTo: alamat, users
+
+  mahasiswa:
+    id
+    foto_profile: string nullable
+    nim: string
+    tanggal_lahir: timestamp nullable
+    no_telepon: string nullable
+    list_kesukaan: json nullable
+    relationships:
+      belongsTo: alamat, users
+
+  alamat:
+    id
+    alamat: string
+    latitude: float
+    longitude: float
+
+  history_mahasiswa:
+    id
+    aksi: string
+    relationships:
+      belongsTo: mahasiswa
