@@ -40,7 +40,8 @@ paths:
                       token:
                         type: string
                       expires_at:
-                        type: integer
+                        type: string
+                        format: date-time
         400:
           description: BAD REQUEST
           content:
@@ -97,7 +98,8 @@ paths:
                       token:
                         type: string
                       expires_at:
-                        type: integer
+                        type: string
+                        format: date-time
         400:
           description: BAD REQUEST
           content:
@@ -158,6 +160,7 @@ paths:
                           type: string
                         tanggal_lahir:
                           type: string
+                          format: date-time
                         no_telepon:
                           type: string
                         list_kesukaan:
@@ -385,6 +388,7 @@ paths:
                     type: string
                   tanggal_lahir:
                     type: string
+                    format: date-time
                   no_telepon:
                     type: string
                   list_kesukaan:
@@ -398,3 +402,118 @@ paths:
               example:
                 errors:
                   message: "Data ... tidak valid"
+
+  /mahasiswa/{id}/history:
+    get:
+      tags:
+        - Data mahasiswa
+      summary: Memerlukan Admin authorization
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: ID Mahasiswa
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  nim:
+                    type: string
+                  nama:
+                    type: string
+                  aksi:
+                    type: string
+                  waktu:
+                    type: string
+                    format: date-time
+        404:
+          description: NOT FOUND
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: object
+                    properties:
+                      message:
+                        type: string
+              example:
+                errors:
+                  message: "Data dengan id tersebut tidak ditemukan"
+    post:
+      tags:
+        - Data mahasiswa
+      summary: Memerlukan Admin authorization
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: ID Mahasiswa
+      requestBody:
+        description: Data untuk menambahkan aktifitas mahasiswa
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                activity:
+                  type: string
+                timestamp:
+                  type: string
+                  format: date-time
+      responses:
+        201:
+          description: CREATED
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: object
+                    properties:
+                      message:
+                        type: string
+              example:
+                success:
+                  message: "Aktifitas mahasiswa berhasil ditambahkan"
+        400:
+          description: BAD REQUEST
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: object
+                    properties:
+                      message:
+                        type: string
+              example:
+                errors:
+                  message: "Data tidak valid"
+        404:
+          description: NOT FOUND
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: object
+                    properties:
+                      message:
+                        type: string
+              example:
+                errors:
+                  message: "Data dengan id tersebut tidak ditemukan"
