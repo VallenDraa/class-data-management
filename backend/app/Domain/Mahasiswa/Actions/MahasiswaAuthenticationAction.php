@@ -37,6 +37,7 @@ class MahasiswaAuthenticationAction
 
         return response()->json([
             'success' => [
+                'message' => 'Berhasil login!',
                 'token' => $user->createToken(
                     'personal_access_tokens',
                     [],

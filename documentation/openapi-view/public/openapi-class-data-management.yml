@@ -1,0 +1,354 @@
+openapi: "3.0.2"
+info:
+  title: Class Data Management
+  version: "1.0"
+servers:
+  - url: http://localhost:8000/api
+tags:
+  - name: Pusat autentikasi
+    description: Untuk melakukan Autentikasi
+paths:
+  /mahasiswa/login:
+    post:
+      tags:
+        - Pusat autentikasi
+      summary: MELAKUKAN login
+      requestBody:
+        description: Pusat autentikasi untuk melakukan login
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                nim:
+                  type: string
+                password:
+                  type: string
+      responses:
+        201:
+          description: CREATED
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: object
+                    properties:
+                      message:
+                        type: string
+                      token:
+                        type: string
+                      expires_at:
+                        type: integer
+        400:
+          description: BAD REQUEST
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: object
+                    properties:
+                      message:
+                        type: string
+              example:
+                errors:
+                  message: "Data ... tidak valid"
+  /logout:
+    post:
+      tags:
+        - Pusat autentikasi
+      summary: MELAKUKAN logout
+      responses:
+        201:
+          description: CREATED
+          content:
+            application/json:
+              example:
+                success:
+                  message: "Berhasil logout"
+        400:
+          description: BAD REQUEST
+          content:
+            application/json:
+              example:
+                errors:
+                  message: "Data ... tidak valid"
+  /refresh:
+    post:
+      tags:
+        - Pusat autentikasi
+      summary: MEMERIKSA Autentikasi
+      responses:
+        200:
+          description: CREATED
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id_admin:
+                    type: integer
+        400:
+          description: BAD REQUEST
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: object
+                    properties:
+                      message:
+                        type: string
+              example:
+                errors:
+                  message: "Data ... tidak valid"
+
+  /mahasiswa:
+    get:
+      tags:
+        - Data mahasiswa
+      summary: MENDAPATKAN data mahasiswa
+      requestBody:
+        description: Data mahasiswa untuk mendapatkan daftar mahasiswa
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                search:
+                  type: string
+                start:
+                  type: integer
+                length:
+                  type: integer
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jumlah_data:
+                    type: integer
+                  mahasiswa:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id_mahasiswa:
+                          type: string
+                        nim:
+                          type: string
+                        nama_lengkap:
+                          type: string
+                        email:
+                          type: string
+                        jurusan:
+                          type: string
+                        angkatan:
+                          type: string
+        400:
+          description: BAD REQUEST
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: object
+                    properties:
+                      message:
+                        type: string
+              example:
+                errors:
+                  message: "Data tidak valid"
+        404:
+          description: NOT FOUND
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: object
+                    properties:
+                      message:
+                        type: string
+              example:
+                errors:
+                  message: "Data tidak ditemukan"
+    post:
+      tags:
+        - Data mahasiswa
+      summary: MENAMBAHKAN data mahasiswa
+      requestBody:
+        description: Data mahasiswa untuk menambahkan mahasiswa baru
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                nim:
+                  type: string
+                nama_lengkap:
+                  type: string
+                email:
+                  type: string
+                jurusan:
+                  type: string
+                angkatan:
+                  type: string
+      responses:
+        201:
+          description: CREATED
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: object
+                    properties:
+                      message:
+                        type: string
+              example:
+                success:
+                  message: "Data mahasiswa berhasil ditambahkan"
+        400:
+          description: BAD REQUEST
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: object
+                    properties:
+                      message:
+                        type: string
+              example:
+                errors:
+                  message: "Data tidak valid"
+    put:
+      tags:
+        - Data mahasiswa
+      summary: MENGUBAH data mahasiswa
+      requestBody:
+        description: Data mahasiswa untuk mengubah informasi mahasiswa
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id_mahasiswa:
+                  type: string
+                nim:
+                  type: string
+                nama_lengkap:
+                  type: string
+                email:
+                  type: string
+                jurusan:
+                  type: string
+                angkatan:
+                  type: string
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: object
+                    properties:
+                      message:
+                        type: string
+              example:
+                success:
+                  message: "Data mahasiswa berhasil diubah"
+        400:
+          description: BAD REQUEST
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: object
+                    properties:
+                      message:
+                        type: string
+              example:
+                errors:
+                  message: "Data tidak valid"
+        404:
+          description: NOT FOUND
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: object
+                    properties:
+                      message:
+                        type: string
+              example:
+                errors:
+                  message: "Data dengan id tersebut tidak ditemukan"
+    delete:
+      tags:
+        - Data mahasiswa
+      summary: MENGHAPUS data mahasiswa
+      requestBody:
+        description: Data mahasiswa untuk menghapus mahasiswa
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id_mahasiswa:
+                  type: string
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: object
+                    properties:
+                      message:
+                        type: string
+              example:
+                success:
+                  message: "Data mahasiswa berhasil dihapus"
+        404:
+          description: NOT FOUND
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: object
+                    properties:
+                      message:
+                        type: string
+              example:
+                errors:
+                  message: "Data dengan id tersebut tidak ditemukan"
