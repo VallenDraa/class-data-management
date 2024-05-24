@@ -498,7 +498,7 @@ paths:
     post:
       tags:
         - Data mahasiswa
-      summary: Memerlukan Admin authorization
+      summary: Memerlukan Auth token
       parameters:
         - name: id
           in: path
