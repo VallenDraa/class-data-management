@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="stylesheet" href="/swagger-ui.css" />
+    <title>Swagger-Openapi Class Data Management</title>
+  </head>
+  <body>
+    <div id="swagger-ui"></div>
+
+    <script src="/swagger-ui-bundle.js"></script>
+    <script>
+      window.onload = function () {
+        const ui = SwaggerUIBundle({
+          url: "openapi-class-data-management.yml",
+          dom_id: "#swagger-ui",
+        });
+      };
+    </script>
+  </body>
+</html>
