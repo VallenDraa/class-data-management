@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { Mahasiswa, type MahasiswaUpdate } from '../types';
+import { type Coordinate } from '~/types';
+import { type Mahasiswa, type MahasiswaUpdate } from '../types';
 import { updateMahasiswaValidator } from '../api';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -20,7 +21,11 @@ import {
 	Input,
 	DatePicker,
 	ScrollArea,
+	Separator,
+	WaypointMap,
+	Skeleton,
 } from '~/components/ui';
+import { useGeoLocation } from '~/hooks';
 
 export type MahasiswaProfileDetailProps = {
 	user: Mahasiswa;
@@ -45,12 +50,33 @@ export function MahasiswaProfileDetail(props: MahasiswaProfileDetailProps) {
 		},
 	});
 
+	const { userLocation, isSupported, isLoading } = useGeoLocation();
+	const currentUserLocation = React.useMemo(
+		(): Coordinate => ({
+			latitude: userLocation?.latitude ?? 0,
+			longitude: userLocation?.longitude ?? 0,
+			markerMessage: 'Lokasi Anda',
+		}),
+		[userLocation?.latitude, userLocation?.longitude],
+	);
+	const mahasiswaLocation = React.useMemo(
+		(): Coordinate => ({
+			latitude: Number(user.alamat?.latitude ?? 0),
+			longitude: Number(user.alamat?.longitude ?? 0),
+			markerMessage: `Alamat rumah milik ${user.nama}`,
+		}),
+		[user.alamat?.latitude, user.alamat?.longitude, user.nama],
+	);
+
 	const onSubmit = (data: MahasiswaUpdate) => {
 		console.log(data);
 	};
 
 	return (
-		<DialogContent className="h-screen md:h-max">
+		<DialogContent
+			className="h-screen md:h-max"
+			onClose={() => setIsEditing(false)}
+		>
 			<DialogHeader>
 				<DialogTitle className="mb-5">Profil anda</DialogTitle>
 			</DialogHeader>
@@ -70,7 +96,7 @@ export function MahasiswaProfileDetail(props: MahasiswaProfileDetailProps) {
 								size="sm"
 								variant={isEditing ? 'destructive' : 'default'}
 							>
-								{isEditing ? 'Cancel' : 'Edit Profil'}
+								{isEditing ? 'Cancel Edit' : 'Edit Profil'}
 							</Button>
 						)}
 
@@ -178,6 +204,8 @@ export function MahasiswaProfileDetail(props: MahasiswaProfileDetailProps) {
 								)}
 							/>
 
+							<Separator />
+
 							<FormField
 								control={form.control}
 								name="alamat.alamat"
@@ -185,7 +213,7 @@ export function MahasiswaProfileDetail(props: MahasiswaProfileDetailProps) {
 								render={({ field }) => (
 									<FormItem>
 										<FormLabel className="text-xs text-neutral-500">
-											Alamat
+											Alamat & Peta
 										</FormLabel>
 										<FormControl>
 											<Input
@@ -199,6 +227,17 @@ export function MahasiswaProfileDetail(props: MahasiswaProfileDetailProps) {
 									</FormItem>
 								)}
 							/>
+
+							{isLoading && <Skeleton className="w-full rounded-md h-80" />}
+
+							{isSupported && !isLoading && (
+								<div className="w-full border rounded-md shadow-sm h-80 overflow-clip border-neutral-200">
+									<WaypointMap
+										startCoordinate={currentUserLocation}
+										endCoordinate={mahasiswaLocation}
+									/>
+								</div>
+							)}
 
 							{isEditing && (
 								<Button type="submit" size="sm" className="w-full">

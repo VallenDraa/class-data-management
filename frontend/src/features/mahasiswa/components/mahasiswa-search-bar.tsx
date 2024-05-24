@@ -45,7 +45,7 @@ export function MahasiswaSearchBar(props: MahasiswaSearchBarProps) {
 
 			<Input
 				type="search"
-				value={keyword}
+				value={keyword ?? ''}
 				onChange={e => onKeywordChange(e.target.value)}
 				placeholder="Nama atau NIM mahasiswa..."
 				className="w-full mt-2"

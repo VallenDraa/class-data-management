@@ -3,3 +3,9 @@ export type Alamat = {
 	latitude: string;
 	longitude: string;
 };
+
+export type Coordinate = {
+	latitude: number;
+	longitude: number;
+	markerMessage?: string;
+};

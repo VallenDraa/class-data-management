@@ -25,7 +25,6 @@ export function MainMahasiswaPage() {
 					sortType={activeSort}
 					onSortTypeChange={setActiveSort}
 				/>
-
 				<MahasiswaList
 					isUserAdmin={false}
 					sort={activeSort}
