@@ -26,5 +26,9 @@ export function useUrlState<T extends string>(key: string, state: T) {
 		[key, setSearchParams],
 	);
 
-	return [searchParams.get(key), setUrlState] as [T, (newState: T) => void];
+	return [searchParams.get(key), setUrlState, state] as [
+		T,
+		(newState: T) => void,
+		T,
+	];
 }
