@@ -174,7 +174,7 @@ paths:
           application/json:
             example:
               search: "string"
-              sort: "[ az|za|new|last ]"
+              sort: "[ az|za|terbaru|terlama ]"
               page: "integer"
               length: "integer"
       responses:

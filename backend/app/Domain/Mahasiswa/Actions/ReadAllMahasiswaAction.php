@@ -13,6 +13,9 @@ class ReadAllMahasiswaAction
 
     public function handle(Request $request)
     {
+        if ($request->has('sort')) {
+            # code...
+        }
         return User::select(
             'users.id',
             'users.nama',
