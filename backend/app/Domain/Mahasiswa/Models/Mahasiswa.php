@@ -3,6 +3,7 @@
 namespace Domain\Mahasiswa\Models;
 
 use Domain\Shared\Models\BaseModel;
+use Domain\Shared\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
@@ -22,7 +23,7 @@ class Mahasiswa extends BaseModel
         'no_telepon',
         'list_kesukaan',
         'alamat_id',
-        'users_id',
+        'user_id',
     ];
 
     /**
@@ -35,7 +36,7 @@ class Mahasiswa extends BaseModel
         'tanggal_lahir' => 'timestamp',
         'list_kesukaan' => 'array',
         'alamat_id' => 'integer',
-        'users_id' => 'integer',
+        'user_id' => 'integer',
     ];
 
     public function alamat(): BelongsTo
@@ -45,6 +46,6 @@ class Mahasiswa extends BaseModel
 
     public function users(): BelongsTo
     {
-        return $this->belongsTo(Users::class);
+        return $this->belongsTo(User::class);
     }
 }

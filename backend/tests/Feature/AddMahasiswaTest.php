@@ -23,14 +23,14 @@ class AddMahasiswaTest extends TestCase
 
         $response = $this->postJson('/api/mahasiswa', [
             'nim' => '1234567',
-            'name' => $faker->name(),
+            'nama' => $faker->name(),
             'tanggal_lahir' => $faker->date(),
             'alamat' => $faker->address(),
         ], $headers);
 
         dump($response->json());
 
-        $response->assertStatus(200);
+        $response->assertStatus(201);
     }
 
     public function getAuthToken(): string
@@ -40,9 +40,9 @@ class AddMahasiswaTest extends TestCase
             'password' => '123456'
         ]);
 
-        $response->assertStatus(201);
-
         dump($response->json());
+
+        $response->assertStatus(200);
 
         $data = $response->json();
 

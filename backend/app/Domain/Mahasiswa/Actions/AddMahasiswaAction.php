@@ -10,8 +10,7 @@ use Domain\Shared\Data\UserData;
 use Domain\Shared\Exceptions\BadRequestException;
 use Domain\Mahasiswa\Data\MahasiswaData;
 use Domain\Mahasiswa\Models\Alamat;
-use Domain\Shared\Exceptions\ForbiddenException;
-use Illuminate\Support\Facades\Gate;
+use Domain\Shared\Exceptions\RoleForbiddenException;
 use Lorisleiva\Actions\Concerns\AsAction;
 
 class AddMahasiswaAction
@@ -20,14 +19,14 @@ class AddMahasiswaAction
 
     public function handle(UserData $userData, MahasiswaData $mahasiswaData): void
     {
-        if (User::where('nim', $mahasiswaData->nim)->exists())
+        if (Mahasiswa::where('nim', $mahasiswaData->nim)->exists())
             throw BadRequestException::because("NIM sudah terdaftar sebelumnya! Tolong gunakan NIM lain");
 
-        if (strlen($userData->password) < 6)
-            throw BadRequestException::because("Password minimal 6 karakter!");
+        if (!$userData->nama)
+            throw BadRequestException::because("nama tidak boleh kosong");
 
         $user = User::create([
-            'name' => $userData->name,
+            'nama' => $userData->nama,
             'role' => 'Mahasiswa',
             'password' => Hash::make($mahasiswaData->nim),
         ]);
@@ -46,8 +45,12 @@ class AddMahasiswaAction
 
     public function asController(UserData $userData, MahasiswaData $mahasiswaData): JsonResponse
     {
-        if (Gate::denies('add-mahasiswa'))
-            throw new ForbiddenException();
+        $currentUserRole = UserData::fromAuth()->role;
+
+        if (!$currentUserRole->canAddMahasiswa())
+            throw new RoleForbiddenException(
+                $currentUserRole->getRequiredRole("canAddMahasiswa")
+            );
 
         $this->handle($userData, $mahasiswaData);
 

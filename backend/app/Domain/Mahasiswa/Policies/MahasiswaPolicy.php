@@ -3,6 +3,7 @@
 namespace Domain\Mahasiswa\Policies;
 
 use Domain\Shared\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 
 class MahasiswaPolicy
@@ -12,8 +13,17 @@ class MahasiswaPolicy
      */
     public function __invoke()
     {
-        Gate::define('add-mahasiswa', fn(User $user) => $user->role == 'Admin');
-        Gate::define('delete-mahasiswa', fn(User $user) => $user->role == 'Admin');
-        Gate::define('get-mahasiswa-history', fn(User $user) => $user->role == 'Admin');
+        Gate::define('add-mahasiswa', function () {
+            if (Auth::user()->role === 'Admin')
+                return 'Admin';
+        });
+        Gate::define('delete-mahasiswa', function () {
+            if (Auth::user()->role === 'Admin')
+                return 'Admin';
+        });
+        Gate::define('get-mahasiswa-history', function () {
+            if (Auth::user()->role === 'Admin')
+                return 'Admin';
+        });
     }
 }

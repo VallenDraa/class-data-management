@@ -6,8 +6,6 @@ use Domain\Admin\Models\Admin;
 use Illuminate\Database\Seeder;
 use Faker\Factory as Faker;
 use Domain\Shared\Models\User;
-use Domain\Mahasiswa\Models\Alamat;
-use Domain\Mahasiswa\Models\Mahasiswa;
 use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
@@ -41,7 +39,8 @@ class DatabaseSeeder extends Seeder
         $user = User::create([
             'nama' => $faker->name,
             'password' => Hash::make('123456'),
-            'role' => 'Mahasiswa'
+            'role' => 'Admin'
+            // 'role' => 'Mahasiswa'
         ]);
 
         Admin::create([
