@@ -566,3 +566,51 @@ paths:
               example:
                 errors:
                   message: "Data dengan id tersebut tidak ditemukan"
+
+  /mahasiswa/self:
+    get:
+      tags:
+        - Data mahasiswa
+      summary: Memerlukan Auth token
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                  id:
+                    type: integer
+                  nim:
+                    type: string
+                  nama:
+                    type: string
+                  foto_profile:
+                    type: string
+                  tanggal_lahir:
+                    type: string
+                    format: date-time
+                  no_telepon:
+                    type: string
+                  list_kesukaan:
+                    type: string
+                  alamat:
+                    type: string
+        401:
+          description: UNAUTHORIZED
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: object
+                    properties:
+                      message:
+                        type: string
+              example:
+                errors:
+                  message: "Data dengan id tersebut tidak ditemukan"
