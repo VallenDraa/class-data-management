@@ -202,17 +202,9 @@ paths:
                           type: string
                         nama:
                           type: string
-                        foto_profile:
-                          type: string
-                        tanggal_lahir:
+                        waktu_dibuat:
                           type: string
                           format: date-time
-                        no_telepon:
-                          type: string
-                        list_kesukaan:
-                          type: string
-                        alamat:
-                          type: string
         400:
           description: BAD REQUEST
           content:
@@ -321,6 +313,10 @@ paths:
                 no_telepon:
                   type: string
                 alamat:
+                  type: string
+                latitude:
+                  type: string
+                longitude:
                   type: string
       responses:
         200:
@@ -443,6 +439,10 @@ paths:
                     type: string
                   alamat:
                     type: string
+                  latitude:
+                    type: string
+                  longitude:
+                    type: string
         400:
           description: BAD REQUEST
           content:
@@ -476,6 +476,10 @@ paths:
                 no_telepon:
                   type: string
                 alamat:
+                  type: string
+                latitude:
+                  type: string
+                longitude:
                   type: string
       responses:
         200:
@@ -667,6 +671,10 @@ paths:
                   list_kesukaan:
                     type: string
                   alamat:
+                    type: string
+                  latitude:
+                    type: string
+                  longitude:
                     type: string
         401:
           description: UNAUTHORIZED
