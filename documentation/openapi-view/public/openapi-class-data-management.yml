@@ -308,7 +308,7 @@ paths:
               type: object
               properties:
                 id:
-                  type: string
+                  type: integer
                 nim:
                   type: string
                 nama:
@@ -383,7 +383,7 @@ paths:
               type: object
               properties:
                 id:
-                  type: string
+                  type: integer
       responses:
         200:
           description: OK
