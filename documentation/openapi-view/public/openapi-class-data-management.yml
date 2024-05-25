@@ -578,10 +578,8 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  type: object
-                  properties:
+                type: object
+                properties:
                   id:
                     type: integer
                   nim:
