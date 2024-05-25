@@ -7,33 +7,34 @@ use Domain\Shared\Models\User;
 use Domain\Shared\Data\UserData;
 use Domain\Mahasiswa\Models\Mahasiswa;
 use Domain\Mahasiswa\Data\MahasiswaData;
-use Hash;
 use Illuminate\Http\JsonResponse;
 
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Lorisleiva\Actions\Concerns\AsAction;
 
 class MahasiswaAuthenticationAction
 {
     use AsAction;
 
-    public function handle(UserData $userData, MahasiswaData $mahasiswaData): User
+    public function handle(Request $request): User
     {
-        $mahasiswa = Mahasiswa::where('nim', $mahasiswaData->nim)->first();
+        $mahasiswa = Mahasiswa::where('nim', $request->nim)->first();
 
         if (!$mahasiswa)
             throw BadRequestException::because('NIM atau Password tidak sesuai!');
 
         $user = User::find($mahasiswa->user_id);
 
-        if (!$user || !Hash::check($userData->password, $user->password))
+        if (!$user || !Hash::check($request->password, $user->password))
             throw BadRequestException::because('NIM atau Password tidak sesuai!');
 
         return $user;
     }
 
-    public function asController(UserData $userData, MahasiswaData $mahasiswaData)
+    public function asController(Request $request): JsonResponse
     {
-        $user = $this->handle($userData, $mahasiswaData);
+        $user = $this->handle($request);
 
         return response()->json([
             'success' => [

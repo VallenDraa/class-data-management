@@ -2,12 +2,11 @@
 
 namespace Database\Seeders;
 
+use Domain\Admin\Models\Admin;
 use Illuminate\Database\Seeder;
 use Faker\Factory as Faker;
 use Domain\Shared\Models\User;
-use Domain\Mahasiswa\Models\Alamat;
-use Domain\Mahasiswa\Models\Mahasiswa;
-use Hash;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -21,20 +20,32 @@ class DatabaseSeeder extends Seeder
          */
         $faker = Faker::create();
 
+        // $user = User::create([
+        //     'nama' => $faker->name,
+        //     'password' => Hash::make('123456'),
+        //     'role' => 'Mahasiswa'
+        // ]);
+
+        // $alamat = Alamat::create([
+        //     'alamat' => $faker->address,
+        // ]);
+
+        // Mahasiswa::create([
+        //     'nim' => $faker->numerify('19241010####'),
+        //     'user_id' => $user->id,
+        //     'alamat_id' => $alamat->id
+        // ]);
+
         $user = User::create([
             'nama' => $faker->name,
             'password' => Hash::make('123456'),
-            'role' => 'Mahasiswa'
+            'role' => 'Admin'
+            // 'role' => 'Mahasiswa'
         ]);
 
-        $alamat = Alamat::create([
-            'alamat' => $faker->address,
-        ]);
-
-        Mahasiswa::create([
-            'nim' => $faker->numerify('19241010####'),
-            'user_id' => $user->id,
-            'alamat_id' => $alamat->id
+        Admin::create([
+            'email' => 'oskhar@gmail.com',
+            'user_id' => $user->id
         ]);
     }
 }

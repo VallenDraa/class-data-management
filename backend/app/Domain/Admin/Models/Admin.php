@@ -3,6 +3,7 @@
 namespace Domain\Admin\Models;
 
 use Domain\Shared\Models\BaseModel;
+use Domain\Shared\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
@@ -18,7 +19,7 @@ class Admin extends BaseModel
     protected $fillable = [
         'email',
         'jabatan',
-        'users_id',
+        'user_id',
     ];
 
     /**
@@ -28,11 +29,11 @@ class Admin extends BaseModel
      */
     protected $casts = [
         'id' => 'integer',
-        'users_id' => 'integer',
+        'user_id' => 'integer',
     ];
 
     public function users(): BelongsTo
     {
-        return $this->belongsTo(Users::class);
+        return $this->belongsTo(User::class);
     }
 }

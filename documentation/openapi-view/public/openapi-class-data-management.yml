@@ -22,8 +22,8 @@ paths:
                 password:
                   type: string
       responses:
-        201:
-          description: CREATED
+        200:
+          description: OK
           content:
             application/json:
               schema:
@@ -71,8 +71,8 @@ paths:
                 password:
                   type: string
       responses:
-        201:
-          description: CREATED
+        200:
+          description: OK
           content:
             application/json:
               schema:
@@ -109,8 +109,8 @@ paths:
         - Pusat autentikasi
       summary: Memerlukan Auth token
       responses:
-        201:
-          description: CREATED
+        200:
+          description: OK
           content:
             application/json:
               example:
@@ -129,8 +129,8 @@ paths:
         - Pusat autentikasi
       summary: Memerlukan Auth token
       responses:
-        201:
-          description: CREATED
+        200:
+          description: OK
           content:
             application/json:
               schema:
@@ -172,15 +172,11 @@ paths:
         required: true
         content:
           application/json:
-            schema:
-              type: object
-              properties:
-                search:
-                  type: string
-                start:
-                  type: integer
-                length:
-                  type: integer
+            example:
+              search: "string"
+              sort: "[ az|za|terbaru|terlama ]"
+              page: "integer"
+              length: "integer"
       responses:
         200:
           description: OK
@@ -202,17 +198,12 @@ paths:
                           type: string
                         nama:
                           type: string
-                        foto_profile:
-                          type: string
-                        tanggal_lahir:
+                        waktu_dibuat:
                           type: string
                           format: date-time
-                        no_telepon:
+                        waktu_diubah:
                           type: string
-                        list_kesukaan:
-                          type: string
-                        alamat:
-                          type: string
+                          format: date-time
         400:
           description: BAD REQUEST
           content:
@@ -307,8 +298,6 @@ paths:
             schema:
               type: object
               properties:
-                id:
-                  type: integer
                 nim:
                   type: string
                 nama:
@@ -323,6 +312,10 @@ paths:
                 no_telepon:
                   type: string
                 alamat:
+                  type: string
+                latitude:
+                  type: string
+                longitude:
                   type: string
       responses:
         200:
@@ -445,6 +438,10 @@ paths:
                     type: string
                   alamat:
                     type: string
+                  latitude:
+                    type: string
+                  longitude:
+                    type: string
         400:
           description: BAD REQUEST
           content:
@@ -452,6 +449,83 @@ paths:
               example:
                 errors:
                   message: "Data ... tidak valid"
+    put:
+      tags:
+        - Data mahasiswa
+      summary: Memerlukan Admin authorization
+      requestBody:
+        description: Data mahasiswa untuk mengubah informasi mahasiswa
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                nim:
+                  type: string
+                nama:
+                  type: string
+                list_kesukaan:
+                  type: string
+                tanggal_lahir:
+                  type: string
+                  format: date
+                foto_profile:
+                  type: string
+                no_telepon:
+                  type: string
+                alamat:
+                  type: string
+                latitude:
+                  type: string
+                longitude:
+                  type: string
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: object
+                    properties:
+                      message:
+                        type: string
+              example:
+                success:
+                  message: "Data mahasiswa berhasil diubah"
+        400:
+          description: BAD REQUEST
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: object
+                    properties:
+                      message:
+                        type: string
+              example:
+                errors:
+                  message: "Data tidak valid"
+        404:
+          description: NOT FOUND
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: object
+                    properties:
+                      message:
+                        type: string
+              example:
+                errors:
+                  message: "Data dengan id tersebut tidak ditemukan"
 
   /mahasiswa/{id}/history:
     get:
@@ -553,6 +627,56 @@ paths:
                   message: "Data tidak valid"
         404:
           description: NOT FOUND
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: object
+                    properties:
+                      message:
+                        type: string
+              example:
+                errors:
+                  message: "Data dengan id tersebut tidak ditemukan"
+
+  /mahasiswa/self:
+    get:
+      tags:
+        - Data mahasiswa
+      summary: Memerlukan Auth token
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  nim:
+                    type: string
+                  nama:
+                    type: string
+                  foto_profile:
+                    type: string
+                  tanggal_lahir:
+                    type: string
+                    format: date-time
+                  no_telepon:
+                    type: string
+                  list_kesukaan:
+                    type: string
+                  alamat:
+                    type: string
+                  latitude:
+                    type: string
+                  longitude:
+                    type: string
+        401:
+          description: UNAUTHORIZED
           content:
             application/json:
               schema:
