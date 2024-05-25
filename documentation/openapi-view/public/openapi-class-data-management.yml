@@ -22,8 +22,8 @@ paths:
                 password:
                   type: string
       responses:
-        201:
-          description: CREATED
+        200:
+          description: OK
           content:
             application/json:
               schema:
@@ -71,8 +71,8 @@ paths:
                 password:
                   type: string
       responses:
-        201:
-          description: CREATED
+        200:
+          description: OK
           content:
             application/json:
               schema:
@@ -109,8 +109,8 @@ paths:
         - Pusat autentikasi
       summary: Memerlukan Auth token
       responses:
-        201:
-          description: CREATED
+        200:
+          description: OK
           content:
             application/json:
               example:
@@ -129,8 +129,8 @@ paths:
         - Pusat autentikasi
       summary: Memerlukan Auth token
       responses:
-        201:
-          description: CREATED
+        200:
+          description: OK
           content:
             application/json:
               schema:
