@@ -7,9 +7,9 @@ use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 use Faker\Factory as Faker;
 
-class ReadMahasiswaTest extends TestCase
+class ReadAllMahasiswaTest extends TestCase
 {
-    public function test_mahasiswa_add_data(): void
+    public function test_mahasiswa_all_data(): void
     {
         $faker = Faker::create();
 
@@ -18,7 +18,16 @@ class ReadMahasiswaTest extends TestCase
             'Accept' => 'application/json',
         ];
 
-        $response = $this->get('/api/mahasiswa?page=2', $headers);
+        /**
+         * Parameter yang bisa digunakan
+         *
+         * page=1&length=2
+         * page=1&length=2&search=a
+         * page=1&length=3&sort=terbaru
+         * &search=Cortney
+         * &sort=az
+         */
+        $response = $this->get('/api/mahasiswa?page=1&length=3&sort=a', $headers);
 
         dump($response->json());
 

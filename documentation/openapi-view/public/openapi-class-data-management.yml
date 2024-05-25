@@ -201,6 +201,9 @@ paths:
                         waktu_dibuat:
                           type: string
                           format: date-time
+                        waktu_diubah:
+                          type: string
+                          format: date-time
         400:
           description: BAD REQUEST
           content:
