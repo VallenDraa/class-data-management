@@ -18,7 +18,7 @@ class Admin extends BaseModel
     protected $fillable = [
         'email',
         'jabatan',
-        'users_id',
+        'user_id',
     ];
 
     /**
@@ -28,7 +28,7 @@ class Admin extends BaseModel
      */
     protected $casts = [
         'id' => 'integer',
-        'users_id' => 'integer',
+        'user_id' => 'integer',
     ];
 
     public function users(): BelongsTo

@@ -44,6 +44,6 @@ class AdminAutheticationAction
                 )->plainTextToken,
                 'expires_at' => null
             ]
-        ])->setStatusCode(201);
+        ])->setStatusCode(200);
     }
 }
