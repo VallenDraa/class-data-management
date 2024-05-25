@@ -17,6 +17,5 @@ Route::group(['middleware' => 'auth:sanctum'], function ($router) {
     Route::put('mahasiswa/{id}', UpdateMahasistaAction::class);
 });
 
-Route::post('costumer', AddCostumerAction::class);
 Route::post('mahasiswa/login', MahasiswaAuthenticationAction::class);
 Route::post('admin/login', AdminAutheticationAction::class);
