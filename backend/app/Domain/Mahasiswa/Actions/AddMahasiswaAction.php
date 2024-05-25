@@ -10,22 +10,18 @@ use Domain\Shared\Data\UserData;
 use Domain\Shared\Exceptions\BadRequestException;
 use Domain\Mahasiswa\Data\MahasiswaData;
 use Domain\Mahasiswa\Models\Alamat;
-
+use Domain\Shared\Exceptions\ForbiddenException;
+use Illuminate\Support\Facades\Gate;
 use Lorisleiva\Actions\Concerns\AsAction;
 
 class AddMahasiswaAction
 {
     use AsAction;
 
-    public function handle(UserData $userData, MahasiswaData $mahasiswaData)
+    public function handle(UserData $userData, MahasiswaData $mahasiswaData): void
     {
         if (User::where('nim', $mahasiswaData->nim)->exists())
             throw BadRequestException::because("NIM sudah terdaftar sebelumnya! Tolong gunakan NIM lain");
-
-        if (
-            !$userData->password ||
-            !$userData->name
-            ) throw BadRequestException::because("Data tidak boleh ada yang kosong!");
 
         if (strlen($userData->password) < 6)
             throw BadRequestException::because("Password minimal 6 karakter!");
@@ -33,29 +29,31 @@ class AddMahasiswaAction
         $user = User::create([
             'name' => $userData->name,
             'role' => 'Mahasiswa',
-            'nim' => $mahasiswaData->nim,
-            'password' => Hash::make($userData->password),
+            'password' => Hash::make($mahasiswaData->nim),
         ]);
 
         $alamat = Alamat::create([
-            'alamat' => $mahasiswaData->alamat,
-            'latitude' => $mahasiswaData->latitude,
-            'longitude' => $mahasiswaData->longitude
+            'alamat' => $mahasiswaData->alamat
         ]);
 
         Mahasiswa::create([
+            'nim' => $mahasiswaData->nim,
+            'tanggal_lahir' => $mahasiswaData->tanggal_lahir,
             'user_id' => $user->id,
             'alamat_id' => $alamat->id
         ]);
     }
 
-    public function asController(UserData $userData): JsonResponse
+    public function asController(UserData $userData, MahasiswaData $mahasiswaData): JsonResponse
     {
-        $this->handle($userData);
+        if (Gate::denies('add-mahasiswa'))
+            throw new ForbiddenException();
+
+        $this->handle($userData, $mahasiswaData);
 
         return response()->json([
             'success' => [
-                'message' => 'Akunmu berhasil ditambahkan!'
+                'message' => 'Data mahasiswa berhasil ditambahkan!'
             ]
         ])->setStatusCode(201);
     }
