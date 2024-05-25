@@ -172,15 +172,11 @@ paths:
         required: true
         content:
           application/json:
-            schema:
-              type: object
-              properties:
-                search:
-                  type: string
-                start:
-                  type: integer
-                length:
-                  type: integer
+            example:
+              search: "string"
+              sort: "[ az|za|new|last ]"
+              page: "integer"
+              length: "integer"
       responses:
         200:
           description: OK
