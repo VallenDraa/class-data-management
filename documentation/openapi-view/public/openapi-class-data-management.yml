@@ -257,13 +257,12 @@ paths:
               properties:
                 nim:
                   type: string
-                nama_lengkap:
+                nama:
                   type: string
-                email:
+                tanggal_lahir:
                   type: string
-                jurusan:
-                  type: string
-                angkatan:
+                  format: date
+                alamat:
                   type: string
       responses:
         201:
@@ -309,16 +308,21 @@ paths:
               type: object
               properties:
                 id:
-                  type: string
+                  type: integer
                 nim:
                   type: string
-                nama_lengkap:
+                nama:
                   type: string
-                email:
+                list_kesukaan:
                   type: string
-                jurusan:
+                tanggal_lahir:
                   type: string
-                angkatan:
+                  format: date
+                foto_profile:
+                  type: string
+                no_telepon:
+                  type: string
+                alamat:
                   type: string
       responses:
         200:
@@ -379,7 +383,7 @@ paths:
               type: object
               properties:
                 id:
-                  type: string
+                  type: integer
       responses:
         200:
           description: OK
