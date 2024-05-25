@@ -3,6 +3,7 @@
 namespace Domain\Admin\Models;
 
 use Domain\Shared\Models\BaseModel;
+use Domain\Shared\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
@@ -33,6 +34,6 @@ class Admin extends BaseModel
 
     public function users(): BelongsTo
     {
-        return $this->belongsTo(Users::class);
+        return $this->belongsTo(User::class);
     }
 }

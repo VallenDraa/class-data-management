@@ -6,8 +6,14 @@ enum UserRoleses: string
 {
     case Admin = 'Admin';
     case Mahasiswa = 'Mahasiswa';
-
     public function canAddMahasiswa(): bool
+    {
+        return match ($this) {
+            self::Admin => true,
+            self::Mahasiswa => false,
+        };
+    }
+    public function canUpdateOtherMahasiswa(): bool
     {
         return match ($this) {
             self::Admin => true,

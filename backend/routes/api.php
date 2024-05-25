@@ -5,11 +5,14 @@ use Domain\Costumer\Actions\AddCostumerAction;
 use Domain\Mahasiswa\Actions\AddMahasiswaAction;
 use Domain\Shared\Actions\DeleteTokenAction;
 use Domain\Mahasiswa\Actions\MahasiswaAuthenticationAction;
+use Domain\Mahasiswa\Actions\UpdateMahasistaAction;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => 'auth:sanctum'], function ($router) {
     Route::post('logout', DeleteTokenAction::class);
     Route::post('mahasiswa', AddMahasiswaAction::class);
+    Route::put('mahasiswa', UpdateMahasistaAction::class);
+    Route::put('mahasiswa/{id}', UpdateMahasistaAction::class);
 });
 
 Route::post('costumer', AddCostumerAction::class);

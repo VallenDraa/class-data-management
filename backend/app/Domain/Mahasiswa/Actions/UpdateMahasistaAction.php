@@ -6,18 +6,21 @@ use Domain\Mahasiswa\Data\MahasiswaData;
 use Domain\Mahasiswa\Models\Alamat;
 use Domain\Mahasiswa\Models\Mahasiswa;
 use Domain\Shared\Data\UserData;
+use Domain\Shared\Exceptions\RoleForbiddenException;
 use Domain\Shared\Models\User;
 use Illuminate\Http\JsonResponse;
 use Lorisleiva\Actions\Concerns\AsAction;
 
-class EditMahasistaAction
+class UpdateMahasistaAction
 {
     use AsAction;
 
-    public function handle(UserData $userData, MahasiswaData $mahasiswaData): void
+    public function handle(UserData $userData, MahasiswaData $mahasiswaData, int $id = null): void
     {
+        $currentUserId = $id ?? UserData::fromAuth()->id;
+
         $user = User::with('mahasiswa.alamat')
-            ->findOrFail(UserData::fromAuth()->id);
+            ->findOrFail($currentUserId);
 
         $user->update(['nama' => $userData->nama]);
 
@@ -37,14 +40,20 @@ class EditMahasistaAction
         ]);
     }
 
-    public function asController(UserData $userData, MahasiswaData $mahasiswaData): JsonResponse
+    public function asController(UserData $userData, MahasiswaData $mahasiswaData, int $id = null): JsonResponse
     {
-        $this->handle($userData, $mahasiswaData);
+        if ($id)
+            if (!UserData::fromAuth()->role->canAddMahasiswa())
+                throw new RoleForbiddenException(
+                    UserData::fromAuth()->role->getRequiredRole("canAddMahasiswa")
+                );
+
+        $this->handle($userData, $mahasiswaData, $id);
 
         return response()->json([
             'success' => [
                 'message' => 'Data berhasil diubah!'
             ]
-        ])->setStatusCode(200);
+        ])->setStatusCode(201);
     }
 }

@@ -22,7 +22,7 @@ class AddMahasiswaTest extends TestCase
         ];
 
         $response = $this->postJson('/api/mahasiswa', [
-            'nim' => '1234567',
+            'nim' => $faker->numerify("######"),
             'nama' => $faker->name(),
             'tanggal_lahir' => $faker->date(),
             'alamat' => $faker->address(),
@@ -39,6 +39,11 @@ class AddMahasiswaTest extends TestCase
             'email' => 'oskhar@gmail.com',
             'password' => '123456'
         ]);
+
+        // $response = $this->postJson('/api/mahasiswa/login', [
+        //     'nim' => '1234567',
+        //     'password' => '1234567'
+        // ]);
 
         dump($response->json());
 
