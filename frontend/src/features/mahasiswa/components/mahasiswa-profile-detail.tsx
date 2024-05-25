@@ -1,4 +1,5 @@
 import * as React from 'react';
+import L from 'leaflet';
 import { type Coordinate } from '~/types';
 import { type Mahasiswa, type MahasiswaUpdate } from '../types';
 import { updateMahasiswaValidator } from '../api';
@@ -24,6 +25,7 @@ import {
 	Separator,
 	WaypointMap,
 	Skeleton,
+	PositionPickerMap,
 } from '~/components/ui';
 import { useGeoLocation } from '~/hooks';
 
@@ -53,16 +55,16 @@ export function MahasiswaProfileDetail(props: MahasiswaProfileDetailProps) {
 	const { userLocation, isSupported, isLoading } = useGeoLocation();
 	const currentUserLocation = React.useMemo(
 		(): Coordinate => ({
-			latitude: userLocation?.latitude ?? 0,
-			longitude: userLocation?.longitude ?? 0,
+			lat: userLocation?.lat ?? 0,
+			lng: userLocation?.lng ?? 0,
 			markerMessage: 'Lokasi Anda',
 		}),
-		[userLocation?.latitude, userLocation?.longitude],
+		[userLocation?.lat, userLocation?.lng],
 	);
 	const mahasiswaLocation = React.useMemo(
 		(): Coordinate => ({
-			latitude: Number(user.alamat?.latitude ?? 0),
-			longitude: Number(user.alamat?.longitude ?? 0),
+			lat: Number(user.alamat?.latitude ?? 0),
+			lng: Number(user.alamat?.longitude ?? 0),
 			markerMessage: `Alamat rumah milik ${user.nama}`,
 		}),
 		[user.alamat?.latitude, user.alamat?.longitude, user.nama],
@@ -72,49 +74,54 @@ export function MahasiswaProfileDetail(props: MahasiswaProfileDetailProps) {
 		console.log(data);
 	};
 
+	const profileActions = (
+		<div className="flex flex-col gap-2 grow">
+			{(isSeenByAdmin || isOwnProfile) && (
+				<Button
+					onClick={() => setIsEditing(prev => !prev)}
+					className="w-full"
+					size="sm"
+					variant={isEditing ? 'destructive' : 'default'}
+				>
+					{isEditing ? 'Cancel Edit' : 'Edit Profil'}
+				</Button>
+			)}
+
+			{isSeenByAdmin && (
+				<Button className="w-full" size="sm" variant="ghost-danger">
+					Hapus Mahasiswa
+				</Button>
+			)}
+
+			{isOwnProfile && (
+				<Button className="w-full" size="sm" variant="outline">
+					Ganti Password
+				</Button>
+			)}
+		</div>
+	);
+
 	return (
 		<DialogContent
-			className="h-screen md:h-max"
+			className="h-screen sm:h-max"
 			onClose={() => setIsEditing(false)}
+			onEscapeKeyDown={() => setIsEditing(false)}
 		>
 			<DialogHeader>
 				<DialogTitle className="mb-5">Profil anda</DialogTitle>
 			</DialogHeader>
 
-			<section className="flex flex-col gap-6 overflow-auto md:flex-row">
-				<div className="w-full md:w-28">
-					<Avatar className="h-auto mx-auto mb-4 w-36 md:w-full aspect-square">
+			<section className="flex flex-col gap-2 overflow-auto sm:gap-4 sm:flex-row">
+				<div className="flex flex-row items-center w-full gap-4 sm:w-28 sm:flex-col">
+					<Avatar className="h-auto mx-auto w-28 sm:w-full aspect-square">
 						<AvatarImage src={user.foto_profile} />
 						<AvatarFallback>{user.nama.slice(0, 2)}</AvatarFallback>
 					</Avatar>
 
-					<div className="flex flex-col gap-2">
-						{(isSeenByAdmin || isOwnProfile) && (
-							<Button
-								onClick={() => setIsEditing(prev => !prev)}
-								className="w-full"
-								size="sm"
-								variant={isEditing ? 'destructive' : 'default'}
-							>
-								{isEditing ? 'Cancel Edit' : 'Edit Profil'}
-							</Button>
-						)}
-
-						{isSeenByAdmin && (
-							<Button className="w-full" size="sm" variant="ghost-danger">
-								Hapus Mahasiswa
-							</Button>
-						)}
-
-						{isOwnProfile && (
-							<Button className="w-full" size="sm" variant="outline">
-								Ganti Password
-							</Button>
-						)}
-					</div>
+					<div className="hidden sm:block">{profileActions}</div>
 				</div>
 
-				<ScrollArea className="w-full pr-3 md:max-h-96">
+				<ScrollArea className="w-full sm:max-h-96">
 					<Form {...form}>
 						<form
 							onSubmit={form.handleSubmit(onSubmit)}
@@ -228,16 +235,53 @@ export function MahasiswaProfileDetail(props: MahasiswaProfileDetailProps) {
 								)}
 							/>
 
-							{isLoading && <Skeleton className="w-full rounded-md h-80" />}
+							<FormField
+								control={form.control}
+								name="alamat"
+								disabled={!isEditing}
+								render={({ field }) => {
+									return (
+										<div className="w-full border rounded-md shadow-sm h-80 overflow-clip border-neutral-200">
+											{isLoading && (
+												<Skeleton className="w-full h-full rounded-md" />
+											)}
 
-							{isSupported && !isLoading && (
-								<div className="w-full border rounded-md shadow-sm h-80 overflow-clip border-neutral-200">
-									<WaypointMap
-										startCoordinate={currentUserLocation}
-										endCoordinate={mahasiswaLocation}
-									/>
-								</div>
-							)}
+											{!isSupported && !isLoading && (
+												<div className="flex items-center justify-center w-full h-full text-neutral-500">
+													<span>
+														Geolocation tidak didukung oleh browser anda
+													</span>
+												</div>
+											)}
+
+											{isSupported && !isLoading && !isEditing && (
+												<WaypointMap
+													startCoordinate={currentUserLocation}
+													endCoordinate={mahasiswaLocation}
+												/>
+											)}
+
+											{isSupported && !isLoading && isEditing && (
+												<PositionPickerMap
+													position={
+														new L.LatLng(
+															mahasiswaLocation.lat,
+															mahasiswaLocation.lng,
+														)
+													}
+													onPositionChange={position =>
+														field.onChange({
+															...field.value,
+															latitude: String(position.lat),
+															longitude: String(position.lng),
+														})
+													}
+												/>
+											)}
+										</div>
+									);
+								}}
+							/>
 
 							{isEditing && (
 								<Button type="submit" size="sm" className="w-full">
@@ -247,6 +291,8 @@ export function MahasiswaProfileDetail(props: MahasiswaProfileDetailProps) {
 						</form>
 					</Form>
 				</ScrollArea>
+
+				<div className="block sm:hidden">{profileActions}</div>
 			</section>
 		</DialogContent>
 	);

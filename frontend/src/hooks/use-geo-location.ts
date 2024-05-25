@@ -3,10 +3,8 @@ import * as React from 'react';
 export function useGeoLocation() {
 	const [isSupported, setIsSupported] = React.useState(!!navigator.geolocation);
 	const [isLoading, setIsLoading] = React.useState(true);
-	const [userLocation, setUserLocation] = React.useState<{
-		latitude: number;
-		longitude: number;
-	} | null>(null);
+	const [userLocation, setUserLocation] =
+		React.useState<L.LatLngLiteral | null>(null);
 	const [error, setError] = React.useState<GeolocationPositionError | null>(
 		null,
 	);
@@ -20,7 +18,7 @@ export function useGeoLocation() {
 					position => {
 						const { latitude, longitude } = position.coords;
 
-						setUserLocation({ latitude, longitude });
+						setUserLocation({ lat: latitude, lng: longitude });
 						setIsLoading(false);
 					},
 

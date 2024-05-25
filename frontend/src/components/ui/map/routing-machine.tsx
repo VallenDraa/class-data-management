@@ -17,8 +17,8 @@ export function RoutingMachine(props: RoutingMachineProps) {
 
 	React.useEffect(() => {
 		const waypoints = [
-			L.latLng(startCoordinate.latitude, startCoordinate.longitude),
-			L.latLng(endCoordinate.latitude, endCoordinate.longitude),
+			L.latLng(startCoordinate.lat, startCoordinate.lng),
+			L.latLng(endCoordinate.lat, endCoordinate.lng),
 		];
 
 		const control = L.Routing.control({

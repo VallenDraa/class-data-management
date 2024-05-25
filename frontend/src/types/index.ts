@@ -4,8 +4,6 @@ export type Alamat = {
 	longitude: string;
 };
 
-export type Coordinate = {
-	latitude: number;
-	longitude: number;
+export type Coordinate = L.LatLngLiteral & {
 	markerMessage?: string;
 };

@@ -17,11 +17,11 @@ export function WaypointMap(props: WaypointMapProps) {
 		<MapContainer
 			touchZoom={false}
 			scrollWheelZoom={false}
-			center={[
-				(props.startCoordinate.latitude + props.endCoordinate.latitude) / 2,
-				(props.startCoordinate.longitude + props.endCoordinate.longitude) / 2,
-			]}
 			className="w-full h-full"
+			center={[
+				(props.startCoordinate.lat + props.endCoordinate.lat) / 2,
+				(props.startCoordinate.lng + props.endCoordinate.lng) / 2,
+			]}
 		>
 			<TileLayer
 				attribution='<a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
