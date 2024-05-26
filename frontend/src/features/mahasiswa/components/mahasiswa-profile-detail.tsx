@@ -26,6 +26,7 @@ import {
 	WaypointMap,
 	Skeleton,
 	PositionPickerMap,
+	ListEditor,
 } from '~/components/ui';
 import { useGeoLocation } from '~/hooks';
 import { useLocation, useNavigate } from 'react-router-dom';
@@ -216,6 +217,25 @@ export function MahasiswaProfileDetail(props: MahasiswaProfileDetailProps) {
 											onChange={date => field.onChange(date?.toString())}
 										/>
 										<FormMessage />
+									</FormItem>
+								)}
+							/>
+
+							<FormField
+								control={form.control}
+								name="list_kesukaan"
+								disabled={!isEditing}
+								render={({ field }) => (
+									<FormItem className="flex flex-col">
+										<FormLabel className="text-xs text-neutral-500">
+											List Kesukaan
+										</FormLabel>
+										<ListEditor
+											disabled={!isEditing}
+											hideEditUIWhenDisabled
+											listItems={field.value ?? []}
+											onListChange={field.onChange}
+										/>
 									</FormItem>
 								)}
 							/>

@@ -9,6 +9,7 @@ export * from './date-picker';
 export * from './form';
 export * from './input';
 export * from './label';
+export * from './list-editor';
 export * from './map/waypoint-map';
 export * from './map/position-picker-map';
 export * from './popover';
