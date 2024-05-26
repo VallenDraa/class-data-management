@@ -12,6 +12,7 @@ import {
 } from '~/components/ui';
 import { UserIcon, LogOutIcon } from 'lucide-react';
 import { MahasiswaProfileDetail } from '.';
+import { Link, useLocation } from 'react-router-dom';
 
 export function UserProfile() {
 	const user: Mahasiswa = {
@@ -29,6 +30,8 @@ export function UserProfile() {
 		},
 	};
 
+	const { search } = useLocation();
+
 	return (
 		<DropdownMenu>
 			<DropdownMenuTrigger>
@@ -44,9 +47,11 @@ export function UserProfile() {
 				<DropdownMenuContent align="end">
 					{/* Dialog trigger for user profile detail */}
 					<DialogTrigger asChild>
-						<DropdownMenuItem className="gap-1">
-							<UserIcon size={16} />
-							<span>Profil</span>
+						<DropdownMenuItem asChild className="gap-1">
+							<Link to={{ pathname: `/home/${user.id}`, search }}>
+								<UserIcon size={16} />
+								<span>Profil</span>
+							</Link>
 						</DropdownMenuItem>
 					</DialogTrigger>
 

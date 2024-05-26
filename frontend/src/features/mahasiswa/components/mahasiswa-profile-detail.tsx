@@ -28,6 +28,7 @@ import {
 	PositionPickerMap,
 } from '~/components/ui';
 import { useGeoLocation } from '~/hooks';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 export type MahasiswaProfileDetailProps = {
 	user: Mahasiswa;
@@ -39,6 +40,9 @@ export function MahasiswaProfileDetail(props: MahasiswaProfileDetailProps) {
 	const { user, isOwnProfile, isSeenByAdmin } = props;
 
 	const [isEditing, setIsEditing] = React.useState(false);
+
+	const { search } = useLocation();
+	const navigate = useNavigate();
 
 	const form = useForm<MahasiswaUpdate>({
 		resolver: zodResolver(updateMahasiswaValidator),
@@ -74,6 +78,11 @@ export function MahasiswaProfileDetail(props: MahasiswaProfileDetailProps) {
 		console.log(data);
 	};
 
+	const handleCloseDetail = () => {
+		setIsEditing(false);
+		navigate(`/home${search}`);
+	};
+
 	const profileActions = (
 		<div className="flex flex-col gap-2 grow">
 			{(isSeenByAdmin || isOwnProfile) && (
@@ -104,8 +113,8 @@ export function MahasiswaProfileDetail(props: MahasiswaProfileDetailProps) {
 	return (
 		<DialogContent
 			className="h-screen sm:h-max"
-			onClose={() => setIsEditing(false)}
-			onEscapeKeyDown={() => setIsEditing(false)}
+			onClose={handleCloseDetail}
+			onEscapeKeyDown={handleCloseDetail}
 		>
 			<DialogHeader>
 				<DialogTitle className="mb-5">Profil anda</DialogTitle>
