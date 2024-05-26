@@ -9,7 +9,7 @@ use Faker\Factory as Faker;
 
 class ReadMahasiswaTest extends TestCase
 {
-    public function test_mahasiswa_all_data(): void
+    public function test_mahasiswa_self_data(): void
     {
         $faker = Faker::create();
 
@@ -18,7 +18,7 @@ class ReadMahasiswaTest extends TestCase
             'Accept' => 'application/json',
         ];
 
-        $response = $this->get('/api/mahasiswa/2', $headers);
+        $response = $this->get('/api/mahasiswa/self', $headers);
 
         dump($response->json());
 
@@ -27,15 +27,15 @@ class ReadMahasiswaTest extends TestCase
 
     public function getAuthToken(): string
     {
-        $response = $this->postJson('/api/admin/login', [
-            'email' => 'oskhar@gmail.com',
-            'password' => '123456'
-        ]);
-
-        // $response = $this->postJson('/api/mahasiswa/login', [
-        //     'nim' => '1234567',
-        //     'password' => '1234567'
+        // $response = $this->postJson('/api/admin/login', [
+        //     'email' => 'oskhar@gmail.com',
+        //     'password' => '123456'
         // ]);
+
+        $response = $this->postJson('/api/mahasiswa/login', [
+            'nim' => '248294',
+            'password' => '12345678'
+        ]);
 
         dump($response->json());
 

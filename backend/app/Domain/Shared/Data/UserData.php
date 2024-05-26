@@ -23,6 +23,7 @@ class UserData extends Data
         return self::from([
             'id' => Auth::user()->id,
             'nama' => Auth::user()->nama,
+            'password' => Auth::user()->password,
             'role' => UserRoleses::from(Auth::user()->role)
         ]);
     }

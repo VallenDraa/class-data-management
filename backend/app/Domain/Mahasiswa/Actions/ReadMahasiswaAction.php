@@ -2,6 +2,7 @@
 
 namespace Domain\Mahasiswa\Actions;
 
+use Domain\History\Actions\AddMahasiswaHistoryAction;
 use Illuminate\Http\JsonResponse;
 use Lorisleiva\Actions\Concerns\AsAction;
 use Domain\Mahasiswa\Data\MahasiswaData;
@@ -13,20 +14,24 @@ use Domain\Shared\Models\User;
 class ReadMahasiswaAction
 {
     use AsAction;
-    public function handle($id = null): MahasiswaData
+    public function handle($id = "self"): MahasiswaData
     {
-        $currentUserId = $id == "self" ? UserData::fromAuth()->id : $id;
-
         return MahasiswaData::from(
             User::join('mahasiswas', 'mahasiswas.user_id', '=', 'users.id')
                 ->join('alamats', 'alamats.id', '=', 'mahasiswas.alamat_id')
-                ->findOrFail($currentUserId)
+                ->where(
+                    'users.id',
+                    $id == "self" ? UserData::fromAuth()->id : $id
+                )->firstOrFail()
         );
     }
-    public function asController($id = null): JsonResponse
+    public function asController($id = "self"): JsonResponse
     {
         if ($id == "self" && UserData::fromAuth()->role == UserRoleses::Admin)
             throw BadRequestException::because("Kamu adalah seorang Admin!! admin harus memberikan spesifik id mahasiswa");
+
+        if (UserData::fromAuth()->role->canAddHistory())
+            AddMahasiswaHistoryAction::handle("Melihat data pribadi", UserData::fromAuth()->id);
 
         return response()->json(
             $this->handle($id)

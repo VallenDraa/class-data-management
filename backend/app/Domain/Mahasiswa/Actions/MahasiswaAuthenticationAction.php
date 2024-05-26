@@ -2,6 +2,7 @@
 
 namespace Domain\Mahasiswa\Actions;
 
+use Domain\History\Actions\AddMahasiswaHistoryAction;
 use Domain\Shared\Exceptions\BadRequestException;
 use Domain\Shared\Models\User;
 use Domain\Shared\Data\UserData;
@@ -35,6 +36,8 @@ class MahasiswaAuthenticationAction
     public function asController(Request $request): JsonResponse
     {
         $user = $this->handle($request);
+
+        AddMahasiswaHistoryAction::handle("Login ke aplikasi", $user->id);
 
         return response()->json([
             'success' => [
