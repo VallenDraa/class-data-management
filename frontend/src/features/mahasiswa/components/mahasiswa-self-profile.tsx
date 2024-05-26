@@ -14,13 +14,15 @@ import {
 import { useGetMahasiswaSelf } from '../api';
 import { UserIcon, LogOutIcon } from 'lucide-react';
 import { MahasiswaProfileDetail } from '.';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 export function MahasiswaSelfProfile() {
 	const { data: mahasiswa, isLoading: isMahasiswaLoading } =
 		useGetMahasiswaSelf();
 
 	const { search } = useLocation();
+	const navigate = useNavigate();
+
 	const [isDetailOpen, setIsDetailOpen] = React.useState(false);
 
 	return (
@@ -68,6 +70,7 @@ export function MahasiswaSelfProfile() {
 						isSeenByAdmin={false}
 						mahasiswaId={mahasiswa.id}
 						isDetailOpen={isDetailOpen}
+						onDetailClose={() => navigate(`/mahasiswa${search}`)}
 					/>
 				)}
 			</Dialog>

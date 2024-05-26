@@ -5,7 +5,6 @@ import {
 	DialogTitle,
 	Skeleton,
 } from '~/components/ui';
-import { useLocation, useNavigate } from 'react-router-dom';
 import { MahasiswaEditForm } from './mahasiswa-edit-form';
 import { useGetSingleMahasiswa } from '../api/get-single-mahasiswa';
 
@@ -28,19 +27,11 @@ export function MahasiswaProfileDetail(props: MahasiswaProfileDetailProps) {
 		onDetailClose,
 	} = props;
 
-	const { search } = useLocation();
-	const navigate = useNavigate();
-
 	const {
 		data: mahasiswa,
 		isLoading: isMahasiswaLoading,
 		error,
 	} = useGetSingleMahasiswa({ id: Number(mahasiswaId), enabled: isDetailOpen });
-
-	const handleCloseDetail = () => {
-		onDetailClose?.();
-		navigate(`/mahasiswa${search}`);
-	};
 
 	const handleSubmit = (data: MahasiswaUpdate) => {
 		console.log(data);
@@ -49,8 +40,8 @@ export function MahasiswaProfileDetail(props: MahasiswaProfileDetailProps) {
 	return (
 		<DialogContent
 			className="h-screen sm:h-max"
-			onClose={handleCloseDetail}
-			onEscapeKeyDown={handleCloseDetail}
+			onClose={onDetailClose}
+			onEscapeKeyDown={onDetailClose}
 		>
 			<DialogHeader>
 				<DialogTitle className="mb-5">

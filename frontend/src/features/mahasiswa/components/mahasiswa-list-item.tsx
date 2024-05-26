@@ -9,7 +9,7 @@ import {
 	DialogTrigger,
 } from '~/components/ui';
 import { MahasiswaProfileDetail } from './mahasiswa-profile-detail';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 export type MahasiswaListItemProps = {
 	isUserAdmin: boolean;
@@ -22,6 +22,8 @@ export function MahasiswaListItem(props: MahasiswaListItemProps) {
 	const isOwnProfile = Number(mahasiswa.id) === 1;
 
 	const { search } = useLocation();
+	const navigate = useNavigate();
+
 	const [isDetailOpen, setIsDetailOpen] = React.useState(false);
 
 	return (
@@ -55,6 +57,7 @@ export function MahasiswaListItem(props: MahasiswaListItemProps) {
 				mahasiswaId={mahasiswa.id}
 				isDetailOpen={isDetailOpen}
 				isSeenByAdmin={isUserAdmin}
+				onDetailClose={() => navigate(`/mahasiswa${search}`)}
 			/>
 		</Dialog>
 	);
