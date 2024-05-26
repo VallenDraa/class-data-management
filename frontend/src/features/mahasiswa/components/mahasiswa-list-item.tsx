@@ -41,6 +41,7 @@ export function MahasiswaListItem(props: MahasiswaListItemProps) {
 			</DialogTrigger>
 
 			<MahasiswaProfileDetail
+				detailTitle={`Profil ${mahasiswa.nama}`}
 				isOwnProfile={false}
 				mahasiswaId={mahasiswa.id}
 				isDetailOpen={isDetailOpen}

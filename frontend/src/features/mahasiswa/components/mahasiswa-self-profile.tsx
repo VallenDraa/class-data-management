@@ -63,6 +63,7 @@ export function MahasiswaSelfProfile() {
 				{/* Dialog content for user profile detail */}
 				{!isMahasiswaLoading && mahasiswa && (
 					<MahasiswaProfileDetail
+						detailTitle="Profil Anda"
 						isOwnProfile
 						isSeenByAdmin={false}
 						mahasiswaId={mahasiswa.id}
