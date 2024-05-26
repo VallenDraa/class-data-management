@@ -6,7 +6,8 @@ export const SORT_SEARCH_TYPES: Array<{
 	value: MahasiswaSearchSortType;
 	label: string;
 }> = [
-	{ value: 'newest', label: 'Newest' },
-	{ value: 'asc', label: 'Ascending' },
-	{ value: 'desc', label: 'Descending' },
+	{ value: 'terbaru', label: 'Terbaru' },
+	{ value: 'terlama', label: 'Terlama' },
+	{ value: 'az', label: 'A-Z' },
+	{ value: 'za', label: 'Z-A' },
 ];

@@ -8,6 +8,7 @@ import {
 } from '~/components/ui';
 import { MahasiswaSearchSortType } from '../types';
 import { SORT_SEARCH_TYPES } from '../constants';
+import React from 'react';
 
 export type MahasiswaSearchBarProps = {
 	keyword: string;
@@ -18,6 +19,12 @@ export type MahasiswaSearchBarProps = {
 
 export function MahasiswaSearchBar(props: MahasiswaSearchBarProps) {
 	const { keyword, onKeywordChange, sortType, onSortTypeChange } = props;
+
+	React.useEffect(() => {
+		if (SORT_SEARCH_TYPES.every(type => type.value !== sortType)) {
+			onSortTypeChange('terbaru');
+		}
+	}, [sortType, onSortTypeChange]);
 
 	return (
 		<div className="px-1 space-y-2">
@@ -31,7 +38,7 @@ export function MahasiswaSearchBar(props: MahasiswaSearchBarProps) {
 					}
 				>
 					<SelectTrigger className="w-32">
-						<SelectValue placeholder="Urutkan Berdasarkan" />
+						<SelectValue placeholder="Urutkan" />
 					</SelectTrigger>
 					<SelectContent>
 						{SORT_SEARCH_TYPES.map(type => (

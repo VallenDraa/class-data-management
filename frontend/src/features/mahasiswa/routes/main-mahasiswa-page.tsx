@@ -15,14 +15,14 @@ export function MainMahasiswaPage() {
 	const [activeKeyword, setActiveKeyword] = useUrlState<string>('keyword', '');
 	const [activeSort, setActiveSort] = useUrlState<MahasiswaSearchSortType>(
 		'sort_by',
-		'newest',
+		'terbaru',
 	);
 
 	return (
 		<HomePageLayout>
 			<Dialog open>
 				<SeeMahasiwaDetailOnVisit
-					// ! The isOwnProfle prop is a hardcoded placeholder
+					//! The isOwnProfle prop is a hardcoded placeholder
 					isOwnProfile={mahasiswaId === '1'}
 					mahasiswaId={Number(mahasiswaId)}
 				/>

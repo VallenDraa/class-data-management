@@ -5,7 +5,7 @@ import { QUERY_KEY } from '../constants';
 
 export const getMahasiswa = async ({
 	page = 1,
-	sort = 'newest',
+	sort = 'terbaru',
 	keyword = '',
 }: GetMahasiswaSearchParams) => {
 	if (page < 1) {

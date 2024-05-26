@@ -21,7 +21,7 @@ export type HistoryMahasiswa = {
 	aksi: string;
 };
 
-export type MahasiswaSearchSortType = 'newest' | 'asc' | 'desc';
+export type MahasiswaSearchSortType = 'terbaru' | 'terlama' | 'az' | 'za';
 export type GetMahasiswaSearchParams = {
 	keyword?: string;
 	page?: number;
