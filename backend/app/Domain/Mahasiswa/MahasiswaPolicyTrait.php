@@ -37,4 +37,12 @@ trait MahasiswaPolicyTrait
             UserRoleses::Mahasiswa => false,
         };
     }
+
+    public function canAddHistory(): bool
+    {
+        return match ($this) {
+            UserRoleses::Admin => false,
+            UserRoleses::Mahasiswa => true,
+        };
+    }
 }
