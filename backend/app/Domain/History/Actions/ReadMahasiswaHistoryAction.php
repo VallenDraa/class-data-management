@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Lorisleiva\Actions\Concerns\AsAction;
 use Domain\History\Data\HistoryData;
 use Domain\Mahasiswa\Models\Mahasiswa;
+use Domain\Shared\Data\UserData;
+use Domain\Shared\Exceptions\RoleForbiddenException;
 
 class ReadMahasiswaHistoryAction
 {
@@ -44,6 +46,11 @@ class ReadMahasiswaHistoryAction
 
     public function asController(Request $request, int $id): JsonResponse
     {
+        if (!UserData::fromAuth()->role->canReadHistory())
+            throw new RoleForbiddenException(
+                UserData::fromAuth()->role->getRequiredRole("canAddMahasiswa")
+            );
+
         return response()->json([
             'success' => $this->handle($request, $id)
         ])->setStatusCode(200);
