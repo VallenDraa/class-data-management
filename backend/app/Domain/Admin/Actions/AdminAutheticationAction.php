@@ -2,9 +2,7 @@
 
 namespace Domain\Admin\Actions;
 
-use Domain\Admin\Data\AdminData;
 use Domain\Admin\Models\Admin;
-use Domain\Shared\Data\UserData;
 use Domain\Shared\Exceptions\BadRequestException;
 use Domain\Shared\Models\User;
 use Illuminate\Http\JsonResponse;

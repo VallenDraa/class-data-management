@@ -2,8 +2,11 @@
 
 namespace Domain\Mahasiswa\Actions;
 
+use Domain\History\Actions\AddMahasiswaHistoryAction;
 use Domain\Mahasiswa\Data\MahasiswaPreviewData;
+use Domain\Shared\Data\UserData;
 use Domain\Shared\Enums\SortingTypes;
+use Domain\Shared\Enums\UserRoleses;
 use Domain\Shared\Exceptions\BadRequestException;
 use Domain\Shared\Models\User;
 use Illuminate\Http\JsonResponse;
@@ -50,6 +53,9 @@ class ReadAllMahasiswaAction
     }
     public function asController(Request $request): JsonResponse
     {
+        if (UserData::fromAuth()->role == UserRoleses::Mahasiswa)
+            AddMahasiswaHistoryAction::handle("Melihat seluruh data mahasiswa yang tersedia", UserData::fromAuth()->id);
+
         return response()->json([
             'success' => $this->handle($request)
         ])->setStatusCode(200);

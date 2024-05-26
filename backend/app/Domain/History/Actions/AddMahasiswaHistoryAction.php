@@ -11,7 +11,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Lorisleiva\Actions\Concerns\AsAction;
 
-class AddMahasiswaHistory
+class AddMahasiswaHistoryAction
 {
     use AsAction;
 
