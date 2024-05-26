@@ -22,7 +22,7 @@ class DeleteTokenAction
     {
         $this->handle();
 
-        if (UserData::fromAuth()->role == UserRoleses::Mahasiswa)
+        if (UserData::fromAuth()->role->canAddHistory())
             AddMahasiswaHistoryAction::handle("Melakukan logout", UserData::fromAuth()->id);
 
         return response()->json([

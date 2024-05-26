@@ -29,7 +29,8 @@ class ReadMahasiswaAction
     {
         if ($id == "self" && UserData::fromAuth()->role == UserRoleses::Admin)
             throw BadRequestException::because("Kamu adalah seorang Admin!! admin harus memberikan spesifik id mahasiswa");
-        else if ($id == "self")
+
+        if (UserData::fromAuth()->role->canAddHistory())
             AddMahasiswaHistoryAction::handle("Melihat data pribadi", UserData::fromAuth()->id);
 
         return response()->json(

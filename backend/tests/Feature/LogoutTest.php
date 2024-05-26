@@ -15,7 +15,7 @@ class LogoutTest extends TestCase
     {
 
         $headers = [
-            'Authorization' => 'Bearer 4|3LRk6HtqYp6cSgsp24RwSkIc7QaPKqyCz1ctUzoZf59b1829',
+            'Authorization' => 'Bearer 44|i40L8OmO3SJLhRrifFYVkhCe6Y8aY8dLBJ4oyDsyd12a7bb3',
             'Accept' => 'application/json',
         ];
 

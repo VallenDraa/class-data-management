@@ -53,7 +53,7 @@ class ReadAllMahasiswaAction
     }
     public function asController(Request $request): JsonResponse
     {
-        if (UserData::fromAuth()->role == UserRoleses::Mahasiswa)
+        if (UserData::fromAuth()->role->canAddHistory())
             AddMahasiswaHistoryAction::handle("Melihat seluruh data mahasiswa yang tersedia", UserData::fromAuth()->id);
 
         return response()->json([
