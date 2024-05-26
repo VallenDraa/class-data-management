@@ -81,7 +81,7 @@ export function MahasiswaProfileDetail(props: MahasiswaProfileDetailProps) {
 
 	const handleCloseDetail = () => {
 		setIsEditing(false);
-		navigate(`/home${search}`);
+		navigate(`/mahasiswa${search}`);
 	};
 
 	const profileActions = (

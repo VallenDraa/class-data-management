@@ -23,7 +23,7 @@ export function MahasiswaListItem(props: MahasiswaListItemProps) {
 		<Dialog>
 			<DialogTrigger asChild>
 				<Link
-					to={{ pathname: `/home/${mahasiswa.id}`, search }}
+					to={{ pathname: `/mahasiswa/${mahasiswa.id}`, search }}
 					className="flex items-center w-full gap-4 p-2 rounded-md shadow"
 				>
 					<Avatar className="w-12 h-12">

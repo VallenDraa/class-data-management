@@ -48,7 +48,7 @@ export function UserProfile() {
 					{/* Dialog trigger for user profile detail */}
 					<DialogTrigger asChild>
 						<DropdownMenuItem asChild className="gap-1">
-							<Link to={{ pathname: `/home/${user.id}`, search }}>
+							<Link to={{ pathname: `/mahasiswa/${user.id}`, search }}>
 								<UserIcon size={16} />
 								<span>Profil</span>
 							</Link>

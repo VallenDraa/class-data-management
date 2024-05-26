@@ -18,7 +18,7 @@ export function ErrorPage() {
 				message="Halaman yang anda cari tidak bisa ditemukan."
 			>
 				<Link
-					to="/home"
+					to="/mahasiswa"
 					className={buttonVariants({
 						variant: 'link',
 					})}
