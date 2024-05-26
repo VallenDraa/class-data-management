@@ -26,6 +26,10 @@ import { useGeoLocation } from '~/hooks';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { updateMahasiswaValidator } from '../api';
 import { useForm } from 'react-hook-form';
+import {
+	type ChangePassword,
+	ChangePasswordDialog,
+} from './change-password-dialog';
 
 export type MahasiswaEditFormProps = {
 	onSubmit: (data: MahasiswaUpdate) => void | Promise<void>;
@@ -77,9 +81,13 @@ export function MahasiswaEditForm(props: MahasiswaEditFormProps) {
 		}
 	};
 
-	const handleSubmit = async (data: MahasiswaUpdate) => {
+	const handleEditProfileSubmit = async (data: MahasiswaUpdate) => {
 		await onSubmit(data);
 		setIsEditing(false);
+	};
+
+	const handleEditPasswordSubmit = async (data: ChangePassword) => {
+		console.log(data);
 	};
 
 	const editFormActions = (
@@ -102,9 +110,11 @@ export function MahasiswaEditForm(props: MahasiswaEditFormProps) {
 			)}
 
 			{isOwnProfile && (
-				<Button className="w-full" size="sm" variant="outline">
-					Ganti Password
-				</Button>
+				<ChangePasswordDialog onSubmit={handleEditPasswordSubmit}>
+					<Button className="w-full" size="sm" variant="outline">
+						Ganti Password
+					</Button>
+				</ChangePasswordDialog>
 			)}
 		</div>
 	);
@@ -123,7 +133,7 @@ export function MahasiswaEditForm(props: MahasiswaEditFormProps) {
 			<ScrollArea className="w-full sm:max-h-96">
 				<Form {...form}>
 					<form
-						onSubmit={form.handleSubmit(handleSubmit)}
+						onSubmit={form.handleSubmit(handleEditProfileSubmit)}
 						className="w-full space-y-4"
 					>
 						<FormField
