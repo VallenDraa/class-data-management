@@ -10,6 +10,7 @@ use Domain\Mahasiswa\Actions\MahasiswaAuthenticationAction;
 use Domain\Mahasiswa\Actions\ReadAllMahasiswaAction;
 use Domain\Mahasiswa\Actions\ReadMahasiswaAction;
 use Domain\Mahasiswa\Actions\UpdateMahasistaAction;
+use Domain\Mahasiswa\Actions\ChangePasswordMahasiswaAction;
 
 Route::group(['middleware' => 'auth:sanctum'], function ($router) {
     Route::post('logout', DeleteTokenAction::class);
@@ -19,6 +20,7 @@ Route::group(['middleware' => 'auth:sanctum'], function ($router) {
     Route::put('mahasiswa', UpdateMahasistaAction::class);
     Route::delete('mahasiswa', DeleteMahasiswaAction::class);
     Route::get('mahasiswa/{id}', ReadMahasiswaAction::class);
+    Route::put('mahasiswa/password', ChangePasswordMahasiswaAction::class);
     Route::put('mahasiswa/{id}', UpdateMahasistaAction::class);
     Route::get('mahasiswa/{id}/history', ReadMahasiswaHistoryAction::class);
 });

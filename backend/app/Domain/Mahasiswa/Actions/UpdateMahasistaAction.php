@@ -44,9 +44,9 @@ class UpdateMahasistaAction
     public function asController(UserData $userData, MahasiswaData $mahasiswaData, int $id = null): JsonResponse
     {
         if ($id)
-            if (!UserData::fromAuth()->role->canAddMahasiswa())
+            if (!UserData::fromAuth()->role->canUpdateMahasiswa())
                 throw new RoleForbiddenException(
-                    UserData::fromAuth()->role->getRequiredRole("canAddMahasiswa")
+                    UserData::fromAuth()->role->getRequiredRole("canUpdateMahasiswa")
                 );
 
         if (UserData::fromAuth()->role->canAddHistory())
@@ -58,6 +58,6 @@ class UpdateMahasistaAction
             'success' => [
                 'message' => 'Data berhasil diubah!'
             ]
-        ])->setStatusCode(201);
+        ])->setStatusCode(200);
     }
 }

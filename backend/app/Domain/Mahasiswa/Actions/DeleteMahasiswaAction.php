@@ -18,9 +18,9 @@ class DeleteMahasiswaAction
     }
     public function asController($id): JsonResponse
     {
-        if (!UserData::fromAuth()->role->canAddMahasiswa())
+        if (!UserData::fromAuth()->role->canDeleteMahasiswa())
             throw new RoleForbiddenException(
-                UserData::fromAuth()->role->getRequiredRole("canAddMahasiswa")
+                UserData::fromAuth()->role->getRequiredRole("canDeleteMahasiswa")
             );
 
         $this->handle($id);

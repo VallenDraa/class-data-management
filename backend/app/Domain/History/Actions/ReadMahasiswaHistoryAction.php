@@ -9,6 +9,7 @@ use Domain\History\Data\HistoryData;
 use Domain\Mahasiswa\Models\Mahasiswa;
 use Domain\Shared\Data\UserData;
 use Domain\Shared\Exceptions\RoleForbiddenException;
+use Domain\Shared\Exceptions\BadRequestException;
 
 class ReadMahasiswaHistoryAction
 {
@@ -48,7 +49,7 @@ class ReadMahasiswaHistoryAction
     {
         if (!UserData::fromAuth()->role->canReadHistory())
             throw new RoleForbiddenException(
-                UserData::fromAuth()->role->getRequiredRole("canAddMahasiswa")
+                UserData::fromAuth()->role->getRequiredRole("canReadHistory")
             );
 
         return response()->json([

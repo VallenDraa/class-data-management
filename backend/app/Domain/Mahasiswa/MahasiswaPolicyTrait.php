@@ -45,4 +45,12 @@ trait MahasiswaPolicyTrait
             UserRoleses::Mahasiswa => true,
         };
     }
+
+    public function canChangePasswordMahasiswa(): bool
+    {
+        return match ($this) {
+            UserRoleses::Admin => false,
+            UserRoleses::Mahasiswa => true,
+        };
+    }
 }

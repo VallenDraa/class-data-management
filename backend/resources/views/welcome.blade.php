@@ -12,7 +12,7 @@
     <script>
         window.onload = function() {
             const ui = SwaggerUIBundle({
-                url: "openapi-posyandu-melati.yml",
+                url: "openapi-class-data-management.yml",
                 dom_id: "#swagger-ui",
             });
         }
