@@ -10,11 +10,21 @@ export type SeeMahasiwaDetailOnVisitProps = {
 export function SeeMahasiwaDetailOnVisit(props: SeeMahasiwaDetailOnVisitProps) {
 	const { isOwnProfile, mahasiswaId } = props;
 
-	const { search } = useLocation();
+	const { search, pathname } = useLocation();
+
+	const initialPathname = React.useRef(pathname);
 	const navigate = useNavigate();
 
 	const [isSeenForTheFirstTime, setIsSeenForTheFirstTime] =
 		React.useState(true);
+
+	React.useEffect(() => {
+		if (initialPathname.current === pathname) {
+			return;
+		}
+
+		setIsSeenForTheFirstTime(false);
+	}, [pathname]);
 
 	return isSeenForTheFirstTime && mahasiswaId ? (
 		<MahasiswaProfileDetail
