@@ -690,3 +690,68 @@ paths:
               example:
                 errors:
                   message: "Data dengan id tersebut tidak ditemukan"
+  /mahasiswa/password:
+    put:
+      tags:
+        - Data mahasiswa
+      summary: Memerlukan Auth token
+      requestBody:
+        description: Data mahasiswa untuk mengubah informasi mahasiswa
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                recent_password:
+                  type: string
+                new_password:
+                  type: string
+                confirm_password:
+                  type: string
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: object
+                    properties:
+                      message:
+                        type: string
+              example:
+                success:
+                  message: "Data mahasiswa berhasil diubah"
+        400:
+          description: BAD REQUEST
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: object
+                    properties:
+                      message:
+                        type: string
+              example:
+                errors:
+                  message: "Data tidak valid"
+        404:
+          description: NOT FOUND
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: object
+                    properties:
+                      message:
+                        type: string
+              example:
+                errors:
+                  message: "Data dengan id tersebut tidak ditemukan"
