@@ -34,7 +34,7 @@ class ReadMahasiswaTest extends TestCase
 
         $response = $this->postJson('/api/mahasiswa/login', [
             'nim' => '248294',
-            'password' => '248294'
+            'password' => '12345678'
         ]);
 
         dump($response->json());

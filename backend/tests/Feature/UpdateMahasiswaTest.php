@@ -36,7 +36,7 @@ class UpdateMahasiswaTest extends TestCase
 
         dump($response->json());
 
-        $response->assertStatus(201);
+        $response->assertStatus(200);
     }
 
     public function getAuthToken(): string
@@ -48,7 +48,7 @@ class UpdateMahasiswaTest extends TestCase
 
         $response = $this->postJson('/api/mahasiswa/login', [
             'nim' => '248294',
-            'password' => '248294'
+            'password' => '12345678'
         ]);
 
         dump($response->json());

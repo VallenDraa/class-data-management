@@ -36,15 +36,15 @@ class ReadAllMahasiswaTest extends TestCase
 
     public function getAuthToken(): string
     {
-        // $response = $this->postJson('/api/admin/login', [
-        //     'email' => 'oskhar@gmail.com',
-        //     'password' => '123456'
-        // ]);
-
-        $response = $this->postJson('/api/mahasiswa/login', [
-            'nim' => '248294',
-            'password' => '248294'
+        $response = $this->postJson('/api/admin/login', [
+            'email' => 'oskhar@gmail.com',
+            'password' => '123456'
         ]);
+
+        // $response = $this->postJson('/api/mahasiswa/login', [
+        //     'nim' => '248294',
+        //     'password' => '12345678'
+        // ]);
 
         dump($response->json());
 

@@ -6,20 +6,23 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
-class LogoutTest extends TestCase
+class ChangePasswordMahasiswaTest extends TestCase
 {
     /**
      * A basic feature test example.
      */
-    public function test_logout_user(): void
+    public function test_example(): void
     {
-
         $headers = [
             'Authorization' => 'Bearer ' . $this->getAuthToken(),
             'Accept' => 'application/json',
         ];
 
-        $response = $this->postJson('/api/logout', [], $headers);
+        $response = $this->putJson('/api/mahasiswa/password', [
+            'recent_password' => '12345678',
+            'new_password' => '12345678',
+            'confirm_password' => '12345678'
+        ], $headers);
 
         dump($response->json());
 

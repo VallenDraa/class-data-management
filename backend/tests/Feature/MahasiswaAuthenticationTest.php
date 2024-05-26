@@ -16,8 +16,8 @@ class MahasiswaAuthenticationTest extends TestCase
     public function test_mahasiswa_authentication()
     {
         $response = $this->postJson('/api/mahasiswa/login', [
-            'nim' => '192410109715',
-            'password' => '123456'
+            'nim' => '248294',
+            'password' => '12345678'
         ]);
 
         dump($response->json());
