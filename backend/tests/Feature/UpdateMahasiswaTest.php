@@ -21,9 +21,9 @@ class UpdateMahasiswaTest extends TestCase
             'Accept' => 'application/json',
         ];
 
-        // $response = $this->putJson('/api/mahasiswa', [
-        $response = $this->putJson('/api/mahasiswa/4', [
-            'nim' => '1234567',
+        $response = $this->putJson('/api/mahasiswa', [
+            // $response = $this->putJson('/api/mahasiswa/4', [
+            'nim' => '248294',
             'nama' => $faker->name(),
             'tanggal_lahir' => $faker->date(),
             'no_telepon' => '081373646',
@@ -41,15 +41,15 @@ class UpdateMahasiswaTest extends TestCase
 
     public function getAuthToken(): string
     {
-        $response = $this->postJson('/api/admin/login', [
-            'email' => 'oskhar@gmail.com',
-            'password' => '123456'
-        ]);
-
-        // $response = $this->postJson('/api/mahasiswa/login', [
-        //     'nim' => '1234567',
-        //     'password' => '1234567'
+        // $response = $this->postJson('/api/admin/login', [
+        //     'email' => 'oskhar@gmail.com',
+        //     'password' => '123456'
         // ]);
+
+        $response = $this->postJson('/api/mahasiswa/login', [
+            'nim' => '248294',
+            'password' => '248294'
+        ]);
 
         dump($response->json());
 
