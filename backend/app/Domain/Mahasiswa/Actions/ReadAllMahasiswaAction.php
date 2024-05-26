@@ -2,7 +2,9 @@
 
 namespace Domain\Mahasiswa\Actions;
 
+use Domain\Mahasiswa\Data\MahasiswaPreviewData;
 use Domain\Shared\Enums\SortingTypes;
+use Domain\Shared\Exceptions\BadRequestException;
 use Domain\Shared\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -14,13 +16,7 @@ class ReadAllMahasiswaAction
 
     public function handle(Request $request): array
     {
-        $result = User::select(
-            'users.id',
-            'users.nama',
-            'mahasiswas.nim',
-            'users.created_at as waktu_dibuat',
-            'users.updated_at as waktu_diubah',
-        )->join('mahasiswas', 'mahasiswas.user_id', 'users.id');
+        $result = User::join('mahasiswas', 'mahasiswas.user_id', '=', 'users.id');
 
         if ($request->has('search')) {
             $searchTerm = '%' . strtolower($request->search) . '%';
@@ -33,24 +29,29 @@ class ReadAllMahasiswaAction
             $result->orderBy($sortType->column(), $sortType->direction());
         }
 
-        $totalCount = $result->count();
+        if (!$request->has('page') || !$request->has('length'))
+            throw BadRequestException::because("Request harus menyertakan page dan length");
 
-        if ($request->has('page') && $request->has('length'))
-            $result->offset(($request->page - 1) * $request->length)
-                ->limit($request->length);
+        $dataCount = $result->count();
+        $pageCount = ceil($dataCount / $request->length);
+
+        if ($request->page > $pageCount || $request->page < 1)
+            throw BadRequestException::because("Request page melebihi batas (harus diantara 1 sampai $pageCount)");
+
+        $result->offset(($request->page - 1) * $request->length)
+            ->limit($request->length);
 
         return [
-            'data' => $result->get(),
-            'jumlah' => $totalCount
+            'jumlah' => $dataCount,
+            'next_page' => $request->page == $pageCount ? $pageCount : $request->page + 1,
+            'last_page' => $request->page == 1 ? 1 : $request->page - 1,
+            'data' => $result->get()->map(fn ($item) => MahasiswaPreviewData::from($item)),
         ];
     }
     public function asController(Request $request): JsonResponse
     {
         return response()->json([
-            'success' => [
-                'jumlah' => $this->handle($request)['jumlah'],
-                'data' => $this->handle($request)['data']
-            ]
+            'success' => $this->handle($request)
         ])->setStatusCode(200);
     }
 }

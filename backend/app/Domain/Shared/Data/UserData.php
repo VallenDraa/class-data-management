@@ -20,12 +20,10 @@ class UserData extends Data
 
     public static function fromAuth(): self
     {
-        return new self(
-            Auth::user()->id,
-            Auth::user()->nama,
-            Auth::user()->password,
-            UserRoleses::from(Auth::user()->role),
-            null
-        );
+        return self::from([
+            'id' => Auth::user()->id,
+            'nama' => Auth::user()->nama,
+            'role' => UserRoleses::from(Auth::user()->role)
+        ]);
     }
 }

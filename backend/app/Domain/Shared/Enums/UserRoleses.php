@@ -2,38 +2,14 @@
 
 namespace Domain\Shared\Enums;
 
+use Domain\Mahasiswa\MahasiswaPolicyTrait;
+
 enum UserRoleses: string
 {
+    use MahasiswaPolicyTrait;
+
     case Admin = 'Admin';
     case Mahasiswa = 'Mahasiswa';
-    public function canAddMahasiswa(): bool
-    {
-        return match ($this) {
-            self::Admin => true,
-            self::Mahasiswa => false,
-        };
-    }
-    public function canUpdateOtherMahasiswa(): bool
-    {
-        return match ($this) {
-            self::Admin => true,
-            self::Mahasiswa => false,
-        };
-    }
-    public function canDeleteMahasiswa(): bool
-    {
-        return match ($this) {
-            self::Admin => true,
-            self::Mahasiswa => false,
-        };
-    }
-    public function canReadHistory(): bool
-    {
-        return match ($this) {
-            self::Admin => true,
-            self::Mahasiswa => false,
-        };
-    }
     public static function getRequiredRole(string $method): array
     {
         $roles = [];
