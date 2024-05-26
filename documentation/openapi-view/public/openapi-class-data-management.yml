@@ -187,6 +187,10 @@ paths:
                 properties:
                   jumlah:
                     type: integer
+                  next_page:
+                    type: integer
+                  last_page:
+                    type: integer
                   mahasiswa:
                     type: array
                     items:
@@ -532,32 +536,44 @@ paths:
       tags:
         - Data mahasiswa
       summary: Memerlukan Admin authorization
-      parameters:
-        - name: id
-          in: path
-          required: true
-          schema:
-            type: string
-          description: ID Mahasiswa
+      requestBody:
+        description: Data mahasiswa untuk mendapatkan daftar mahasiswa
+        required: true
+        content:
+          application/json:
+            example:
+              page: "integer"
+              length: "integer"
       responses:
         200:
           description: OK
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    nim:
-                      type: string
-                    nama:
-                      type: string
-                    aksi:
-                      type: string
-                    waktu:
-                      type: string
-                      format: date-time
+                type: object
+                properties:
+                  jumlah:
+                    type: integer
+                  next_page:
+                    type: integer
+                  last_page:
+                    type: integer
+                  history:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        nim:
+                          type: string
+                        nama:
+                          type: string
+                        foto_profile:
+                          type: string
+                        aksi:
+                          type: string
+                        waktu:
+                          type: string
+                          format: date-time
         404:
           description: NOT FOUND
           content:
