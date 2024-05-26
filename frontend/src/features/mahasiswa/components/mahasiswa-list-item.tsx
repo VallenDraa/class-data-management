@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { type Mahasiswa } from '../types';
 import {
 	Avatar,
@@ -18,9 +19,10 @@ export function MahasiswaListItem(props: MahasiswaListItemProps) {
 	const { mahasiswa, isUserAdmin } = props;
 
 	const { search } = useLocation();
+	const [isDetailOpen, setIsDetailOpen] = React.useState(false);
 
 	return (
-		<Dialog>
+		<Dialog open={isDetailOpen} onOpenChange={setIsDetailOpen}>
 			<DialogTrigger asChild>
 				<Link
 					to={{ pathname: `/mahasiswa/${mahasiswa.id}`, search }}
@@ -39,8 +41,9 @@ export function MahasiswaListItem(props: MahasiswaListItemProps) {
 			</DialogTrigger>
 
 			<MahasiswaProfileDetail
-				user={mahasiswa}
 				isOwnProfile={false}
+				mahasiswaId={mahasiswa.id}
+				isDetailOpen={isDetailOpen}
 				isSeenByAdmin={isUserAdmin}
 			/>
 		</Dialog>
