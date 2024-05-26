@@ -18,12 +18,14 @@ export function MainMahasiswaPage() {
 		'newest',
 	);
 
-	console.log('🚀 ~ MainMahasiswaPage ~ mahasiswaId:', mahasiswaId);
-
 	return (
 		<HomePageLayout>
 			<Dialog open>
-				<SeeMahasiwaDetailOnVisit mahasiswaId={Number(mahasiswaId)} />
+				<SeeMahasiwaDetailOnVisit
+					// ! The isOwnProfle prop is a hardcoded placeholder
+					isOwnProfile={mahasiswaId === '1'}
+					mahasiswaId={Number(mahasiswaId)}
+				/>
 			</Dialog>
 
 			<header className="flex items-center justify-between px-1 py-4">

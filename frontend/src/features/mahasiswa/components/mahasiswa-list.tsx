@@ -24,7 +24,7 @@ export function MahasiswaList(props: MahasiswaListProps) {
 	const rowVirtualizer = useVirtualizer({
 		count: mahasiswaList?.length ?? 5,
 		getScrollElement: () => mahasiswaListContainerRef.current,
-		estimateSize: () => 70,
+		estimateSize: () => 75,
 	});
 
 	return isLoading ? (

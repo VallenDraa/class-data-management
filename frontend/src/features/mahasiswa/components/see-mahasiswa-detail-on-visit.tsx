@@ -2,11 +2,12 @@ import * as React from 'react';
 import { MahasiswaProfileDetail } from './mahasiswa-profile-detail';
 
 export type SeeMahasiwaDetailOnVisitProps = {
+	isOwnProfile: boolean;
 	mahasiswaId: number | undefined;
 };
 
 export function SeeMahasiwaDetailOnVisit(props: SeeMahasiwaDetailOnVisitProps) {
-	const { mahasiswaId } = props;
+	const { isOwnProfile, mahasiswaId } = props;
 
 	const [isSeenForTheFirstTime, setIsSeenForTheFirstTime] =
 		React.useState(true);
@@ -15,8 +16,9 @@ export function SeeMahasiwaDetailOnVisit(props: SeeMahasiwaDetailOnVisitProps) {
 		<MahasiswaProfileDetail
 			isDetailOpen
 			isSeenByAdmin={false}
+			isOwnProfile={isOwnProfile}
 			mahasiswaId={Number(mahasiswaId)}
-			isOwnProfile={false}
+			detailTitle={isOwnProfile ? 'Profil Anda' : undefined}
 			onDetailClose={() => setIsSeenForTheFirstTime(false)}
 		/>
 	) : null;
