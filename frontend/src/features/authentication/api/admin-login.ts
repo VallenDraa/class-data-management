@@ -9,6 +9,7 @@ export async function adminLogin(email: string, password: string) {
 		>('/admin/login', { email, password });
 
 		localStorage.setItem('token', response.data.success.token);
+		localStorage.setItem('login_type', 'admin');
 
 		return response.data.success.message;
 	} catch (error) {

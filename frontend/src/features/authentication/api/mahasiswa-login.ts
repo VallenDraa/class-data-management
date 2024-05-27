@@ -9,6 +9,7 @@ export async function mahasiswaLogin(nim: string, password: string) {
 		>('/mahasiswa/login', { nim, password });
 
 		localStorage.setItem('token', response.data.success.token);
+		localStorage.setItem('login_type', 'mahasiswa');
 
 		return response.data.success.message;
 	} catch (error) {
