@@ -10,12 +10,14 @@ import {
 	DropdownMenuItem,
 	Dialog,
 	Skeleton,
-	dropdownMenuitemVariants,
 } from '~/components/ui';
 import { useGetAdminSelf } from '../api';
 import { ExitIcon, PersonIcon } from '@radix-ui/react-icons';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AdminProfileDetail } from './admin-profile-detail';
+import { logout } from '~/features/authentication/api';
+import { toast } from 'sonner';
+import { DEFAULT_ERROR_MESSAGE } from '~/utils/get-error-message';
 
 export function AdminSelfProfile() {
 	const { data: admin, isLoading: isAdminLoading } = useGetAdminSelf();
@@ -24,6 +26,20 @@ export function AdminSelfProfile() {
 	const navigate = useNavigate();
 
 	const [isDetailOpen, setIsDetailOpen] = React.useState(false);
+
+	const handleLogout = async () => {
+		try {
+			await logout();
+			navigate('/admin/login');
+		} catch (error) {
+			if (error instanceof Error) {
+				toast.error(error.message);
+				return;
+			}
+
+			toast.error(DEFAULT_ERROR_MESSAGE);
+		}
+	};
 
 	return (
 		<DropdownMenu>
@@ -56,16 +72,13 @@ export function AdminSelfProfile() {
 						</DropdownMenuItem>
 					</DialogTrigger>
 
-					<DropdownMenuItem asChild className="gap-1">
-						<Link
-							to="/admin/login"
-							className={dropdownMenuitemVariants({
-								variant: 'destructive',
-							})}
-						>
-							<ExitIcon />
-							<span>Keluar</span>
-						</Link>
+					<DropdownMenuItem
+						className="gap-1"
+						onClick={handleLogout}
+						variant="destructive"
+					>
+						<ExitIcon />
+						<span>Keluar</span>
 					</DropdownMenuItem>
 				</DropdownMenuContent>
 

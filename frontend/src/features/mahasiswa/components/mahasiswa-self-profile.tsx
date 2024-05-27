@@ -10,12 +10,14 @@ import {
 	DropdownMenuItem,
 	Dialog,
 	Skeleton,
-	dropdownMenuitemVariants,
 } from '~/components/ui';
 import { useGetMahasiswaSelf } from '../api';
 import { ExitIcon, PersonIcon } from '@radix-ui/react-icons';
 import { MahasiswaProfileDetail } from '.';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { logout } from '~/features/authentication/api';
+import { toast } from 'sonner';
+import { DEFAULT_ERROR_MESSAGE } from '~/utils/get-error-message';
 
 export function MahasiswaSelfProfile() {
 	const { data: mahasiswa, isLoading: isMahasiswaLoading } =
@@ -25,6 +27,20 @@ export function MahasiswaSelfProfile() {
 	const navigate = useNavigate();
 
 	const [isDetailOpen, setIsDetailOpen] = React.useState(false);
+
+	const handleLogout = async () => {
+		try {
+			await logout();
+			navigate('/mahasiswa/login');
+		} catch (error) {
+			if (error instanceof Error) {
+				toast.error(error.message);
+				return;
+			}
+
+			toast.error(DEFAULT_ERROR_MESSAGE);
+		}
+	};
 
 	return (
 		<DropdownMenu>
@@ -57,16 +73,13 @@ export function MahasiswaSelfProfile() {
 						</DropdownMenuItem>
 					</DialogTrigger>
 
-					<DropdownMenuItem asChild className="gap-1">
-						<Link
-							to="/mahasiswa/login"
-							className={dropdownMenuitemVariants({
-								variant: 'destructive',
-							})}
-						>
-							<ExitIcon />
-							<span>Keluar</span>
-						</Link>
+					<DropdownMenuItem
+						className="gap-1"
+						variant="destructive"
+						onClick={handleLogout}
+					>
+						<ExitIcon />
+						<span>Keluar</span>
 					</DropdownMenuItem>
 				</DropdownMenuContent>
 

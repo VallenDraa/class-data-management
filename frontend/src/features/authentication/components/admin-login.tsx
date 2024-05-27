@@ -13,6 +13,9 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { RedirectLink } from './redirect-link';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'sonner';
+import { adminLogin } from '../api';
+import { DEFAULT_ERROR_MESSAGE } from '~/utils/get-error-message';
 
 // Schema untuk form admin
 const adminValidator = z.object({
@@ -29,9 +32,19 @@ export function AdminLogin() {
 	});
 
 	const navigate = useNavigate();
-	const onSubmit = (data: AdminSchema) => {
-		console.log('🚀 ~ onSubmit ~ data:', data);
-		navigate('/admin');
+	const onSubmit = async (data: AdminSchema) => {
+		try {
+			const message = await adminLogin(data.email, data.password);
+			toast.success(message);
+			navigate('/admin', { replace: true });
+		} catch (error) {
+			if (error instanceof Error) {
+				toast.error(error.message);
+				return;
+			}
+
+			toast.error(DEFAULT_ERROR_MESSAGE);
+		}
 	};
 
 	return (
@@ -39,7 +52,7 @@ export function AdminLogin() {
 			<Form {...form}>
 				<form
 					onSubmit={form.handleSubmit(onSubmit)}
-					className="space-y-4 flex flex-col px-6"
+					className="flex flex-col px-6 space-y-4"
 				>
 					<FormField
 						control={form.control}

@@ -7,3 +7,13 @@ export type Alamat = {
 export type Coordinate = L.LatLngLiteral & {
 	markerMessage?: string;
 };
+
+export type ApiResponse<data> = {
+	success: data;
+};
+
+export type ErrorApiResponse = {
+	errors: {
+		message: string;
+	};
+};

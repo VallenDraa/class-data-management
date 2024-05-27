@@ -13,6 +13,9 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { RedirectLink } from './redirect-link';
 import { useNavigate } from 'react-router-dom';
+import { mahasiswaLogin } from '../api';
+import { toast } from 'sonner';
+import { DEFAULT_ERROR_MESSAGE } from '~/utils/get-error-message';
 
 const mahasiswaValidator = z.object({
 	nim: z.string().min(1, 'NIM tidak valid'),
@@ -28,9 +31,19 @@ export function MahasiswaLogin() {
 	});
 
 	const navigate = useNavigate();
-	const onSubmit = (data: MahasiswaSchema) => {
-		console.log('🚀 ~ onSubmit ~ data:', data);
-		navigate('/mahasiswa');
+	const onSubmit = async (data: MahasiswaSchema) => {
+		try {
+			const message = await mahasiswaLogin(data.nim, data.password);
+			toast.success(message);
+			navigate('/mahasiswa', { replace: true });
+		} catch (error) {
+			if (error instanceof Error) {
+				toast.error(error.message);
+				return;
+			}
+
+			toast.error(DEFAULT_ERROR_MESSAGE);
+		}
 	};
 
 	return (
@@ -38,7 +51,7 @@ export function MahasiswaLogin() {
 			<Form {...form}>
 				<form
 					onSubmit={form.handleSubmit(onSubmit)}
-					className="space-y-4 flex flex-col px-6"
+					className="flex flex-col px-6 space-y-4"
 				>
 					<FormField
 						control={form.control}
