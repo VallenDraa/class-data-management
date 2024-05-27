@@ -1,14 +1,16 @@
 import * as React from 'react';
 import { MahasiswaProfileDetail } from './mahasiswa-profile-detail';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { Dialog } from '~/components/ui';
 
 export type SeeMahasiwaDetailOnVisitProps = {
 	isOwnProfile: boolean;
 	mahasiswaId: number | undefined;
+	navigatePathOnClose: string;
 };
 
 export function SeeMahasiwaDetailOnVisit(props: SeeMahasiwaDetailOnVisitProps) {
-	const { isOwnProfile, mahasiswaId } = props;
+	const { isOwnProfile, mahasiswaId, navigatePathOnClose } = props;
 
 	const { search, pathname } = useLocation();
 
@@ -26,17 +28,18 @@ export function SeeMahasiwaDetailOnVisit(props: SeeMahasiwaDetailOnVisitProps) {
 		setIsSeenForTheFirstTime(false);
 	}, [pathname]);
 
-	return isSeenForTheFirstTime && mahasiswaId ? (
-		<MahasiswaProfileDetail
-			isDetailOpen
-			isSeenByAdmin={false}
-			isOwnProfile={isOwnProfile}
-			mahasiswaId={Number(mahasiswaId)}
-			detailTitle={isOwnProfile ? 'Profil Anda' : undefined}
-			onDetailClose={() => {
-				setIsSeenForTheFirstTime(false);
-				navigate(`/mahasiswa${search}`);
-			}}
-		/>
-	) : null;
+	return (
+		<Dialog open={!!(isSeenForTheFirstTime && mahasiswaId)}>
+			<MahasiswaProfileDetail
+				isDetailOpen={!!(isSeenForTheFirstTime && mahasiswaId)}
+				isOwnProfile={isOwnProfile}
+				mahasiswaId={Number(mahasiswaId)}
+				detailTitle={isOwnProfile ? 'Profil Anda' : undefined}
+				onDetailClose={() => {
+					setIsSeenForTheFirstTime(false);
+					navigate(`${navigatePathOnClose}${search}`);
+				}}
+			/>
+		</Dialog>
+	);
 }

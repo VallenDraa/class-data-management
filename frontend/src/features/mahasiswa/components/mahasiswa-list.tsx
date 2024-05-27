@@ -1,18 +1,20 @@
 import * as React from 'react';
-import { type MahasiswaSearchSortType } from '../types';
-import { useVirtualizer } from '@tanstack/react-virtual';
+import { Mahasiswa, type MahasiswaSearchSortType } from '../types';
+import { useVirtualizer, VirtualItem } from '@tanstack/react-virtual';
 import { ScrollArea } from '~/components/ui';
-import { MahasiswaListItem } from './mahasiswa-list-item';
 import { useGetMahasiswa } from '../api';
 
 export type MahasiswaListProps = {
 	keyword: string;
-	isUserAdmin: boolean;
 	sort: MahasiswaSearchSortType;
+	children: (
+		mahasiswa: Mahasiswa | undefined,
+		virtualItem: VirtualItem,
+	) => React.ReactNode;
 };
 
 export function MahasiswaList(props: MahasiswaListProps) {
-	const { keyword, sort, isUserAdmin } = props;
+	const { keyword, sort, children } = props;
 
 	const { data: mahasiswaList, isLoading } = useGetMahasiswa({
 		keyword,
@@ -41,25 +43,7 @@ export function MahasiswaList(props: MahasiswaListProps) {
 				{rowVirtualizer.getVirtualItems().map(virtualItem => {
 					const mahasiswa = mahasiswaList?.[virtualItem.index];
 
-					if (mahasiswa === undefined) {
-						return 'missing wkwkwk';
-					}
-
-					return (
-						<li
-							key={virtualItem.key}
-							className="absolute inset-x-1"
-							style={{
-								height: `${virtualItem.size}px`,
-								transform: `translateY(${virtualItem.start}px)`,
-							}}
-						>
-							<MahasiswaListItem
-								isUserAdmin={isUserAdmin}
-								mahasiswa={mahasiswa}
-							/>
-						</li>
-					);
+					return children(mahasiswa, virtualItem);
 				})}
 			</ul>
 		</ScrollArea>

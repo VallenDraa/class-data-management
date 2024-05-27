@@ -12,7 +12,6 @@ export type MahasiswaProfileDetailProps = {
 	detailTitle?: string;
 	isDetailOpen: boolean;
 	mahasiswaId: number;
-	isSeenByAdmin: boolean;
 	isOwnProfile: boolean;
 	onDetailClose?: () => void;
 };
@@ -23,7 +22,6 @@ export function MahasiswaProfileDetail(props: MahasiswaProfileDetailProps) {
 		isDetailOpen,
 		mahasiswaId,
 		isOwnProfile,
-		isSeenByAdmin,
 		onDetailClose,
 	} = props;
 
@@ -61,7 +59,6 @@ export function MahasiswaProfileDetail(props: MahasiswaProfileDetailProps) {
 				isDetailOpen && !isMahasiswaLoading && mahasiswa ? (
 					<MahasiswaEditForm
 						isOwnProfile={isOwnProfile}
-						isSeenByAdmin={isSeenByAdmin}
 						onSubmit={handleSubmit}
 						user={mahasiswa}
 					/>

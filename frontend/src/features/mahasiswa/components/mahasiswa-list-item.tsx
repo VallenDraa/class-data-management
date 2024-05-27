@@ -12,14 +12,12 @@ import { MahasiswaProfileDetail } from './mahasiswa-profile-detail';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 export type MahasiswaListItemProps = {
-	isUserAdmin: boolean;
 	mahasiswa: Mahasiswa;
+	isOwnProfile: boolean;
 };
 
 export function MahasiswaListItem(props: MahasiswaListItemProps) {
-	const { mahasiswa, isUserAdmin } = props;
-
-	const isOwnProfile = Number(mahasiswa.id) === 1;
+	const { mahasiswa, isOwnProfile } = props;
 
 	const { search } = useLocation();
 	const navigate = useNavigate();
@@ -30,7 +28,10 @@ export function MahasiswaListItem(props: MahasiswaListItemProps) {
 		<Dialog open={isDetailOpen} onOpenChange={setIsDetailOpen}>
 			<DialogTrigger asChild>
 				<Link
-					to={{ pathname: `/mahasiswa/${mahasiswa.id}`, search }}
+					to={{
+						pathname: `/mahasiswa/${mahasiswa.id}`,
+						search,
+					}}
 					className="flex items-center w-full gap-4 p-2 rounded-md shadow-sm border border-neutral-200 hover:border-sky-200 hover:bg-sky-50 transition-colors"
 				>
 					<Avatar className="w-12 h-12">
@@ -56,8 +57,7 @@ export function MahasiswaListItem(props: MahasiswaListItemProps) {
 				isOwnProfile={isOwnProfile}
 				mahasiswaId={mahasiswa.id}
 				isDetailOpen={isDetailOpen}
-				isSeenByAdmin={isUserAdmin}
-				onDetailClose={() => navigate(`/mahasiswa${search}`)}
+				onDetailClose={() => navigate(`/mahasiswa/${search}`)}
 			/>
 		</Dialog>
 	);

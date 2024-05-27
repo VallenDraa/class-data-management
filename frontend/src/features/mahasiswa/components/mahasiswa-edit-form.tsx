@@ -34,12 +34,11 @@ import {
 export type MahasiswaEditFormProps = {
 	onSubmit: (data: MahasiswaUpdate) => void | Promise<void>;
 	user: Mahasiswa;
-	isSeenByAdmin: boolean;
 	isOwnProfile: boolean;
 };
 
 export function MahasiswaEditForm(props: MahasiswaEditFormProps) {
-	const { user, onSubmit, isOwnProfile, isSeenByAdmin } = props;
+	const { user, onSubmit, isOwnProfile } = props;
 
 	const [isEditing, setIsEditing] = React.useState(false);
 	const form = useForm<MahasiswaUpdate>({
@@ -92,7 +91,7 @@ export function MahasiswaEditForm(props: MahasiswaEditFormProps) {
 
 	const editFormActions = (
 		<div className="flex flex-col gap-2 grow">
-			{(isSeenByAdmin || isOwnProfile) && (
+			{isOwnProfile && (
 				<Button
 					onClick={handleEditing}
 					className="w-full"
@@ -100,12 +99,6 @@ export function MahasiswaEditForm(props: MahasiswaEditFormProps) {
 					variant={isEditing ? 'destructive' : 'default'}
 				>
 					{isEditing ? 'Cancel Edit' : 'Edit Profil'}
-				</Button>
-			)}
-
-			{isSeenByAdmin && (
-				<Button className="w-full" size="sm" variant="ghost-danger">
-					Hapus Mahasiswa
 				</Button>
 			)}
 
@@ -121,7 +114,7 @@ export function MahasiswaEditForm(props: MahasiswaEditFormProps) {
 
 	return (
 		<section className="flex flex-col gap-2 overflow-auto sm:gap-4 sm:flex-row animate-in">
-			<div className="flex flex-row items-center w-full gap-4 sm:w-28 sm:flex-col">
+			<div className="flex flex-row items-center w-full gap-4 sm:w-32 sm:flex-col">
 				<Avatar className="h-auto mx-auto w-28 sm:w-full aspect-square">
 					<AvatarImage src={user.foto_profile} />
 					<AvatarFallback>{user.nama.slice(0, 2)}</AvatarFallback>
@@ -253,7 +246,7 @@ export function MahasiswaEditForm(props: MahasiswaEditFormProps) {
 									<FormControl>
 										<Input
 											className="disabled:opacity-100 disabled:cursor-auto"
-											type="tel"
+											type="text"
 											placeholder="-"
 											{...field}
 										/>

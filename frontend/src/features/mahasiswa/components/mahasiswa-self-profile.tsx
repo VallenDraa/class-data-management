@@ -12,7 +12,7 @@ import {
 	Skeleton,
 } from '~/components/ui';
 import { useGetMahasiswaSelf } from '../api';
-import { UserIcon, LogOutIcon } from 'lucide-react';
+import { ExitIcon, PersonIcon } from '@radix-ui/react-icons';
 import { MahasiswaProfileDetail } from '.';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 
@@ -47,7 +47,7 @@ export function MahasiswaSelfProfile() {
 						<DropdownMenuItem asChild className="gap-1">
 							{!isMahasiswaLoading && mahasiswa ? (
 								<Link to={{ pathname: `/mahasiswa/${mahasiswa.id}`, search }}>
-									<UserIcon size={16} />
+									<PersonIcon />
 									<span>Profil</span>
 								</Link>
 							) : (
@@ -57,7 +57,7 @@ export function MahasiswaSelfProfile() {
 					</DialogTrigger>
 
 					<DropdownMenuItem className="gap-1" variant="destructive">
-						<LogOutIcon size={16} />
+						<ExitIcon />
 						<span>Keluar</span>
 					</DropdownMenuItem>
 				</DropdownMenuContent>
@@ -67,7 +67,6 @@ export function MahasiswaSelfProfile() {
 					<MahasiswaProfileDetail
 						detailTitle="Profil Anda"
 						isOwnProfile
-						isSeenByAdmin={false}
 						mahasiswaId={mahasiswa.id}
 						isDetailOpen={isDetailOpen}
 						onDetailClose={() => navigate(`/mahasiswa${search}`)}

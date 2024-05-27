@@ -5,6 +5,7 @@ import {
 	MahasiswaSearchBar,
 	MahasiswaList,
 	SeeMahasiwaDetailOnVisit,
+	MahasiswaListItem,
 } from '../components';
 import { useUrlState } from '~/hooks';
 import { useParams } from 'react-router-dom';
@@ -23,6 +24,7 @@ export function MainMahasiswaPage() {
 			<Dialog open>
 				<SeeMahasiwaDetailOnVisit
 					//! The isOwnProfle prop is a hardcoded placeholder
+					navigatePathOnClose="/mahasiswa"
 					isOwnProfile={mahasiswaId === '1'}
 					mahasiswaId={Number(mahasiswaId)}
 				/>
@@ -41,11 +43,41 @@ export function MainMahasiswaPage() {
 					sortType={activeSort}
 					onSortTypeChange={setActiveSort}
 				/>
-				<MahasiswaList
-					isUserAdmin={false}
-					sort={activeSort}
-					keyword={activeKeyword}
-				/>
+				<MahasiswaList sort={activeSort} keyword={activeKeyword}>
+					{(mahasiswa, virtualItem) => {
+						if (mahasiswa === undefined) {
+							return (
+								<li
+									key={virtualItem.key}
+									className="absolute inset-x-1"
+									style={{
+										height: `${virtualItem.size}px`,
+										transform: `translateY(${virtualItem.start}px)`,
+									}}
+								>
+									Gagal mengambil data mahasiswa
+								</li>
+							);
+						}
+
+						return (
+							<li
+								key={virtualItem.key}
+								className="absolute inset-x-1"
+								style={{
+									height: `${virtualItem.size}px`,
+									transform: `translateY(${virtualItem.start}px)`,
+								}}
+							>
+								<MahasiswaListItem
+									//! The isOwnProfle prop is a hardcoded placeholder
+									isOwnProfile={mahasiswaId === '1'}
+									mahasiswa={mahasiswa}
+								/>
+							</li>
+						);
+					}}
+				</MahasiswaList>
 			</main>
 		</HomePageLayout>
 	);
