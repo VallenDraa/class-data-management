@@ -1,6 +1,6 @@
 import { useMutation } from '@tanstack/react-query';
 import { z } from 'zod';
-import { type MahasiswaInsert } from '../types';
+import { type MahasiswaInsert } from '~/features/mahasiswa/types';
 import { alamatValidator } from '~/utils/validators';
 import { api } from '~/lib/api-client';
 import { AxiosResponse } from 'axios';
@@ -27,7 +27,6 @@ export const addMahasiswaValidator: z.ZodType<MahasiswaInsert> = z.object({
 	nim: z.string(),
 	tanggal_lahir: z.string(),
 	no_telepon: z.string().optional(),
-	list_kesukaan: z.array(z.string()),
 	alamat: alamatValidator,
 });
 

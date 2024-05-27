@@ -1,8 +1,8 @@
 import { api } from '~/lib/api-client';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { AxiosResponse } from 'axios';
-import { GetMahasiswaSearchParams } from '../types';
-import { QUERY_KEY } from '../constants';
+import { GetMahasiswaSearchParams } from '~/features/mahasiswa/types';
+import { QUERY_KEY } from '~/features/mahasiswa/constants';
 import { idValidator } from '~/utils/validators';
 
 export type DeleteMahasiswaParams = {

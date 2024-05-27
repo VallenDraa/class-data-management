@@ -11,7 +11,11 @@ export type GetSingleMahasiswaParams = {
 export const GetSingleMahasiswa = async ({ id }: GetSingleMahasiswaParams) => {
 	const validatedMahasiswaId = await idValidator.parseAsync(id);
 
-	return (await api.get<Mahasiswa>(`/mahasiswa/${validatedMahasiswaId}`)).data;
+	const { data } = await api.get<Mahasiswa>(
+		`/mahasiswa/${validatedMahasiswaId}`,
+	);
+
+	return data;
 };
 
 export type UseGetSingleMahasiswaOptions = Omit<

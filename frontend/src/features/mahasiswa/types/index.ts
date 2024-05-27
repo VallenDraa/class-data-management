@@ -12,7 +12,10 @@ export type Mahasiswa = {
 	list_kesukaan: string[];
 	alamat: Alamat;
 };
-export type MahasiswaInsert = Omit<Mahasiswa, 'id' | 'foto_profile'>;
+export type MahasiswaInsert = Omit<
+	Mahasiswa,
+	'id' | 'foto_profile' | 'no_telepon' | 'list_kesukaan'
+>;
 export type MahasiswaUpdate = Partial<Omit<Mahasiswa, 'id' | 'foto_profile'>>;
 
 export type HistoryMahasiswa = {

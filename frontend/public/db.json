@@ -6948,2502 +6948,2502 @@
 	"history_mahasiswa": [
 		{
 			"id": "1",
-			"mahasiswa_id": 491,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menambah"
 		},
 		{
 			"id": "2",
-			"mahasiswa_id": 329,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "melihat"
 		},
 		{
 			"id": "3",
-			"mahasiswa_id": 314,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "melihat"
 		},
 		{
 			"id": "4",
-			"mahasiswa_id": 323,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "memperbarui"
 		},
 		{
 			"id": "5",
-			"mahasiswa_id": 389,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menambah"
 		},
 		{
 			"id": "6",
-			"mahasiswa_id": 389,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "memperbarui"
 		},
 		{
 			"id": "7",
-			"mahasiswa_id": 255,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menambah"
 		},
 		{
 			"id": "8",
-			"mahasiswa_id": 242,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "9",
-			"mahasiswa_id": 396,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "memperbarui"
 		},
 		{
 			"id": "10",
-			"mahasiswa_id": 412,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "11",
-			"mahasiswa_id": 178,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menambah"
 		},
 		{
 			"id": "12",
-			"mahasiswa_id": 10,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "memperbarui"
 		},
 		{
 			"id": "13",
-			"mahasiswa_id": 382,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "memperbarui"
 		},
 		{
 			"id": "14",
-			"mahasiswa_id": 15,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "15",
-			"mahasiswa_id": 362,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "16",
-			"mahasiswa_id": 475,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "memperbarui"
 		},
 		{
 			"id": "17",
-			"mahasiswa_id": 1,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menambah"
 		},
 		{
 			"id": "18",
-			"mahasiswa_id": 468,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "memperbarui"
 		},
 		{
 			"id": "19",
-			"mahasiswa_id": 447,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "20",
-			"mahasiswa_id": 440,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "memperbarui"
 		},
 		{
 			"id": "21",
-			"mahasiswa_id": 262,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "memperbarui"
 		},
 		{
 			"id": "22",
-			"mahasiswa_id": 173,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menambah"
 		},
 		{
 			"id": "23",
-			"mahasiswa_id": 367,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "melihat"
 		},
 		{
 			"id": "24",
-			"mahasiswa_id": 55,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menambah"
 		},
 		{
 			"id": "25",
-			"mahasiswa_id": 422,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "melihat"
 		},
 		{
 			"id": "26",
-			"mahasiswa_id": 342,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menambah"
 		},
 		{
 			"id": "27",
-			"mahasiswa_id": 372,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menambah"
 		},
 		{
 			"id": "28",
-			"mahasiswa_id": 292,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "29",
-			"mahasiswa_id": 407,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "memperbarui"
 		},
 		{
 			"id": "30",
-			"mahasiswa_id": 72,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "31",
-			"mahasiswa_id": 316,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "32",
-			"mahasiswa_id": 444,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menambah"
 		},
 		{
 			"id": "33",
-			"mahasiswa_id": 118,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "memperbarui"
 		},
 		{
 			"id": "34",
-			"mahasiswa_id": 288,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "melihat"
 		},
 		{
 			"id": "35",
-			"mahasiswa_id": 444,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "melihat"
 		},
 		{
 			"id": "36",
-			"mahasiswa_id": 123,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "melihat"
 		},
 		{
 			"id": "37",
-			"mahasiswa_id": 230,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menambah"
 		},
 		{
 			"id": "38",
-			"mahasiswa_id": 36,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "melihat"
 		},
 		{
 			"id": "39",
-			"mahasiswa_id": 165,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "40",
-			"mahasiswa_id": 412,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "memperbarui"
 		},
 		{
 			"id": "41",
-			"mahasiswa_id": 329,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "melihat"
 		},
 		{
 			"id": "42",
-			"mahasiswa_id": 492,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menambah"
 		},
 		{
 			"id": "43",
-			"mahasiswa_id": 339,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "memperbarui"
 		},
 		{
 			"id": "44",
-			"mahasiswa_id": 318,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menambah"
 		},
 		{
 			"id": "45",
-			"mahasiswa_id": 360,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menambah"
 		},
 		{
 			"id": "46",
-			"mahasiswa_id": 89,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "melihat"
 		},
 		{
 			"id": "47",
-			"mahasiswa_id": 459,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menambah"
 		},
 		{
 			"id": "48",
-			"mahasiswa_id": 257,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "memperbarui"
 		},
 		{
 			"id": "49",
-			"mahasiswa_id": 414,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "melihat"
 		},
 		{
 			"id": "50",
-			"mahasiswa_id": 243,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "memperbarui"
 		},
 		{
 			"id": "51",
-			"mahasiswa_id": 42,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "memperbarui"
 		},
 		{
 			"id": "52",
-			"mahasiswa_id": 64,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "53",
-			"mahasiswa_id": 275,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menambah"
 		},
 		{
 			"id": "54",
-			"mahasiswa_id": 404,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "memperbarui"
 		},
 		{
 			"id": "55",
-			"mahasiswa_id": 275,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "56",
-			"mahasiswa_id": 217,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "memperbarui"
 		},
 		{
 			"id": "57",
-			"mahasiswa_id": 328,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "58",
-			"mahasiswa_id": 451,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "59",
-			"mahasiswa_id": 189,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "memperbarui"
 		},
 		{
 			"id": "60",
-			"mahasiswa_id": 367,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "memperbarui"
 		},
 		{
 			"id": "61",
-			"mahasiswa_id": 102,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "62",
-			"mahasiswa_id": 465,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "memperbarui"
 		},
 		{
 			"id": "63",
-			"mahasiswa_id": 240,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "64",
-			"mahasiswa_id": 415,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menambah"
 		},
 		{
 			"id": "65",
-			"mahasiswa_id": 486,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "melihat"
 		},
 		{
 			"id": "66",
-			"mahasiswa_id": 18,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "melihat"
 		},
 		{
 			"id": "67",
-			"mahasiswa_id": 86,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "melihat"
 		},
 		{
 			"id": "68",
-			"mahasiswa_id": 20,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menambah"
 		},
 		{
 			"id": "69",
-			"mahasiswa_id": 291,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "memperbarui"
 		},
 		{
 			"id": "70",
-			"mahasiswa_id": 260,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "melihat"
 		},
 		{
 			"id": "71",
-			"mahasiswa_id": 86,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "72",
-			"mahasiswa_id": 164,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "73",
-			"mahasiswa_id": 491,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menambah"
 		},
 		{
 			"id": "74",
-			"mahasiswa_id": 444,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "75",
-			"mahasiswa_id": 340,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "melihat"
 		},
 		{
 			"id": "76",
-			"mahasiswa_id": 325,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "melihat"
 		},
 		{
 			"id": "77",
-			"mahasiswa_id": 9,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "melihat"
 		},
 		{
 			"id": "78",
-			"mahasiswa_id": 99,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "79",
-			"mahasiswa_id": 11,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "80",
-			"mahasiswa_id": 322,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menambah"
 		},
 		{
 			"id": "81",
-			"mahasiswa_id": 397,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "memperbarui"
 		},
 		{
 			"id": "82",
-			"mahasiswa_id": 138,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menambah"
 		},
 		{
 			"id": "83",
-			"mahasiswa_id": 333,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menambah"
 		},
 		{
 			"id": "84",
-			"mahasiswa_id": 482,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "85",
-			"mahasiswa_id": 447,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "melihat"
 		},
 		{
 			"id": "86",
-			"mahasiswa_id": 17,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menambah"
 		},
 		{
 			"id": "87",
-			"mahasiswa_id": 279,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menambah"
 		},
 		{
 			"id": "88",
-			"mahasiswa_id": 424,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menambah"
 		},
 		{
 			"id": "89",
-			"mahasiswa_id": 471,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "melihat"
 		},
 		{
 			"id": "90",
-			"mahasiswa_id": 83,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "91",
-			"mahasiswa_id": 179,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "memperbarui"
 		},
 		{
 			"id": "92",
-			"mahasiswa_id": 313,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "93",
-			"mahasiswa_id": 251,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "melihat"
 		},
 		{
 			"id": "94",
-			"mahasiswa_id": 460,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "memperbarui"
 		},
 		{
 			"id": "95",
-			"mahasiswa_id": 197,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "melihat"
 		},
 		{
 			"id": "96",
-			"mahasiswa_id": 30,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menambah"
 		},
 		{
 			"id": "97",
-			"mahasiswa_id": 495,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menambah"
 		},
 		{
 			"id": "98",
-			"mahasiswa_id": 216,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "99",
-			"mahasiswa_id": 356,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "100",
-			"mahasiswa_id": 68,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menambah"
 		},
 		{
 			"id": "101",
-			"mahasiswa_id": 76,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "melihat"
 		},
 		{
 			"id": "102",
-			"mahasiswa_id": 27,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "memperbarui"
 		},
 		{
 			"id": "103",
-			"mahasiswa_id": 407,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menambah"
 		},
 		{
 			"id": "104",
-			"mahasiswa_id": 420,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "memperbarui"
 		},
 		{
 			"id": "105",
-			"mahasiswa_id": 355,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menambah"
 		},
 		{
 			"id": "106",
-			"mahasiswa_id": 378,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menambah"
 		},
 		{
 			"id": "107",
-			"mahasiswa_id": 118,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "108",
-			"mahasiswa_id": 33,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "memperbarui"
 		},
 		{
 			"id": "109",
-			"mahasiswa_id": 401,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menambah"
 		},
 		{
 			"id": "110",
-			"mahasiswa_id": 275,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "memperbarui"
 		},
 		{
 			"id": "111",
-			"mahasiswa_id": 107,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "melihat"
 		},
 		{
 			"id": "112",
-			"mahasiswa_id": 153,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "113",
-			"mahasiswa_id": 490,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menambah"
 		},
 		{
 			"id": "114",
-			"mahasiswa_id": 164,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "memperbarui"
 		},
 		{
 			"id": "115",
-			"mahasiswa_id": 318,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "116",
-			"mahasiswa_id": 151,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "117",
-			"mahasiswa_id": 24,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "melihat"
 		},
 		{
 			"id": "118",
-			"mahasiswa_id": 437,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menambah"
 		},
 		{
 			"id": "119",
-			"mahasiswa_id": 8,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "memperbarui"
 		},
 		{
 			"id": "120",
-			"mahasiswa_id": 63,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "melihat"
 		},
 		{
 			"id": "121",
-			"mahasiswa_id": 203,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menambah"
 		},
 		{
 			"id": "122",
-			"mahasiswa_id": 449,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "melihat"
 		},
 		{
 			"id": "123",
-			"mahasiswa_id": 275,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menambah"
 		},
 		{
 			"id": "124",
-			"mahasiswa_id": 298,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menambah"
 		},
 		{
 			"id": "125",
-			"mahasiswa_id": 179,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "melihat"
 		},
 		{
 			"id": "126",
-			"mahasiswa_id": 421,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "127",
-			"mahasiswa_id": 464,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "melihat"
 		},
 		{
 			"id": "128",
-			"mahasiswa_id": 475,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "memperbarui"
 		},
 		{
 			"id": "129",
-			"mahasiswa_id": 173,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "memperbarui"
 		},
 		{
 			"id": "130",
-			"mahasiswa_id": 59,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menambah"
 		},
 		{
 			"id": "131",
-			"mahasiswa_id": 265,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "melihat"
 		},
 		{
 			"id": "132",
-			"mahasiswa_id": 129,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menambah"
 		},
 		{
 			"id": "133",
-			"mahasiswa_id": 64,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "memperbarui"
 		},
 		{
 			"id": "134",
-			"mahasiswa_id": 373,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "135",
-			"mahasiswa_id": 195,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menambah"
 		},
 		{
 			"id": "136",
-			"mahasiswa_id": 417,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "137",
-			"mahasiswa_id": 484,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "memperbarui"
 		},
 		{
 			"id": "138",
-			"mahasiswa_id": 361,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "memperbarui"
 		},
 		{
 			"id": "139",
-			"mahasiswa_id": 467,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menambah"
 		},
 		{
 			"id": "140",
-			"mahasiswa_id": 299,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "141",
-			"mahasiswa_id": 499,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "142",
-			"mahasiswa_id": 129,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "143",
-			"mahasiswa_id": 387,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "144",
-			"mahasiswa_id": 406,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menambah"
 		},
 		{
 			"id": "145",
-			"mahasiswa_id": 118,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "melihat"
 		},
 		{
 			"id": "146",
-			"mahasiswa_id": 106,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "147",
-			"mahasiswa_id": 68,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "148",
-			"mahasiswa_id": 33,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "memperbarui"
 		},
 		{
 			"id": "149",
-			"mahasiswa_id": 313,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "150",
-			"mahasiswa_id": 472,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "151",
-			"mahasiswa_id": 97,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "152",
-			"mahasiswa_id": 299,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "melihat"
 		},
 		{
 			"id": "153",
-			"mahasiswa_id": 433,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menambah"
 		},
 		{
 			"id": "154",
-			"mahasiswa_id": 92,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "155",
-			"mahasiswa_id": 148,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menambah"
 		},
 		{
 			"id": "156",
-			"mahasiswa_id": 193,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "memperbarui"
 		},
 		{
 			"id": "157",
-			"mahasiswa_id": 476,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "memperbarui"
 		},
 		{
 			"id": "158",
-			"mahasiswa_id": 355,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "memperbarui"
 		},
 		{
 			"id": "159",
-			"mahasiswa_id": 417,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "160",
-			"mahasiswa_id": 290,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "memperbarui"
 		},
 		{
 			"id": "161",
-			"mahasiswa_id": 399,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "melihat"
 		},
 		{
 			"id": "162",
-			"mahasiswa_id": 226,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "163",
-			"mahasiswa_id": 331,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "melihat"
 		},
 		{
 			"id": "164",
-			"mahasiswa_id": 157,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "memperbarui"
 		},
 		{
 			"id": "165",
-			"mahasiswa_id": 90,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "166",
-			"mahasiswa_id": 291,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menambah"
 		},
 		{
 			"id": "167",
-			"mahasiswa_id": 42,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "168",
-			"mahasiswa_id": 487,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "169",
-			"mahasiswa_id": 347,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menambah"
 		},
 		{
 			"id": "170",
-			"mahasiswa_id": 373,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "memperbarui"
 		},
 		{
 			"id": "171",
-			"mahasiswa_id": 328,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menambah"
 		},
 		{
 			"id": "172",
-			"mahasiswa_id": 70,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menambah"
 		},
 		{
 			"id": "173",
-			"mahasiswa_id": 43,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "memperbarui"
 		},
 		{
 			"id": "174",
-			"mahasiswa_id": 129,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "melihat"
 		},
 		{
 			"id": "175",
-			"mahasiswa_id": 275,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "176",
-			"mahasiswa_id": 111,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "177",
-			"mahasiswa_id": 408,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "178",
-			"mahasiswa_id": 383,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "melihat"
 		},
 		{
 			"id": "179",
-			"mahasiswa_id": 466,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menambah"
 		},
 		{
 			"id": "180",
-			"mahasiswa_id": 6,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "memperbarui"
 		},
 		{
 			"id": "181",
-			"mahasiswa_id": 180,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "182",
-			"mahasiswa_id": 250,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "183",
-			"mahasiswa_id": 66,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "184",
-			"mahasiswa_id": 219,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "melihat"
 		},
 		{
 			"id": "185",
-			"mahasiswa_id": 364,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "memperbarui"
 		},
 		{
 			"id": "186",
-			"mahasiswa_id": 158,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "memperbarui"
 		},
 		{
 			"id": "187",
-			"mahasiswa_id": 306,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "188",
-			"mahasiswa_id": 462,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "189",
-			"mahasiswa_id": 196,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "190",
-			"mahasiswa_id": 153,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "melihat"
 		},
 		{
 			"id": "191",
-			"mahasiswa_id": 276,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "memperbarui"
 		},
 		{
 			"id": "192",
-			"mahasiswa_id": 418,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "memperbarui"
 		},
 		{
 			"id": "193",
-			"mahasiswa_id": 35,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "194",
-			"mahasiswa_id": 46,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "195",
-			"mahasiswa_id": 432,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "memperbarui"
 		},
 		{
 			"id": "196",
-			"mahasiswa_id": 487,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "melihat"
 		},
 		{
 			"id": "197",
-			"mahasiswa_id": 436,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "198",
-			"mahasiswa_id": 357,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menambah"
 		},
 		{
 			"id": "199",
-			"mahasiswa_id": 352,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "200",
-			"mahasiswa_id": 317,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "memperbarui"
 		},
 		{
 			"id": "201",
-			"mahasiswa_id": 455,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "melihat"
 		},
 		{
 			"id": "202",
-			"mahasiswa_id": 201,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "203",
-			"mahasiswa_id": 233,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "melihat"
 		},
 		{
 			"id": "204",
-			"mahasiswa_id": 445,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "melihat"
 		},
 		{
 			"id": "205",
-			"mahasiswa_id": 3,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "206",
-			"mahasiswa_id": 192,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "207",
-			"mahasiswa_id": 182,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "melihat"
 		},
 		{
 			"id": "208",
-			"mahasiswa_id": 376,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "209",
-			"mahasiswa_id": 239,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "210",
-			"mahasiswa_id": 271,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "memperbarui"
 		},
 		{
 			"id": "211",
-			"mahasiswa_id": 249,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "212",
-			"mahasiswa_id": 231,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "melihat"
 		},
 		{
 			"id": "213",
-			"mahasiswa_id": 429,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "melihat"
 		},
 		{
 			"id": "214",
-			"mahasiswa_id": 76,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "215",
-			"mahasiswa_id": 486,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "216",
-			"mahasiswa_id": 118,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "217",
-			"mahasiswa_id": 119,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menambah"
 		},
 		{
 			"id": "218",
-			"mahasiswa_id": 88,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "219",
-			"mahasiswa_id": 279,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "220",
-			"mahasiswa_id": 185,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "memperbarui"
 		},
 		{
 			"id": "221",
-			"mahasiswa_id": 452,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "222",
-			"mahasiswa_id": 422,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "melihat"
 		},
 		{
 			"id": "223",
-			"mahasiswa_id": 137,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "melihat"
 		},
 		{
 			"id": "224",
-			"mahasiswa_id": 253,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "memperbarui"
 		},
 		{
 			"id": "225",
-			"mahasiswa_id": 316,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "memperbarui"
 		},
 		{
 			"id": "226",
-			"mahasiswa_id": 42,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "memperbarui"
 		},
 		{
 			"id": "227",
-			"mahasiswa_id": 268,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "memperbarui"
 		},
 		{
 			"id": "228",
-			"mahasiswa_id": 3,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menambah"
 		},
 		{
 			"id": "229",
-			"mahasiswa_id": 122,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "memperbarui"
 		},
 		{
 			"id": "230",
-			"mahasiswa_id": 8,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "231",
-			"mahasiswa_id": 326,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "melihat"
 		},
 		{
 			"id": "232",
-			"mahasiswa_id": 298,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "233",
-			"mahasiswa_id": 488,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "234",
-			"mahasiswa_id": 37,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "melihat"
 		},
 		{
 			"id": "235",
-			"mahasiswa_id": 96,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menambah"
 		},
 		{
 			"id": "236",
-			"mahasiswa_id": 427,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "237",
-			"mahasiswa_id": 331,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "melihat"
 		},
 		{
 			"id": "238",
-			"mahasiswa_id": 193,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "memperbarui"
 		},
 		{
 			"id": "239",
-			"mahasiswa_id": 206,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "memperbarui"
 		},
 		{
 			"id": "240",
-			"mahasiswa_id": 90,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "241",
-			"mahasiswa_id": 298,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "memperbarui"
 		},
 		{
 			"id": "242",
-			"mahasiswa_id": 393,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "243",
-			"mahasiswa_id": 177,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "244",
-			"mahasiswa_id": 458,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "melihat"
 		},
 		{
 			"id": "245",
-			"mahasiswa_id": 171,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "melihat"
 		},
 		{
 			"id": "246",
-			"mahasiswa_id": 24,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "247",
-			"mahasiswa_id": 63,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "memperbarui"
 		},
 		{
 			"id": "248",
-			"mahasiswa_id": 390,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "memperbarui"
 		},
 		{
 			"id": "249",
-			"mahasiswa_id": 329,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menambah"
 		},
 		{
 			"id": "250",
-			"mahasiswa_id": 46,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "melihat"
 		},
 		{
 			"id": "251",
-			"mahasiswa_id": 298,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "memperbarui"
 		},
 		{
 			"id": "252",
-			"mahasiswa_id": 9,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menambah"
 		},
 		{
 			"id": "253",
-			"mahasiswa_id": 138,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menambah"
 		},
 		{
 			"id": "254",
-			"mahasiswa_id": 117,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menambah"
 		},
 		{
 			"id": "255",
-			"mahasiswa_id": 65,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "256",
-			"mahasiswa_id": 73,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menambah"
 		},
 		{
 			"id": "257",
-			"mahasiswa_id": 11,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menambah"
 		},
 		{
 			"id": "258",
-			"mahasiswa_id": 214,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "melihat"
 		},
 		{
 			"id": "259",
-			"mahasiswa_id": 336,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "melihat"
 		},
 		{
 			"id": "260",
-			"mahasiswa_id": 496,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "261",
-			"mahasiswa_id": 426,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "memperbarui"
 		},
 		{
 			"id": "262",
-			"mahasiswa_id": 356,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "263",
-			"mahasiswa_id": 56,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "melihat"
 		},
 		{
 			"id": "264",
-			"mahasiswa_id": 8,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "memperbarui"
 		},
 		{
 			"id": "265",
-			"mahasiswa_id": 334,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "266",
-			"mahasiswa_id": 462,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "267",
-			"mahasiswa_id": 350,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menambah"
 		},
 		{
 			"id": "268",
-			"mahasiswa_id": 21,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "melihat"
 		},
 		{
 			"id": "269",
-			"mahasiswa_id": 290,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "melihat"
 		},
 		{
 			"id": "270",
-			"mahasiswa_id": 407,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "memperbarui"
 		},
 		{
 			"id": "271",
-			"mahasiswa_id": 320,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menambah"
 		},
 		{
 			"id": "272",
-			"mahasiswa_id": 23,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "melihat"
 		},
 		{
 			"id": "273",
-			"mahasiswa_id": 416,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menambah"
 		},
 		{
 			"id": "274",
-			"mahasiswa_id": 360,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "275",
-			"mahasiswa_id": 479,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "melihat"
 		},
 		{
 			"id": "276",
-			"mahasiswa_id": 444,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menambah"
 		},
 		{
 			"id": "277",
-			"mahasiswa_id": 231,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "memperbarui"
 		},
 		{
 			"id": "278",
-			"mahasiswa_id": 270,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "melihat"
 		},
 		{
 			"id": "279",
-			"mahasiswa_id": 318,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menambah"
 		},
 		{
 			"id": "280",
-			"mahasiswa_id": 313,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "melihat"
 		},
 		{
 			"id": "281",
-			"mahasiswa_id": 118,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "282",
-			"mahasiswa_id": 143,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "melihat"
 		},
 		{
 			"id": "283",
-			"mahasiswa_id": 25,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "memperbarui"
 		},
 		{
 			"id": "284",
-			"mahasiswa_id": 373,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menambah"
 		},
 		{
 			"id": "285",
-			"mahasiswa_id": 116,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "memperbarui"
 		},
 		{
 			"id": "286",
-			"mahasiswa_id": 324,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menambah"
 		},
 		{
 			"id": "287",
-			"mahasiswa_id": 232,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "288",
-			"mahasiswa_id": 127,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "289",
-			"mahasiswa_id": 377,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "290",
-			"mahasiswa_id": 476,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "291",
-			"mahasiswa_id": 134,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menambah"
 		},
 		{
 			"id": "292",
-			"mahasiswa_id": 312,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "memperbarui"
 		},
 		{
 			"id": "293",
-			"mahasiswa_id": 489,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "melihat"
 		},
 		{
 			"id": "294",
-			"mahasiswa_id": 479,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menambah"
 		},
 		{
 			"id": "295",
-			"mahasiswa_id": 164,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menambah"
 		},
 		{
 			"id": "296",
-			"mahasiswa_id": 379,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "297",
-			"mahasiswa_id": 393,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menambah"
 		},
 		{
 			"id": "298",
-			"mahasiswa_id": 247,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menambah"
 		},
 		{
 			"id": "299",
-			"mahasiswa_id": 465,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "memperbarui"
 		},
 		{
 			"id": "300",
-			"mahasiswa_id": 232,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menambah"
 		},
 		{
 			"id": "301",
-			"mahasiswa_id": 380,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "melihat"
 		},
 		{
 			"id": "302",
-			"mahasiswa_id": 25,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menambah"
 		},
 		{
 			"id": "303",
-			"mahasiswa_id": 56,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menambah"
 		},
 		{
 			"id": "304",
-			"mahasiswa_id": 235,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "memperbarui"
 		},
 		{
 			"id": "305",
-			"mahasiswa_id": 186,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "melihat"
 		},
 		{
 			"id": "306",
-			"mahasiswa_id": 231,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "memperbarui"
 		},
 		{
 			"id": "307",
-			"mahasiswa_id": 111,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menambah"
 		},
 		{
 			"id": "308",
-			"mahasiswa_id": 286,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "melihat"
 		},
 		{
 			"id": "309",
-			"mahasiswa_id": 19,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menambah"
 		},
 		{
 			"id": "310",
-			"mahasiswa_id": 438,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "memperbarui"
 		},
 		{
 			"id": "311",
-			"mahasiswa_id": 477,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "memperbarui"
 		},
 		{
 			"id": "312",
-			"mahasiswa_id": 414,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menambah"
 		},
 		{
 			"id": "313",
-			"mahasiswa_id": 455,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menambah"
 		},
 		{
 			"id": "314",
-			"mahasiswa_id": 114,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menambah"
 		},
 		{
 			"id": "315",
-			"mahasiswa_id": 291,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "316",
-			"mahasiswa_id": 173,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "317",
-			"mahasiswa_id": 387,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menambah"
 		},
 		{
 			"id": "318",
-			"mahasiswa_id": 298,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "melihat"
 		},
 		{
 			"id": "319",
-			"mahasiswa_id": 268,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menambah"
 		},
 		{
 			"id": "320",
-			"mahasiswa_id": 251,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "321",
-			"mahasiswa_id": 400,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "melihat"
 		},
 		{
 			"id": "322",
-			"mahasiswa_id": 177,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "melihat"
 		},
 		{
 			"id": "323",
-			"mahasiswa_id": 21,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menambah"
 		},
 		{
 			"id": "324",
-			"mahasiswa_id": 182,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "memperbarui"
 		},
 		{
 			"id": "325",
-			"mahasiswa_id": 398,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menambah"
 		},
 		{
 			"id": "326",
-			"mahasiswa_id": 29,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menambah"
 		},
 		{
 			"id": "327",
-			"mahasiswa_id": 393,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menambah"
 		},
 		{
 			"id": "328",
-			"mahasiswa_id": 78,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "melihat"
 		},
 		{
 			"id": "329",
-			"mahasiswa_id": 264,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menambah"
 		},
 		{
 			"id": "330",
-			"mahasiswa_id": 412,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "melihat"
 		},
 		{
 			"id": "331",
-			"mahasiswa_id": 154,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "melihat"
 		},
 		{
 			"id": "332",
-			"mahasiswa_id": 40,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "memperbarui"
 		},
 		{
 			"id": "333",
-			"mahasiswa_id": 202,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "334",
-			"mahasiswa_id": 444,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "melihat"
 		},
 		{
 			"id": "335",
-			"mahasiswa_id": 59,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "melihat"
 		},
 		{
 			"id": "336",
-			"mahasiswa_id": 349,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "337",
-			"mahasiswa_id": 316,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "memperbarui"
 		},
 		{
 			"id": "338",
-			"mahasiswa_id": 424,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menambah"
 		},
 		{
 			"id": "339",
-			"mahasiswa_id": 465,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "340",
-			"mahasiswa_id": 255,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "memperbarui"
 		},
 		{
 			"id": "341",
-			"mahasiswa_id": 218,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "memperbarui"
 		},
 		{
 			"id": "342",
-			"mahasiswa_id": 150,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menambah"
 		},
 		{
 			"id": "343",
-			"mahasiswa_id": 146,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "memperbarui"
 		},
 		{
 			"id": "344",
-			"mahasiswa_id": 275,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "memperbarui"
 		},
 		{
 			"id": "345",
-			"mahasiswa_id": 440,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menambah"
 		},
 		{
 			"id": "346",
-			"mahasiswa_id": 411,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "347",
-			"mahasiswa_id": 37,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "melihat"
 		},
 		{
 			"id": "348",
-			"mahasiswa_id": 218,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "memperbarui"
 		},
 		{
 			"id": "349",
-			"mahasiswa_id": 31,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "melihat"
 		},
 		{
 			"id": "350",
-			"mahasiswa_id": 169,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "351",
-			"mahasiswa_id": 169,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menambah"
 		},
 		{
 			"id": "352",
-			"mahasiswa_id": 494,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "353",
-			"mahasiswa_id": 354,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "memperbarui"
 		},
 		{
 			"id": "354",
-			"mahasiswa_id": 410,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "355",
-			"mahasiswa_id": 101,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "melihat"
 		},
 		{
 			"id": "356",
-			"mahasiswa_id": 293,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "melihat"
 		},
 		{
 			"id": "357",
-			"mahasiswa_id": 85,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "358",
-			"mahasiswa_id": 153,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "memperbarui"
 		},
 		{
 			"id": "359",
-			"mahasiswa_id": 498,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "360",
-			"mahasiswa_id": 376,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "melihat"
 		},
 		{
 			"id": "361",
-			"mahasiswa_id": 476,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "melihat"
 		},
 		{
 			"id": "362",
-			"mahasiswa_id": 124,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menambah"
 		},
 		{
 			"id": "363",
-			"mahasiswa_id": 450,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "melihat"
 		},
 		{
 			"id": "364",
-			"mahasiswa_id": 46,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "memperbarui"
 		},
 		{
 			"id": "365",
-			"mahasiswa_id": 227,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "melihat"
 		},
 		{
 			"id": "366",
-			"mahasiswa_id": 226,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "367",
-			"mahasiswa_id": 168,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "368",
-			"mahasiswa_id": 11,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "memperbarui"
 		},
 		{
 			"id": "369",
-			"mahasiswa_id": 212,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "370",
-			"mahasiswa_id": 11,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menambah"
 		},
 		{
 			"id": "371",
-			"mahasiswa_id": 39,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "memperbarui"
 		},
 		{
 			"id": "372",
-			"mahasiswa_id": 466,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "373",
-			"mahasiswa_id": 43,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "memperbarui"
 		},
 		{
 			"id": "374",
-			"mahasiswa_id": 388,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "memperbarui"
 		},
 		{
 			"id": "375",
-			"mahasiswa_id": 30,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "376",
-			"mahasiswa_id": 174,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "377",
-			"mahasiswa_id": 85,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "memperbarui"
 		},
 		{
 			"id": "378",
-			"mahasiswa_id": 379,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "379",
-			"mahasiswa_id": 342,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "380",
-			"mahasiswa_id": 236,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "381",
-			"mahasiswa_id": 2,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "memperbarui"
 		},
 		{
 			"id": "382",
-			"mahasiswa_id": 134,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menambah"
 		},
 		{
 			"id": "383",
-			"mahasiswa_id": 61,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "memperbarui"
 		},
 		{
 			"id": "384",
-			"mahasiswa_id": 43,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "melihat"
 		},
 		{
 			"id": "385",
-			"mahasiswa_id": 137,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "memperbarui"
 		},
 		{
 			"id": "386",
-			"mahasiswa_id": 416,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "melihat"
 		},
 		{
 			"id": "387",
-			"mahasiswa_id": 473,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menambah"
 		},
 		{
 			"id": "388",
-			"mahasiswa_id": 297,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "memperbarui"
 		},
 		{
 			"id": "389",
-			"mahasiswa_id": 375,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "memperbarui"
 		},
 		{
 			"id": "390",
-			"mahasiswa_id": 217,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menambah"
 		},
 		{
 			"id": "391",
-			"mahasiswa_id": 52,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "melihat"
 		},
 		{
 			"id": "392",
-			"mahasiswa_id": 230,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "melihat"
 		},
 		{
 			"id": "393",
-			"mahasiswa_id": 47,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "melihat"
 		},
 		{
 			"id": "394",
-			"mahasiswa_id": 17,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "melihat"
 		},
 		{
 			"id": "395",
-			"mahasiswa_id": 351,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menambah"
 		},
 		{
 			"id": "396",
-			"mahasiswa_id": 15,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "memperbarui"
 		},
 		{
 			"id": "397",
-			"mahasiswa_id": 58,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "melihat"
 		},
 		{
 			"id": "398",
-			"mahasiswa_id": 460,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "melihat"
 		},
 		{
 			"id": "399",
-			"mahasiswa_id": 315,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "melihat"
 		},
 		{
 			"id": "400",
-			"mahasiswa_id": 369,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menambah"
 		},
 		{
 			"id": "401",
-			"mahasiswa_id": 387,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "melihat"
 		},
 		{
 			"id": "402",
-			"mahasiswa_id": 407,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "memperbarui"
 		},
 		{
 			"id": "403",
-			"mahasiswa_id": 331,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "melihat"
 		},
 		{
 			"id": "404",
-			"mahasiswa_id": 113,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "memperbarui"
 		},
 		{
 			"id": "405",
-			"mahasiswa_id": 77,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "memperbarui"
 		},
 		{
 			"id": "406",
-			"mahasiswa_id": 350,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "407",
-			"mahasiswa_id": 437,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "408",
-			"mahasiswa_id": 238,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menambah"
 		},
 		{
 			"id": "409",
-			"mahasiswa_id": 305,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "melihat"
 		},
 		{
 			"id": "410",
-			"mahasiswa_id": 398,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "melihat"
 		},
 		{
 			"id": "411",
-			"mahasiswa_id": 422,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "melihat"
 		},
 		{
 			"id": "412",
-			"mahasiswa_id": 206,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "memperbarui"
 		},
 		{
 			"id": "413",
-			"mahasiswa_id": 392,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "memperbarui"
 		},
 		{
 			"id": "414",
-			"mahasiswa_id": 305,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menambah"
 		},
 		{
 			"id": "415",
-			"mahasiswa_id": 276,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menambah"
 		},
 		{
 			"id": "416",
-			"mahasiswa_id": 135,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menambah"
 		},
 		{
 			"id": "417",
-			"mahasiswa_id": 489,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menambah"
 		},
 		{
 			"id": "418",
-			"mahasiswa_id": 371,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menambah"
 		},
 		{
 			"id": "419",
-			"mahasiswa_id": 383,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menambah"
 		},
 		{
 			"id": "420",
-			"mahasiswa_id": 109,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menambah"
 		},
 		{
 			"id": "421",
-			"mahasiswa_id": 110,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "melihat"
 		},
 		{
 			"id": "422",
-			"mahasiswa_id": 281,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "memperbarui"
 		},
 		{
 			"id": "423",
-			"mahasiswa_id": 124,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "memperbarui"
 		},
 		{
 			"id": "424",
-			"mahasiswa_id": 244,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menambah"
 		},
 		{
 			"id": "425",
-			"mahasiswa_id": 177,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "memperbarui"
 		},
 		{
 			"id": "426",
-			"mahasiswa_id": 106,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "melihat"
 		},
 		{
 			"id": "427",
-			"mahasiswa_id": 363,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menambah"
 		},
 		{
 			"id": "428",
-			"mahasiswa_id": 90,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "memperbarui"
 		},
 		{
 			"id": "429",
-			"mahasiswa_id": 129,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "melihat"
 		},
 		{
 			"id": "430",
-			"mahasiswa_id": 117,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menambah"
 		},
 		{
 			"id": "431",
-			"mahasiswa_id": 465,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "melihat"
 		},
 		{
 			"id": "432",
-			"mahasiswa_id": 3,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "melihat"
 		},
 		{
 			"id": "433",
-			"mahasiswa_id": 258,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "memperbarui"
 		},
 		{
 			"id": "434",
-			"mahasiswa_id": 251,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "melihat"
 		},
 		{
 			"id": "435",
-			"mahasiswa_id": 422,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "436",
-			"mahasiswa_id": 362,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "memperbarui"
 		},
 		{
 			"id": "437",
-			"mahasiswa_id": 166,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menambah"
 		},
 		{
 			"id": "438",
-			"mahasiswa_id": 317,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menambah"
 		},
 		{
 			"id": "439",
-			"mahasiswa_id": 355,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menambah"
 		},
 		{
 			"id": "440",
-			"mahasiswa_id": 423,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "melihat"
 		},
 		{
 			"id": "441",
-			"mahasiswa_id": 279,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "memperbarui"
 		},
 		{
 			"id": "442",
-			"mahasiswa_id": 458,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menambah"
 		},
 		{
 			"id": "443",
-			"mahasiswa_id": 75,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menambah"
 		},
 		{
 			"id": "444",
-			"mahasiswa_id": 230,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "445",
-			"mahasiswa_id": 284,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "446",
-			"mahasiswa_id": 24,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "447",
-			"mahasiswa_id": 458,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "melihat"
 		},
 		{
 			"id": "448",
-			"mahasiswa_id": 417,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "449",
-			"mahasiswa_id": 433,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "memperbarui"
 		},
 		{
 			"id": "450",
-			"mahasiswa_id": 63,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menambah"
 		},
 		{
 			"id": "451",
-			"mahasiswa_id": 249,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "melihat"
 		},
 		{
 			"id": "452",
-			"mahasiswa_id": 81,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menambah"
 		},
 		{
 			"id": "453",
-			"mahasiswa_id": 405,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "melihat"
 		},
 		{
 			"id": "454",
-			"mahasiswa_id": 7,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menambah"
 		},
 		{
 			"id": "455",
-			"mahasiswa_id": 308,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "melihat"
 		},
 		{
 			"id": "456",
-			"mahasiswa_id": 402,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "melihat"
 		},
 		{
 			"id": "457",
-			"mahasiswa_id": 396,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menambah"
 		},
 		{
 			"id": "458",
-			"mahasiswa_id": 100,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menambah"
 		},
 		{
 			"id": "459",
-			"mahasiswa_id": 307,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menambah"
 		},
 		{
 			"id": "460",
-			"mahasiswa_id": 29,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "memperbarui"
 		},
 		{
 			"id": "461",
-			"mahasiswa_id": 313,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "memperbarui"
 		},
 		{
 			"id": "462",
-			"mahasiswa_id": 5,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "memperbarui"
 		},
 		{
 			"id": "463",
-			"mahasiswa_id": 178,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "melihat"
 		},
 		{
 			"id": "464",
-			"mahasiswa_id": 93,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "memperbarui"
 		},
 		{
 			"id": "465",
-			"mahasiswa_id": 304,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "466",
-			"mahasiswa_id": 272,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "467",
-			"mahasiswa_id": 339,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menambah"
 		},
 		{
 			"id": "468",
-			"mahasiswa_id": 488,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menambah"
 		},
 		{
 			"id": "469",
-			"mahasiswa_id": 174,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "470",
-			"mahasiswa_id": 455,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "memperbarui"
 		},
 		{
 			"id": "471",
-			"mahasiswa_id": 58,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "472",
-			"mahasiswa_id": 145,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "melihat"
 		},
 		{
 			"id": "473",
-			"mahasiswa_id": 323,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "474",
-			"mahasiswa_id": 465,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "memperbarui"
 		},
 		{
 			"id": "475",
-			"mahasiswa_id": 424,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "memperbarui"
 		},
 		{
 			"id": "476",
-			"mahasiswa_id": 186,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "477",
-			"mahasiswa_id": 460,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "memperbarui"
 		},
 		{
 			"id": "478",
-			"mahasiswa_id": 45,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menambah"
 		},
 		{
 			"id": "479",
-			"mahasiswa_id": 108,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "memperbarui"
 		},
 		{
 			"id": "480",
-			"mahasiswa_id": 305,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "memperbarui"
 		},
 		{
 			"id": "481",
-			"mahasiswa_id": 398,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menambah"
 		},
 		{
 			"id": "482",
-			"mahasiswa_id": 196,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "memperbarui"
 		},
 		{
 			"id": "483",
-			"mahasiswa_id": 369,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "melihat"
 		},
 		{
 			"id": "484",
-			"mahasiswa_id": 232,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "memperbarui"
 		},
 		{
 			"id": "485",
-			"mahasiswa_id": 484,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "melihat"
 		},
 		{
 			"id": "486",
-			"mahasiswa_id": 18,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "memperbarui"
 		},
 		{
 			"id": "487",
-			"mahasiswa_id": 178,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "488",
-			"mahasiswa_id": 117,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "melihat"
 		},
 		{
 			"id": "489",
-			"mahasiswa_id": 212,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "melihat"
 		},
 		{
 			"id": "490",
-			"mahasiswa_id": 135,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menambah"
 		},
 		{
 			"id": "491",
-			"mahasiswa_id": 179,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "492",
-			"mahasiswa_id": 30,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "melihat"
 		},
 		{
 			"id": "493",
-			"mahasiswa_id": 497,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "494",
-			"mahasiswa_id": 415,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menambah"
 		},
 		{
 			"id": "495",
-			"mahasiswa_id": 379,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "melihat"
 		},
 		{
 			"id": "496",
-			"mahasiswa_id": 188,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menambah"
 		},
 		{
 			"id": "497",
-			"mahasiswa_id": 411,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "memperbarui"
 		},
 		{
 			"id": "498",
-			"mahasiswa_id": 397,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "melihat"
 		},
 		{
 			"id": "499",
-			"mahasiswa_id": 418,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		},
 		{
 			"id": "500",
-			"mahasiswa_id": 416,
+			"waktu": "2024-05-27T08:39:13.634Z",
 			"aksi": "menghapus"
 		}
 	]
