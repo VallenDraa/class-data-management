@@ -10,6 +10,7 @@ import {
 	DropdownMenuItem,
 	Dialog,
 	Skeleton,
+	dropdownMenuitemVariants,
 } from '~/components/ui';
 import { useGetMahasiswaSelf } from '../api';
 import { ExitIcon, PersonIcon } from '@radix-ui/react-icons';
@@ -34,7 +35,7 @@ export function MahasiswaSelfProfile() {
 						<AvatarFallback>{mahasiswa.nama.slice(0, 2)}</AvatarFallback>
 					</Avatar>
 				) : (
-					<Skeleton className="h-10 w-10 rounded-full" />
+					<Skeleton className="w-10 h-10 rounded-full" />
 				)}
 
 				<span className="sr-only">Open Profile Popover</span>
@@ -56,9 +57,16 @@ export function MahasiswaSelfProfile() {
 						</DropdownMenuItem>
 					</DialogTrigger>
 
-					<DropdownMenuItem className="gap-1" variant="destructive">
-						<ExitIcon />
-						<span>Keluar</span>
+					<DropdownMenuItem asChild className="gap-1">
+						<Link
+							to="/mahasiswa/login"
+							className={dropdownMenuitemVariants({
+								variant: 'destructive',
+							})}
+						>
+							<ExitIcon />
+							<span>Keluar</span>
+						</Link>
 					</DropdownMenuItem>
 				</DropdownMenuContent>
 

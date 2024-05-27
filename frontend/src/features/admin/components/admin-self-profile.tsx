@@ -10,6 +10,7 @@ import {
 	DropdownMenuItem,
 	Dialog,
 	Skeleton,
+	dropdownMenuitemVariants,
 } from '~/components/ui';
 import { useGetAdminSelf } from '../api';
 import { ExitIcon, PersonIcon } from '@radix-ui/react-icons';
@@ -33,7 +34,7 @@ export function AdminSelfProfile() {
 						<AvatarFallback>{admin.nama.slice(0, 2)}</AvatarFallback>
 					</Avatar>
 				) : (
-					<Skeleton className="h-10 w-10 rounded-full" />
+					<Skeleton className="w-10 h-10 rounded-full" />
 				)}
 
 				<span className="sr-only">Open Profile Popover</span>
@@ -50,14 +51,21 @@ export function AdminSelfProfile() {
 									<span>Profil</span>
 								</Link>
 							) : (
-								<Skeleton className="h-8 w-full rounded" />
+								<Skeleton className="w-full h-8 rounded" />
 							)}
 						</DropdownMenuItem>
 					</DialogTrigger>
 
-					<DropdownMenuItem className="gap-1" variant="destructive">
-						<ExitIcon />
-						<span>Keluar</span>
+					<DropdownMenuItem asChild className="gap-1">
+						<Link
+							to="/admin/login"
+							className={dropdownMenuitemVariants({
+								variant: 'destructive',
+							})}
+						>
+							<ExitIcon />
+							<span>Keluar</span>
+						</Link>
 					</DropdownMenuItem>
 				</DropdownMenuContent>
 

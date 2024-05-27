@@ -14,19 +14,17 @@ export const router = createBrowserRouter([
 				path: '/',
 				element: <Navigate to="/mahasiswa" />,
 			},
+			{ path: '/mahasiswa/login', element: <MahasiswaLoginPage /> },
+			{ path: '/admin/login', element: <AdminLoginPage /> },
 			{
 				path: '/mahasiswa',
 				element: <MainMahasiswaPage />,
-				children: [
-					{ path: '/login', element: <MahasiswaLoginPage /> },
-					{ path: ':mahasiswaId', element: <MainMahasiswaPage /> },
-				],
+				children: [{ path: ':mahasiswaId', element: <MainMahasiswaPage /> }],
 			},
 			{
 				path: '/admin',
 				element: <MainAdminPage />,
 				children: [
-					{ path: '/login', element: <AdminLoginPage /> },
 					{ path: 'mahasiswa/:mahasiswaId', element: <MainAdminPage /> },
 					{ path: ':adminId', element: <MainAdminPage /> },
 				],
