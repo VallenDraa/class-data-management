@@ -39,7 +39,7 @@ class ReadMahasiswaHistoryAction
         return [
             'jumlah' => $dataCount,
             'next_page' => $request->page == $pageCount ? $pageCount : $request->page + 1,
-            'last_page' => $request->page == 1 ? 1 : $request->page - 1,
+            'last_page' => $pageCount,
             'data' => $result->get()
                 ->map(fn ($item) => HistoryData::from($item))
         ];
