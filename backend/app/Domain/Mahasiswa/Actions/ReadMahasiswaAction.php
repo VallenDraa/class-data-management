@@ -24,7 +24,7 @@ class ReadMahasiswaAction
                     $id == "self" ? UserData::fromAuth()->id : $id
                 )->firstOrFail()
                 )->toArray();
-        $result['id'] = UserData::fromAuth()->id;
+        $result['id'] = $id == "self" ? UserData::fromAuth()->id : $id;
         return $result;
     }
     public function asController($id = "self"): JsonResponse

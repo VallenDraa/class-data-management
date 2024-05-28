@@ -22,7 +22,7 @@ class ReadMahasiswaHistoryAction
         ->where(
             'mahasiswas.id',
             Mahasiswa::where('user_id', $userId)->firstOrFail()->id
-        );
+        )->orderBy('users.created_at', 'desc');
 
         if (!$request->has('page') || !$request->has('length'))
             throw BadRequestException::because("Request harus menyertakan page dan length");

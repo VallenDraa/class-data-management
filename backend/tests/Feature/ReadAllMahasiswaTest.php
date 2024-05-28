@@ -38,11 +38,11 @@ class ReadAllMahasiswaTest extends TestCase
     {
         $response = $this->postJson('/api/admin/login', [
             'email' => 'oskhar@gmail.com',
-            'password' => '123456'
+            'password' => '12345678'
         ]);
 
         // $response = $this->postJson('/api/mahasiswa/login', [
-        //     'nim' => '248294',
+        //     'nim' => '12345678',
         //     'password' => '12345678'
         // ]);
 

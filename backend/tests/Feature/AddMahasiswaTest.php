@@ -41,8 +41,8 @@ class AddMahasiswaTest extends TestCase
         ]);
 
         // $response = $this->postJson('/api/mahasiswa/login', [
-        //     'nim' => '1234567',
-        //     'password' => '1234567'
+        //     'nim' => '12345678',
+        //     'password' => '12345678'
         // ]);
 
         dump($response->json());
