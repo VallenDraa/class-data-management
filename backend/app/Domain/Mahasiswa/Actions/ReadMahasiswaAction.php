@@ -14,7 +14,7 @@ use Domain\Shared\Models\User;
 class ReadMahasiswaAction
 {
     use AsAction;
-    public function handle($id = "self"): MahasiswaData
+    public function handle($id = "self"): Array
     {
         $result = MahasiswaData::from(
             User::join('mahasiswas', 'mahasiswas.user_id', '=', 'users.id')
@@ -23,8 +23,8 @@ class ReadMahasiswaAction
                     'users.id',
                     $id == "self" ? UserData::fromAuth()->id : $id
                 )->firstOrFail()
-                );
-        $result->id = UserData::fromAuth()->id;
+                )->toArray();
+        $result['id'] = UserData::fromAuth()->id;
         return $result;
     }
     public function asController($id = "self"): JsonResponse
