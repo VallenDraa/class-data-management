@@ -53,7 +53,7 @@ class AddFotoProfileMahasiswaAction
 
         $this->handle($request);
 
-        AddMahasiswaHistoryAction::handle("Melakukan perubahan foto profile", UserData::fromAuth()->id);
+        AddMahasiswaHistoryAction::handle("Mengubah foto profile", UserData::fromAuth()->id);
 
         return response()->json([
             'success' => [

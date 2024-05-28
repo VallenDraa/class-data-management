@@ -44,13 +44,13 @@ class UpdateMahasistaAction
     public function asController(UserData $userData, MahasiswaData $mahasiswaData, int $id = null): JsonResponse
     {
         if ($id)
-            if (!UserData::fromAuth()->role->canUpdateMahasiswa())
+            if (!UserData::fromAuth()->role->canUpdateOtherMahasiswa())
                 throw new RoleForbiddenException(
-                    UserData::fromAuth()->role->getRequiredRole("canUpdateMahasiswa")
+                    UserData::fromAuth()->role->getRequiredRole("canUpdateOtherMahasiswa")
                 );
 
         if (UserData::fromAuth()->role->canAddHistory())
-            AddMahasiswaHistoryAction::handle("Melakukan perubahan data pribadi", UserData::fromAuth()->id);
+            AddMahasiswaHistoryAction::handle("Mengubah data pribadi", UserData::fromAuth()->id);
 
         $this->handle($userData, $mahasiswaData, $id);
 
