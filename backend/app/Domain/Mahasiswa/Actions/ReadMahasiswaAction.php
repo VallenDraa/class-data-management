@@ -16,14 +16,16 @@ class ReadMahasiswaAction
     use AsAction;
     public function handle($id = "self"): MahasiswaData
     {
-        return MahasiswaData::from(
+        $result = MahasiswaData::from(
             User::join('mahasiswas', 'mahasiswas.user_id', '=', 'users.id')
                 ->join('alamats', 'alamats.id', '=', 'mahasiswas.alamat_id')
                 ->where(
                     'users.id',
                     $id == "self" ? UserData::fromAuth()->id : $id
                 )->firstOrFail()
-        );
+                );
+        $result->id = UserData::fromAuth()->id;
+        return $result;
     }
     public function asController($id = "self"): JsonResponse
     {
