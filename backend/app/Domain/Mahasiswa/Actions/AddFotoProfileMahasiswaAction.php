@@ -12,7 +12,6 @@ use Domain\Mahasiswa\Models\Mahasiswa;
 use Domain\Shared\Data\UserData;
 use Domain\Shared\Enums\ImageFormats;
 use Domain\Shared\Exceptions\BadRequestException;
-use Domain\Shared\Exceptions\RoleForbiddenException;
 use Domain\History\Actions\AddMahasiswaHistoryAction;
 
 class AddFotoProfileMahasiswaAction
@@ -36,7 +35,9 @@ class AddFotoProfileMahasiswaAction
         $namaFile = UserData::fromAuth()->id . Carbon::now()->format('Y-m-d') . '_' . time() . '.' . ImageFormats::from($mime)->getValidatedMime();
 
         Image::make($decodedImage)
-            ->save(public_path('images/upload/' . $namaFile), 80);
+            ->save(public_path(
+                'images' . DIRECTORY_SEPARATOR. 'upload'. DIRECTORY_SEPARATOR . $namaFile
+            ), 80);
 
         Mahasiswa::where('user_id', UserData::fromAuth()->id)
             ->firstOrFail()
