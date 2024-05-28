@@ -34,7 +34,7 @@ class LogoutTest extends TestCase
         // ]);
 
         $response = $this->postJson('/api/mahasiswa/login', [
-            'nim' => '248294',
+            'nim' => '12345678',
             'password' => '12345678'
         ]);
 
