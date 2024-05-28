@@ -30,7 +30,7 @@ class ReadAdminTest extends TestCase
     {
         $response = $this->postJson('/api/admin/login', [
             'email' => 'oskhar@gmail.com',
-            'password' => '123456'
+            'password' => '12345678'
         ]);
 
         // $response = $this->postJson('/api/mahasiswa/login', [

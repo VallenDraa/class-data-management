@@ -2,6 +2,7 @@
 
 namespace Domain\History\Actions;
 
+use Domain\Shared\Actions\DateTimeFormating;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Lorisleiva\Actions\Concerns\AsAction;
@@ -38,7 +39,11 @@ class ReadMahasiswaHistoryAction
             'next_page' => $request->page == $pageCount ? $pageCount : $request->page + 1,
             'last_page' => $pageCount,
             'data' => $request->page > $pageCount || $request->page < 1 ? [] : $result->get()
-                ->map(fn ($item) => HistoryData::from($item))
+                ->map(function ($item) {
+                    $result = HistoryData::from($item)->toArray();
+                    $result['created_at'] = DateTimeFormating::handle($result['created_at']);
+                    return $result;
+                })
         ];
     }
 

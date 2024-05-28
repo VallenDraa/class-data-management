@@ -4,6 +4,7 @@ namespace Domain\Mahasiswa\Actions;
 
 use Domain\History\Actions\AddMahasiswaHistoryAction;
 use Domain\Mahasiswa\Data\MahasiswaPreviewData;
+use Domain\Shared\Actions\DateTimeFormating;
 use Domain\Shared\Data\UserData;
 use Domain\Shared\Enums\SortingTypes;
 use Domain\Shared\Enums\UserRoleses;
@@ -19,7 +20,14 @@ class ReadAllMahasiswaAction
 
     public function handle(Request $request): array
     {
-        $result = User::join('mahasiswas', 'mahasiswas.user_id', '=', 'users.id');
+        $result = User::select(
+            'users.id',
+            'users.nama',
+            'mahasiswas.nim',
+            'mahasiswas.foto_profile',
+            'users.created_at',
+            'users.updated_at'
+            )->join('mahasiswas', 'mahasiswas.user_id', '=', 'users.id');
 
         if ($request->has('search')) {
             $searchTerm = '%' . strtolower($request->search) . '%';
@@ -45,7 +53,12 @@ class ReadAllMahasiswaAction
             'jumlah' => $dataCount,
             'next_page' => $request->page == $pageCount ? $pageCount : $request->page + 1,
             'last_page' => $pageCount,
-            'data' => $request->page > $pageCount || $request->page < 1 ? [] : $result->get()->map(fn ($item) => MahasiswaPreviewData::from($item)),
+            'data' => $request->page > $pageCount || $request->page < 1 ? [] : $result->get()->map(function ($item) {
+                $result = MahasiswaPreviewData::from($item)->toArray();
+                $result['created_at'] = DateTimeFormating::handle($result['created_at']);
+                $result['updated_at'] = DateTimeFormating::handle($result['updated_at']);
+                return $result;
+            }),
         ];
     }
     public function asController(Request $request): JsonResponse
