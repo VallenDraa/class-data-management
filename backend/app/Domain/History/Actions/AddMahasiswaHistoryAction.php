@@ -2,11 +2,12 @@
 
 namespace Domain\History\Actions;
 
-use App\Exceptions\BadRequestException;
+
 use Domain\History\Data\HistoryData;
 use Domain\Mahasiswa\Models\HistoryMahasiswa;
 use Domain\Mahasiswa\Models\Mahasiswa;
 use Domain\Shared\Data\UserData;
+use Domain\Shared\Exceptions\BadRequestException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Lorisleiva\Actions\Concerns\AsAction;
