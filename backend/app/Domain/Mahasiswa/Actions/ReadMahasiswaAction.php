@@ -27,6 +27,7 @@ class ReadMahasiswaAction
                 )->toArray();
         $result['id'] = $id == "self" ? UserData::fromAuth()->id : $id;
         $result['created_at'] = DateTimeFormating::handle($result['created_at']);
+        $result['list_kesukaan'] = json_decode($result['list_kesukaan']);
         return $result;
     }
     public function asController($id = "self"): JsonResponse

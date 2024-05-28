@@ -13,7 +13,7 @@ class MahasiswaData extends Data
         public readonly ?string $tanggal_lahir,
         public readonly ?string $no_telepon,
         public readonly ?string $foto_profile,
-        public readonly ?string $list_kesukaan,
+        public readonly mixed $list_kesukaan,
         public readonly ?string $alamat,
         public readonly ?string $latitude,
         public readonly ?string $longitude,

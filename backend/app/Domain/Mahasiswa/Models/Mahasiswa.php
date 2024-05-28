@@ -10,7 +10,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Mahasiswa extends BaseModel
 {
     use HasFactory;
-
     /**
      * The attributes that are mass assignable.
      *

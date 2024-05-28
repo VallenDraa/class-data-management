@@ -7,6 +7,7 @@ use Domain\Mahasiswa\Data\MahasiswaData;
 use Domain\Mahasiswa\Models\Alamat;
 use Domain\Mahasiswa\Models\Mahasiswa;
 use Domain\Shared\Data\UserData;
+use Domain\Shared\Exceptions\BadRequestException;
 use Domain\Shared\Exceptions\RoleForbiddenException;
 use Domain\Shared\Models\User;
 use Illuminate\Http\JsonResponse;
@@ -25,6 +26,9 @@ class UpdateMahasistaAction
 
         $user->update(['nama' => $userData->nama]);
 
+        if(!is_array($mahasiswaData->list_kesukaan))
+            // throw BadRequestException::because(implode(', ', $mahasiswaData->list_kesukaan));
+            throw BadRequestException::because('Data list_kesukaan harus array');
         $mahasiswa = $user->mahasiswa;
         $mahasiswa->update([
             'nim' => $mahasiswaData->nim,
