@@ -2,34 +2,34 @@
 
 namespace Tests\Feature;
 
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
-class ReadMahasiswaTest extends TestCase
+class DeleteMahasiswaTest extends TestCase
 {
-    public function test_mahasiswa_self_data(): void
+    /**
+     * A basic feature test example.
+     */
+    public function test_example(): void
     {
-
         $headers = [
             'Authorization' => 'Bearer ' . $this->getAuthToken(),
             'Accept' => 'application/json',
         ];
 
-        $response = $this->get('/api/mahasiswa/20', $headers);
+        $response = $this->deleteJson('/api/mahasiswa', [
+            'id' => '12',
+        ], $headers);
 
         dump($response->json());
 
         $response->assertStatus(200);
     }
-
     public function getAuthToken(): string
     {
-        // $response = $this->postJson('/api/admin/login', [
-        //     'email' => 'oskhar@gmail.com',
-        //     'password' => '123456'
-        // ]);
-
-        $response = $this->postJson('/api/mahasiswa/login', [
-            'nim' => '12345678',
+        $response = $this->postJson('/api/admin/login', [
+            'email' => 'oskhar@gmail.com',
             'password' => '12345678'
         ]);
 
