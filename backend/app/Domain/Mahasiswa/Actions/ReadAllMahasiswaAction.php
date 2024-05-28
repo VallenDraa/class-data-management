@@ -38,9 +38,6 @@ class ReadAllMahasiswaAction
         $dataCount = $result->count();
         $pageCount = ceil($dataCount / $request->length);
 
-        if ($request->page > $pageCount || $request->page < 1)
-            throw BadRequestException::because("Request page melebihi batas (harus diantara 1 sampai $pageCount)");
-
         $result->offset(($request->page - 1) * $request->length)
             ->limit($request->length);
 
@@ -48,7 +45,7 @@ class ReadAllMahasiswaAction
             'jumlah' => $dataCount,
             'next_page' => $request->page == $pageCount ? $pageCount : $request->page + 1,
             'last_page' => $pageCount,
-            'data' => $result->get()->map(fn ($item) => MahasiswaPreviewData::from($item)),
+            'data' => $request->page > $pageCount || $request->page < 1 ? [] : $result->get()->map(fn ($item) => MahasiswaPreviewData::from($item)),
         ];
     }
     public function asController(Request $request): JsonResponse
