@@ -33,3 +33,26 @@ Jalankan laravel
 ```
 ~$ php artisan serve
 ```
+
+# Untuk melakukan pengetesan data aplikasi
+
+```
+~$ php artisan db:seed
+```
+
+Akun yang tersedia dalam seeder
+
+### admin
+
+email: oskhar@gmail.com
+<br/>
+password:12345678
+<br/><br/>
+email: vallen@gmail.com
+password:12345678
+
+### mahasiswa
+
+nim:12345678
+<br/>
+password:12345678
