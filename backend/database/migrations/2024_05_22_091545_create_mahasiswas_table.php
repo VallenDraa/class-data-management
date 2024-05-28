@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('mahasiswas', function (Blueprint $table) {
             $table->id();
             $table->string('foto_profile')->nullable();
-            $table->string('nim');
+            $table->string('nim')->unique();
             $table->timestamp('tanggal_lahir')->nullable();
             $table->string('no_telepon')->nullable();
             $table->text('list_kesukaan')->nullable();

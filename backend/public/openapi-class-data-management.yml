@@ -825,3 +825,114 @@ paths:
                   user_role: "string"
                   required_role: "string"
                   message: "Forbidden"
+  /mahasiswa/foto_profile
+    post:
+      tags:
+        - Data mahasiswa
+      summary: Memerlukan Mahasiswa authorization
+      requestBody:
+        description: Data mahasiswa untuk menambahkan mahasiswa baru
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                foto_profile:
+                  type: string
+      responses:
+        201:
+          description: CREATED
+          content:
+            application/json:
+              example:
+                success:
+                  message: "Foto profile berhasil diperbarui"
+        400:
+          description: BAD REQUEST
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: object
+                    properties:
+                      message:
+                        type: string
+              example:
+                errors:
+                  message: "Data tidak valid"
+        403:
+          description: FORBIDDEN
+          content:
+            application/json:
+              example:
+                errors:
+                  user_role: "string"
+                  required_role: "string"
+                  message: "Forbidden"
+
+  /admin:
+    get:
+      tags:
+        - Data admin
+      summary: Memerlukan Admin authorization
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jumlah:
+                    type: integer
+                  next_page:
+                    type: integer
+                  last_page:
+                    type: integer
+                  mahasiswa:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        nama:
+                          type: integer
+                        email:
+                          type: string
+                        jabatan:
+                          type: string
+                        created_at:
+                          type: string
+                          format: date-time
+        400:
+          description: BAD REQUEST
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: object
+                    properties:
+                      message:
+                        type: string
+              example:
+                errors:
+                  message: "Data tidak valid"
+        404:
+          description: NOT FOUND
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: object
+                    properties:
+                      message:
+                        type: string
+              example:
+                errors:
+                  message: "Data tidak ditemukan"
