@@ -2,6 +2,7 @@
 
 namespace Domain\Mahasiswa\Actions;
 
+use Domain\Shared\Actions\GetBaseUrlAction;
 use Lorisleiva\Actions\Concerns\AsAction;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Carbon;
@@ -40,7 +41,7 @@ class AddFotoProfileMahasiswaAction
         Mahasiswa::where('user_id', UserData::fromAuth()->id)
             ->firstOrFail()
             ->update([
-                'foto_profile' => '/images/upload/' . $namaFile
+                'foto_profile' => GetBaseUrlAction::handle(). '/images/upload/' . $namaFile
             ]);
     }
     public function asController(Request $request): JsonResponse
