@@ -48,7 +48,7 @@ class AddFotoProfileMahasiswaAction
     {
         if (!UserData::fromAuth()->role->canAddFotoProfileMahasiswa())
             throw new RoleForbiddenException(
-                UserData::fromAuth()->role->getRequiredRole("canUpdateMahasiswa")
+                UserData::fromAuth()->role->getRequiredRole("canAddFotoProfileMahasiswa")
             );
 
         $this->handle($request);
