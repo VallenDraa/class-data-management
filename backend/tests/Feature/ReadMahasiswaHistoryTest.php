@@ -14,7 +14,7 @@ class ReadMahasiswaHistoryTest extends TestCase
             'Accept' => 'application/json',
         ];
 
-        $response = $this->get('/api/mahasiswa/2/history?page=1&length=2', $headers);
+        $response = $this->get('/api/mahasiswa/4/history?page=1&length=2', $headers);
 
         dump($response->json());
 
@@ -25,7 +25,7 @@ class ReadMahasiswaHistoryTest extends TestCase
     {
         $response = $this->postJson('/api/admin/login', [
             'email' => 'oskhar@gmail.com',
-            'password' => '123456'
+            'password' => '12345678'
         ]);
 
         // $response = $this->postJson('/api/mahasiswa/login', [

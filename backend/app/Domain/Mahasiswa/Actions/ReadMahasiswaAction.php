@@ -3,6 +3,7 @@
 namespace Domain\Mahasiswa\Actions;
 
 use Domain\History\Actions\AddMahasiswaHistoryAction;
+use Domain\Shared\Actions\DateTimeFormating;
 use Illuminate\Http\JsonResponse;
 use Lorisleiva\Actions\Concerns\AsAction;
 use Domain\Mahasiswa\Data\MahasiswaData;
@@ -25,6 +26,7 @@ class ReadMahasiswaAction
                 )->firstOrFail()
                 )->toArray();
         $result['id'] = $id == "self" ? UserData::fromAuth()->id : $id;
+        $result['created_at'] = DateTimeFormating::handle($result['created_at']);
         return $result;
     }
     public function asController($id = "self"): JsonResponse

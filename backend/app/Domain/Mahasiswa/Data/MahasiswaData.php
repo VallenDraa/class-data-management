@@ -17,6 +17,7 @@ class MahasiswaData extends Data
         public readonly ?string $alamat,
         public readonly ?string $latitude,
         public readonly ?string $longitude,
+        public readonly ?string $created_at,
     ) {
     }
 }
