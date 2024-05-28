@@ -46,11 +46,6 @@ class AddFotoProfileMahasiswaAction
     }
     public function asController(Request $request): JsonResponse
     {
-        if (!UserData::fromAuth()->role->canAddFotoProfileMahasiswa())
-            throw new RoleForbiddenException(
-                UserData::fromAuth()->role->getRequiredRole("canAddFotoProfileMahasiswa")
-            );
-
         $this->handle($request);
 
         AddMahasiswaHistoryAction::handle("Mengubah foto profile", UserData::fromAuth()->id);
