@@ -14,14 +14,6 @@ trait MahasiswaPolicyTrait
         };
     }
 
-    public function canAddFotoProfileMahasiswa(): bool
-    {
-        return match ($this) {
-            UserRoleses::Admin => false,
-            UserRoleses::Mahasiswa => true,
-        };
-    }
-
     public function canUpdateOtherMahasiswa(): bool
     {
         return match ($this) {
