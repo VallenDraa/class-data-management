@@ -2,16 +2,12 @@
 
 namespace Tests\Feature;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
-use Faker\Factory as Faker;
 
 class ReadMahasiswaTest extends TestCase
 {
     public function test_mahasiswa_self_data(): void
     {
-        $faker = Faker::create();
 
         $headers = [
             'Authorization' => 'Bearer ' . $this->getAuthToken(),
