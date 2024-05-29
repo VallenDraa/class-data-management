@@ -34,7 +34,6 @@ class UpdateMahasistaAction
             'nim' => $mahasiswaData->nim,
             'tanggal_lahir' => $mahasiswaData->tanggal_lahir,
             'no_telepon' => $mahasiswaData->no_telepon,
-            'foto_profile' => $mahasiswaData->foto_profile,
             'list_kesukaan' => $mahasiswaData->list_kesukaan,
         ]);
 
