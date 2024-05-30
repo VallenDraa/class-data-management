@@ -30,7 +30,7 @@ export function AdminMahasiswaListItem(props: AdminMahasiswaListItemProps) {
 			<DialogTrigger asChild>
 				<Link
 					to={toAdminMahasiswaDetailPath}
-					className="flex items-center w-full gap-4 p-2 transition-colors border rounded-md shadow-sm border-neutral-200 hover:border-sky-200 hover:bg-sky-50"
+					className="flex items-center w-full gap-4 p-2 transition-colors bg-white border rounded-md shadow-sm dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800 dark:hover:bg-sky-800 dark:hover:border-sky-700 hover:border-sky-200 hover:bg-sky-50"
 				>
 					<Avatar className="w-12 h-12">
 						<AvatarImage src={mahasiswa.foto_profile} />
@@ -38,7 +38,9 @@ export function AdminMahasiswaListItem(props: AdminMahasiswaListItemProps) {
 					</Avatar>
 
 					<div className="flex flex-col text-start grow">
-						<p className="text-sm text-neutral-500">{mahasiswa.nim}</p>
+						<p className="text-sm text-neutral-500 dark:text-neutral-400">
+							{mahasiswa.nim}
+						</p>
 						<h2 className="font-medium">{mahasiswa.nama}</h2>
 					</div>
 				</Link>

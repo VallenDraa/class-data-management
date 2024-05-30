@@ -30,7 +30,7 @@ export function AdminSelfProfile() {
 
 	return (
 		<DropdownMenu>
-			<DropdownMenuTrigger>
+			<DropdownMenuTrigger className="rounded-full">
 				{!isAdminLoading && admin ? (
 					<Avatar>
 						<AvatarImage src={admin.foto_profile} alt={admin.nama} />

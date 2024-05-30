@@ -5,12 +5,12 @@ import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '~/utils/shadcn';
 
 const buttonVariants = cva(
-	'inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-neutral-950 disabled:pointer-events-none disabled:opacity-50 dark:focus-visible:ring-neutral-300',
+	'inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition disabled:pointer-events-none disabled:opacity-50',
 	{
 		variants: {
 			variant: {
 				default:
-					'bg-neutral-900 text-neutral-50 shadow hover:bg-neutral-900/90 dark:bg-neutral-50 dark:text-neutral-900 dark:hover:bg-neutral-50/90',
+					'bg-sky-600 text-neutral-50 shadow hover:bg-sky-700/90 dark:bg-sky-800 dark:text-neutral-50 dark:hover:bg-sky-700/90',
 				success:
 					'bg-emerald-900 text-emerald-50 shadow hover:bg-emerald-900/90 dark:bg-emerald-50 dark:text-emerald-900 dark:hover:bg-emerald-50/90',
 				destructive:
@@ -25,7 +25,7 @@ const buttonVariants = cva(
 					'hover:bg-red-100 text-red-600 dark:text-red-300 hover:text-red-900 dark:hover:bg-red-800 dark:hover:text-red-50',
 				'ghost-success':
 					'hover:bg-emerald-100 text-emerald-600 dark:text-emerald-300 hover:text-emerald-900 dark:hover:bg-emerald-800 dark:hover:text-emerald-50',
-				link: 'text-neutral-900 underline-offset-4 hover:underline dark:text-neutral-50',
+				link: 'text-sky-600 decoration-sky-600 underline-offset-4 hover:underline',
 			},
 			size: {
 				default: 'h-9 px-4 py-2',

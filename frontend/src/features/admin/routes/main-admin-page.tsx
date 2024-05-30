@@ -14,6 +14,7 @@ import {
 import { useHandleMahasiswaAdd } from '../hooks';
 import { useAppSearchQuery } from '~/providers';
 import { AdminMahasiswaDetailStatusContextProvider } from '../providers';
+import { ThemeChooser } from '~/components/ui';
 
 export function MainAdminPage() {
 	const { activeKeyword, activeSort, setActiveKeyword, setActiveSort } =
@@ -32,7 +33,10 @@ export function MainAdminPage() {
 			<header className="flex items-center justify-between px-1 py-4">
 				<h1 className="text-lg font-semibold leading-7">Admin</h1>
 
-				<AdminSelfProfile />
+				<div className="flex items-center justify-end gap-4">
+					<ThemeChooser />
+					<AdminSelfProfile />
+				</div>
 			</header>
 
 			<main className="relative flex flex-col gap-4 grow">
@@ -49,7 +53,7 @@ export function MainAdminPage() {
 							return (
 								<li
 									key={virtualItem.key}
-									className="absolute inset-x-1"
+									className="absolute pt-1 inset-x-1"
 									style={{
 										height: `${virtualItem.size}px`,
 										transform: `translateY(${virtualItem.start}px)`,
@@ -63,7 +67,7 @@ export function MainAdminPage() {
 						return (
 							<li
 								key={virtualItem.key}
-								className="absolute inset-x-1"
+								className="absolute pt-1 inset-x-1"
 								style={{
 									height: `${virtualItem.size}px`,
 									transform: `translateY(${virtualItem.start}px)`,
