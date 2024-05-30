@@ -34,7 +34,6 @@ export function LeafletControlGeocoder(props: LeafletControlGeocoderProps) {
 
 	const defaultMarkerRef = React.useRef<L.Marker | null>(null);
 	const searchResultMarkerRef = React.useRef<L.Marker | null>(null);
-	const [isNotDefaultPosition, setIsNotDefaultPosition] = React.useState(false);
 
 	const setMarkerAddress = React.useCallback(
 		async (marker: L.Marker, lat: number, lng: number) => {
@@ -62,17 +61,13 @@ export function LeafletControlGeocoder(props: LeafletControlGeocoderProps) {
 
 	// Handle default marker
 	React.useEffect(() => {
-		if (isNotDefaultPosition) {
-			defaultMarkerRef.current?.removeFrom(map);
-		} else {
-			defaultMarkerRef.current = L.marker(position, {
-				draggable: true,
-			})
-				.addTo(map)
-				.on('dragend', handleMarkerDragEnd);
+		defaultMarkerRef.current = L.marker(position, {
+			draggable: true,
+		})
+			.addTo(map)
+			.on('dragend', handleMarkerDragEnd);
 
-			setMarkerAddress(defaultMarkerRef.current, position.lat, position.lng);
-		}
+		setMarkerAddress(defaultMarkerRef.current, position.lat, position.lng);
 
 		return () => {
 			defaultMarkerRef.current?.removeFrom(map);
@@ -94,11 +89,11 @@ export function LeafletControlGeocoder(props: LeafletControlGeocoderProps) {
 				defaultMarkGeocode: false,
 			} satisfies Partial<GeocoderControlOptions>)
 			.on('markgeocode', (e: MarkGeocodeEvent) => {
+				defaultMarkerRef.current?.removeFrom(map);
+
 				if (searchResultMarkerRef) {
 					searchResultMarkerRef.current?.removeFrom(map);
 				}
-
-				setIsNotDefaultPosition(true);
 
 				searchResultMarkerRef.current = L.marker(e.geocode.center, {
 					draggable: true,
