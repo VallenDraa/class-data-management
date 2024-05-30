@@ -1,2 +1,7 @@
 # class-data-management
-DIbuat untuk menyelesaikan UTS Interaksi Manusia dan Komputer
+
+Dibuat untuk menyelesaikan UTS Interaksi Manusia dan Komputer
+
+## Running secara lokal
+
+[Frontend](./frontend/README.md)

@@ -11,6 +11,8 @@ const buttonVariants = cva(
 			variant: {
 				default:
 					'bg-neutral-900 text-neutral-50 shadow hover:bg-neutral-900/90 dark:bg-neutral-50 dark:text-neutral-900 dark:hover:bg-neutral-50/90',
+				success:
+					'bg-emerald-900 text-emerald-50 shadow hover:bg-emerald-900/90 dark:bg-emerald-50 dark:text-emerald-900 dark:hover:bg-emerald-50/90',
 				destructive:
 					'bg-red-500 text-neutral-50 shadow-sm hover:bg-red-500/90 dark:bg-red-900 dark:text-neutral-50 dark:hover:bg-red-900/90',
 				outline:
@@ -21,6 +23,8 @@ const buttonVariants = cva(
 					'hover:bg-neutral-100 hover:text-neutral-900 dark:hover:bg-neutral-800 dark:hover:text-neutral-50',
 				'ghost-danger':
 					'hover:bg-red-100 text-red-600 dark:text-red-300 hover:text-red-900 dark:hover:bg-red-800 dark:hover:text-red-50',
+				'ghost-success':
+					'hover:bg-emerald-100 text-emerald-600 dark:text-emerald-300 hover:text-emerald-900 dark:hover:bg-emerald-800 dark:hover:text-emerald-50',
 				link: 'text-neutral-900 underline-offset-4 hover:underline dark:text-neutral-50',
 			},
 			size: {
