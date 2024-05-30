@@ -1,7 +1,7 @@
 import { type Mahasiswa } from '../types';
 import { api } from '~/lib/api-client';
 import { useQuery, type UseQueryOptions } from '@tanstack/react-query';
-import { QUERY_KEY } from '../constants';
+import { MAHASISWA_QUERY_KEY } from '../constants';
 import { idValidator } from '~/utils/validators';
 
 export type GetSingleMahasiswaParams = {
@@ -30,7 +30,7 @@ export const useGetSingleMahasiswa = ({
 }: UseGetSingleMahasiswaOptions) => {
 	return useQuery({
 		...props,
-		queryKey: [QUERY_KEY, id],
+		queryKey: [MAHASISWA_QUERY_KEY, id],
 		queryFn: () => GetSingleMahasiswa({ id }),
 	});
 };

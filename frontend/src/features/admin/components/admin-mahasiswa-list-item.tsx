@@ -1,5 +1,4 @@
-import * as React from 'react';
-import { type Mahasiswa } from '~/features/mahasiswa/types';
+import { type MahasiswaPreview } from '~/features/mahasiswa/types';
 import {
 	Avatar,
 	AvatarFallback,
@@ -7,50 +6,31 @@ import {
 	Dialog,
 	DialogTrigger,
 } from '~/components/ui';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { AdminMahasiswaProfileDetail } from './admin-mahasiswa-profile-detail';
-
-export const AdminMahasiswaDetailDialogStatus = React.createContext<{
-	isOpen: boolean;
-	setIsOpen: (isOpen: boolean) => void;
-}>({
-	isOpen: false,
-	setIsOpen: () => {},
-});
-
-// eslint-disable-next-line react-refresh/only-export-components
-export const useAdminMahasiswaDetailDialogStatus = () =>
-	React.useContext(AdminMahasiswaDetailDialogStatus);
+import { useHandleAdminMahasiswaPath, useHandleAdminPath } from '../hooks';
+import { useAdminMahasiswaDetailDialogStatus } from '../providers';
 
 export type AdminMahasiswaListItemProps = {
-	mahasiswa: Mahasiswa;
+	mahasiswa: MahasiswaPreview;
 };
 
 export function AdminMahasiswaListItem(props: AdminMahasiswaListItemProps) {
 	const { mahasiswa } = props;
 
-	const { search } = useLocation();
-	const navigate = useNavigate();
+	const { isOpen, setIsOpen } = useAdminMahasiswaDetailDialogStatus();
 
-	const [isDetailOpen, setIsDetailOpen] = React.useState(false);
-
-	const adminMahasiswaDetailDialogStatusValue = React.useMemo(
-		() => ({
-			isOpen: isDetailOpen,
-			setIsOpen: setIsDetailOpen,
-		}),
-		[isDetailOpen],
+	const { navigateToAdminMainPath } = useHandleAdminPath();
+	const { toAdminMahasiswaDetailPath } = useHandleAdminMahasiswaPath(
+		mahasiswa.id,
 	);
 
 	return (
-		<Dialog open={isDetailOpen} onOpenChange={setIsDetailOpen}>
+		<Dialog open={isOpen} onOpenChange={setIsOpen}>
 			<DialogTrigger asChild>
 				<Link
-					to={{
-						pathname: `/admin/mahasiswa/${mahasiswa.id}`,
-						search,
-					}}
-					className="flex items-center w-full gap-4 p-2 rounded-md shadow-sm border border-neutral-200 hover:border-sky-200 hover:bg-sky-50 transition-colors"
+					to={toAdminMahasiswaDetailPath}
+					className="flex items-center w-full gap-4 p-2 transition-colors border rounded-md shadow-sm border-neutral-200 hover:border-sky-200 hover:bg-sky-50"
 				>
 					<Avatar className="w-12 h-12">
 						<AvatarImage src={mahasiswa.foto_profile} />
@@ -64,16 +44,12 @@ export function AdminMahasiswaListItem(props: AdminMahasiswaListItemProps) {
 				</Link>
 			</DialogTrigger>
 
-			<AdminMahasiswaDetailDialogStatus.Provider
-				value={adminMahasiswaDetailDialogStatusValue}
-			>
-				<AdminMahasiswaProfileDetail
-					isDetailOpen={isDetailOpen}
-					detailTitle={`Profil ${mahasiswa.nama}`}
-					mahasiswaId={mahasiswa.id}
-					onDetailClose={() => navigate(`/admin${search}`)}
-				/>
-			</AdminMahasiswaDetailDialogStatus.Provider>
+			<AdminMahasiswaProfileDetail
+				isDetailOpen={isOpen}
+				detailTitle={`Profil ${mahasiswa.nama}`}
+				mahasiswaId={mahasiswa.id}
+				onDetailClose={navigateToAdminMainPath}
+			/>
 		</Dialog>
 	);
 }

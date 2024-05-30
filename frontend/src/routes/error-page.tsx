@@ -1,6 +1,6 @@
 import { Link, useRouteError } from 'react-router-dom';
 import { ErrorPageLayout } from '~/components/layouts';
-import { buttonVariants } from '~/components/ui';
+import { Button, buttonVariants } from '~/components/ui';
 import { getErrorMessage } from '~/utils/get-error-message';
 
 const ROUTER_ERRORS = {
@@ -34,9 +34,15 @@ export function ErrorPage() {
 			title="Oops!"
 			message="Ada error yang terjadi. Silahkan refresh halaman atau coba lagi nanti."
 		>
-			<span className="text-sm font-medium text-neutral-500">
-				Pesan: <i>{errorMessage}</i>{' '}
-			</span>
+			<div className="flex flex-col items-center w-full gap-8">
+				<span className="text-sm text-neutral-500">
+					Pesan untuk admin: <i>{errorMessage}</i>
+				</span>
+
+				<Button onClick={() => window.location.reload()}>
+					Refresh Halaman
+				</Button>
+			</div>
 		</ErrorPageLayout>
 	);
 }

@@ -1,28 +1,26 @@
 import * as React from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
+import { Dialog } from '~/components/ui';
 import {
-	Dialog,
-	DialogContent,
-	DialogHeader,
-	DialogTitle,
-	Skeleton,
-} from '~/components/ui';
-import { AdminProfileDetail } from './admin-profile-detail';
+	AdminProfileDetail,
+	AdminProfileDetailError,
+	AdminProfileDetailSkeleton,
+} from './admin-profile-detail';
 import { useGetAdminSelf } from '../api';
+import { useHandleAdminPath } from '../hooks';
 
 export type SeeAdminDetailOnVisitProps = {
 	adminId: number | undefined;
-	navigatePathOnClose: string;
 };
 
 export function SeeAdminDetailOnVisit(props: SeeAdminDetailOnVisitProps) {
-	const { adminId, navigatePathOnClose } = props;
-
+	const { adminId } = props;
 	const { data: admin, isLoading: isAdminLoading, error } = useGetAdminSelf();
 
-	const { search, pathname } = useLocation();
+	const { pathname } = useLocation();
 	const initialPathname = React.useRef(pathname);
-	const navigate = useNavigate();
+
+	const { navigateToAdminMainPath } = useHandleAdminPath();
 
 	const [isSeenForTheFirstTime, setIsSeenForTheFirstTime] =
 		React.useState(true);
@@ -43,35 +41,14 @@ export function SeeAdminDetailOnVisit(props: SeeAdminDetailOnVisitProps) {
 						admin={admin}
 						onDetailClose={() => {
 							setIsSeenForTheFirstTime(false);
-							navigate(`${navigatePathOnClose}${search}`);
+							navigateToAdminMainPath();
 						}}
 					/>
 				) : (
-					<DialogContent>
-						<DialogHeader>
-							<DialogTitle className="mb-5">Profil Anda</DialogTitle>
-						</DialogHeader>
-
-						<div className="flex flex-col gap-2 overflow-auto sm:gap-4 sm:flex-row">
-							<div className="flex flex-row items-center w-full gap-4 sm:w-28 sm:flex-col">
-								<Skeleton className="h-auto mx-auto w-28 sm:w-full aspect-square rounded-full" />
-
-								<div className="space-y-2 w-full hidden sm:block">
-									<Skeleton className="h-8 w-full rounded-md" />
-									<Skeleton className="h-8 w-full rounded-md" />
-								</div>
-							</div>
-
-							<Skeleton className="w-full h-96" />
-						</div>
-					</DialogContent>
+					<AdminProfileDetailSkeleton />
 				)
 			) : (
-				<DialogContent>
-					<section className="flex flex-col gap-2 overflow-auto sm:gap-4 sm:flex-row">
-						<p>{error.message}</p>
-					</section>
-				</DialogContent>
+				<AdminProfileDetailError message={error.message} />
 			)}
 		</Dialog>
 	);

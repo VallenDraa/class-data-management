@@ -1,5 +1,4 @@
 import { HomePageLayout } from '~/components/layouts';
-import { type MahasiswaSearchSortType } from '../types';
 import {
 	MahasiswaSelfProfile,
 	MahasiswaSearchBar,
@@ -7,25 +6,24 @@ import {
 	SeeMahasiwaDetailOnVisit,
 	MahasiswaListItem,
 } from '../components';
-import { useUrlState } from '~/hooks';
 import { useParams } from 'react-router-dom';
 import { Dialog } from '~/components/ui';
+import { useGetMahasiswaSelf } from '../api';
+import { useAppSearchQuery } from '~/providers';
 
 export function MainMahasiswaPage() {
 	const { mahasiswaId } = useParams();
-	const [activeKeyword, setActiveKeyword] = useUrlState<string>('keyword', '');
-	const [activeSort, setActiveSort] = useUrlState<MahasiswaSearchSortType>(
-		'sort_by',
-		'terbaru',
-	);
+	const { data: mahasiswaSelf } = useGetMahasiswaSelf();
+
+	const { activeKeyword, activeSort, setActiveKeyword, setActiveSort } =
+		useAppSearchQuery();
 
 	return (
 		<HomePageLayout>
 			<Dialog open>
 				<SeeMahasiwaDetailOnVisit
-					//! The isOwnProfle prop is a hardcoded placeholder
 					navigatePathOnClose="/mahasiswa"
-					isOwnProfile={mahasiswaId === '1'}
+					isOwnProfile={Number(mahasiswaId) === mahasiswaSelf?.id}
 					mahasiswaId={Number(mahasiswaId)}
 				/>
 			</Dialog>
@@ -70,8 +68,7 @@ export function MainMahasiswaPage() {
 								}}
 							>
 								<MahasiswaListItem
-									//! The isOwnProfle prop is a hardcoded placeholder
-									isOwnProfile={mahasiswaId === '1'}
+									isOwnProfile={Number(mahasiswa.id) === mahasiswaSelf?.id}
 									mahasiswa={mahasiswa}
 								/>
 							</li>

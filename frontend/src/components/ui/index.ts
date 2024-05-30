@@ -22,3 +22,5 @@ export * from './sonner';
 export * from './switch';
 export * from './tabs';
 export * from './circle-decoration';
+export * from './user-editable-avatar';
+export * from './dialog-error-message';

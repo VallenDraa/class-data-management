@@ -13,34 +13,19 @@ import {
 } from '~/components/ui';
 import { useGetMahasiswaSelf } from '../api';
 import { ExitIcon, PersonIcon } from '@radix-ui/react-icons';
-import { MahasiswaProfileDetail } from '.';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { logout } from '~/features/authentication/api';
-import { toast } from 'sonner';
-import { DEFAULT_ERROR_MESSAGE } from '~/utils/get-error-message';
+import { MahasiswaSelfProfileDetail } from '.';
+import { Link } from 'react-router-dom';
+import { useHandleMahasiswaPath } from '../hooks';
+import { useHandleLogout } from '~/hooks';
 
 export function MahasiswaSelfProfile() {
+	const [isDetailOpen, setIsDetailOpen] = React.useState(false);
 	const { data: mahasiswa, isLoading: isMahasiswaLoading } =
 		useGetMahasiswaSelf();
 
-	const { search } = useLocation();
-	const navigate = useNavigate();
-
-	const [isDetailOpen, setIsDetailOpen] = React.useState(false);
-
-	const handleLogout = async () => {
-		try {
-			await logout();
-			navigate('/mahasiswa/login');
-		} catch (error) {
-			if (error instanceof Error) {
-				toast.error(error.message);
-				return;
-			}
-
-			toast.error(DEFAULT_ERROR_MESSAGE);
-		}
-	};
+	const { handleLogout } = useHandleLogout();
+	const { navigateToMahasiswaMainPath, toMahasiswaDetailPath } =
+		useHandleMahasiswaPath(mahasiswa?.id ?? 0);
 
 	return (
 		<DropdownMenu>
@@ -63,7 +48,7 @@ export function MahasiswaSelfProfile() {
 					<DialogTrigger asChild>
 						<DropdownMenuItem asChild className="gap-1">
 							{!isMahasiswaLoading && mahasiswa ? (
-								<Link to={{ pathname: `/mahasiswa/${mahasiswa.id}`, search }}>
+								<Link to={toMahasiswaDetailPath()}>
 									<PersonIcon />
 									<span>Profil</span>
 								</Link>
@@ -85,12 +70,9 @@ export function MahasiswaSelfProfile() {
 
 				{/* Dialog content for user profile detail */}
 				{!isMahasiswaLoading && mahasiswa && (
-					<MahasiswaProfileDetail
-						detailTitle="Profil Anda"
-						isOwnProfile
-						mahasiswaId={mahasiswa.id}
-						isDetailOpen={isDetailOpen}
-						onDetailClose={() => navigate(`/mahasiswa${search}`)}
+					<MahasiswaSelfProfileDetail
+						mahasiswa={mahasiswa}
+						onDetailClose={navigateToMahasiswaMainPath}
 					/>
 				)}
 			</Dialog>

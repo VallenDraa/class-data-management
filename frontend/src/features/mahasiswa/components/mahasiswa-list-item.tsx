@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { type Mahasiswa } from '../types';
+import { type MahasiswaPreview } from '../types';
 import {
 	Avatar,
 	AvatarFallback,
@@ -9,30 +9,27 @@ import {
 	DialogTrigger,
 } from '~/components/ui';
 import { MahasiswaProfileDetail } from './mahasiswa-profile-detail';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { useHandleMahasiswaPath } from '../hooks';
 
 export type MahasiswaListItemProps = {
-	mahasiswa: Mahasiswa;
+	mahasiswa: MahasiswaPreview;
 	isOwnProfile: boolean;
 };
 
 export function MahasiswaListItem(props: MahasiswaListItemProps) {
 	const { mahasiswa, isOwnProfile } = props;
 
-	const { search } = useLocation();
-	const navigate = useNavigate();
-
 	const [isDetailOpen, setIsDetailOpen] = React.useState(false);
+	const { toMahasiswaDetailPath, navigateToMahasiswaMainPath } =
+		useHandleMahasiswaPath(mahasiswa.id);
 
 	return (
 		<Dialog open={isDetailOpen} onOpenChange={setIsDetailOpen}>
 			<DialogTrigger asChild>
 				<Link
-					to={{
-						pathname: `/mahasiswa/${mahasiswa.id}`,
-						search,
-					}}
-					className="flex items-center w-full gap-4 p-2 rounded-md shadow-sm border border-neutral-200 hover:border-sky-200 hover:bg-sky-50 transition-colors"
+					to={toMahasiswaDetailPath()}
+					className="flex items-center w-full gap-4 p-2 transition-colors border rounded-md shadow-sm border-neutral-200 hover:border-sky-200 hover:bg-sky-50"
 				>
 					<Avatar className="w-12 h-12">
 						<AvatarImage src={mahasiswa.foto_profile} />
@@ -53,11 +50,10 @@ export function MahasiswaListItem(props: MahasiswaListItemProps) {
 
 			<MahasiswaProfileDetail
 				detailTitle={isOwnProfile ? 'Profil Anda' : `Profil ${mahasiswa.nama}`}
-				//! The isOwnProfle prop is a hardcoded placeholder
 				isOwnProfile={isOwnProfile}
 				mahasiswaId={mahasiswa.id}
 				isDetailOpen={isDetailOpen}
-				onDetailClose={() => navigate(`/mahasiswa/${search}`)}
+				onDetailClose={navigateToMahasiswaMainPath}
 			/>
 		</Dialog>
 	);

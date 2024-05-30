@@ -1,13 +1,8 @@
 import { HomePageLayout } from '~/components/layouts';
 import {
-	type MahasiswaInsert,
-	type MahasiswaSearchSortType,
-} from '~/features/mahasiswa/types';
-import {
 	MahasiswaSearchBar,
 	MahasiswaList,
 } from '~/features/mahasiswa/components';
-import { useUrlState } from '~/hooks';
 import { useParams } from 'react-router-dom';
 import {
 	AdminMahasiswaListItem,
@@ -16,31 +11,23 @@ import {
 	AdminSeeMahasiwaDetailOnVisit,
 	SeeAdminDetailOnVisit,
 } from '../components';
+import { useHandleMahasiswaAdd } from '../hooks';
+import { useAppSearchQuery } from '~/providers';
+import { AdminMahasiswaDetailStatusContextProvider } from '../providers';
 
 export function MainAdminPage() {
+	const { activeKeyword, activeSort, setActiveKeyword, setActiveSort } =
+		useAppSearchQuery();
+
 	const { mahasiswaId } = useParams();
 	const { adminId } = useParams();
 
-	const [activeKeyword, setActiveKeyword] = useUrlState<string>('keyword', '');
-	const [activeSort, setActiveSort] = useUrlState<MahasiswaSearchSortType>(
-		'sort_by',
-		'terbaru',
-	);
-
-	const handleAddMahasiswa = (data: MahasiswaInsert) => {
-		console.log('🚀 ~ handleAddMahasiswa ~ data:', data);
-	};
+	const { handleAddMahasiswa } = useHandleMahasiswaAdd();
 
 	return (
 		<HomePageLayout>
-			<SeeAdminDetailOnVisit
-				adminId={Number(adminId)}
-				navigatePathOnClose="/admin"
-			/>
-			<AdminSeeMahasiwaDetailOnVisit
-				navigatePathOnClose="/admin"
-				mahasiswaId={Number(mahasiswaId)}
-			/>
+			<SeeAdminDetailOnVisit adminId={Number(adminId)} />
+			<AdminSeeMahasiwaDetailOnVisit mahasiswaId={Number(mahasiswaId)} />
 
 			<header className="flex items-center justify-between px-1 py-4">
 				<h1 className="text-lg font-semibold leading-7">Admin</h1>
@@ -48,13 +35,14 @@ export function MainAdminPage() {
 				<AdminSelfProfile />
 			</header>
 
-			<main className="flex flex-col gap-4 grow relative">
+			<main className="relative flex flex-col gap-4 grow">
 				<MahasiswaSearchBar
 					keyword={activeKeyword}
 					onKeywordChange={setActiveKeyword}
 					sortType={activeSort}
 					onSortTypeChange={setActiveSort}
 				/>
+
 				<MahasiswaList sort={activeSort} keyword={activeKeyword}>
 					{(mahasiswa, virtualItem) => {
 						if (mahasiswa === undefined) {
@@ -81,7 +69,9 @@ export function MainAdminPage() {
 									transform: `translateY(${virtualItem.start}px)`,
 								}}
 							>
-								<AdminMahasiswaListItem mahasiswa={mahasiswa} />
+								<AdminMahasiswaDetailStatusContextProvider>
+									<AdminMahasiswaListItem mahasiswa={mahasiswa} />
+								</AdminMahasiswaDetailStatusContextProvider>
 							</li>
 						);
 					}}

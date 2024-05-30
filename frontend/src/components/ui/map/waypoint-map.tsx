@@ -17,6 +17,7 @@ export function WaypointMap(props: WaypointMapProps) {
 		<MapContainer
 			touchZoom={false}
 			scrollWheelZoom={false}
+			zoom={2}
 			className="w-full h-full"
 			center={[
 				(props.startCoordinate.lat + props.endCoordinate.lat) / 2,

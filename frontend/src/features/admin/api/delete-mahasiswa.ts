@@ -1,9 +1,8 @@
 import { api } from '~/lib/api-client';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { AxiosResponse } from 'axios';
 import { GetMahasiswaSearchParams } from '~/features/mahasiswa/types';
-import { QUERY_KEY } from '~/features/mahasiswa/constants';
 import { idValidator } from '~/utils/validators';
+import { MAHASISWA_QUERY_KEY } from '~/features/mahasiswa/constants';
 
 export type DeleteMahasiswaParams = {
 	id: number;
@@ -11,37 +10,25 @@ export type DeleteMahasiswaParams = {
 
 export type UseDeleteMahasiswaOptions = {
 	searchParams: GetMahasiswaSearchParams;
-	onSuccess?: (
-		data: AxiosResponse,
-		variables: DeleteMahasiswaParams,
-		context: unknown,
-	) => void;
-	onError?: (
-		error: Error,
-		variables: DeleteMahasiswaParams,
-		context: unknown,
-	) => unknown;
 };
 
 export const deleteMahasiswa = async ({ id }: DeleteMahasiswaParams) => {
 	const validatedMahasiswaId = await idValidator.parseAsync(id);
 
-	return api.delete(`/mahasiswa/${validatedMahasiswaId}`);
+	return api.delete(`/mahasiswa`, {
+		data: { id: validatedMahasiswaId },
+	});
 };
 
-export const useDeleteMahasiswa = ({
-	searchParams,
-	onSuccess,
-	onError,
-}: UseDeleteMahasiswaOptions) => {
+export const useDeleteMahasiswa = (searchParams: GetMahasiswaSearchParams) => {
 	const queryClient = useQueryClient();
 
 	return useMutation({
 		mutationFn: deleteMahasiswa,
-		onSuccess(data, variables, context) {
-			queryClient.invalidateQueries({ queryKey: [QUERY_KEY, searchParams] });
-			onSuccess?.(data, variables, context);
+		async onSuccess() {
+			await queryClient.invalidateQueries({
+				queryKey: [MAHASISWA_QUERY_KEY, searchParams],
+			});
 		},
-		onError,
 	});
 };

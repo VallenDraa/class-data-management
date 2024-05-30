@@ -3,29 +3,58 @@ import {
 	type MahasiswaHistory,
 } from '../types';
 import { api } from '~/lib/api-client';
-import { useQuery } from '@tanstack/react-query';
 import { HISTORY_MAHASISWA_QUERY_KEY } from '../constants';
+import { PaginatedApiResponse } from '~/types';
+import { useInfiniteQuery } from '@tanstack/react-query';
+import { toast } from 'sonner';
+import { getErrorMessage } from '~/utils/get-error-message';
+
+export type GetMahasiswaHistoryResponse = PaginatedApiResponse<
+	MahasiswaHistory[]
+>;
+
+export const ITEMS_PER_PAGE = 15;
 
 export const getMahasiswaHistory = async ({
 	page = 1,
 	mahasiswaId,
-}: GetMahasiswaHistorySearchParams) => {
+}: GetMahasiswaHistorySearchParams): Promise<GetMahasiswaHistoryResponse> => {
 	if (page < 1) {
 		throw new Error('Halaman harus lebih besar dari 0!');
 	}
 
-	const endPoint = `/history_mahasiswa?mahasiswa_id=${mahasiswaId}&page=${page}`;
+	const endPoint = `/mahasiswa/${mahasiswaId}/history?page=${page}&length=${ITEMS_PER_PAGE}`;
 
-	const { data } = await api.get<MahasiswaHistory[]>(endPoint);
+	try {
+		const { data } = await api.get<GetMahasiswaHistoryResponse>(endPoint);
 
-	return data;
+		return data;
+	} catch (error) {
+		toast.error(getErrorMessage(error));
+
+		throw error;
+	}
 };
 
 export const useGetMahasiswaHistory = (
 	queryParameter: GetMahasiswaHistorySearchParams,
 ) => {
-	return useQuery({
+	return useInfiniteQuery<GetMahasiswaHistoryResponse>({
 		queryKey: [HISTORY_MAHASISWA_QUERY_KEY, queryParameter],
-		queryFn: () => getMahasiswaHistory(queryParameter),
+		initialPageParam: 1,
+		getNextPageParam: (lastPage, _a, lastPageParam) => {
+			const { last_page, next_page } = lastPage.success;
+
+			if (last_page === (lastPageParam as number)) {
+				return null;
+			}
+
+			return next_page;
+		},
+		queryFn: ctx =>
+			getMahasiswaHistory({
+				...queryParameter,
+				page: ctx.pageParam as number,
+			}),
 	});
 };

@@ -19,7 +19,7 @@ import { DEFAULT_ERROR_MESSAGE } from '~/utils/get-error-message';
 
 const mahasiswaValidator = z.object({
 	nim: z.string().min(1, 'NIM tidak valid'),
-	password: z.string().min(8, 'Password tidak valid'),
+	password: z.string().min(1, 'Password tidak boleh kosong'),
 });
 
 export type MahasiswaSchema = z.infer<typeof mahasiswaValidator>;
@@ -80,7 +80,9 @@ export function MahasiswaLogin() {
 							</FormItem>
 						)}
 					/>
-					<Button type="submit">Sign In</Button>
+					<Button disabled={form.formState.isSubmitting} type="submit">
+						Sign In
+					</Button>
 				</form>
 			</Form>
 

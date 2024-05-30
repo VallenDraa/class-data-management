@@ -1,7 +1,10 @@
-import Axios from 'axios';
+import axios from 'axios';
+import { toast } from 'sonner';
 import { env } from '~/config/env';
+import { getAuthToken, removeAuthToken } from '~/utils/auth-token';
+import { getErrorMessage } from '~/utils/get-error-message';
 
-export const api = Axios.create({
+export const api = axios.create({
 	baseURL: env.BASE_API_URL,
 });
 
@@ -10,7 +13,7 @@ api.interceptors.request.use(config => {
 		config.headers.Accept = 'application/json';
 	}
 
-	const token = localStorage.getItem('token');
+	const token = getAuthToken();
 
 	if (token) {
 		config.headers.Authorization = `Bearer ${token}`;
@@ -22,9 +25,17 @@ api.interceptors.request.use(config => {
 api.interceptors.response.use(
 	response => response,
 	error => {
-		const message = error.response?.data?.message || error.message;
+		if (error instanceof Error) {
+			toast.error(getErrorMessage(error));
 
-		console.error(message);
+			if (axios.isAxiosError(error)) {
+				if (error.status === 401 || error.status === 403) {
+					removeAuthToken();
+					window.location.href = '/mahasiswa/login';
+				}
+			}
+		}
+
 		return Promise.reject(error);
 	},
 );

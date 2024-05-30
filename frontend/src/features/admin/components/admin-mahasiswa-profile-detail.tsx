@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {
 	DialogContent,
+	DialogErrorMessage,
 	DialogHeader,
 	DialogTitle,
 	Skeleton,
@@ -14,10 +15,11 @@ import {
 	AdminMahasiswaEditFormSkeleton,
 } from './admin-mahasiswa-edit-form';
 import { useGetSingleMahasiswa } from '~/features/mahasiswa/api';
-import { MahasiswaUpdate } from '~/features/mahasiswa/types';
 import { MahasiswaHistoryList } from './mahasiswa-history-list';
 import { MahasiswaHistoryItem } from './mahasiswa-history-item';
 import { cn } from '~/utils/shadcn';
+import { useHandleAdminMahasiswaUpdate } from '../hooks/use-handle-admin-mahasiswa-update';
+import { useHandleMahasiwaDelete } from '../hooks';
 
 export type MahasiswaProfileDetailProps = {
 	isDetailOpen: boolean;
@@ -36,32 +38,32 @@ export function AdminMahasiswaProfileDetail(
 ) {
 	const { isDetailOpen, detailTitle, mahasiswaId, onDetailClose } = props;
 
-	const {
-		data: mahasiswa,
-		isLoading: isMahasiswaLoading,
-		error,
-	} = useGetSingleMahasiswa({ id: Number(mahasiswaId), enabled: isDetailOpen });
-
 	const [activeTab, setActiveTab] = React.useState(
 		mahasiswaProfileDetailTabs.profile,
 	);
 
-	const handleSubmit = (data: MahasiswaUpdate) => {
-		console.log(data);
-	};
+	const {
+		data: mahasiswa,
+		isLoading: isMahasiswaLoading,
+		error,
+	} = useGetSingleMahasiswa({ id: mahasiswaId, enabled: isDetailOpen });
+	const { handleAdminMahasiswaUpdate } =
+		useHandleAdminMahasiswaUpdate(mahasiswaId);
+	const { handleMahasiswaDelete, isDeleting } =
+		useHandleMahasiwaDelete(mahasiswaId);
 
 	return (
 		<DialogContent
-			className="h-screen sm:h-max flex flex-col"
+			className="flex flex-col h-screen sm:h-max"
 			onClose={onDetailClose}
 			onEscapeKeyDown={onDetailClose}
 		>
 			<DialogHeader>
-				<DialogTitle className="mb-5">
+				<DialogTitle>
 					{detailTitle || (
 						<>
 							{!mahasiswa && isMahasiswaLoading ? (
-								<Skeleton className="h-8 w-1/3" />
+								<Skeleton className="w-1/3 h-8" />
 							) : (
 								`Profil ${mahasiswa?.nama ?? 'Mahasiswa'}`
 							)}
@@ -105,16 +107,20 @@ export function AdminMahasiswaProfileDetail(
 					{!error ? (
 						isDetailOpen && !isMahasiswaLoading && mahasiswa ? (
 							<AdminMahasiswaEditForm
-								onSubmit={handleSubmit}
-								user={mahasiswa}
+								mahasiswa={mahasiswa}
+								isDeleting={isDeleting}
+								onDataUpdate={handleAdminMahasiswaUpdate}
+								onMahasiswaDelete={handleMahasiswaDelete}
 							/>
 						) : (
 							<AdminMahasiswaEditFormSkeleton />
 						)
 					) : (
-						<div className="flex flex-col gap-2 overflow-auto sm:gap-4 sm:flex-row">
-							<p>{error.message}</p>
-						</div>
+						<DialogErrorMessage
+							refreshPage
+							message={error.message}
+							title="Gagal mengambil data mahasiswa"
+						/>
 					)}
 				</TabsContent>
 

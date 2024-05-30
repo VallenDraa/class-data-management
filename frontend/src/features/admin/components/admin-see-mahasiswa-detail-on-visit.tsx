@@ -1,22 +1,23 @@
 import * as React from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { Dialog } from '~/components/ui';
 import { AdminMahasiswaProfileDetail } from './admin-mahasiswa-profile-detail';
+import { useHandleAdminPath } from '../hooks';
 
 export type AdminSeeMahasiwaDetailOnVisitProps = {
 	mahasiswaId: number | undefined;
-	navigatePathOnClose: string;
 };
 
 export function AdminSeeMahasiwaDetailOnVisit(
 	props: AdminSeeMahasiwaDetailOnVisitProps,
 ) {
-	const { mahasiswaId, navigatePathOnClose } = props;
+	const { mahasiswaId } = props;
 
-	const { search, pathname } = useLocation();
+	const { pathname } = useLocation();
 
 	const initialPathname = React.useRef(pathname);
-	const navigate = useNavigate();
+
+	const { navigateToAdminMainPath } = useHandleAdminPath();
 
 	const [isSeenForTheFirstTime, setIsSeenForTheFirstTime] =
 		React.useState(true);
@@ -36,7 +37,7 @@ export function AdminSeeMahasiwaDetailOnVisit(
 				mahasiswaId={Number(mahasiswaId)}
 				onDetailClose={() => {
 					setIsSeenForTheFirstTime(false);
-					navigate(`${navigatePathOnClose}${search}`);
+					navigateToAdminMainPath();
 				}}
 			/>
 		</Dialog>

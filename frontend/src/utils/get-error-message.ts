@@ -10,7 +10,15 @@ export function getErrorMessage(err: unknown) {
 		const errResponse = err.response?.data;
 
 		if (isErrorApiResponse(errResponse)) {
-			return errResponse.errors.message;
+			if (errResponse.errors.message) {
+				return errResponse.errors.message;
+			}
+
+			if ('message' in errResponse && errResponse.message) {
+				return errResponse.message as string;
+			}
+
+			return err.message;
 		}
 
 		return err.message;

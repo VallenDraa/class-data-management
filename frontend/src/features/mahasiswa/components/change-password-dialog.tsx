@@ -1,7 +1,7 @@
-import { zodResolver } from '@hookform/resolvers/zod';
 import * as React from 'react';
-import { useForm } from 'react-hook-form';
 import z from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useForm } from 'react-hook-form';
 import {
 	Button,
 	Dialog,
@@ -17,20 +17,7 @@ import {
 	FormMessage,
 	Input,
 } from '~/components/ui';
-
-const changePasswordValidator = z
-	.object({
-		oldPassword: z.string().trim().min(8, 'Password sekarang tidak valid!'),
-		newPassword: z.string().trim().min(8, 'Password baru minimal 8 karakter!'),
-		newPasswordConfirmation: z
-			.string()
-			.trim()
-			.min(8, 'Konfirmasi password baru minimal 8 karakter!'),
-	})
-	.refine(data => data.newPasswordConfirmation === data.oldPassword, {
-		message: 'Konfirmasi password tidak sama dengan password baru!',
-		path: ['newPasswordConfirmation'],
-	});
+import { changePasswordValidator } from '../api/update-mahasiswa-password';
 
 export type ChangePassword = z.infer<typeof changePasswordValidator>;
 
@@ -45,11 +32,16 @@ export function ChangePasswordDialog(props: ChangePasswordDialogProps) {
 	const form = useForm<ChangePassword>({
 		resolver: zodResolver(changePasswordValidator),
 		defaultValues: {
-			oldPassword: '',
-			newPassword: '',
-			newPasswordConfirmation: '',
+			recent_password: '',
+			new_password: '',
+			confirm_password: '',
 		},
 	});
+
+	const handleSubmit = async (data: ChangePassword) => {
+		await onSubmit(data);
+		form.reset();
+	};
 
 	return (
 		<Dialog>
@@ -60,10 +52,13 @@ export function ChangePasswordDialog(props: ChangePasswordDialogProps) {
 				</DialogHeader>
 
 				<Form {...form}>
-					<form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+					<form
+						onSubmit={form.handleSubmit(handleSubmit)}
+						className="space-y-8"
+					>
 						<FormField
 							control={form.control}
-							name="oldPassword"
+							name="recent_password"
 							render={({ field }) => (
 								<FormItem>
 									<FormLabel>Password Sekarang</FormLabel>
@@ -81,7 +76,7 @@ export function ChangePasswordDialog(props: ChangePasswordDialogProps) {
 
 						<FormField
 							control={form.control}
-							name="newPassword"
+							name="new_password"
 							render={({ field }) => (
 								<FormItem>
 									<FormLabel>Password Baru</FormLabel>
@@ -99,7 +94,7 @@ export function ChangePasswordDialog(props: ChangePasswordDialogProps) {
 
 						<FormField
 							control={form.control}
-							name="newPasswordConfirmation"
+							name="confirm_password"
 							render={({ field }) => (
 								<FormItem>
 									<FormLabel>Konfirmasi Password Baru</FormLabel>
@@ -115,7 +110,13 @@ export function ChangePasswordDialog(props: ChangePasswordDialogProps) {
 							)}
 						/>
 
-						<Button type="submit">Ganti</Button>
+						<Button
+							className="w-full"
+							type="submit"
+							disabled={form.formState.isSubmitting}
+						>
+							Ganti
+						</Button>
 					</form>
 				</Form>
 			</DialogContent>

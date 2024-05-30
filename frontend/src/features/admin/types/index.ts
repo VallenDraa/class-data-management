@@ -11,7 +11,7 @@ export type MahasiswaHistory = {
 	nim: string;
 	nama: string;
 	aksi: string;
-	waktu: string;
+	created_at: string;
 };
 export type GetMahasiswaHistorySearchParams = {
 	mahasiswaId: number;

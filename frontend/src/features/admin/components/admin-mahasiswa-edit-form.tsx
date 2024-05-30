@@ -6,9 +6,6 @@ import {
 	type MahasiswaUpdate,
 } from '~/features/mahasiswa/types';
 import {
-	Avatar,
-	AvatarImage,
-	AvatarFallback,
 	Button,
 	Skeleton,
 	FormLabel,
@@ -24,23 +21,23 @@ import {
 	Form,
 	FormItem,
 	FormControl,
+	Avatar,
+	AvatarImage,
+	AvatarFallback,
 } from '~/components/ui';
 import { useGeoLocation } from '~/hooks';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { useForm } from 'react-hook-form';
-import { updateMahasiswaValidator } from '~/features/mahasiswa/api';
 import { HapusMahasiswaDialog } from './hapus-mahasiswa-dialog';
-import { useAdminMahasiswaDetailDialogStatus } from './admin-mahasiswa-list-item';
+import { useMahasiswaUpdateForm } from '~/features/mahasiswa/hooks';
 
 export function AdminMahasiswaEditFormSkeleton() {
 	return (
 		<section className="flex flex-col gap-2 overflow-auto sm:gap-4 sm:flex-row">
 			<div className="flex flex-row items-center w-full gap-4 sm:w-28 sm:flex-col">
-				<Skeleton className="h-auto mx-auto w-28 sm:w-full aspect-square rounded-full" />
+				<Skeleton className="h-auto mx-auto rounded-full w-28 sm:w-full aspect-square" />
 
-				<div className="space-y-2 w-full hidden sm:block">
-					<Skeleton className="h-8 w-full rounded-md" />
-					<Skeleton className="h-8 w-full rounded-md" />
+				<div className="hidden w-full space-y-2 sm:block">
+					<Skeleton className="w-full h-8 rounded-md" />
+					<Skeleton className="w-full h-8 rounded-md" />
 				</div>
 			</div>
 
@@ -50,27 +47,17 @@ export function AdminMahasiswaEditFormSkeleton() {
 }
 
 export type AdminMahasiswaEditFormProps = {
-	onSubmit: (data: MahasiswaUpdate) => void | Promise<void>;
-	user: Mahasiswa;
+	isDeleting: boolean;
+	onMahasiswaDelete: () => void | Promise<void>;
+	onDataUpdate: (data: MahasiswaUpdate) => void | Promise<void>;
+	mahasiswa: Mahasiswa;
 };
 
 export function AdminMahasiswaEditForm(props: AdminMahasiswaEditFormProps) {
-	const { user, onSubmit } = props;
+	const { mahasiswa, onDataUpdate, isDeleting, onMahasiswaDelete } = props;
 
-	const { setIsOpen } = useAdminMahasiswaDetailDialogStatus();
-
-	const [isEditing, setIsEditing] = React.useState(false);
-	const form = useForm<MahasiswaUpdate>({
-		resolver: zodResolver(updateMahasiswaValidator),
-		defaultValues: {
-			list_kesukaan: user.list_kesukaan,
-			alamat: user.alamat,
-			nama: user.nama,
-			nim: user.nim,
-			no_telepon: user.no_telepon,
-			tanggal_lahir: user.tanggal_lahir,
-		},
-	});
+	const { handleEditing, handleOnDataUpdate, isEditing, mahasiswaForm } =
+		useMahasiswaUpdateForm(mahasiswa, onDataUpdate);
 
 	const { userLocation, isSupported, isLoading } = useGeoLocation();
 	const currentUserLocation = React.useMemo(
@@ -83,44 +70,32 @@ export function AdminMahasiswaEditForm(props: AdminMahasiswaEditFormProps) {
 	);
 	const mahasiswaLocation = React.useMemo(
 		(): Coordinate => ({
-			lat: Number(user.alamat?.latitude ?? 0),
-			lng: Number(user.alamat?.longitude ?? 0),
-			markerMessage: `Alamat rumah milik ${user.nama}`,
+			lat: Number(mahasiswa.latitude ?? 0),
+			lng: Number(mahasiswa.longitude ?? 0),
+			markerMessage: `Alamat rumah milik ${mahasiswa.nama}`,
 		}),
-		[user.alamat?.latitude, user.alamat?.longitude, user.nama],
+		[mahasiswa.latitude, mahasiswa.longitude, mahasiswa.nama],
 	);
-
-	const handleEditing = () => {
-		if (isEditing) {
-			setIsEditing(false);
-			form.reset();
-		} else {
-			setIsEditing(true);
-		}
-	};
-
-	const handleEditProfileSubmit = async (data: MahasiswaUpdate) => {
-		await onSubmit(data);
-		setIsEditing(false);
-	};
-
-	const handleDeleteMahasiswa = async () => {
-		setIsOpen(false);
-	};
 
 	const editFormActions = (
 		<div className="flex flex-col gap-2 grow">
 			<Button
-				onClick={handleEditing}
-				className="w-full"
 				size="sm"
+				className="w-full"
+				disabled={isDeleting || mahasiswaForm.formState.isSubmitting}
+				onClick={handleEditing}
 				variant={isEditing ? 'destructive' : 'default'}
 			>
 				{isEditing ? 'Cancel Edit' : 'Edit Profil'}
 			</Button>
 
-			<HapusMahasiswaDialog onDelete={handleDeleteMahasiswa}>
-				<Button className="w-full" size="sm" variant="destructive">
+			<HapusMahasiswaDialog onDelete={onMahasiswaDelete}>
+				<Button
+					disabled={isDeleting || mahasiswaForm.formState.isSubmitting}
+					className="w-full"
+					size="sm"
+					variant="destructive"
+				>
 					Hapus Mahasiswa
 				</Button>
 			</HapusMahasiswaDialog>
@@ -128,24 +103,24 @@ export function AdminMahasiswaEditForm(props: AdminMahasiswaEditFormProps) {
 	);
 
 	return (
-		<section className="flex flex-col gap-2 h-full sm:gap-4 sm:flex-row sm:h-96">
+		<section className="flex flex-col h-full gap-2 sm:gap-4 sm:flex-row sm:h-96">
 			<div className="flex flex-row items-center w-full gap-4 sm:w-32 sm:flex-col">
 				<Avatar className="h-auto mx-auto w-28 sm:w-full aspect-square">
-					<AvatarImage src={user.foto_profile} />
-					<AvatarFallback>{user.nama.slice(0, 2)}</AvatarFallback>
+					<AvatarImage src={mahasiswa.foto_profile} />
+					<AvatarFallback>{mahasiswa.nama.slice(0, 2)}</AvatarFallback>
 				</Avatar>
 
 				<div className="hidden sm:block">{editFormActions}</div>
 			</div>
 
-			<ScrollArea className="w-full grow h-full">
-				<Form {...form}>
+			<ScrollArea className="w-full h-full grow">
+				<Form {...mahasiswaForm}>
 					<form
-						onSubmit={form.handleSubmit(handleEditProfileSubmit)}
+						onSubmit={mahasiswaForm.handleSubmit(handleOnDataUpdate)}
 						className="w-full space-y-4 px-0.5"
 					>
 						<FormField
-							control={form.control}
+							control={mahasiswaForm.control}
 							name="nama"
 							disabled={!isEditing}
 							render={({ field }) => (
@@ -166,7 +141,7 @@ export function AdminMahasiswaEditForm(props: AdminMahasiswaEditFormProps) {
 						/>
 
 						<FormField
-							control={form.control}
+							control={mahasiswaForm.control}
 							name="nim"
 							disabled={!isEditing}
 							render={({ field }) => (
@@ -188,7 +163,7 @@ export function AdminMahasiswaEditForm(props: AdminMahasiswaEditFormProps) {
 						/>
 
 						<FormField
-							control={form.control}
+							control={mahasiswaForm.control}
 							name="no_telepon"
 							disabled={!isEditing}
 							render={({ field }) => (
@@ -210,7 +185,7 @@ export function AdminMahasiswaEditForm(props: AdminMahasiswaEditFormProps) {
 						/>
 
 						<FormField
-							control={form.control}
+							control={mahasiswaForm.control}
 							name="tanggal_lahir"
 							render={({ field }) => (
 								<FormItem className="flex flex-col">
@@ -229,7 +204,7 @@ export function AdminMahasiswaEditForm(props: AdminMahasiswaEditFormProps) {
 						/>
 
 						<FormField
-							control={form.control}
+							control={mahasiswaForm.control}
 							name="list_kesukaan"
 							disabled={!isEditing}
 							render={({ field }) => (
@@ -250,8 +225,8 @@ export function AdminMahasiswaEditForm(props: AdminMahasiswaEditFormProps) {
 						<Separator />
 
 						<FormField
-							control={form.control}
-							name="alamat.alamat"
+							control={mahasiswaForm.control}
+							name="alamat"
 							disabled={!isEditing}
 							render={({ field }) => (
 								<FormItem>
@@ -260,10 +235,17 @@ export function AdminMahasiswaEditForm(props: AdminMahasiswaEditFormProps) {
 									</FormLabel>
 									<FormControl>
 										<Input
-											className="disabled:opacity-100 disabled:cursor-auto"
-											type="tel"
-											placeholder="-"
 											{...field}
+											value={field.value?.alamat ?? ''}
+											className="disabled:opacity-100 disabled:cursor-auto"
+											type="text"
+											placeholder="-"
+											onChange={e =>
+												field.onChange({
+													...field.value,
+													alamat: e.target.value,
+												})
+											}
 										/>
 									</FormControl>
 									<FormMessage />
@@ -272,7 +254,7 @@ export function AdminMahasiswaEditForm(props: AdminMahasiswaEditFormProps) {
 						/>
 
 						<FormField
-							control={form.control}
+							control={mahasiswaForm.control}
 							name="alamat"
 							disabled={!isEditing}
 							render={({ field }) => {
@@ -320,7 +302,12 @@ export function AdminMahasiswaEditForm(props: AdminMahasiswaEditFormProps) {
 						/>
 
 						{isEditing && (
-							<Button type="submit" size="sm" className="w-full">
+							<Button
+								disabled={mahasiswaForm.formState.isSubmitting || isDeleting}
+								type="submit"
+								size="sm"
+								className="w-full"
+							>
 								Simpan
 							</Button>
 						)}

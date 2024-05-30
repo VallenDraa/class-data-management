@@ -1,36 +1,72 @@
 import * as React from 'react';
-import { Mahasiswa, type MahasiswaSearchSortType } from '../types';
+import { type MahasiswaPreview, type MahasiswaSearchSortType } from '../types';
 import { useVirtualizer, VirtualItem } from '@tanstack/react-virtual';
-import { ScrollArea } from '~/components/ui';
+import { DialogErrorMessage, ScrollArea, Skeleton } from '~/components/ui';
 import { useGetMahasiswa } from '../api';
+import { useIntersectionObserver } from '~/hooks';
+
+function MahasiswaListSkeleton() {
+	return (
+		<div className="space-y-1">
+			<Skeleton className="w-full h-[75px] rounded-md" />
+			<Skeleton className="w-full h-[75px] rounded-md" />
+			<Skeleton className="w-full h-[75px] rounded-md" />
+			<Skeleton className="w-full h-[75px] rounded-md" />
+			<Skeleton className="w-full h-[75px] rounded-md" />
+		</div>
+	);
+}
 
 export type MahasiswaListProps = {
 	keyword: string;
 	sort: MahasiswaSearchSortType;
 	children: (
-		mahasiswa: Mahasiswa | undefined,
+		mahasiswa: MahasiswaPreview | undefined,
 		virtualItem: VirtualItem,
+		allMahasiswa: MahasiswaPreview[],
 	) => React.ReactNode;
 };
 
 export function MahasiswaList(props: MahasiswaListProps) {
 	const { keyword, sort, children } = props;
 
-	const { data: mahasiswaList, isLoading } = useGetMahasiswa({
+	const {
+		data: mahasiswaList,
+		isLoading,
+		isFetchingNextPage,
+		fetchNextPage,
+		hasNextPage,
+	} = useGetMahasiswa({
 		keyword,
-		page: 20,
 		sort,
 	});
 
 	const mahasiswaListContainerRef = React.useRef<HTMLDivElement>(null);
+	const allRows = React.useMemo(
+		() =>
+			mahasiswaList ? mahasiswaList.pages.flatMap(d => d.success.data) : [],
+		[mahasiswaList],
+	);
 	const rowVirtualizer = useVirtualizer({
-		count: mahasiswaList?.length ?? 5,
+		count: hasNextPage ? allRows.length + 1 : allRows.length,
 		getScrollElement: () => mahasiswaListContainerRef.current,
 		estimateSize: () => 75,
 	});
 
+	const [dataLoaderRef] = useIntersectionObserver({
+		onChange: isIntersecting => {
+			if (!isIntersecting) {
+				return;
+			}
+
+			if (hasNextPage && !isFetchingNextPage) {
+				fetchNextPage();
+			}
+		},
+	});
+
 	return isLoading ? (
-		'loading...'
+		<MahasiswaListSkeleton />
 	) : (
 		<ScrollArea
 			className="h-1 overflow-y-auto grow"
@@ -40,11 +76,33 @@ export function MahasiswaList(props: MahasiswaListProps) {
 				className="relative w-full"
 				style={{ height: `${rowVirtualizer.getTotalSize()}px` }}
 			>
-				{rowVirtualizer.getVirtualItems().map(virtualItem => {
-					const mahasiswa = mahasiswaList?.[virtualItem.index];
+				{allRows.length > 0 ? (
+					rowVirtualizer.getVirtualItems().map(virtualItem => {
+						const isLoaderRow = virtualItem.index > allRows.length - 1;
+						const mahasiswa = allRows[virtualItem.index];
 
-					return children(mahasiswa, virtualItem);
-				})}
+						return isLoaderRow ? (
+							<li
+								ref={dataLoaderRef}
+								key={virtualItem.key}
+								className="absolute inset-x-1"
+								style={{
+									height: `${virtualItem.size}px`,
+									transform: `translateY(${virtualItem.start}px)`,
+								}}
+							>
+								<Skeleton className="w-full h-full rounded-md" />
+							</li>
+						) : (
+							children(mahasiswa, virtualItem, allRows)
+						);
+					})
+				) : (
+					<DialogErrorMessage
+						title="Tidak Ada Mahasiswa"
+						message="Belum ada data mahasiswa, silahkan buat baru."
+					/>
+				)}
 			</ul>
 		</ScrollArea>
 	);

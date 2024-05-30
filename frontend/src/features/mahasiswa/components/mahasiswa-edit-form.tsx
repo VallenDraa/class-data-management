@@ -3,9 +3,6 @@ import L from 'leaflet';
 import { type Coordinate } from '~/types';
 import { type Mahasiswa, type MahasiswaUpdate } from '../types';
 import {
-	Avatar,
-	AvatarImage,
-	AvatarFallback,
 	Button,
 	Skeleton,
 	FormLabel,
@@ -21,37 +18,31 @@ import {
 	Form,
 	FormItem,
 	FormControl,
+	UserEditableAvatar,
 } from '~/components/ui';
 import { useGeoLocation } from '~/hooks';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { updateMahasiswaValidator } from '../api';
-import { useForm } from 'react-hook-form';
-import {
-	type ChangePassword,
-	ChangePasswordDialog,
-} from './change-password-dialog';
+import { ChangePassword, ChangePasswordDialog } from './change-password-dialog';
+import { useMahasiswaUpdateForm } from '../hooks';
 
 export type MahasiswaEditFormProps = {
-	onSubmit: (data: MahasiswaUpdate) => void | Promise<void>;
-	user: Mahasiswa;
+	onAvatarUpdate: (base64Str: string | null) => void | Promise<void>;
+	onPasswordUpdate: (password: ChangePassword) => void | Promise<void>;
+	onDataUpdate: (data: MahasiswaUpdate) => void | Promise<void>;
+	mahasiswa: Mahasiswa;
 	isOwnProfile: boolean;
 };
 
 export function MahasiswaEditForm(props: MahasiswaEditFormProps) {
-	const { user, onSubmit, isOwnProfile } = props;
+	const {
+		mahasiswa,
+		onAvatarUpdate,
+		onDataUpdate,
+		onPasswordUpdate,
+		isOwnProfile,
+	} = props;
 
-	const [isEditing, setIsEditing] = React.useState(false);
-	const form = useForm<MahasiswaUpdate>({
-		resolver: zodResolver(updateMahasiswaValidator),
-		defaultValues: {
-			list_kesukaan: user.list_kesukaan,
-			alamat: user.alamat,
-			nama: user.nama,
-			nim: user.nim,
-			no_telepon: user.no_telepon,
-			tanggal_lahir: user.tanggal_lahir,
-		},
-	});
+	const { mahasiswaForm, handleEditing, handleOnDataUpdate, isEditing } =
+		useMahasiswaUpdateForm(mahasiswa, onDataUpdate);
 
 	const { userLocation, isSupported, isLoading } = useGeoLocation();
 	const currentUserLocation = React.useMemo(
@@ -64,47 +55,35 @@ export function MahasiswaEditForm(props: MahasiswaEditFormProps) {
 	);
 	const mahasiswaLocation = React.useMemo(
 		(): Coordinate => ({
-			lat: Number(user.alamat?.latitude ?? 0),
-			lng: Number(user.alamat?.longitude ?? 0),
-			markerMessage: `Alamat rumah milik ${user.nama}`,
+			lat: Number(mahasiswa.latitude ?? 0),
+			lng: Number(mahasiswa.longitude ?? 0),
+			markerMessage: `Alamat rumah milik ${mahasiswa.nama}`,
 		}),
-		[user.alamat?.latitude, user.alamat?.longitude, user.nama],
+		[mahasiswa.latitude, mahasiswa.longitude, mahasiswa.nama],
 	);
-
-	const handleEditing = () => {
-		if (isEditing) {
-			setIsEditing(false);
-			form.reset();
-		} else {
-			setIsEditing(true);
-		}
-	};
-
-	const handleEditProfileSubmit = async (data: MahasiswaUpdate) => {
-		await onSubmit(data);
-		setIsEditing(false);
-	};
-
-	const handleEditPasswordSubmit = async (data: ChangePassword) => {
-		console.log(data);
-	};
 
 	const editFormActions = (
 		<div className="flex flex-col gap-2 grow">
 			{isOwnProfile && (
 				<Button
-					onClick={handleEditing}
-					className="w-full"
 					size="sm"
+					className="w-full"
+					onClick={handleEditing}
 					variant={isEditing ? 'destructive' : 'default'}
+					disabled={mahasiswaForm.formState.isSubmitting}
 				>
 					{isEditing ? 'Cancel Edit' : 'Edit Profil'}
 				</Button>
 			)}
 
 			{isOwnProfile && (
-				<ChangePasswordDialog onSubmit={handleEditPasswordSubmit}>
-					<Button className="w-full" size="sm" variant="outline">
+				<ChangePasswordDialog onSubmit={onPasswordUpdate}>
+					<Button
+						size="sm"
+						variant="outline"
+						className="w-full"
+						disabled={mahasiswaForm.formState.isSubmitting}
+					>
 						Ganti Password
 					</Button>
 				</ChangePasswordDialog>
@@ -115,22 +94,24 @@ export function MahasiswaEditForm(props: MahasiswaEditFormProps) {
 	return (
 		<section className="flex flex-col gap-2 overflow-auto sm:gap-4 sm:flex-row animate-in">
 			<div className="flex flex-row items-center w-full gap-4 sm:w-32 sm:flex-col">
-				<Avatar className="h-auto mx-auto w-28 sm:w-full aspect-square">
-					<AvatarImage src={user.foto_profile} />
-					<AvatarFallback>{user.nama.slice(0, 2)}</AvatarFallback>
-				</Avatar>
+				<UserEditableAvatar
+					onSubmit={onAvatarUpdate}
+					imageSrc={mahasiswa.foto_profile}
+					alt={mahasiswa.nama.slice(0, 2)}
+					className="h-auto mx-auto w-28 sm:w-full aspect-square"
+				/>
 
 				<div className="hidden sm:block">{editFormActions}</div>
 			</div>
 
 			<ScrollArea className="w-full sm:max-h-96">
-				<Form {...form}>
+				<Form {...mahasiswaForm}>
 					<form
-						onSubmit={form.handleSubmit(handleEditProfileSubmit)}
+						onSubmit={mahasiswaForm.handleSubmit(handleOnDataUpdate)}
 						className="w-full space-y-4"
 					>
 						<FormField
-							control={form.control}
+							control={mahasiswaForm.control}
 							name="nama"
 							disabled={!isEditing}
 							render={({ field }) => (
@@ -151,7 +132,7 @@ export function MahasiswaEditForm(props: MahasiswaEditFormProps) {
 						/>
 
 						<FormField
-							control={form.control}
+							control={mahasiswaForm.control}
 							name="nim"
 							disabled={!isEditing}
 							render={({ field }) => (
@@ -173,7 +154,7 @@ export function MahasiswaEditForm(props: MahasiswaEditFormProps) {
 						/>
 
 						<FormField
-							control={form.control}
+							control={mahasiswaForm.control}
 							name="no_telepon"
 							disabled={!isEditing}
 							render={({ field }) => (
@@ -195,7 +176,7 @@ export function MahasiswaEditForm(props: MahasiswaEditFormProps) {
 						/>
 
 						<FormField
-							control={form.control}
+							control={mahasiswaForm.control}
 							name="tanggal_lahir"
 							render={({ field }) => (
 								<FormItem className="flex flex-col">
@@ -214,7 +195,7 @@ export function MahasiswaEditForm(props: MahasiswaEditFormProps) {
 						/>
 
 						<FormField
-							control={form.control}
+							control={mahasiswaForm.control}
 							name="list_kesukaan"
 							disabled={!isEditing}
 							render={({ field }) => (
@@ -235,8 +216,8 @@ export function MahasiswaEditForm(props: MahasiswaEditFormProps) {
 						<Separator />
 
 						<FormField
-							control={form.control}
-							name="alamat.alamat"
+							control={mahasiswaForm.control}
+							name="alamat"
 							disabled={!isEditing}
 							render={({ field }) => (
 								<FormItem>
@@ -245,10 +226,17 @@ export function MahasiswaEditForm(props: MahasiswaEditFormProps) {
 									</FormLabel>
 									<FormControl>
 										<Input
+											{...field}
+											value={field.value?.alamat ?? ''}
 											className="disabled:opacity-100 disabled:cursor-auto"
 											type="text"
 											placeholder="-"
-											{...field}
+											onChange={e =>
+												field.onChange({
+													...field.value,
+													alamat: e.target.value,
+												})
+											}
 										/>
 									</FormControl>
 									<FormMessage />
@@ -257,7 +245,7 @@ export function MahasiswaEditForm(props: MahasiswaEditFormProps) {
 						/>
 
 						<FormField
-							control={form.control}
+							control={mahasiswaForm.control}
 							name="alamat"
 							disabled={!isEditing}
 							render={({ field }) => {
@@ -305,7 +293,12 @@ export function MahasiswaEditForm(props: MahasiswaEditFormProps) {
 						/>
 
 						{isEditing && (
-							<Button type="submit" size="sm" className="w-full">
+							<Button
+								disabled={mahasiswaForm.formState.isSubmitting}
+								type="submit"
+								size="sm"
+								className="w-full"
+							>
 								Simpan
 							</Button>
 						)}

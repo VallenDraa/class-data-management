@@ -1,4 +1,4 @@
-import L from 'leaflet';
+import * as React from 'react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import {
@@ -16,14 +16,11 @@ import {
 	FormLabel,
 	FormMessage,
 	Input,
-	PositionPickerMap,
 	ScrollArea,
-	Skeleton,
 } from '~/components/ui';
 import { addMahasiswaValidator } from '../api';
 import { MahasiswaInsert } from '~/features/mahasiswa/types';
 import { PlusIcon } from '@radix-ui/react-icons';
-import { useGeoLocation } from '~/hooks';
 
 export type CreateMahasiswaDialogProps = {
 	onCreate: (data: MahasiswaInsert) => void | Promise<void>;
@@ -32,20 +29,24 @@ export type CreateMahasiswaDialogProps = {
 export function CreateMahasiswaDialog(props: CreateMahasiswaDialogProps) {
 	const { onCreate } = props;
 
-	const { userLocation, isSupported, isLoading } = useGeoLocation();
-
+	const [isFormOpened, setIsFormOpened] = React.useState(false);
 	const form = useForm<MahasiswaInsert>({
 		resolver: zodResolver(addMahasiswaValidator),
 		defaultValues: {
-			alamat: { alamat: '', latitude: '0', longitude: '0' },
+			alamat: '',
 			nama: '',
 			nim: '',
 			tanggal_lahir: new Date().toISOString(),
 		},
 	});
 
+	const handleSubmit = async (data: MahasiswaInsert) => {
+		await onCreate(data);
+		setIsFormOpened(false);
+	};
+
 	return (
-		<Dialog>
+		<Dialog open={isFormOpened} onOpenChange={setIsFormOpened}>
 			<DialogTrigger asChild>
 				<Button size="icon" className="rounded-full">
 					<PlusIcon />
@@ -58,11 +59,11 @@ export function CreateMahasiswaDialog(props: CreateMahasiswaDialogProps) {
 					<DialogTitle>Buat Mahasiswa</DialogTitle>
 				</DialogHeader>
 
-				<section className="flex flex-col gap-2 overflow-auto sm:gap-4 sm:flex-row">
+				<section className="flex flex-col justify-center gap-2 overflow-auto sm:gap-4 sm:flex-row">
 					<ScrollArea className="w-full sm:max-h-96 grow">
 						<Form {...form}>
 							<form
-								onSubmit={form.handleSubmit(onCreate)}
+								onSubmit={form.handleSubmit(handleSubmit)}
 								className="w-full space-y-4 px-0.5"
 							>
 								<FormField
@@ -126,11 +127,11 @@ export function CreateMahasiswaDialog(props: CreateMahasiswaDialogProps) {
 
 								<FormField
 									control={form.control}
-									name="alamat.alamat"
+									name="alamat"
 									render={({ field }) => (
 										<FormItem>
 											<FormLabel className="text-xs text-neutral-500">
-												Alamat & Peta
+												Alamat
 											</FormLabel>
 											<FormControl>
 												<Input
@@ -145,44 +146,12 @@ export function CreateMahasiswaDialog(props: CreateMahasiswaDialogProps) {
 									)}
 								/>
 
-								<FormField
-									control={form.control}
-									name="alamat"
-									render={({ field }) => {
-										return (
-											<div className="w-full border rounded-md shadow-sm h-80 overflow-clip border-neutral-200">
-												{isLoading && (
-													<Skeleton className="w-full h-full rounded-md" />
-												)}
-
-												{!isSupported && !isLoading && (
-													<div className="flex items-center justify-center w-full h-full text-neutral-500">
-														<span>
-															Geolocation tidak didukung oleh browser anda
-														</span>
-													</div>
-												)}
-
-												{isSupported && !isLoading && userLocation && (
-													<PositionPickerMap
-														position={
-															new L.LatLng(userLocation.lat, userLocation.lng)
-														}
-														onPositionChange={position =>
-															field.onChange({
-																...field.value,
-																latitude: String(position.lat),
-																longitude: String(position.lng),
-															})
-														}
-													/>
-												)}
-											</div>
-										);
-									}}
-								/>
-
-								<Button type="submit" size="sm" className="w-full">
+								<Button
+									disabled={form.formState.isSubmitting}
+									type="submit"
+									size="sm"
+									className="w-full"
+								>
 									Simpan
 								</Button>
 							</form>

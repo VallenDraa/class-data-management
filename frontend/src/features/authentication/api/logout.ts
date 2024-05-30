@@ -8,8 +8,6 @@ export async function logout() {
 			ApiResponse<{ message: string; token: string }>
 		>('/logout');
 
-		localStorage.removeItem('token');
-
 		return response.data.success.message;
 	} catch (error) {
 		throw new Error(getErrorMessage(error));

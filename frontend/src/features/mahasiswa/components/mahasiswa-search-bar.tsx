@@ -7,8 +7,8 @@ import {
 	SelectValue,
 } from '~/components/ui';
 import { MahasiswaSearchSortType } from '../types';
-import { SORT_SEARCH_TYPES } from '../constants';
 import React from 'react';
+import { SORT_SEARCH_TYPES } from '~/providers';
 
 export type MahasiswaSearchBarProps = {
 	keyword: string;
@@ -20,11 +20,12 @@ export type MahasiswaSearchBarProps = {
 export function MahasiswaSearchBar(props: MahasiswaSearchBarProps) {
 	const { keyword, onKeywordChange, sortType, onSortTypeChange } = props;
 
-	React.useEffect(() => {
-		if (SORT_SEARCH_TYPES.every(type => type.value !== sortType)) {
-			onSortTypeChange('terbaru');
-		}
-	}, [sortType, onSortTypeChange]);
+	const [innerKeyword, setInnerKeyword] = React.useState(keyword ?? '');
+
+	const handleSetKeyword = (value: string) => {
+		setInnerKeyword(value);
+		onKeywordChange(value);
+	};
 
 	return (
 		<div className="px-1 space-y-2">
@@ -52,8 +53,8 @@ export function MahasiswaSearchBar(props: MahasiswaSearchBarProps) {
 
 			<Input
 				type="search"
-				value={keyword ?? ''}
-				onChange={e => onKeywordChange(e.target.value)}
+				value={innerKeyword ?? ''}
+				onChange={e => handleSetKeyword(e.target.value)}
 				placeholder="Nama atau NIM mahasiswa..."
 				className="w-full mt-2"
 			/>

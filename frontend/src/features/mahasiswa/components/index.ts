@@ -5,3 +5,4 @@ export * from './mahasiswa-self-profile';
 export * from './mahasiswa-profile-detail';
 export * from './see-mahasiswa-detail-on-visit';
 export * from './change-password-dialog';
+export * from './mahasiswa-self-profile-detail';

@@ -13,33 +13,20 @@ import {
 } from '~/components/ui';
 import { useGetAdminSelf } from '../api';
 import { ExitIcon, PersonIcon } from '@radix-ui/react-icons';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { AdminProfileDetail } from './admin-profile-detail';
-import { logout } from '~/features/authentication/api';
-import { toast } from 'sonner';
-import { DEFAULT_ERROR_MESSAGE } from '~/utils/get-error-message';
+import { useHandleAdminPath } from '../hooks';
+import { useHandleLogout } from '~/hooks';
 
 export function AdminSelfProfile() {
 	const { data: admin, isLoading: isAdminLoading } = useGetAdminSelf();
 
-	const { search } = useLocation();
-	const navigate = useNavigate();
-
 	const [isDetailOpen, setIsDetailOpen] = React.useState(false);
 
-	const handleLogout = async () => {
-		try {
-			await logout();
-			navigate('/admin/login');
-		} catch (error) {
-			if (error instanceof Error) {
-				toast.error(error.message);
-				return;
-			}
-
-			toast.error(DEFAULT_ERROR_MESSAGE);
-		}
-	};
+	const { toAdminDetailPath, navigateToAdminMainPath } = useHandleAdminPath(
+		Number(admin?.id ?? 0),
+	);
+	const { handleLogout } = useHandleLogout('/admin/login');
 
 	return (
 		<DropdownMenu>
@@ -62,7 +49,7 @@ export function AdminSelfProfile() {
 					<DialogTrigger asChild>
 						<DropdownMenuItem asChild className="gap-1">
 							{!isAdminLoading && admin ? (
-								<Link to={{ pathname: `/admin/${admin.id}`, search }}>
+								<Link to={toAdminDetailPath()}>
 									<PersonIcon />
 									<span>Profil</span>
 								</Link>
@@ -87,7 +74,7 @@ export function AdminSelfProfile() {
 					<AdminProfileDetail
 						detailTitle="Profil Anda"
 						admin={admin}
-						onDetailClose={() => navigate(`/admin${search}`)}
+						onDetailClose={navigateToAdminMainPath}
 					/>
 				)}
 			</Dialog>

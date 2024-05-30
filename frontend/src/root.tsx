@@ -1,38 +1,29 @@
-import { Navigate, Outlet, useLocation, useNavigate } from 'react-router-dom';
-import { ProtectedRoute } from './lib/auth';
 import * as React from 'react';
-import { logout } from './features/authentication/api';
-import { getErrorMessage } from './utils/get-error-message';
+import { Navigate, Outlet, useLocation } from 'react-router-dom';
+import { ProtectedRoute } from './lib/auth';
+import { getLoginType } from './utils/auth-token';
+import { useHandleLogout } from './hooks';
+import { AppSearchQueryContextProvider } from './providers';
 
 export function Root() {
-	const { pathname } = useLocation();
-	const navigate = useNavigate();
+	const loginType = getLoginType();
 
-	const loginType = localStorage.getItem('login_type');
+	const { pathname } = useLocation();
+	const { handleLogout } = useHandleLogout('/mahasiswa/login');
 
 	React.useEffect(() => {
-		const handleFailRedirect = async () => {
-			if (loginType !== 'mahasiswa' && loginType !== 'admin') {
-				try {
-					await logout();
-					navigate('/mahasiswa/login', { replace: true });
-				} catch (error) {
-					throw new Error(getErrorMessage(error));
-				} finally {
-					localStorage.removeItem('token');
-					localStorage.removeItem('login_type');
-				}
-			}
-		};
-
-		void handleFailRedirect();
+		if (loginType !== 'mahasiswa' && loginType !== 'admin') {
+			handleLogout();
+		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	return (
 		<ProtectedRoute>
 			{pathname === '/' && <Navigate to={`/${loginType}`} replace />}
-			<Outlet />
+			<AppSearchQueryContextProvider>
+				<Outlet />
+			</AppSearchQueryContextProvider>
 		</ProtectedRoute>
 	);
 }

@@ -31,13 +31,14 @@ export function ListEditor(props: ListEditorProps) {
 
 	function handleAdd(value: string) {
 		onListChange([...listItems, value]);
+		setNewValue('');
 	}
 
 	return (
 		<ul className={cn('text-sm px-1', disabled && 'space-y-3')}>
 			{listItems.map((item, index) => (
 				<li key={index} className="flex items-center">
-					<span className="grow break-words">{`${index + 1}. ${item}`}</span>
+					<span className="break-words grow">{`${index + 1}. ${item}`}</span>
 
 					{!isEditUIHidden && (
 						<Button

@@ -1,12 +1,34 @@
-import { type MahasiswaUpdate } from '../types';
 import {
 	DialogContent,
+	DialogErrorMessage,
 	DialogHeader,
 	DialogTitle,
 	Skeleton,
 } from '~/components/ui';
 import { MahasiswaEditForm } from './mahasiswa-edit-form';
 import { useGetSingleMahasiswa } from '../api/get-single-mahasiswa';
+import {
+	useHandleMahasiswaAvatarUpdate,
+	useHandleMahasiswaDataUpdate,
+	useHandleMahasiswaPasswordUpdate,
+} from '../hooks';
+
+export function MahasiswaProfileDetailSkeleton() {
+	return (
+		<div className="flex flex-col gap-2 overflow-auto sm:gap-4 sm:flex-row">
+			<div className="flex flex-row items-center w-full gap-4 sm:w-28 sm:flex-col">
+				<Skeleton className="h-auto mx-auto rounded-full w-28 sm:w-full aspect-square" />
+
+				<div className="hidden w-full space-y-2 sm:block">
+					<Skeleton className="w-full h-8 rounded-md" />
+					<Skeleton className="w-full h-8 rounded-md" />
+				</div>
+			</div>
+
+			<Skeleton className="w-full h-96" />
+		</div>
+	);
+}
 
 export type MahasiswaProfileDetailProps = {
 	detailTitle?: string;
@@ -29,11 +51,13 @@ export function MahasiswaProfileDetail(props: MahasiswaProfileDetailProps) {
 		data: mahasiswa,
 		isLoading: isMahasiswaLoading,
 		error,
-	} = useGetSingleMahasiswa({ id: Number(mahasiswaId), enabled: isDetailOpen });
+	} = useGetSingleMahasiswa({ id: mahasiswaId, enabled: isDetailOpen });
 
-	const handleSubmit = (data: MahasiswaUpdate) => {
-		console.log(data);
-	};
+	const { handleMahasiswaDataUpdate } =
+		useHandleMahasiswaDataUpdate(mahasiswaId);
+	const { handleMahasiswaAvatarUpdate } =
+		useHandleMahasiswaAvatarUpdate(mahasiswaId);
+	const { handleMahasiswaPasswordUpdate } = useHandleMahasiswaPasswordUpdate();
 
 	return (
 		<DialogContent
@@ -46,7 +70,7 @@ export function MahasiswaProfileDetail(props: MahasiswaProfileDetailProps) {
 					{detailTitle || (
 						<>
 							{!mahasiswa && isMahasiswaLoading ? (
-								<Skeleton className="h-8 w-1/3" />
+								<Skeleton className="w-1/3 h-8" />
 							) : (
 								`Profil ${mahasiswa?.nama ?? 'Mahasiswa'}`
 							)}
@@ -59,27 +83,20 @@ export function MahasiswaProfileDetail(props: MahasiswaProfileDetailProps) {
 				isDetailOpen && !isMahasiswaLoading && mahasiswa ? (
 					<MahasiswaEditForm
 						isOwnProfile={isOwnProfile}
-						onSubmit={handleSubmit}
-						user={mahasiswa}
+						onPasswordUpdate={handleMahasiswaPasswordUpdate}
+						onAvatarUpdate={handleMahasiswaAvatarUpdate}
+						onDataUpdate={handleMahasiswaDataUpdate}
+						mahasiswa={mahasiswa}
 					/>
 				) : (
-					<section className="flex flex-col gap-2 overflow-auto sm:gap-4 sm:flex-row">
-						<div className="flex flex-row items-center w-full gap-4 sm:w-28 sm:flex-col">
-							<Skeleton className="h-auto mx-auto w-28 sm:w-full aspect-square rounded-full" />
-
-							<div className="space-y-2 w-full">
-								<Skeleton className="h-8 w-full rounded-md" />
-								<Skeleton className="h-8 w-full rounded-md" />
-							</div>
-						</div>
-
-						<Skeleton className="w-full h-96" />
-					</section>
+					<MahasiswaProfileDetailSkeleton />
 				)
 			) : (
-				<section className="flex flex-col gap-2 overflow-auto sm:gap-4 sm:flex-row">
-					<p>{error.message}</p>
-				</section>
+				<DialogErrorMessage
+					refreshPage
+					message={error.message}
+					title="Gagal memuat data mahasiswa"
+				/>
 			)}
 		</DialogContent>
 	);

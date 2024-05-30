@@ -20,7 +20,7 @@ import { DEFAULT_ERROR_MESSAGE } from '~/utils/get-error-message';
 // Schema untuk form admin
 const adminValidator = z.object({
 	email: z.string().email('Email tidak valid'),
-	password: z.string().min(8, 'Password tidak valid'),
+	password: z.string().min(1, 'Password tidak boleh kosong'),
 });
 
 type AdminSchema = z.infer<typeof adminValidator>;
@@ -81,7 +81,9 @@ export function AdminLogin() {
 							</FormItem>
 						)}
 					/>
-					<Button type="submit">Sign In</Button>
+					<Button disabled={form.formState.isSubmitting} type="submit">
+						Sign In
+					</Button>
 				</form>
 			</Form>
 
