@@ -825,7 +825,7 @@ paths:
                   user_role: "string"
                   required_role: "string"
                   message: "Forbidden"
-  /mahasiswa/foto_profile
+  /mahasiswa/foto_profile:
     post:
       tags:
         - Data mahasiswa
@@ -936,4 +936,3 @@ paths:
               example:
                 errors:
                   message: "Data tidak ditemukan"
-    
