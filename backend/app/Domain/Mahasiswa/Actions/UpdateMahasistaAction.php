@@ -27,7 +27,6 @@ class UpdateMahasistaAction
         $user->update(['nama' => $userData->nama]);
 
         if(!is_array($mahasiswaData->list_kesukaan))
-            // throw BadRequestException::because(implode(', ', $mahasiswaData->list_kesukaan));
             throw BadRequestException::because('Data list_kesukaan harus array');
         $mahasiswa = $user->mahasiswa;
         $mahasiswa->update([
@@ -47,7 +46,7 @@ class UpdateMahasistaAction
     public function asController(UserData $userData, MahasiswaData $mahasiswaData, int $id = null): JsonResponse
     {
         if ($id)
-            if (!UserData::fromAuth()->role->canUpdateOtherMahasiswa())
+            if (!UserData::fromAuth()->role->canUpdateOtherMahasiswa() && $id != UserData::fromAuth()->id)
                 throw new RoleForbiddenException(
                     UserData::fromAuth()->role->getRequiredRole("canUpdateOtherMahasiswa")
                 );
