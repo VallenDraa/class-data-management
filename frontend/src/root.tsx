@@ -22,7 +22,9 @@ export function Root() {
 		<ProtectedRoute>
 			{pathname === '/' && <Navigate to={`/${loginType}`} replace />}
 			<AppSearchQueryContextProvider>
-				<Outlet />
+				<div className="relative z-10 bg-white dark:bg-neutral-950">
+					<Outlet />
+				</div>
 			</AppSearchQueryContextProvider>
 		</ProtectedRoute>
 	);

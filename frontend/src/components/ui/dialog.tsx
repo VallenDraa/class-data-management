@@ -49,9 +49,9 @@ const DialogContent = React.forwardRef<
 			{children}
 			<DialogPrimitive.Close
 				onClick={onClose}
-				className="absolute right-4 top-5 rounded-sm opacity-70 ring-offset-white transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-neutral-950 focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-neutral-100 data-[state=open]:text-neutral-500 dark:ring-offset-neutral-950 dark:focus:ring-neutral-300 dark:data-[state=open]:bg-neutral-800 dark:data-[state=open]:text-neutral-400"
+				className="absolute right-4 top-5 rounded-sm ring-offset-white transition focus:outline-none focus:ring-2 focus:!ring-red-600 focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-red-100 data-[state=open]:text-red-500 dark:ring-offset-neutral-950 dark:focus:!ring-red-300 dark:data-[state=open]:bg-red-800 dark:data-[state=open]:text-red-400 group"
 			>
-				<Cross2Icon className="w-6 h-6" />
+				<Cross2Icon className="w-6 h-6 group-focus:text-red-600 group-hover:text-red-600" />
 				<span className="sr-only">Close</span>
 			</DialogPrimitive.Close>
 		</DialogPrimitive.Content>

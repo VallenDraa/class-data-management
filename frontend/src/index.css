@@ -1,3 +1,30 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+	* {
+		@apply font-mono focus-visible:!ring-2 focus-visible:!outline-none !ring-sky-600 dark:!ring-sky-800 !ring-offset-2 dark:!ring-offset-neutral-950;
+	}
+}
+
+.leaflet-layer,
+.leaflet-routing-container,
+.leaflet-control-geocoder,
+.leaflet-control-zoom-in,
+.leaflet-control-zoom-out,
+.leaflet-control-attribution {
+	@apply dark:invert dark:filter dark:hue-rotate-180 dark:brightness-105 dark:contrast-[90%];
+}
+
+.leaflet-control-attribution {
+	@apply hidden;
+}
+
+.leaflet-routing-alt {
+	@apply dark:text-neutral-800;
+}
+
+.leaflet-control-geocoder {
+	@apply dark:text-neutral-900;
+}

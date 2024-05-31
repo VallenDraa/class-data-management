@@ -7,7 +7,7 @@ import {
 	MahasiswaListItem,
 } from '../components';
 import { useParams } from 'react-router-dom';
-import { Dialog } from '~/components/ui';
+import { Dialog, ThemeChooser } from '~/components/ui';
 import { useGetMahasiswaSelf } from '../api';
 import { useAppSearchQuery } from '~/providers';
 
@@ -31,7 +31,10 @@ export function MainMahasiswaPage() {
 			<header className="flex items-center justify-between px-1 py-4">
 				<h1 className="text-lg font-semibold leading-7">Kelass</h1>
 
-				<MahasiswaSelfProfile />
+				<div className="flex items-center justify-end gap-4">
+					<ThemeChooser />
+					<MahasiswaSelfProfile />
+				</div>
 			</header>
 
 			<main className="flex flex-col gap-4 grow">
@@ -47,7 +50,7 @@ export function MainMahasiswaPage() {
 							return (
 								<li
 									key={virtualItem.key}
-									className="absolute inset-x-1"
+									className="absolute pt-1 inset-x-1"
 									style={{
 										height: `${virtualItem.size}px`,
 										transform: `translateY(${virtualItem.start}px)`,
@@ -61,7 +64,7 @@ export function MainMahasiswaPage() {
 						return (
 							<li
 								key={virtualItem.key}
-								className="absolute inset-x-1"
+								className="absolute pt-1 inset-x-1"
 								style={{
 									height: `${virtualItem.size}px`,
 									transform: `translateY(${virtualItem.start}px)`,

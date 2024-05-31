@@ -82,7 +82,7 @@ export function MahasiswaEditForm(props: MahasiswaEditFormProps) {
 						size="sm"
 						variant="outline"
 						className="w-full"
-						disabled={mahasiswaForm.formState.isSubmitting}
+						disabled={mahasiswaForm.formState.isSubmitting || isEditing}
 					>
 						Ganti Password
 					</Button>
@@ -108,7 +108,7 @@ export function MahasiswaEditForm(props: MahasiswaEditFormProps) {
 				<Form {...mahasiswaForm}>
 					<form
 						onSubmit={mahasiswaForm.handleSubmit(handleOnDataUpdate)}
-						className="w-full space-y-4"
+						className="w-full px-1 space-y-4"
 					>
 						<FormField
 							control={mahasiswaForm.control}
@@ -250,7 +250,7 @@ export function MahasiswaEditForm(props: MahasiswaEditFormProps) {
 							disabled={!isEditing}
 							render={({ field }) => {
 								return (
-									<div className="w-full border rounded-md shadow-sm h-80 overflow-clip border-neutral-200">
+									<div className="w-full border-none rounded-md shadow-sm h-80 overflow-clip">
 										{isLoading && (
 											<Skeleton className="w-full h-full rounded-md" />
 										)}

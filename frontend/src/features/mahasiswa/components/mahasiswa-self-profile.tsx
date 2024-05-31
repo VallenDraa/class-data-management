@@ -29,7 +29,7 @@ export function MahasiswaSelfProfile() {
 
 	return (
 		<DropdownMenu>
-			<DropdownMenuTrigger>
+			<DropdownMenuTrigger className="rounded-full">
 				{!isMahasiswaLoading && mahasiswa ? (
 					<Avatar>
 						<AvatarImage src={mahasiswa.foto_profile} alt={mahasiswa.nama} />

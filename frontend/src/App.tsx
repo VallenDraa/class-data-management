@@ -1,14 +1,21 @@
 import { AppProvider } from '~/providers';
 import { RouterProvider } from 'react-router-dom';
+import { ThemeProvider } from 'next-themes';
 import { router } from './routes';
 import { Toaster } from './components/ui';
 
 function App() {
 	return (
-		<AppProvider>
-			<RouterProvider router={router} />
-			<Toaster />
-		</AppProvider>
+		<ThemeProvider
+			enableSystem
+			themes={['dark', 'light', 'system']}
+			attribute="class"
+		>
+			<AppProvider>
+				<RouterProvider router={router} />
+				<Toaster />
+			</AppProvider>
+		</ThemeProvider>
 	);
 }
 

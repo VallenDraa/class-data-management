@@ -64,7 +64,7 @@ export function CreateMahasiswaDialog(props: CreateMahasiswaDialogProps) {
 						<Form {...form}>
 							<form
 								onSubmit={form.handleSubmit(handleSubmit)}
-								className="w-full space-y-4 px-0.5"
+								className="w-full px-1 space-y-4"
 							>
 								<FormField
 									control={form.control}

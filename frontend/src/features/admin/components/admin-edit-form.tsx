@@ -41,7 +41,7 @@ export function AdminEditForm(props: AdminEditFormProps) {
 				<Form {...adminForm}>
 					<form
 						onSubmit={adminForm.handleSubmit(handleDataUpdate)}
-						className="w-full space-y-4 px-0.5"
+						className="w-full px-1 space-y-4"
 					>
 						<FormField
 							control={adminForm.control}
