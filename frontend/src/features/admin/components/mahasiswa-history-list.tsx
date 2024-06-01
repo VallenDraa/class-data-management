@@ -2,7 +2,7 @@ import * as React from 'react';
 import { type MahasiswaHistory } from '../types';
 import { useVirtualizer, type VirtualItem } from '@tanstack/react-virtual';
 import { useGetMahasiswaHistory } from '../api';
-import { DialogErrorMessage, ScrollArea, Skeleton } from '~/components/ui';
+import { ErrorMessageSection, ScrollArea, Skeleton } from '~/components/ui';
 import { useIntersectionObserver } from '~/hooks';
 
 function MahasiswaHistoryListSkeleton() {
@@ -105,7 +105,7 @@ export function MahasiswaHistoryList(props: MahasiswaHistoryListProps) {
 						);
 					})
 				) : (
-					<DialogErrorMessage
+					<ErrorMessageSection
 						title="Tidak Ada Riwayat"
 						message="User ini belum melakukan aktivitas apapun pada aplikasi ini."
 					/>

@@ -1,7 +1,7 @@
 import { type Admin } from '../types';
 import {
 	DialogContent,
-	DialogErrorMessage,
+	ErrorMessageSection,
 	DialogHeader,
 	DialogTitle,
 	Skeleton,
@@ -16,7 +16,7 @@ export function AdminProfileDetailError(props: AdminProfileDetailErrorProps) {
 
 	return (
 		<DialogContent>
-			<DialogErrorMessage
+			<ErrorMessageSection
 				title="Gagal memuat data admin"
 				message={message}
 				refreshPage

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { type MahasiswaPreview, type MahasiswaSearchSortType } from '../types';
 import { useVirtualizer, VirtualItem } from '@tanstack/react-virtual';
-import { DialogErrorMessage, ScrollArea, Skeleton } from '~/components/ui';
+import { ErrorMessageSection, ScrollArea, Skeleton } from '~/components/ui';
 import { useGetMahasiswa } from '../api';
 import { useIntersectionObserver } from '~/hooks';
 
@@ -99,7 +99,7 @@ export function MahasiswaList(props: MahasiswaListProps) {
 						);
 					})
 				) : (
-					<DialogErrorMessage
+					<ErrorMessageSection
 						title="Tidak Ada Mahasiswa"
 						message="Belum ada data mahasiswa, silahkan buat baru."
 					/>

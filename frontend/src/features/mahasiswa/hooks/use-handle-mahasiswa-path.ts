@@ -10,6 +10,11 @@ export function useHandleMahasiswaPath(mahasiswaId: number) {
 		[navigate, search],
 	);
 
+	const navigateToMahasiswaSelfPath = React.useCallback(
+		() => navigate(`/mahasiswa/self`),
+		[navigate],
+	);
+
 	const navigateToMahasiswaDetailPath = React.useCallback(
 		() => navigate(`/mahasiswa/${mahasiswaId}${search}`),
 		[mahasiswaId, navigate, search],
@@ -25,10 +30,17 @@ export function useHandleMahasiswaPath(mahasiswaId: number) {
 		[mahasiswaId, search],
 	);
 
+	const toMahasiswaSelfPath = React.useCallback(
+		() => ({ pathname: `/mahasiswa/self`, search }),
+		[search],
+	);
+
 	return {
+		navigateToMahasiswaSelfPath,
 		navigateToMahasiswaMainPath,
 		navigateToMahasiswaDetailPath,
 		toMahasiswaDetailPath,
 		toMahasiswaMainPath,
+		toMahasiswaSelfPath,
 	};
 }

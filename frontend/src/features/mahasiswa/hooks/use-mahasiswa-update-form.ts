@@ -27,6 +27,7 @@ export function useMahasiswaUpdateForm(
 	});
 
 	const [isEditing, setIsEditing] = React.useState(false);
+	const [isEditingImage, setIsEditingImage] = React.useState(false);
 	const handleEditing = React.useCallback(() => {
 		if (isEditing) {
 			setIsEditing(false);
@@ -44,5 +45,12 @@ export function useMahasiswaUpdateForm(
 		[onDataUpdate],
 	);
 
-	return { mahasiswaForm: form, isEditing, handleEditing, handleOnDataUpdate };
+	return {
+		mahasiswaForm: form,
+		isEditing,
+		handleEditing,
+		handleOnDataUpdate,
+		isEditingImage,
+		setIsEditingImage,
+	};
 }

@@ -4,7 +4,9 @@ import { MainMahasiswaPage } from '~/features/mahasiswa/routes/main-mahasiswa-pa
 import { MainAdminPage } from '~/features/admin/routes/main-admin-page';
 import { MahasiswaLoginPage } from '~/features/authentication/routes/mahasiswa-login-page';
 import { AdminLoginPage } from '~/features/authentication/routes/admin-login-page';
+import { SelfMahasiswaProfilePage } from '~/features/mahasiswa/routes/self-mahasiswa-profile-page';
 import { Root } from '~/root';
+import { MahasiswaProfilePage } from '~/features/mahasiswa/routes/mahasiswa-profile-page';
 
 export const router = createBrowserRouter([
 	{
@@ -20,9 +22,14 @@ export const router = createBrowserRouter([
 					{
 						path: 'mahasiswa',
 						element: <MainMahasiswaPage />,
-						children: [
-							{ path: ':mahasiswaId', element: <MainMahasiswaPage /> },
-						],
+					},
+					{
+						path: 'mahasiswa/self',
+						element: <SelfMahasiswaProfilePage />,
+					},
+					{
+						path: 'mahasiswa/:mahasiswaId',
+						element: <MahasiswaProfilePage />,
 					},
 					{
 						path: 'admin',

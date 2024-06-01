@@ -3,17 +3,13 @@ import {
 	MahasiswaSelfProfile,
 	MahasiswaSearchBar,
 	MahasiswaList,
-	SeeMahasiwaDetailOnVisit,
 	MahasiswaListItem,
 } from '../components';
-import { useParams } from 'react-router-dom';
-import { Dialog } from '~/components/ui';
 import { useGetMahasiswaSelf } from '../api';
 import { useAppSearchQueryContext } from '~/providers';
 import { HomeHeaderLayout } from '~/components/layouts/home';
 
 export function MainMahasiswaPage() {
-	const { mahasiswaId } = useParams();
 	const { data: mahasiswaSelf } = useGetMahasiswaSelf();
 
 	const { activeKeyword, activeSort, setActiveKeyword, setActiveSort } =
@@ -21,14 +17,6 @@ export function MainMahasiswaPage() {
 
 	return (
 		<HomePageLayout>
-			<Dialog open>
-				<SeeMahasiwaDetailOnVisit
-					navigatePathOnClose="/mahasiswa"
-					isOwnProfile={Number(mahasiswaId) === mahasiswaSelf?.id}
-					mahasiswaId={Number(mahasiswaId)}
-				/>
-			</Dialog>
-
 			<HomeHeaderLayout isAdmin={false} title="Kelass">
 				<MahasiswaSelfProfile />
 			</HomeHeaderLayout>

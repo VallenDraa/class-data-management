@@ -71,11 +71,6 @@ const tourSteps: Step[] = [
 export function useEditMahasiswaSelfTour() {
 	const { tourState, setTourState } = useTourContext();
 
-	const profileDialogAlwaysOn =
-		tourState.tourActive &&
-		tourState.stepIndex >= 2 &&
-		tourState.tourType === 'edit-self-mahasiswa';
-
 	const showEditProfileTour = React.useCallback(() => {
 		setTourState(prev => ({
 			...prev,
@@ -115,10 +110,5 @@ export function useEditMahasiswaSelfTour() {
 		}, 200);
 	}, [setTourState, tourState.tourActive]);
 
-	return {
-		profileDialogAlwaysOn,
-		showEditProfileTour,
-		openProfileStep,
-		openProfileDropdownStep,
-	};
+	return { showEditProfileTour, openProfileStep, openProfileDropdownStep };
 }

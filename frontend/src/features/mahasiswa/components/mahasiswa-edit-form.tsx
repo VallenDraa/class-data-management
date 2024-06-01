@@ -19,10 +19,36 @@ import {
 	FormItem,
 	FormControl,
 	UserEditableAvatar,
+	Avatar,
+	AvatarImage,
+	AvatarFallback,
 } from '~/components/ui';
 import { useGeoLocation } from '~/hooks';
 import { ChangePassword, ChangePasswordDialog } from './change-password-dialog';
 import { useMahasiswaUpdateForm } from '../hooks';
+
+export type MahasiswaEditSkeletonProps = {
+	isOwnProfile?: boolean;
+};
+
+export function MahasiswaEditSkeleton(props: MahasiswaEditSkeletonProps) {
+	return (
+		<div className="flex flex-col gap-2 overflow-auto sm:gap-4 sm:flex-row">
+			<div className="flex flex-row items-center w-full gap-4 sm:w-32 sm:flex-col">
+				<Skeleton className="h-auto mx-auto rounded-full w-28 aspect-square" />
+
+				{props.isOwnProfile && (
+					<div className="hidden w-full space-y-2 sm:block">
+						<Skeleton className="w-full h-8 rounded-md" />
+						<Skeleton className="w-full h-8 rounded-md" />
+					</div>
+				)}
+			</div>
+
+			<Skeleton className="w-full h-96" />
+		</div>
+	);
+}
 
 export type MahasiswaEditFormProps = {
 	onAvatarUpdate: (base64Str: string | null) => void | Promise<void>;
@@ -41,8 +67,14 @@ export function MahasiswaEditForm(props: MahasiswaEditFormProps) {
 		isOwnProfile,
 	} = props;
 
-	const { mahasiswaForm, handleEditing, handleOnDataUpdate, isEditing } =
-		useMahasiswaUpdateForm(mahasiswa, onDataUpdate);
+	const {
+		mahasiswaForm,
+		handleEditing,
+		handleOnDataUpdate,
+		isEditing,
+		isEditingImage,
+		setIsEditingImage,
+	} = useMahasiswaUpdateForm(mahasiswa, onDataUpdate);
 
 	const { userLocation, isSupported, isLoading } = useGeoLocation();
 	const currentUserLocation = React.useMemo(
@@ -62,8 +94,8 @@ export function MahasiswaEditForm(props: MahasiswaEditFormProps) {
 		[mahasiswa.latitude, mahasiswa.longitude, mahasiswa.nama],
 	);
 
-	const editFormActions = (
-		<div className="flex flex-col gap-2 grow">
+	const editFormActions = isEditingImage ? null : (
+		<div className="flex flex-col w-full gap-2 grow">
 			{isOwnProfile && (
 				<Button
 					id="edit-profile"
@@ -94,19 +126,27 @@ export function MahasiswaEditForm(props: MahasiswaEditFormProps) {
 	);
 
 	return (
-		<section className="flex flex-col gap-2 overflow-auto sm:gap-4 sm:flex-row animate-in">
-			<div className="flex flex-row items-center w-full gap-4 sm:w-32 sm:flex-col">
-				<UserEditableAvatar
-					onSubmit={onAvatarUpdate}
-					imageSrc={mahasiswa.foto_profile}
-					alt={mahasiswa.nama.slice(0, 2)}
-					className="h-auto mx-auto w-28 sm:w-full aspect-square"
-				/>
-
-				<div className="hidden sm:block">{editFormActions}</div>
+		<section className="flex flex-col h-1 gap-2 overflow-auto sm:gap-4 sm:flex-row animate-in grow">
+			<div className="flex flex-row items-center justify-center w-full gap-4 sm:w-32 sm:flex-col sm:justify-start">
+				{isOwnProfile ? (
+					<UserEditableAvatar
+						isEditing={isEditingImage}
+						setIsEditing={setIsEditingImage}
+						onSubmit={onAvatarUpdate}
+						imageSrc={mahasiswa.foto_profile}
+						alt={mahasiswa.nama.slice(0, 2)}
+						className="h-auto mx-auto w-28 sm:w-full aspect-square"
+					/>
+				) : (
+					<Avatar className="h-auto w-28 aspect-square">
+						<AvatarImage src={mahasiswa.foto_profile} />
+						<AvatarFallback>{mahasiswa.nama.slice(0, 2)}</AvatarFallback>
+					</Avatar>
+				)}
+				<div className="hidden w-full sm:block">{editFormActions}</div>
 			</div>
 
-			<ScrollArea className="w-full sm:max-h-96">
+			<ScrollArea className="w-full grow">
 				<Form {...mahasiswaForm}>
 					<form
 						onSubmit={mahasiswaForm.handleSubmit(handleOnDataUpdate)}

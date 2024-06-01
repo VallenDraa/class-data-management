@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {
 	DialogContent,
-	DialogErrorMessage,
+	ErrorMessageSection,
 	DialogHeader,
 	DialogTitle,
 	Skeleton,
@@ -116,7 +116,7 @@ export function AdminMahasiswaProfileDetail(
 							<AdminMahasiswaEditFormSkeleton />
 						)
 					) : (
-						<DialogErrorMessage
+						<ErrorMessageSection
 							refreshPage
 							message={error.message}
 							title="Gagal mengambil data mahasiswa"

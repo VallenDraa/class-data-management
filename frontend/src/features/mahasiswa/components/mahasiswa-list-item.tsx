@@ -8,7 +8,6 @@ import {
 	Dialog,
 	DialogTrigger,
 } from '~/components/ui';
-import { MahasiswaProfileDetail } from './mahasiswa-profile-detail';
 import { Link } from 'react-router-dom';
 import { useHandleMahasiswaPath } from '../hooks';
 
@@ -21,8 +20,7 @@ export function MahasiswaListItem(props: MahasiswaListItemProps) {
 	const { mahasiswa, isOwnProfile } = props;
 
 	const [isDetailOpen, setIsDetailOpen] = React.useState(false);
-	const { toMahasiswaDetailPath, navigateToMahasiswaMainPath } =
-		useHandleMahasiswaPath(mahasiswa.id);
+	const { toMahasiswaDetailPath } = useHandleMahasiswaPath(mahasiswa.id);
 
 	return (
 		<Dialog open={isDetailOpen} onOpenChange={setIsDetailOpen}>
@@ -47,14 +45,6 @@ export function MahasiswaListItem(props: MahasiswaListItemProps) {
 					</div>
 				</Link>
 			</DialogTrigger>
-
-			<MahasiswaProfileDetail
-				detailTitle={isOwnProfile ? 'Profil Anda' : `Profil ${mahasiswa.nama}`}
-				isOwnProfile={isOwnProfile}
-				mahasiswaId={mahasiswa.id}
-				isDetailOpen={isDetailOpen}
-				onDetailClose={navigateToMahasiswaMainPath}
-			/>
 		</Dialog>
 	);
 }
