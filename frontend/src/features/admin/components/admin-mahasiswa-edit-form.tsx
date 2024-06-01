@@ -31,9 +31,9 @@ import { useMahasiswaUpdateForm } from '~/features/mahasiswa/hooks';
 
 export function AdminMahasiswaEditFormSkeleton() {
 	return (
-		<section className="flex flex-col gap-2 overflow-auto sm:gap-4 sm:flex-row">
-			<div className="flex flex-row items-center w-full gap-4 sm:w-28 sm:flex-col">
-				<Skeleton className="h-auto mx-auto rounded-full w-28 sm:w-full aspect-square" />
+		<div className="flex flex-col gap-2 overflow-auto sm:gap-4 sm:flex-row">
+			<div className="flex flex-row items-center w-full gap-4 sm:w-32 sm:flex-col">
+				<Skeleton className="h-auto mx-auto rounded-full w-28 aspect-square" />
 
 				<div className="hidden w-full space-y-2 sm:block">
 					<Skeleton className="w-full h-8 rounded-md" />
@@ -42,7 +42,7 @@ export function AdminMahasiswaEditFormSkeleton() {
 			</div>
 
 			<Skeleton className="w-full h-96" />
-		</section>
+		</div>
 	);
 }
 
@@ -105,14 +105,13 @@ export function AdminMahasiswaEditForm(props: AdminMahasiswaEditFormProps) {
 	);
 
 	return (
-		<section className="flex flex-col h-full gap-2 sm:gap-4 sm:flex-row sm:h-96">
-			<div className="flex flex-row items-center w-full gap-4 sm:w-32 sm:flex-col">
-				<Avatar className="h-auto mx-auto w-28 sm:w-full aspect-square">
+		<section className="flex flex-col h-full gap-2 sm:gap-4 sm:flex-row">
+			<div className="flex flex-row items-center justify-center w-full gap-4 sm:w-32 sm:flex-col sm:justify-start">
+				<Avatar className="h-auto w-28 aspect-square">
 					<AvatarImage src={mahasiswa.foto_profile} />
 					<AvatarFallback>{mahasiswa.nama.slice(0, 2)}</AvatarFallback>
 				</Avatar>
-
-				<div className="hidden sm:block">{editFormActions}</div>
+				<div className="hidden w-full sm:block">{editFormActions}</div>
 			</div>
 
 			<ScrollArea className="w-full h-full grow">
@@ -317,7 +316,7 @@ export function AdminMahasiswaEditForm(props: AdminMahasiswaEditFormProps) {
 				</Form>
 			</ScrollArea>
 
-			<div className="block sm:hidden mb-[90px] sm:mb-0">{editFormActions}</div>
+			<div className="block sm:hidden">{editFormActions}</div>
 		</section>
 	);
 }

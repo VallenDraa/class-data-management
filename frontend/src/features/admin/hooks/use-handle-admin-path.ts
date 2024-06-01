@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
-export function useHandleAdminPath(adminId?: number) {
+export function useHandleAdminPath() {
 	const { search } = useLocation();
 	const navigate = useNavigate();
 
@@ -16,21 +16,12 @@ export function useHandleAdminPath(adminId?: number) {
 	);
 
 	const navigateToAdminDetailPath = React.useCallback(() => {
-		if (adminId === undefined) {
-			throw new Error('adminId is required to navigate to admin detail path');
-		}
-
-		navigate(`/admin/${adminId}${search}`);
-	}, [adminId, navigate, search]);
+		navigate(`/admin/self${search}`);
+	}, [navigate, search]);
 
 	const toAdminDetailPath = React.useCallback(() => {
-		if (adminId === undefined) {
-			console.trace('🚀 ~ toAdminDetailPath ~ adminId:', adminId);
-			throw new Error('adminId is required to navigate to admin detail path');
-		}
-
-		return { pathname: `/admin/${adminId}`, search };
-	}, [adminId, search]);
+		return { pathname: `/admin/self`, search };
+	}, [search]);
 
 	return {
 		navigateToAdminDetailPath,

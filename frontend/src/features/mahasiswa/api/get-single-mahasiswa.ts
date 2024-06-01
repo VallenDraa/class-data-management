@@ -8,7 +8,7 @@ export type GetSingleMahasiswaParams = {
 	id: number;
 };
 
-export const GetSingleMahasiswa = async ({ id }: GetSingleMahasiswaParams) => {
+export const getSingleMahasiswa = async ({ id }: GetSingleMahasiswaParams) => {
 	const validatedMahasiswaId = await idValidator.parseAsync(id);
 
 	const { data } = await api.get<Mahasiswa>(
@@ -31,6 +31,6 @@ export const useGetSingleMahasiswa = ({
 	return useQuery({
 		...props,
 		queryKey: [MAHASISWA_QUERY_KEY, id],
-		queryFn: () => GetSingleMahasiswa({ id }),
+		queryFn: () => getSingleMahasiswa({ id }),
 	});
 };

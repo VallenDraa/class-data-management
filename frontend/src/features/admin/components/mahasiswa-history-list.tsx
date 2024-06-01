@@ -76,11 +76,11 @@ export function MahasiswaHistoryList(props: MahasiswaHistoryListProps) {
 		<MahasiswaHistoryListSkeleton />
 	) : (
 		<ScrollArea
-			className="h-full overflow-y-auto grow sm:h-96"
+			className="h-full overflow-y-auto grow"
 			ref={mahasiswaHistoryListContainerRef}
 		>
 			<ul
-				className="relative w-full mb-24 sm:mb-0"
+				className="relative w-full"
 				style={{ height: `${rowVirtualizer.getTotalSize()}px` }}
 			>
 				{allRows.length > 0 ? (

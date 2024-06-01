@@ -50,7 +50,7 @@ export function MahasiswaList(props: MahasiswaListProps) {
 	const rowVirtualizer = useVirtualizer({
 		count: hasNextPage ? allRows.length + 1 : allRows.length,
 		getScrollElement: () => mahasiswaListContainerRef.current,
-		estimateSize: () => 75,
+		estimateSize: () => 77,
 	});
 
 	const [dataLoaderRef] = useIntersectionObserver({

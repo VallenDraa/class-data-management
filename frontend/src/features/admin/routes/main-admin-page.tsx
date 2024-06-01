@@ -3,13 +3,10 @@ import {
 	MahasiswaSearchBar,
 	MahasiswaList,
 } from '~/features/mahasiswa/components';
-import { useParams } from 'react-router-dom';
 import {
 	AdminMahasiswaListItem,
 	AdminSelfProfile,
 	CreateMahasiswaDialog,
-	AdminSeeMahasiwaDetailOnVisit,
-	SeeAdminDetailOnVisit,
 } from '../components';
 import { useHandleMahasiswaAdd } from '../hooks';
 import { useAppSearchQueryContext } from '~/providers';
@@ -19,16 +16,10 @@ export function MainAdminPage() {
 	const { activeKeyword, activeSort, setActiveKeyword, setActiveSort } =
 		useAppSearchQueryContext();
 
-	const { mahasiswaId } = useParams();
-	const { adminId } = useParams();
-
 	const { handleAddMahasiswa } = useHandleMahasiswaAdd();
 
 	return (
 		<HomePageLayout>
-			<SeeAdminDetailOnVisit adminId={Number(adminId)} />
-			<AdminSeeMahasiwaDetailOnVisit mahasiswaId={Number(mahasiswaId)} />
-
 			<HomeHeaderLayout isAdmin title="Admin">
 				<AdminSelfProfile />
 			</HomeHeaderLayout>
