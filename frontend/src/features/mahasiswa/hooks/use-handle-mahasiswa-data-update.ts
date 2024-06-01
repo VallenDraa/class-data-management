@@ -7,10 +7,10 @@ import {
 } from '~/utils/get-error-message';
 import { useUpdateMahasiswa } from '../api';
 import { MahasiswaUpdate } from '../types';
-import { useAppSearchQuery } from '~/providers';
+import { useAppSearchQueryContext } from '~/providers';
 
 export function useHandleMahasiswaDataUpdate(mahasiswaId: number) {
-	const { activeKeyword, activeSort } = useAppSearchQuery();
+	const { activeKeyword, activeSort } = useAppSearchQueryContext();
 
 	const { mutateAsync } = useUpdateMahasiswa(mahasiswaId, {
 		keyword: activeKeyword,

@@ -1,4 +1,4 @@
-import { HomePageLayout } from '~/components/layouts';
+import { HomePageLayout, HomeHeaderLayout } from '~/components/layouts/home';
 import {
 	MahasiswaSearchBar,
 	MahasiswaList,
@@ -12,13 +12,12 @@ import {
 	SeeAdminDetailOnVisit,
 } from '../components';
 import { useHandleMahasiswaAdd } from '../hooks';
-import { useAppSearchQuery } from '~/providers';
+import { useAppSearchQueryContext } from '~/providers';
 import { AdminMahasiswaDetailStatusContextProvider } from '../providers';
-import { ThemeChooser } from '~/components/ui';
 
 export function MainAdminPage() {
 	const { activeKeyword, activeSort, setActiveKeyword, setActiveSort } =
-		useAppSearchQuery();
+		useAppSearchQueryContext();
 
 	const { mahasiswaId } = useParams();
 	const { adminId } = useParams();
@@ -30,14 +29,9 @@ export function MainAdminPage() {
 			<SeeAdminDetailOnVisit adminId={Number(adminId)} />
 			<AdminSeeMahasiwaDetailOnVisit mahasiswaId={Number(mahasiswaId)} />
 
-			<header className="flex items-center justify-between px-1 py-4">
-				<h1 className="text-lg font-semibold leading-7">Admin</h1>
-
-				<div className="flex items-center justify-end gap-4">
-					<ThemeChooser />
-					<AdminSelfProfile />
-				</div>
-			</header>
+			<HomeHeaderLayout isAdmin title="Admin">
+				<AdminSelfProfile />
+			</HomeHeaderLayout>
 
 			<main className="relative flex flex-col gap-4 grow">
 				<MahasiswaSearchBar

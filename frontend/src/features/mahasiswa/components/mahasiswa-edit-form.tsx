@@ -66,6 +66,7 @@ export function MahasiswaEditForm(props: MahasiswaEditFormProps) {
 		<div className="flex flex-col gap-2 grow">
 			{isOwnProfile && (
 				<Button
+					id="edit-profile"
 					size="sm"
 					className="w-full"
 					onClick={handleEditing}
@@ -79,6 +80,7 @@ export function MahasiswaEditForm(props: MahasiswaEditFormProps) {
 			{isOwnProfile && (
 				<ChangePasswordDialog onSubmit={onPasswordUpdate}>
 					<Button
+						id="change-password"
 						size="sm"
 						variant="outline"
 						className="w-full"

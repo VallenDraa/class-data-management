@@ -69,6 +69,7 @@ export function MahasiswaList(props: MahasiswaListProps) {
 		<MahasiswaListSkeleton />
 	) : (
 		<ScrollArea
+			id="search-results"
 			className="h-1 overflow-y-auto grow"
 			ref={mahasiswaListContainerRef}
 		>

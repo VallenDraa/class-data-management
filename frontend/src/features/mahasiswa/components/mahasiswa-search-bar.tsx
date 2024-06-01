@@ -28,7 +28,7 @@ export function MahasiswaSearchBar(props: MahasiswaSearchBarProps) {
 	};
 
 	return (
-		<div className="px-1 space-y-2">
+		<div className="px-1 space-y-2" id="search-bar">
 			<div className="flex items-center justify-between">
 				<p className="text-sm font-medium leading-none">Cari mahasiswa</p>
 
@@ -38,7 +38,7 @@ export function MahasiswaSearchBar(props: MahasiswaSearchBarProps) {
 						onSortTypeChange(selectedSort as MahasiswaSearchSortType)
 					}
 				>
-					<SelectTrigger className="w-32">
+					<SelectTrigger id="search-sort-type" className="w-32">
 						<SelectValue placeholder="Urutkan" />
 					</SelectTrigger>
 					<SelectContent>

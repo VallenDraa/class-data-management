@@ -1,4 +1,4 @@
-import { HomePageLayout } from '~/components/layouts';
+import { HomePageLayout } from '~/components/layouts/home';
 import {
 	MahasiswaSelfProfile,
 	MahasiswaSearchBar,
@@ -7,16 +7,17 @@ import {
 	MahasiswaListItem,
 } from '../components';
 import { useParams } from 'react-router-dom';
-import { Dialog, ThemeChooser } from '~/components/ui';
+import { Dialog } from '~/components/ui';
 import { useGetMahasiswaSelf } from '../api';
-import { useAppSearchQuery } from '~/providers';
+import { useAppSearchQueryContext } from '~/providers';
+import { HomeHeaderLayout } from '~/components/layouts/home';
 
 export function MainMahasiswaPage() {
 	const { mahasiswaId } = useParams();
 	const { data: mahasiswaSelf } = useGetMahasiswaSelf();
 
 	const { activeKeyword, activeSort, setActiveKeyword, setActiveSort } =
-		useAppSearchQuery();
+		useAppSearchQueryContext();
 
 	return (
 		<HomePageLayout>
@@ -28,14 +29,9 @@ export function MainMahasiswaPage() {
 				/>
 			</Dialog>
 
-			<header className="flex items-center justify-between px-1 py-4">
-				<h1 className="text-lg font-semibold leading-7">Kelass</h1>
-
-				<div className="flex items-center justify-end gap-4">
-					<ThemeChooser />
-					<MahasiswaSelfProfile />
-				</div>
-			</header>
+			<HomeHeaderLayout isAdmin={false} title="Kelass">
+				<MahasiswaSelfProfile />
+			</HomeHeaderLayout>
 
 			<main className="flex flex-col gap-4 grow">
 				<MahasiswaSearchBar

@@ -2,14 +2,14 @@ import * as React from 'react';
 import { toast } from 'sonner';
 import { useAddMahasiswa } from '~/features/admin/api';
 import { MahasiswaInsert } from '~/features/mahasiswa/types';
-import { useAppSearchQuery } from '~/providers';
+import { useAppSearchQueryContext } from '~/providers';
 import {
 	DEFAULT_ERROR_MESSAGE,
 	getErrorMessage,
 } from '~/utils/get-error-message';
 
 export function useHandleMahasiswaAdd() {
-	const { activeKeyword, activeSort } = useAppSearchQuery();
+	const { activeKeyword, activeSort } = useAppSearchQueryContext();
 
 	const { mutateAsync } = useAddMahasiswa({
 		keyword: activeKeyword,

@@ -5,6 +5,7 @@ import { getFileBase64 } from '~/features/mahasiswa/api/update-mahasiswa-avatar'
 import { toast } from 'sonner';
 import { Button } from './button';
 import { cn } from '~/utils/shadcn';
+import { getErrorMessage } from '~/utils/get-error-message';
 
 export type UserEditableAvatarProps = {
 	imageSrc: string;
@@ -28,7 +29,6 @@ export function UserEditableAvatar(props: UserEditableAvatarProps) {
 		}
 
 		const isSupported = file.type === 'image/png' || file.type === 'image/jpeg';
-
 		if (!isSupported) {
 			toast.error('File yang anda upload tidak disupport!');
 			return;
@@ -47,7 +47,7 @@ export function UserEditableAvatar(props: UserEditableAvatarProps) {
 		try {
 			await onSubmit(uploadedImage);
 		} catch (error) {
-			console.log(error);
+			toast.error(getErrorMessage(error));
 			setUploadedImage(null);
 		} finally {
 			setIsEditing(false);
@@ -55,7 +55,7 @@ export function UserEditableAvatar(props: UserEditableAvatarProps) {
 	}
 
 	return (
-		<div className="flex flex-col items-center w-full">
+		<div id="change-avatar" className="flex flex-col items-center w-full">
 			<div className={cn('relative', className)}>
 				<label
 					htmlFor={id}

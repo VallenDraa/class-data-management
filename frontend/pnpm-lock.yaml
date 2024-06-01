@@ -83,6 +83,9 @@ dependencies:
   react-hook-form:
     specifier: ^7.51.5
     version: 7.51.5(react@18.3.1)
+  react-joyride:
+    specifier: ^2.8.2
+    version: 2.8.2(@types/react@18.3.2)(react-dom@18.3.1)(react@18.3.1)
   react-leaflet:
     specifier: ^4.2.1
     version: 4.2.1(leaflet@1.9.4)(react-dom@18.3.1)(react@18.3.1)
@@ -441,6 +444,14 @@ packages:
 
   /@floating-ui/utils@0.2.2:
     resolution: {integrity: sha512-J4yDIIthosAsRZ5CPYP/jQvUAQtlZTTD/4suA08/FEnlxqW3sKS9iAhgsa9VYLZ6vDHn/ixJgIqRQPotoBjxIw==}
+    dev: false
+
+  /@gilbarbara/deep-equal@0.1.2:
+    resolution: {integrity: sha512-jk+qzItoEb0D0xSSmrKDDzf9sheQj/BAPxlgNxgmOaA3mxpUa6ndJLYGZKsJnIVEQSD8zcTbyILz7I0HcnBCRA==}
+    dev: false
+
+  /@gilbarbara/deep-equal@0.3.1:
+    resolution: {integrity: sha512-I7xWjLs2YSVMc5gGx1Z3ZG1lgFpITPndpi8Ku55GeEIKpACCPQNS/OTqQbxgTCfq0Ncvcc+CrFov96itVh6Qvw==}
     dev: false
 
   /@hookform/resolvers@3.4.2(react-hook-form@7.51.5):
@@ -2188,9 +2199,18 @@ packages:
       ms: 2.1.2
     dev: true
 
+  /deep-diff@1.0.2:
+    resolution: {integrity: sha512-aWS3UIVH+NPGCD1kki+DCU9Dua032iSsO43LqQpcs4R3+dVv7tX0qBGjiVHJHjplsoUM2XRO/KB92glqc68awg==}
+    dev: false
+
   /deep-is@0.1.4:
     resolution: {integrity: sha512-oIPzksmTg4/MriiaYGO+okXDT7ztn/w3Eptv/+gSIdMdKsJo0u4CfYNFJPy+4SKMuCqGw2wxnA+URMg3t8a/bQ==}
     dev: true
+
+  /deepmerge@4.3.1:
+    resolution: {integrity: sha512-3sUqbMEc77XqpdNO7FRyRog+eW3ph+GYCbj+rK+uYyRMuwsVy0rMiVtPn+QJlKFvWP/1PYpapqYn0Me2knFn+A==}
+    engines: {node: '>=0.10.0'}
+    dev: false
 
   /delayed-stream@1.0.0:
     resolution: {integrity: sha512-ZySD7Nf91aLB0RxL4KGrKHBXl7Eds1DAmEdcoVawXnLD7SDhpNgtuII2aAkg7a7QS41jxPSZ17p4VdGnMHk3MQ==}
@@ -2660,6 +2680,14 @@ packages:
     dependencies:
       is-extglob: 2.1.1
 
+  /is-lite@0.8.2:
+    resolution: {integrity: sha512-JZfH47qTsslwaAsqbMI3Q6HNNjUuq6Cmzzww50TdP5Esb6e1y2sK2UAaZZuzfAzpoI2AkxoPQapZdlDuP6Vlsw==}
+    dev: false
+
+  /is-lite@1.2.1:
+    resolution: {integrity: sha512-pgF+L5bxC+10hLBgf6R2P4ZZUBOQIIacbdo8YvuCP8/JvsWxG7aZ9p10DYuLtifFci4l3VITphhMlMV4Y+urPw==}
+    dev: false
+
   /is-number@7.0.0:
     resolution: {integrity: sha512-41Cifkg6e8TylSpdtTpeLVMqvSBEVzTttHvERD741+pnZ8ANv0004MRL43QKPDlK9cGvNp6NZWZUBlbGXYxxng==}
     engines: {node: '>=0.12.0'}
@@ -2994,6 +3022,11 @@ packages:
     resolution: {integrity: sha512-saLsH7WeYYPiD25LDuLRRY/i+6HaPYr6G1OUlN39otzkSTxKnubR9RTxS3/Kk50s1g2JTgFwWQDQyplC5/SHZg==}
     engines: {node: '>= 6'}
 
+  /popper.js@1.16.1:
+    resolution: {integrity: sha512-Wb4p1J4zyFTbM+u6WuO4XstYx4Ky9Cewe4DWrel7B0w6VVICvPwdOpotjzcf6eD8TsckVnIMNONQyPIUFOUbCQ==}
+    deprecated: You can find the new Popper v2 at @popperjs/core, this package is dedicated to the legacy v1
+    dev: false
+
   /postcss-import@15.1.0(postcss@8.4.38):
     resolution: {integrity: sha512-hpr+J05B2FVYUAXHeK1YyI267J/dDDhMU6B6civm8hSY1jYJnBXxzKDKDswzJmtLHryrjhnDjqqp/49t8FALew==}
     engines: {node: '>=14.0.0'}
@@ -3062,6 +3095,14 @@ packages:
     engines: {node: '>= 0.8.0'}
     dev: true
 
+  /prop-types@15.8.1:
+    resolution: {integrity: sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==}
+    dependencies:
+      loose-envify: 1.4.0
+      object-assign: 4.1.1
+      react-is: 16.13.1
+    dev: false
+
   /proxy-from-env@1.1.0:
     resolution: {integrity: sha512-D+zkORCbA9f1tdWRK0RaCR3GPv50cMxcrz4X8k5LTSUD1Dkw47mKJEZQNunItRTkWwgtaUSo1RVFRIG9ZXiFYg==}
     dev: false
@@ -3094,6 +3135,21 @@ packages:
       scheduler: 0.23.2
     dev: false
 
+  /react-floater@0.7.9(react-dom@18.3.1)(react@18.3.1):
+    resolution: {integrity: sha512-NXqyp9o8FAXOATOEo0ZpyaQ2KPb4cmPMXGWkx377QtJkIXHlHRAGer7ai0r0C1kG5gf+KJ6Gy+gdNIiosvSicg==}
+    peerDependencies:
+      react: 15 - 18
+      react-dom: 15 - 18
+    dependencies:
+      deepmerge: 4.3.1
+      is-lite: 0.8.2
+      popper.js: 1.16.1
+      prop-types: 15.8.1
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
+      tree-changes: 0.9.3
+    dev: false
+
   /react-hook-form@7.51.5(react@18.3.1):
     resolution: {integrity: sha512-J2ILT5gWx1XUIJRETiA7M19iXHlG74+6O3KApzvqB/w8S5NQR7AbU8HVZrMALdmDgWpRPYiZJl0zx8Z4L2mP6Q==}
     engines: {node: '>=12.22.0'}
@@ -3101,6 +3157,43 @@ packages:
       react: ^16.8.0 || ^17 || ^18
     dependencies:
       react: 18.3.1
+    dev: false
+
+  /react-innertext@1.1.5(@types/react@18.3.2)(react@18.3.1):
+    resolution: {integrity: sha512-PWAqdqhxhHIv80dT9znP2KvS+hfkbRovFp4zFYHFFlOoQLRiawIic81gKb3U1wEyJZgMwgs3JoLtwryASRWP3Q==}
+    peerDependencies:
+      '@types/react': '>=0.0.0 <=99'
+      react: '>=0.0.0 <=99'
+    dependencies:
+      '@types/react': 18.3.2
+      react: 18.3.1
+    dev: false
+
+  /react-is@16.13.1:
+    resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
+    dev: false
+
+  /react-joyride@2.8.2(@types/react@18.3.2)(react-dom@18.3.1)(react@18.3.1):
+    resolution: {integrity: sha512-2QY8HB1G0I2OT0PKMUz7gg2HAjdkG2Bqi13r0Bb1V16PAwfb9khn4wWBTOJsGsjulbAWiQ3/0YrgNUHGFmuifw==}
+    peerDependencies:
+      react: 15 - 18
+      react-dom: 15 - 18
+    dependencies:
+      '@gilbarbara/deep-equal': 0.3.1
+      deep-diff: 1.0.2
+      deepmerge: 4.3.1
+      is-lite: 1.2.1
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
+      react-floater: 0.7.9(react-dom@18.3.1)(react@18.3.1)
+      react-innertext: 1.1.5(@types/react@18.3.2)(react@18.3.1)
+      react-is: 16.13.1
+      scroll: 3.0.1
+      scrollparent: 2.1.0
+      tree-changes: 0.11.2
+      type-fest: 4.18.3
+    transitivePeerDependencies:
+      - '@types/react'
     dev: false
 
   /react-leaflet@4.2.1(leaflet@1.9.4)(react-dom@18.3.1)(react@18.3.1):
@@ -3276,6 +3369,14 @@ packages:
     resolution: {integrity: sha512-UOShsPwz7NrMUqhR6t0hWjFduvOzbtv7toDH1/hIrfRNIDBnnBWd0CwJTGvTpngVlmwGCdP9/Zl/tVrDqcuYzQ==}
     dependencies:
       loose-envify: 1.4.0
+    dev: false
+
+  /scroll@3.0.1:
+    resolution: {integrity: sha512-pz7y517OVls1maEzlirKO5nPYle9AXsFzTMNJrRGmT951mzpIBy7sNHOg5o/0MQd/NqliCiWnAi0kZneMPFLcg==}
+    dev: false
+
+  /scrollparent@2.1.0:
+    resolution: {integrity: sha512-bnnvJL28/Rtz/kz2+4wpBjHzWoEzXhVg/TE8BeVGJHUqE8THNIRnDxDWMktwM+qahvlRdvlLdsQfYe+cuqfZeA==}
     dev: false
 
   /semver@7.6.2:
@@ -3465,6 +3566,20 @@ packages:
     engines: {node: '>=6'}
     dev: true
 
+  /tree-changes@0.11.2:
+    resolution: {integrity: sha512-4gXlUthrl+RabZw6lLvcCDl6KfJOCmrC16BC5CRdut1EAH509Omgg0BfKLY+ViRlzrvYOTWR0FMS2SQTwzumrw==}
+    dependencies:
+      '@gilbarbara/deep-equal': 0.3.1
+      is-lite: 1.2.1
+    dev: false
+
+  /tree-changes@0.9.3:
+    resolution: {integrity: sha512-vvvS+O6kEeGRzMglTKbc19ltLWNtmNt1cpBoSYLj/iEcPVvpJasemKOlxBrmZaCtDJoF+4bwv3m01UKYi8mukQ==}
+    dependencies:
+      '@gilbarbara/deep-equal': 0.1.2
+      is-lite: 0.8.2
+    dev: false
+
   /ts-api-utils@1.3.0(typescript@5.4.5):
     resolution: {integrity: sha512-UQMIo7pb8WRomKR1/+MFVLTroIvDVtMX3K6OUir8ynLyzB8Jeriont2bTAtmNPa1ekAgN7YPDyf6V+ygrdU+eQ==}
     engines: {node: '>=16'}
@@ -3497,6 +3612,11 @@ packages:
     resolution: {integrity: sha512-tLq3bSNx+xSpwvAJnzrK0Ep5CLNWjvFTOp71URMaAEWBfRb9nnJiBoUe0tF8bI4ZFO3omgBR6NvnbzVUT3Ly4g==}
     engines: {node: '>=14.16'}
     dev: true
+
+  /type-fest@4.18.3:
+    resolution: {integrity: sha512-Q08/0IrpvM+NMY9PA2rti9Jb+JejTddwmwmVQGskAlhtcrw1wsRzoR6ode6mR+OAabNa75w/dxedSUY2mlphaQ==}
+    engines: {node: '>=16'}
+    dev: false
 
   /typescript@5.4.5:
     resolution: {integrity: sha512-vcI4UpRgg81oIRUFwR0WSIHKt11nJ7SAVlYNIu+QpqeyXP+gpQJy/Z4+F0aGxSE4MqwjyXvW/TzgkLAx2AGHwQ==}
