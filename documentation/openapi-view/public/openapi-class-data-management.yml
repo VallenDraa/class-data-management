@@ -274,7 +274,7 @@ paths:
                         type: string
               example:
                 success:
-                  message: "Data mahasiswa berhasil ditambahkan"
+                message: "Data mahasiswa berhasil ditambahkan!"
         400:
           description: BAD REQUEST
           content:
@@ -872,7 +872,59 @@ paths:
                   user_role: "string"
                   required_role: "string"
                   message: "Forbidden"
-
+  /mahasiswa/register:
+    post:
+      tags:
+        - Data mahasiswa
+      summary: Memerlukan Admin authorization
+      requestBody:
+        description: Data mahasiswa untuk menambahkan mahasiswa baru
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                nim:
+                  type: string
+                nama:
+                  type: string
+                tanggal_lahir:
+                  type: string
+                  format: date
+                alamat:
+                  type: string
+      responses:
+        201:
+          description: CREATED
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: object
+                    properties:
+                      message:
+                        type: string
+              example:
+                success:
+                message: "Data mahasiswa berhasil ditambahkan!"
+        400:
+          description: BAD REQUEST
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: object
+                    properties:
+                      message:
+                        type: string
+              example:
+                errors:
+                  message: "Data tidak valid"
   /admin:
     get:
       tags:
