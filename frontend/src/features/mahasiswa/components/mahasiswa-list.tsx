@@ -65,46 +65,49 @@ export function MahasiswaList(props: MahasiswaListProps) {
 		},
 	});
 
-	return isLoading ? (
-		<MahasiswaListSkeleton />
-	) : (
-		<ScrollArea
-			id="search-results"
-			className="h-1 overflow-y-auto grow"
-			ref={mahasiswaListContainerRef}
-		>
-			<ul
-				className="relative w-full"
-				style={{ height: `${rowVirtualizer.getTotalSize()}px` }}
-			>
-				{allRows.length > 0 ? (
-					rowVirtualizer.getVirtualItems().map(virtualItem => {
-						const isLoaderRow = virtualItem.index > allRows.length - 1;
-						const mahasiswa = allRows[virtualItem.index];
+	return (
+		<div id="search-results" className="flex flex-col h-full grow">
+			{isLoading ? (
+				<MahasiswaListSkeleton />
+			) : (
+				<ScrollArea
+					className="h-1 overflow-y-auto grow"
+					ref={mahasiswaListContainerRef}
+				>
+					<ul
+						className="relative w-full"
+						style={{ height: `${rowVirtualizer.getTotalSize()}px` }}
+					>
+						{allRows.length > 0 ? (
+							rowVirtualizer.getVirtualItems().map(virtualItem => {
+								const isLoaderRow = virtualItem.index > allRows.length - 1;
+								const mahasiswa = allRows[virtualItem.index];
 
-						return isLoaderRow ? (
-							<li
-								ref={dataLoaderRef}
-								key={virtualItem.key}
-								className="absolute inset-x-1"
-								style={{
-									height: `${virtualItem.size}px`,
-									transform: `translateY(${virtualItem.start}px)`,
-								}}
-							>
-								<Skeleton className="w-full h-full rounded-md" />
-							</li>
+								return isLoaderRow ? (
+									<li
+										ref={dataLoaderRef}
+										key={virtualItem.key}
+										className="absolute inset-x-1"
+										style={{
+											height: `${virtualItem.size}px`,
+											transform: `translateY(${virtualItem.start}px)`,
+										}}
+									>
+										<Skeleton className="w-full h-full rounded-md" />
+									</li>
+								) : (
+									children(mahasiswa, virtualItem, allRows)
+								);
+							})
 						) : (
-							children(mahasiswa, virtualItem, allRows)
-						);
-					})
-				) : (
-					<ErrorMessageSection
-						title="Tidak Ada Mahasiswa"
-						message="Belum ada data mahasiswa, silahkan buat baru."
-					/>
-				)}
-			</ul>
-		</ScrollArea>
+							<ErrorMessageSection
+								title="Tidak Ada Mahasiswa"
+								message="Belum ada data mahasiswa, silahkan buat baru."
+							/>
+						)}
+					</ul>
+				</ScrollArea>
+			)}
+		</div>
 	);
 }
