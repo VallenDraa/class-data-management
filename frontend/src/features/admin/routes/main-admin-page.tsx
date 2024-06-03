@@ -57,7 +57,7 @@ export function MainAdminPage() {
 							>
 								<TourAdminMahasiswaListItem
 									onClick={() => {
-										if (isOnEditAdminMahasiswaTour) {
+										if (isOnMahasiswaDeleteTour) {
 											openMahasiswaDetailProfileDeleteStep();
 										}
 

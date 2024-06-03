@@ -97,7 +97,7 @@ export function useDeleteMahasiswaTour() {
 			return;
 		}
 
-		if (tourState.stepIndex > 0) {
+		if (tourState.stepIndex > 1) {
 			return;
 		}
 
