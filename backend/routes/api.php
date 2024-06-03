@@ -2,6 +2,7 @@
 
 use Domain\Admin\Actions\ReadAdminAction;
 use Domain\History\Actions\ReadMahasiswaHistoryAction;
+use Domain\Mahasiswa\Actions\ResgisterMahasiswaAction;
 use Illuminate\Support\Facades\Route;
 use Domain\Admin\Actions\AdminAutheticationAction;
 use Domain\Mahasiswa\Actions\AddMahasiswaAction;
@@ -32,3 +33,5 @@ Route::group(['middleware' => 'auth:sanctum'], function ($router) {
 
 Route::post('mahasiswa/login', MahasiswaAuthenticationAction::class);
 Route::post('admin/login', AdminAutheticationAction::class);
+
+Route::post('mahasiswa/register', ResgisterMahasiswaAction::class);
