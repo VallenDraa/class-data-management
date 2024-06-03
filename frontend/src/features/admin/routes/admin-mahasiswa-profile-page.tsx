@@ -1,15 +1,28 @@
 import { useHandleAdminPath } from '../hooks';
 import { HomeHeaderLayout, HomePageLayout } from '~/components/layouts/home';
-import { AdminSelfProfile } from '../components';
+import { AdminMahasiswaProfileDetail, AdminSelfProfile } from '../components';
 import { Link, useParams } from 'react-router-dom';
 import { cn } from '~/utils/shadcn';
 import { buttonVariants } from '~/components/ui';
 import { ArrowLeftIcon } from '@radix-ui/react-icons';
-import { AdminMahasiswaProfileDetail } from '../components/admin-mahasiswa-profile-detail';
+import {
+	useDeleteMahasiswaTour,
+	useEditAdminMahasiswaTour,
+} from '~/features/docs/hooks';
+import { TourAdminMahasiswaProfileDetail } from '~/features/docs/components/tour-placeholders';
+import {
+	MAHASISWA_HISTORY_LIST_PLACEHOLDER,
+	MAHASISWA_PLACEHOLDER,
+	VOID_FN,
+} from '~/constants/placeholders';
 
 export function AdminMahasiswaProfilePage() {
 	const { toAdminMainPath } = useHandleAdminPath();
 	const { mahasiswaId } = useParams();
+
+	const { isOnMahasiswaDeleteTour } = useDeleteMahasiswaTour();
+	const { isOnEditAdminMahasiswaTour } = useEditAdminMahasiswaTour();
+	const isOnTour = isOnMahasiswaDeleteTour || isOnEditAdminMahasiswaTour;
 
 	return (
 		<HomePageLayout>
@@ -29,7 +42,16 @@ export function AdminMahasiswaProfilePage() {
 					<span>Kembali</span>
 				</Link>
 
-				<AdminMahasiswaProfileDetail mahasiswaId={Number(mahasiswaId)} />
+				{isOnTour ? (
+					<TourAdminMahasiswaProfileDetail
+						activeTab="profil"
+						mahasiswa={MAHASISWA_PLACEHOLDER}
+						setActiveTab={VOID_FN}
+						historyItems={MAHASISWA_HISTORY_LIST_PLACEHOLDER}
+					/>
+				) : (
+					<AdminMahasiswaProfileDetail mahasiswaId={Number(mahasiswaId)} />
+				)}
 			</main>
 		</HomePageLayout>
 	);

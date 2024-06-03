@@ -54,7 +54,10 @@ export function AdminEditForm(props: AdminEditFormProps) {
 
 	return (
 		<section className="flex flex-col gap-2 overflow-auto sm:gap-4 sm:flex-row animate-in">
-			<div className="flex flex-row items-center w-full gap-4 sm:w-32 sm:flex-col">
+			<div
+				id="change-avatar"
+				className="flex flex-row items-center w-full gap-4 sm:w-32 sm:flex-col"
+			>
 				<Avatar className="h-auto mx-auto w-28 aspect-square">
 					<AvatarImage src={admin.foto_profile} />
 					<AvatarFallback>{admin.nama.slice(0, 2)}</AvatarFallback>

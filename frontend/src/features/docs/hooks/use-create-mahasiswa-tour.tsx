@@ -7,63 +7,50 @@ import { useLocation, useNavigate } from 'react-router-dom';
 const tourSteps: Step[] = [
 	{
 		locale: BUTTON_LOCALE,
-		target: '#user-profile',
+		target: '#create-mahasiswa-button',
 		spotlightClicks: true,
 		disableBeacon: true,
 		disableOverlayClose: true,
 		hideFooter: true,
-		hideCloseButton: true,
 		hideBackButton: true,
 		content:
-			'Untuk mengedit profile, anda dapat menekan foto profile milik anda.',
+			'Untuk menambahkan data mahasiswa baru, anda dapat menekan tombol "+" di pojok kanan bawah layar.',
 	},
 	{
 		locale: BUTTON_LOCALE,
-		target: '#profile-dropdown-button',
-		spotlightClicks: true,
-		disableBeacon: true,
+		target: '#create-mahasiswa-form-fields',
 		disableOverlayClose: true,
-		hideFooter: true,
-		hideCloseButton: true,
-		hideBackButton: true,
-		content: 'Kemudian tekan profile.',
-	},
 
+		content:
+			'Kemudian anda dapat mengisi form ini dengan data-data mahasiswa yang ingin ditambahkan.',
+	},
 	{
 		locale: BUTTON_LOCALE,
-		target: '#change-avatar',
+		target: '#save-mahasiswa-button',
 		disableBeacon: true,
 		disableOverlayClose: true,
 		hideCloseButton: true,
 		hideBackButton: true,
 		content:
-			'Untuk mengubah foto, anda dapat menekan foto profile anda sekarang.',
+			'Lalu untuk menyimpan data mahasiswa, anda dapat menekan tombol "Simpan".',
 	},
 	{
 		locale: BUTTON_LOCALE,
-		target: '#edit-profile',
-		content:
-			'Lalu untuk mengedit data profil, anda dapat menekan tombol "Edit Profil".',
-	},
-	{
-		locale: BUTTON_LOCALE,
-		target: '#change-password',
-		content:
-			'Terakhir, password bisa diubah dengan menekan tombol "Ganti Password".',
-	},
-	{
-		locale: BUTTON_LOCALE,
-		target: '#edit-profile',
+		target: '#save-mahasiswa-button',
+		disableBeacon: true,
+		disableOverlayClose: true,
+		hideCloseButton: true,
+		hideBackButton: true,
 		content: 'Itu saja, Selamat mencoba!',
 	},
 ];
 
-export function useEditMahasiswaSelfTour() {
+export function useCreateMahasiswaTour() {
 	const { tourState, setTourState } = useTourContext();
 	const navigate = useNavigate();
 	const { pathname } = useLocation();
 
-	const showEditProfileTour = React.useCallback(
+	const showCreateMahasiswaTour = React.useCallback(
 		(initialPathname: string) => {
 			if (pathname !== initialPathname) {
 				navigate(initialPathname);
@@ -72,7 +59,7 @@ export function useEditMahasiswaSelfTour() {
 			setTimeout(() => {
 				setTourState(prev => ({
 					...prev,
-					tourType: 'edit-self-mahasiswa',
+					tourType: 'create-mahasiswa',
 					run: true,
 					tourActive: true,
 					stepIndex: 0,
@@ -83,7 +70,7 @@ export function useEditMahasiswaSelfTour() {
 		[setTourState, navigate, pathname],
 	);
 
-	const openProfileDropdownStep = React.useCallback(() => {
+	const openCreateMahasiswaDialogStep = React.useCallback(() => {
 		if (!tourState.tourActive) {
 			return;
 		}
@@ -99,17 +86,19 @@ export function useEditMahasiswaSelfTour() {
 		}, 100);
 	}, [setTourState, tourState.tourActive, tourState.stepIndex]);
 
-	const openProfileStep = React.useCallback(() => {
-		if (!tourState.tourActive) {
-			return;
-		}
+	const enableOutsideClickForCreateDialog = !(
+		tourState.tourActive && tourState.tourType === 'create-mahasiswa'
+	);
 
-		setTourState(prev => ({ ...prev, run: false }));
+	const forceOpenCreateMahasiswaDialogStep =
+		tourState.tourActive &&
+		tourState.tourType === 'create-mahasiswa' &&
+		tourState.stepIndex >= 1;
 
-		setTimeout(() => {
-			setTourState(prev => ({ ...prev, run: true, stepIndex: 2 }));
-		}, 100);
-	}, [setTourState, tourState.tourActive]);
-
-	return { showEditProfileTour, openProfileStep, openProfileDropdownStep };
+	return {
+		showCreateMahasiswaTour,
+		openCreateMahasiswaDialogStep,
+		enableOutsideClickForCreateDialog,
+		forceOpenCreateMahasiswaDialogStep,
+	};
 }

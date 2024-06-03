@@ -1,11 +1,13 @@
 import * as React from 'react';
 import { useTourContext } from '~/providers';
 import { BUTTON_LOCALE } from '../constants';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const tourSteps = [
 	{
 		locale: BUTTON_LOCALE,
 		target: '#search-bar',
+		disableBeacon: true,
 		content:
 			'Disini anda dapat mencari mahasiswa menggunakan NIM atau Nama Mahasiswa.',
 	},
@@ -30,17 +32,28 @@ const tourSteps = [
 
 export function useSearchMahasiswaTour() {
 	const { setTourState } = useTourContext();
+	const navigate = useNavigate();
+	const { pathname } = useLocation();
 
-	const showSearchMahasiswa = React.useCallback(() => {
-		setTourState(prev => ({
-			...prev,
-			run: true,
-			tourType: 'search-mahasiswa',
-			tourActive: true,
-			stepIndex: 0,
-			steps: tourSteps,
-		}));
-	}, [setTourState]);
+	const showSearchMahasiswa = React.useCallback(
+		(initialPathname: string) => {
+			if (pathname !== initialPathname) {
+				navigate(initialPathname);
+			}
+
+			setTimeout(() => {
+				setTourState(prev => ({
+					...prev,
+					run: true,
+					tourType: 'search-mahasiswa',
+					tourActive: true,
+					stepIndex: 0,
+					steps: tourSteps,
+				}));
+			}, 100);
+		},
+		[setTourState, navigate, pathname],
+	);
 
 	return { showSearchMahasiswa };
 }

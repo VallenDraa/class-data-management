@@ -21,6 +21,7 @@ import {
 import { addMahasiswaValidator } from '../api';
 import { MahasiswaInsert } from '~/features/mahasiswa/types';
 import { PlusIcon } from '@radix-ui/react-icons';
+import { useCreateMahasiswaTour } from '~/features/docs/hooks';
 
 export type CreateMahasiswaDialogProps = {
 	onCreate: (data: MahasiswaInsert) => void | Promise<void>;
@@ -45,16 +46,31 @@ export function CreateMahasiswaDialog(props: CreateMahasiswaDialogProps) {
 		setIsFormOpened(false);
 	};
 
+	const {
+		openCreateMahasiswaDialogStep,
+		enableOutsideClickForCreateDialog,
+		forceOpenCreateMahasiswaDialogStep,
+	} = useCreateMahasiswaTour();
+
 	return (
-		<Dialog open={isFormOpened} onOpenChange={setIsFormOpened}>
+		<Dialog
+			modal={enableOutsideClickForCreateDialog}
+			open={forceOpenCreateMahasiswaDialogStep || isFormOpened}
+			onOpenChange={setIsFormOpened}
+		>
 			<DialogTrigger asChild>
-				<Button size="icon" className="rounded-full">
+				<Button
+					id="create-mahasiswa-button"
+					size="icon"
+					className="rounded-full"
+					onClick={openCreateMahasiswaDialogStep}
+				>
 					<PlusIcon />
 					<span className="sr-only">Buat mahasiswa baru</span>
 				</Button>
 			</DialogTrigger>
 
-			<DialogContent className="flex flex-col h-screen sm:h-auto">
+			<DialogContent className="flex flex-col">
 				<DialogHeader>
 					<DialogTitle>Buat Mahasiswa</DialogTitle>
 				</DialogHeader>
@@ -63,6 +79,7 @@ export function CreateMahasiswaDialog(props: CreateMahasiswaDialogProps) {
 					<ScrollArea className="w-full sm:max-h-96 grow">
 						<Form {...form}>
 							<form
+								id="create-mahasiswa-form-fields"
 								onSubmit={form.handleSubmit(handleSubmit)}
 								className="w-full px-1 space-y-4"
 							>
@@ -147,6 +164,7 @@ export function CreateMahasiswaDialog(props: CreateMahasiswaDialogProps) {
 								/>
 
 								<Button
+									id="save-mahasiswa-button"
 									disabled={form.formState.isSubmitting}
 									type="submit"
 									size="sm"

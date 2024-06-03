@@ -3,7 +3,13 @@ import { useTheme } from 'next-themes';
 import * as React from 'react';
 import Joyride, { CallBackProps, Step } from 'react-joyride';
 
-export type TourType = 'search-mahasiswa' | 'edit-self-mahasiswa' | null;
+export type TourType =
+	| 'search-mahasiswa'
+	| 'edit-self-mahasiswa'
+	| 'edit-admin-mahasiswa'
+	| 'create-mahasiswa'
+	| 'delete-mahasiswa'
+	| null;
 
 export type TourState = {
 	run: boolean;
@@ -13,6 +19,7 @@ export type TourState = {
 	tourActive: boolean;
 	next?(state: CallBackProps): void;
 	previous?(state: CallBackProps): void;
+	onClose?(state: CallBackProps): void;
 };
 
 export const defaultTourValue: TourState = {
@@ -23,6 +30,7 @@ export const defaultTourValue: TourState = {
 	tourActive: false,
 	next: undefined,
 	previous: undefined,
+	onClose: undefined,
 };
 
 export const TourContext = React.createContext<{
@@ -49,11 +57,8 @@ export function TourContextProvider({
 
 	const handleTourCallback = React.useCallback(
 		(state: CallBackProps) => {
-			if (
-				state.action === 'skip' ||
-				state.action === 'close' ||
-				state.action === 'stop'
-			) {
+			if (state.action === 'skip') {
+				tourState.onClose?.(state);
 				setTourState(defaultTourValue);
 				return;
 			}
@@ -65,6 +70,7 @@ export function TourContextProvider({
 				}
 
 				if (tourState.stepIndex === tourState.steps.length - 1) {
+					tourState.onClose?.(state);
 					setTourState(defaultTourValue);
 					return;
 				}

@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { UserTour } from '~/features/docs/components';
+import { MahasiswaTour } from '~/features/docs/components/tour';
 import { ThemeChooser } from '~/components/ui';
+import { AdminTour } from '~/features/docs/components/tour/admin-tour';
 
 export type HomeHeaderLayoutProps = {
 	isAdmin: boolean;
@@ -9,7 +10,7 @@ export type HomeHeaderLayoutProps = {
 };
 
 export function HomeHeaderLayout(props: HomeHeaderLayoutProps) {
-	const { children, title } = props;
+	const { isAdmin, children, title } = props;
 
 	return (
 		<header className="flex items-center justify-between px-1 py-4 pb-2">
@@ -17,7 +18,7 @@ export function HomeHeaderLayout(props: HomeHeaderLayoutProps) {
 
 			<div className="flex items-center justify-end gap-4">
 				<div className="flex items-center">
-					<UserTour />
+					{isAdmin ? <AdminTour /> : <MahasiswaTour />}
 					<ThemeChooser />
 				</div>
 				{children}

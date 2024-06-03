@@ -5,6 +5,7 @@ import {
 	TabsContent,
 	TabsList,
 	TabsTrigger,
+	VirtualItemWrapper,
 } from '~/components/ui';
 import {
 	AdminMahasiswaEditForm,
@@ -16,17 +17,18 @@ import { MahasiswaHistoryItem } from './mahasiswa-history-item';
 import { useHandleAdminMahasiswaUpdate } from '../hooks/use-handle-admin-mahasiswa-update';
 import { useHandleMahasiwaDelete } from '../hooks';
 
-const mahasiswaProfileDetailTabs = {
+// eslint-disable-next-line react-refresh/only-export-components
+export const mahasiswaProfileDetailTabs = {
 	profile: 'profil',
 	userActivity: 'aktivitas user',
 };
 
-export type MahasiswaProfileDetailProps = {
+export type AdminMahasiswaProfileDetailProps = {
 	mahasiswaId: number;
 };
 
 export function AdminMahasiswaProfileDetail(
-	props: MahasiswaProfileDetailProps,
+	props: AdminMahasiswaProfileDetailProps,
 ) {
 	const { mahasiswaId } = props;
 
@@ -98,30 +100,16 @@ export function AdminMahasiswaProfileDetail(
 					{(history, virtualItem) => {
 						if (history === undefined) {
 							return (
-								<li
-									className="absolute inset-x-1"
-									style={{
-										height: `${virtualItem.size}px`,
-										transform: `translateY(${virtualItem.start}px)`,
-									}}
-									key={virtualItem.key}
-								>
+								<VirtualItemWrapper virtualItem={virtualItem}>
 									Gagal mengambil data mahasiswa
-								</li>
+								</VirtualItemWrapper>
 							);
 						}
 
 						return (
-							<li
-								className="absolute inset-x-1"
-								style={{
-									height: `${virtualItem.size}px`,
-									transform: `translateY(${virtualItem.start}px)`,
-								}}
-								key={virtualItem.key}
-							>
+							<VirtualItemWrapper virtualItem={virtualItem}>
 								<MahasiswaHistoryItem key={virtualItem.key} history={history} />
-							</li>
+							</VirtualItemWrapper>
 						);
 					}}
 				</MahasiswaHistoryList>

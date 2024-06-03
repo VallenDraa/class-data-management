@@ -7,9 +7,12 @@ import {
 	DropdownMenuTrigger,
 } from '~/components/ui';
 import { QuestionMarkCircledIcon } from '@radix-ui/react-icons';
-import { useEditMahasiswaSelfTour, useSearchMahasiswaTour } from '../hooks';
+import {
+	useEditMahasiswaSelfTour,
+	useSearchMahasiswaTour,
+} from '~/features/docs/hooks';
 
-export function UserTour() {
+export function MahasiswaTour() {
 	const { showEditProfileTour } = useEditMahasiswaSelfTour();
 	const { showSearchMahasiswa } = useSearchMahasiswaTour();
 
@@ -22,11 +25,11 @@ export function UserTour() {
 				</Button>
 			</DropdownMenuTrigger>
 			<DropdownMenuContent align="end">
-				<DropdownMenuItem onClick={showSearchMahasiswa}>
-					Tutorial Cari Mahasiswa
+				<DropdownMenuItem onClick={() => showSearchMahasiswa('/mahasiswa')}>
+					Cara Cari Mahasiswa
 				</DropdownMenuItem>
-				<DropdownMenuItem onClick={showEditProfileTour}>
-					Tutorial Edit Profil
+				<DropdownMenuItem onClick={() => showEditProfileTour('/mahasiswa')}>
+					Cara Edit Profil
 				</DropdownMenuItem>
 			</DropdownMenuContent>
 		</DropdownMenu>
