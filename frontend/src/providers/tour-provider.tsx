@@ -90,10 +90,6 @@ export function TourContextProvider({
 		[setTourState, tourState],
 	);
 
-	React.useEffect(() => {
-		console.log('Tour State', tourState);
-	}, [tourState]);
-
 	return (
 		<TourContext.Provider value={value}>
 			<Joyride
@@ -106,16 +102,19 @@ export function TourContextProvider({
 				steps={tourState.steps}
 				run={tourState.run}
 				styles={{
+					tooltip: {
+						borderRadius: 6,
+					},
 					options: {
-						arrowColor: isDarkMode ? 'rgb(38, 38, 38)' : 'rgb(255, 255, 255)',
+						arrowColor: isDarkMode ? 'rgb(23, 23, 23)' : 'rgb(255, 255, 255)',
 						backgroundColor: isDarkMode
-							? 'rgb(38, 38, 38)'
+							? 'rgb(23, 23, 23)'
 							: 'rgb(255, 255, 255)',
 						overlayColor: isDarkMode
-							? 'rgba(38, 38, 38, 0.9)'
+							? 'rgba(23, 23, 23, 0.9)'
 							: 'rgba(255, 255, 255, 0.9)',
-						primaryColor: 'rgb(2, 132, 199)',
-						textColor: isDarkMode ? 'rgb(255, 255, 255)' : 'rgb(38, 38, 38)',
+						primaryColor: isDarkMode ? 'rgb(7, 89, 133)' : 'rgb(2, 132, 199)',
+						textColor: isDarkMode ? 'rgb(255, 255, 255)' : 'rgb(23, 23, 23)',
 						zIndex: 1000,
 					},
 				}}
