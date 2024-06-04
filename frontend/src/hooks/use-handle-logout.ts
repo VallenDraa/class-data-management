@@ -3,10 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { toast } from 'sonner';
 import { logout } from '~/features/authentication/api';
 import { removeAuthToken } from '~/utils/auth-token';
-import {
-	DEFAULT_ERROR_MESSAGE,
-	getErrorMessage,
-} from '~/utils/get-error-message';
+import { getErrorMessage } from '~/utils/get-error-message';
 
 export function useHandleLogout(redirectPath?: string) {
 	const navigate = useNavigate();
@@ -14,12 +11,7 @@ export function useHandleLogout(redirectPath?: string) {
 		try {
 			await logout();
 		} catch (error) {
-			if (error instanceof Error) {
-				toast.error(getErrorMessage(error));
-				return;
-			}
-
-			toast.error(DEFAULT_ERROR_MESSAGE);
+			toast.error(getErrorMessage(error));
 		} finally {
 			removeAuthToken();
 			navigate(redirectPath ?? '/mahasiswa/login');

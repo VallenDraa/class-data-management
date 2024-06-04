@@ -1,10 +1,7 @@
 import * as React from 'react';
 import { useDeleteMahasiswa } from '../api';
 import { toast } from 'sonner';
-import {
-	DEFAULT_ERROR_MESSAGE,
-	getErrorMessage,
-} from '~/utils/get-error-message';
+import { getErrorMessage } from '~/utils/get-error-message';
 import { useAdminMahasiswaDetailDialogStatus } from '../providers';
 import { useAppSearchQueryContext } from '~/providers';
 
@@ -25,11 +22,7 @@ export function useHandleMahasiwaDelete(mahasiswaId: number) {
 			setIsOpen(false);
 			toast.error('Berhasil menghapus mahasiswa');
 		} catch (error) {
-			if (error instanceof Error) {
-				toast.error(getErrorMessage(error));
-			}
-
-			toast.error(DEFAULT_ERROR_MESSAGE);
+			toast.error(getErrorMessage(error));
 		} finally {
 			setIsDeleting(false);
 		}

@@ -2,10 +2,7 @@ import * as React from 'react';
 import { toast } from 'sonner';
 import { useAdminUpdateMahasiswa } from '../api';
 import { MahasiswaUpdate } from '~/features/mahasiswa/types';
-import {
-	DEFAULT_ERROR_MESSAGE,
-	getErrorMessage,
-} from '~/utils/get-error-message';
+import { getErrorMessage } from '~/utils/get-error-message';
 import { useAppSearchQueryContext } from '~/providers';
 
 export function useHandleAdminMahasiswaUpdate(mahasiswaId: number) {
@@ -21,12 +18,7 @@ export function useHandleAdminMahasiswaUpdate(mahasiswaId: number) {
 				await mutateAsync({ id: mahasiswaId, data });
 				toast.success('Berhasil mengubah data mahasiswa');
 			} catch (error) {
-				if (error instanceof Error) {
-					toast.error(getErrorMessage(error));
-					return;
-				}
-
-				toast.error(DEFAULT_ERROR_MESSAGE);
+				toast.error(getErrorMessage(error));
 			}
 		},
 		[mahasiswaId, mutateAsync],

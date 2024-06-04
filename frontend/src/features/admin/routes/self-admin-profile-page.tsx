@@ -1,9 +1,5 @@
 import { HomeHeaderLayout, HomePageLayout } from '~/components/layouts/home';
-import {
-	AdminEditForm,
-	AdminEditFormSkeleton,
-	AdminSelfProfile,
-} from '../components';
+import { AdminEditForm, AdminEditFormSkeleton } from '../components';
 import { useHandleAdminPath } from '../hooks';
 import { Link } from 'react-router-dom';
 import { buttonVariants, ErrorMessageSection } from '~/components/ui';
@@ -21,9 +17,11 @@ export function SelfAdminProfilePage() {
 
 	return (
 		<HomePageLayout>
-			<HomeHeaderLayout isAdmin title="Admin">
-				<AdminSelfProfile />
-			</HomeHeaderLayout>
+			<HomeHeaderLayout
+				isAdmin
+				title="Admin"
+				isAuthenticatedMahasiswa={false}
+			/>
 
 			<main className="h-screen">
 				<Link
@@ -45,7 +43,7 @@ export function SelfAdminProfilePage() {
 					/>
 				)}
 
-				{(isLoading || !data) && <AdminEditFormSkeleton />}
+				{(isLoading || !data) && !error && <AdminEditFormSkeleton />}
 
 				{data && (
 					<AdminEditForm onAdminDataUpdate={handleSubmit} admin={data} />

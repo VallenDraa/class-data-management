@@ -1,6 +1,5 @@
 import { HomePageLayout } from '~/components/layouts/home';
 import {
-	MahasiswaSelfProfile,
 	MahasiswaSearchBar,
 	MahasiswaList,
 	MahasiswaListItem,
@@ -8,9 +7,8 @@ import {
 import { useGetMahasiswaSelf } from '../api';
 import { useAppSearchQueryContext } from '~/providers';
 import { HomeHeaderLayout } from '~/components/layouts/home';
-import { buttonVariants, VirtualItemWrapper } from '~/components/ui';
+import { VirtualItemWrapper } from '~/components/ui';
 import { getAuthToken } from '~/utils/auth-token';
-import { Link } from 'react-router-dom';
 
 export function MainMahasiswaPage() {
 	const isAuthenticated = Boolean(getAuthToken());
@@ -23,18 +21,11 @@ export function MainMahasiswaPage() {
 
 	return (
 		<HomePageLayout>
-			<HomeHeaderLayout isAdmin={false} title="Kelass">
-				{isAuthenticated ? (
-					<MahasiswaSelfProfile />
-				) : (
-					<Link
-						to="/mahasiswa/login"
-						className={buttonVariants({ variant: 'default' })}
-					>
-						Login
-					</Link>
-				)}
-			</HomeHeaderLayout>
+			<HomeHeaderLayout
+				isAuthenticatedMahasiswa={isAuthenticated}
+				isAdmin={false}
+				title="Kelass"
+			/>
 
 			<main className="flex flex-col gap-4 grow">
 				<MahasiswaSearchBar

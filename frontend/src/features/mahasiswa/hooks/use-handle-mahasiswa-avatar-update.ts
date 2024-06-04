@@ -1,10 +1,7 @@
 import * as React from 'react';
 import { toast } from 'sonner';
 
-import {
-	DEFAULT_ERROR_MESSAGE,
-	getErrorMessage,
-} from '~/utils/get-error-message';
+import { getErrorMessage } from '~/utils/get-error-message';
 import { useUpdateMahasiswaAvatar } from '../api';
 import { useAppSearchQueryContext } from '~/providers';
 
@@ -25,13 +22,7 @@ export function useHandleMahasiswaAvatarUpdate(mahasiswaId: number) {
 
 				await updateAvatar({ image: imageBase64 });
 			} catch (error) {
-				if (error instanceof Error) {
-					toast.error(getErrorMessage(error));
-					throw error;
-				}
-
-				toast.error(DEFAULT_ERROR_MESSAGE);
-				throw error;
+				toast.error(getErrorMessage(error));
 			}
 		},
 		[updateAvatar],

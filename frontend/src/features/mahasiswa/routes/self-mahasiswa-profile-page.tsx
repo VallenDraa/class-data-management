@@ -1,11 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useGetMahasiswaSelf } from '../api';
 import { HomeHeaderLayout, HomePageLayout } from '~/components/layouts/home';
-import {
-	MahasiswaSelfProfile,
-	MahasiswaEditForm,
-	MahasiswaEditSkeleton,
-} from '../components';
+import { MahasiswaEditForm, MahasiswaEditSkeleton } from '../components';
 import {
 	useHandleMahasiswaAvatarUpdate,
 	useHandleMahasiswaDataUpdate,
@@ -15,9 +11,13 @@ import {
 import { buttonVariants, ErrorMessageSection } from '~/components/ui';
 import { ArrowLeftIcon } from '@radix-ui/react-icons';
 import { cn } from '~/utils/shadcn';
+import { getAuthToken } from '~/utils/auth-token';
 
 export function SelfMahasiswaProfilePage() {
-	const { data, error, isLoading } = useGetMahasiswaSelf();
+	const isAuthenticated = Boolean(getAuthToken());
+	const { data, error, isLoading } = useGetMahasiswaSelf({
+		enabled: isAuthenticated,
+	});
 
 	const { toMahasiswaMainPath } = useHandleMahasiswaPath(data?.id ?? 0);
 
@@ -31,9 +31,11 @@ export function SelfMahasiswaProfilePage() {
 
 	return (
 		<HomePageLayout>
-			<HomeHeaderLayout isAdmin={false} title="Profil Anda">
-				<MahasiswaSelfProfile />
-			</HomeHeaderLayout>
+			<HomeHeaderLayout
+				isAuthenticatedMahasiswa={isAuthenticated}
+				isAdmin={false}
+				title="Profil Anda"
+			/>
 
 			<main className="flex flex-col gap-2 grow">
 				<Link
@@ -55,7 +57,7 @@ export function SelfMahasiswaProfilePage() {
 					/>
 				)}
 
-				{(isLoading || !data) && <MahasiswaEditSkeleton />}
+				{(isLoading || !data) && !error && <MahasiswaEditSkeleton />}
 
 				{data && (
 					<MahasiswaEditForm

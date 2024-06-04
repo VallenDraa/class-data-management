@@ -18,10 +18,7 @@ import {
 	mahasiswaLoginValidator,
 } from '../api';
 import { toast } from 'sonner';
-import {
-	DEFAULT_ERROR_MESSAGE,
-	getErrorMessage,
-} from '~/utils/get-error-message';
+import { getErrorMessage } from '~/utils/get-error-message';
 
 export function MahasiswaLogin() {
 	const form = useForm<MahasiswaLoginSchema>({
@@ -36,12 +33,7 @@ export function MahasiswaLogin() {
 			toast.success(message);
 			navigate('/mahasiswa', { replace: true });
 		} catch (error) {
-			if (error instanceof Error) {
-				toast.error(getErrorMessage(error));
-				return;
-			}
-
-			toast.error(DEFAULT_ERROR_MESSAGE);
+			toast.error(getErrorMessage(error));
 		}
 	};
 

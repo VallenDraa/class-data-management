@@ -3,11 +3,7 @@ import {
 	MahasiswaSearchBar,
 	MahasiswaList,
 } from '~/features/mahasiswa/components';
-import {
-	AdminMahasiswaListItem,
-	AdminSelfProfile,
-	CreateMahasiswaDialog,
-} from '../components';
+import { AdminMahasiswaListItem, CreateMahasiswaDialog } from '../components';
 import { useHandleMahasiswaAdd } from '../hooks';
 import { useAppSearchQueryContext } from '~/providers';
 import { AdminMahasiswaDetailStatusContextProvider } from '../providers';
@@ -36,9 +32,11 @@ export function MainAdminPage() {
 
 	return (
 		<HomePageLayout>
-			<HomeHeaderLayout isAdmin title="Admin">
-				<AdminSelfProfile />
-			</HomeHeaderLayout>
+			<HomeHeaderLayout
+				isAdmin
+				title="Admin"
+				isAuthenticatedMahasiswa={false}
+			/>
 
 			<main className="relative flex flex-col gap-4 grow">
 				<MahasiswaSearchBar

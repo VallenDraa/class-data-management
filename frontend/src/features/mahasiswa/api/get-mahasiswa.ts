@@ -3,10 +3,7 @@ import { api } from '~/lib/api-client';
 import { useInfiniteQuery } from '@tanstack/react-query';
 import { MAHASISWA_QUERY_KEY } from '../constants';
 import { toast } from 'sonner';
-import {
-	DEFAULT_ERROR_MESSAGE,
-	getErrorMessage,
-} from '~/utils/get-error-message';
+import { getErrorMessage } from '~/utils/get-error-message';
 import { type PaginatedApiResponse } from '~/types';
 
 export type GetMahasiswaResponse = PaginatedApiResponse<Mahasiswa[]>;
@@ -37,11 +34,7 @@ export const getMahasiswa = async ({
 
 		return response.data;
 	} catch (error) {
-		if (error instanceof Error) {
-			toast.error(getErrorMessage(error));
-		} else {
-			toast.error(DEFAULT_ERROR_MESSAGE);
-		}
+		toast.error(getErrorMessage(error));
 
 		throw error;
 	}
