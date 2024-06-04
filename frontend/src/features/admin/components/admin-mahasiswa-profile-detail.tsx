@@ -80,7 +80,9 @@ export function AdminMahasiswaProfileDetail(
 					/>
 				)}
 
-				{isMahasiswaLoading && !mahasiswa && <AdminMahasiswaEditFormSkeleton />}
+				{isMahasiswaLoading && !mahasiswa && !error && (
+					<AdminMahasiswaEditFormSkeleton />
+				)}
 
 				{mahasiswa && (
 					<AdminMahasiswaEditForm

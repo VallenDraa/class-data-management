@@ -33,6 +33,7 @@ export function MahasiswaList(props: MahasiswaListProps) {
 	const {
 		data: mahasiswaList,
 		isLoading,
+		error,
 		isFetchingNextPage,
 		fetchNextPage,
 		hasNextPage,
@@ -64,6 +65,10 @@ export function MahasiswaList(props: MahasiswaListProps) {
 			}
 		},
 	});
+
+	if (error) {
+		throw new Error(error.message);
+	}
 
 	return (
 		<div id="search-results" className="flex flex-col h-full grow">

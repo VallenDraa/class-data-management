@@ -59,7 +59,7 @@ export function MahasiswaProfilePage() {
 					/>
 				)}
 
-				{(isLoading || !data) && <MahasiswaEditSkeleton />}
+				{(isLoading || !data) && !error && <MahasiswaEditSkeleton />}
 
 				{data && (
 					<MahasiswaEditForm

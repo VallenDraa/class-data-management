@@ -43,7 +43,7 @@ export function SelfAdminProfilePage() {
 					/>
 				)}
 
-				{(isLoading || !data) && <AdminEditFormSkeleton />}
+				{(isLoading || !data) && !error && <AdminEditFormSkeleton />}
 
 				{data && (
 					<AdminEditForm onAdminDataUpdate={handleSubmit} admin={data} />

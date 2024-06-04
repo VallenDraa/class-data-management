@@ -57,7 +57,7 @@ export function SelfMahasiswaProfilePage() {
 					/>
 				)}
 
-				{(isLoading || !data) && <MahasiswaEditSkeleton />}
+				{(isLoading || !data) && !error && <MahasiswaEditSkeleton />}
 
 				{data && (
 					<MahasiswaEditForm
