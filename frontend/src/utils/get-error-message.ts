@@ -3,6 +3,8 @@ import { isRouteErrorResponse } from 'react-router-dom';
 import z from 'zod';
 import { ErrorApiResponse } from '~/types';
 
+export const UNAUTHED_PAGE_VISIT_MESSAGE =
+	'Anda tidak memiliki akses ke halaman ini, silahkan login ulang.';
 export const DEFAULT_ERROR_MESSAGE = 'Terjadi kesalahan, silahkan coba lagi';
 
 export function getErrorMessage(err: unknown) {
