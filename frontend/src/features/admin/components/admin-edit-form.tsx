@@ -12,8 +12,32 @@ import {
 	Form,
 	FormItem,
 	FormControl,
+	Skeleton,
 } from '~/components/ui';
 import { useAdminEditForm } from '../hooks/use-admin-edit-form';
+
+export type AdminEditFormSkeletonProps = {
+	isOwnProfile?: boolean;
+};
+
+export function AdminEditFormSkeleton(props: AdminEditFormSkeletonProps) {
+	return (
+		<div className="flex flex-col gap-2 overflow-auto sm:gap-4 sm:flex-row">
+			<div className="flex flex-row items-center w-full gap-4 sm:w-32 sm:flex-col">
+				<Skeleton className="h-auto mx-auto rounded-full w-28 aspect-square" />
+
+				{props.isOwnProfile && (
+					<div className="hidden w-full space-y-2 sm:block">
+						<Skeleton className="w-full h-8 rounded-md" />
+						<Skeleton className="w-full h-8 rounded-md" />
+					</div>
+				)}
+			</div>
+
+			<Skeleton className="w-full h-96" />
+		</div>
+	);
+}
 
 export type AdminEditFormProps = {
 	onAdminDataUpdate: (data: AdminUpdate) => void | Promise<void>;
@@ -30,18 +54,21 @@ export function AdminEditForm(props: AdminEditFormProps) {
 
 	return (
 		<section className="flex flex-col gap-2 overflow-auto sm:gap-4 sm:flex-row animate-in">
-			<div className="flex flex-row items-center w-full gap-4 sm:w-28 sm:flex-col">
-				<Avatar className="h-auto mx-auto w-28 sm:w-full aspect-square">
+			<div
+				id="change-avatar"
+				className="flex flex-row items-center w-full gap-4 sm:w-32 sm:flex-col"
+			>
+				<Avatar className="h-auto mx-auto w-28 aspect-square">
 					<AvatarImage src={admin.foto_profile} />
 					<AvatarFallback>{admin.nama.slice(0, 2)}</AvatarFallback>
 				</Avatar>
 			</div>
 
-			<ScrollArea className="w-full sm:max-h-96">
+			<ScrollArea className="w-full">
 				<Form {...adminForm}>
 					<form
 						onSubmit={adminForm.handleSubmit(handleDataUpdate)}
-						className="w-full space-y-4 px-0.5"
+						className="w-full px-1 space-y-4"
 					>
 						<FormField
 							control={adminForm.control}

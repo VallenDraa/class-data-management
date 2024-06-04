@@ -6,10 +6,10 @@ import {
 	getErrorMessage,
 } from '~/utils/get-error-message';
 import { useUpdateMahasiswaAvatar } from '../api';
-import { useAppSearchQuery } from '~/providers';
+import { useAppSearchQueryContext } from '~/providers';
 
 export function useHandleMahasiswaAvatarUpdate(mahasiswaId: number) {
-	const { activeKeyword, activeSort } = useAppSearchQuery();
+	const { activeKeyword, activeSort } = useAppSearchQueryContext();
 	const { mutateAsync: updateAvatar } = useUpdateMahasiswaAvatar(mahasiswaId, {
 		keyword: activeKeyword,
 		sort: activeSort,

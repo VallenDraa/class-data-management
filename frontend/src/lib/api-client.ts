@@ -29,7 +29,7 @@ api.interceptors.response.use(
 			toast.error(getErrorMessage(error));
 
 			if (axios.isAxiosError(error)) {
-				if (error.status === 401 || error.status === 403) {
+				if (error.response?.status === 401 || error.response?.status === 403) {
 					removeAuthToken();
 					window.location.href = '/mahasiswa/login';
 				}

@@ -25,7 +25,8 @@ export const AppSearchQueryContext = React.createContext<{
 	setActiveSort() {},
 });
 
-export const useAppSearchQuery = () => React.useContext(AppSearchQueryContext);
+export const useAppSearchQueryContext = () =>
+	React.useContext(AppSearchQueryContext);
 
 export function AppSearchQueryContextProvider(props: {
 	children: React.ReactNode;

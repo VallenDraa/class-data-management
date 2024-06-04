@@ -5,20 +5,22 @@ import { getFileBase64 } from '~/features/mahasiswa/api/update-mahasiswa-avatar'
 import { toast } from 'sonner';
 import { Button } from './button';
 import { cn } from '~/utils/shadcn';
+import { getErrorMessage } from '~/utils/get-error-message';
 
 export type UserEditableAvatarProps = {
 	imageSrc: string;
 	alt: string;
 	onSubmit: (uploadedImage: string | null) => void;
 	className: string;
+	isEditing: boolean;
+	setIsEditing: (isEditing: boolean) => void;
 };
 
 export function UserEditableAvatar(props: UserEditableAvatarProps) {
-	const { imageSrc, onSubmit, className, alt } = props;
+	const { imageSrc, onSubmit, className, alt, isEditing, setIsEditing } = props;
 
 	const id = React.useId();
 	const [uploadedImage, setUploadedImage] = React.useState<string | null>(null);
-	const [isEditing, setIsEditing] = React.useState(false);
 
 	async function handleUploadedImage(file: File | null) {
 		if (!file) {
@@ -28,7 +30,6 @@ export function UserEditableAvatar(props: UserEditableAvatarProps) {
 		}
 
 		const isSupported = file.type === 'image/png' || file.type === 'image/jpeg';
-
 		if (!isSupported) {
 			toast.error('File yang anda upload tidak disupport!');
 			return;
@@ -47,7 +48,7 @@ export function UserEditableAvatar(props: UserEditableAvatarProps) {
 		try {
 			await onSubmit(uploadedImage);
 		} catch (error) {
-			console.log(error);
+			toast.error(getErrorMessage(error));
 			setUploadedImage(null);
 		} finally {
 			setIsEditing(false);
@@ -55,12 +56,18 @@ export function UserEditableAvatar(props: UserEditableAvatarProps) {
 	}
 
 	return (
-		<div className="flex flex-col items-center w-full">
+		<div
+			id="change-avatar"
+			className="flex flex-col items-center w-full gap-2 sm:w-32"
+		>
 			<div className={cn('relative', className)}>
 				<label
 					htmlFor={id}
 					onClick={() => setIsEditing(true)}
-					className="absolute inset-0 z-10 flex items-center justify-center gap-3 p-2 duration-300 rounded-full opacity-0 cursor-pointer hover:backdrop-blur-sm hover:opacity-100 hover:bg-slate-100/30"
+					className={cn(
+						'absolute inset-0 z-10 flex items-center justify-center gap-3 p-2 duration-300 rounded-full opacity-0 cursor-pointer hover:backdrop-blur-sm hover:opacity-100 hover:bg-slate-100/30',
+						isEditing && 'opacity-100 backdrop-blur-sm bg-slate-100/30',
+					)}
 				>
 					<ImageIcon className="w-6 h-6" />
 					<span className="sr-only">Change Picture</span>
@@ -88,11 +95,12 @@ export function UserEditableAvatar(props: UserEditableAvatarProps) {
 			</div>
 
 			{isEditing && (
-				<div className="flex items-center gap-2 mt-2">
+				<div className="flex flex-row items-center w-full gap-2 mt-2 sm:flex-col-reverse">
 					<Button
 						size="sm"
 						type="button"
-						variant="ghost"
+						variant="outline"
+						className="w-full"
 						onClick={() => {
 							setIsEditing(false);
 							setUploadedImage(null);
@@ -100,8 +108,14 @@ export function UserEditableAvatar(props: UserEditableAvatarProps) {
 					>
 						Cancel
 					</Button>
-					<Button size="sm" type="button" onClick={handleUpdateAvatar}>
-						Simpan
+					<Button
+						size="sm"
+						type="button"
+						className="w-full"
+						disabled={!uploadedImage}
+						onClick={handleUpdateAvatar}
+					>
+						Simpan Gambar
 					</Button>
 				</div>
 			)}

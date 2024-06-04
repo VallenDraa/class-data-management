@@ -6,10 +6,10 @@ import {
 	DEFAULT_ERROR_MESSAGE,
 	getErrorMessage,
 } from '~/utils/get-error-message';
-import { useAppSearchQuery } from '~/providers';
+import { useAppSearchQueryContext } from '~/providers';
 
 export function useHandleAdminMahasiswaUpdate(mahasiswaId: number) {
-	const { activeKeyword, activeSort } = useAppSearchQuery();
+	const { activeKeyword, activeSort } = useAppSearchQueryContext();
 
 	const { mutateAsync } = useAdminUpdateMahasiswa(mahasiswaId, {
 		sort: activeSort,

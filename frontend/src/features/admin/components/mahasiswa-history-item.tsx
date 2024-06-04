@@ -9,7 +9,7 @@ export function MahasiswaHistoryItem(props: MahasiswaHistoryItemProps) {
 	const { history } = props;
 
 	return (
-		<div className="flex flex-col gap-2 p-4 border rounded-md shadow-sm border-neutral-200">
+		<div className="flex flex-col gap-2 p-4 border rounded-md shadow-sm border-neutral-200 dark:bg-neutral-900 dark:border-neutral-800">
 			<div className="flex items-center justify-between gap-2 text-sm text-neutral-400">
 				<span>Tanggal</span>
 				<time dateTime={history.created_at}>{history.created_at}</time>

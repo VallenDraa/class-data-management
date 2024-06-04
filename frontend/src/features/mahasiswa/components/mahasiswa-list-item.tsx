@@ -8,7 +8,6 @@ import {
 	Dialog,
 	DialogTrigger,
 } from '~/components/ui';
-import { MahasiswaProfileDetail } from './mahasiswa-profile-detail';
 import { Link } from 'react-router-dom';
 import { useHandleMahasiswaPath } from '../hooks';
 
@@ -21,15 +20,16 @@ export function MahasiswaListItem(props: MahasiswaListItemProps) {
 	const { mahasiswa, isOwnProfile } = props;
 
 	const [isDetailOpen, setIsDetailOpen] = React.useState(false);
-	const { toMahasiswaDetailPath, navigateToMahasiswaMainPath } =
-		useHandleMahasiswaPath(mahasiswa.id);
+	const { toMahasiswaDetailPath, toMahasiswaSelfPath } = useHandleMahasiswaPath(
+		mahasiswa.id,
+	);
 
 	return (
 		<Dialog open={isDetailOpen} onOpenChange={setIsDetailOpen}>
 			<DialogTrigger asChild>
 				<Link
-					to={toMahasiswaDetailPath()}
-					className="flex items-center w-full gap-4 p-2 transition-colors border rounded-md shadow-sm border-neutral-200 hover:border-sky-200 hover:bg-sky-50"
+					to={isOwnProfile ? toMahasiswaSelfPath() : toMahasiswaDetailPath()}
+					className="flex items-center w-full gap-4 p-2 transition-colors bg-white border rounded-md shadow-sm dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800 dark:hover:bg-sky-800 dark:hover:border-sky-700 hover:border-sky-200 hover:bg-sky-50"
 				>
 					<Avatar className="w-12 h-12">
 						<AvatarImage src={mahasiswa.foto_profile} />
@@ -47,14 +47,6 @@ export function MahasiswaListItem(props: MahasiswaListItemProps) {
 					</div>
 				</Link>
 			</DialogTrigger>
-
-			<MahasiswaProfileDetail
-				detailTitle={isOwnProfile ? 'Profil Anda' : `Profil ${mahasiswa.nama}`}
-				isOwnProfile={isOwnProfile}
-				mahasiswaId={mahasiswa.id}
-				isDetailOpen={isDetailOpen}
-				onDetailClose={navigateToMahasiswaMainPath}
-			/>
 		</Dialog>
 	);
 }

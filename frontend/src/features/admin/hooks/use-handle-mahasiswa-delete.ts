@@ -6,10 +6,10 @@ import {
 	getErrorMessage,
 } from '~/utils/get-error-message';
 import { useAdminMahasiswaDetailDialogStatus } from '../providers';
-import { useAppSearchQuery } from '~/providers';
+import { useAppSearchQueryContext } from '~/providers';
 
 export function useHandleMahasiwaDelete(mahasiswaId: number) {
-	const { activeKeyword, activeSort } = useAppSearchQuery();
+	const { activeKeyword, activeSort } = useAppSearchQueryContext();
 
 	const [isDeleting, setIsDeleting] = React.useState(false);
 	const { setIsOpen } = useAdminMahasiswaDetailDialogStatus();

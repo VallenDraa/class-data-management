@@ -8,7 +8,8 @@ const badgeVariants = cva(
 	{
 		variants: {
 			variant: {
-				default: 'border-sky-200 bg-sky-100 text-sky-500',
+				default:
+					'border-sky-200 dark:border-sky-700 bg-sky-100 dark:bg-sky-600 text-sky-500 dark:text-sky-100',
 			},
 		},
 		defaultVariants: {
