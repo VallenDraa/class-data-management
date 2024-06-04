@@ -23,26 +23,11 @@ export const router = createBrowserRouter([
 				path: '/',
 				element: <Root />,
 				children: [
-					{
-						path: 'mahasiswa',
-						element: <MainMahasiswaPage />,
-					},
-					{
-						path: 'mahasiswa/self',
-						element: <SelfMahasiswaProfilePage />,
-					},
-					{
-						path: 'mahasiswa/:mahasiswaId',
-						element: <MahasiswaProfilePage />,
-					},
-					{
-						path: 'admin',
-						element: <MainAdminPage />,
-					},
-					{
-						path: 'admin/self',
-						element: <SelfAdminProfilePage />,
-					},
+					{ path: 'mahasiswa', element: <MainMahasiswaPage /> },
+					{ path: 'mahasiswa/self', element: <SelfMahasiswaProfilePage /> },
+					{ path: 'mahasiswa/:mahasiswaId', element: <MahasiswaProfilePage /> },
+					{ path: 'admin', element: <MainAdminPage /> },
+					{ path: 'admin/self', element: <SelfAdminProfilePage /> },
 					{
 						path: 'admin/mahasiswa/:mahasiswaId',
 						element: <AdminMahasiswaProfilePage />,

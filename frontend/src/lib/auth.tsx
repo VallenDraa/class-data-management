@@ -1,12 +1,26 @@
-import { Navigate } from 'react-router-dom';
-import { getAuthToken } from '~/utils/auth-token';
+import * as React from 'react';
+import { Navigate, useLocation } from 'react-router-dom';
+import { useHandleLogout } from '~/hooks';
+import { getAuthToken, getLoginType } from '~/utils/auth-token';
 
 export const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
-	const token = getAuthToken();
+	const loginType = getLoginType();
+	const authToken = getAuthToken();
 
-	if (!token) {
-		return <Navigate to="/mahasiswa/login" replace />;
-	}
+	const { pathname } = useLocation();
+	const { handleLogout } = useHandleLogout(`/admin/login`);
 
-	return children;
+	React.useEffect(() => {
+		if (pathname.startsWith('/admin') && !authToken && loginType !== 'admin') {
+			handleLogout();
+		}
+
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
+
+	return pathname === '/' ? (
+		<Navigate to={`/${loginType ?? 'mahasiswa'}`} replace />
+	) : (
+		children
+	);
 };
