@@ -8,9 +8,15 @@ import {
 import { useGetMahasiswaSelf } from '../api';
 import { useAppSearchQueryContext } from '~/providers';
 import { HomeHeaderLayout } from '~/components/layouts/home';
+import { buttonVariants, VirtualItemWrapper } from '~/components/ui';
+import { getAuthToken } from '~/utils/auth-token';
+import { Link } from 'react-router-dom';
 
 export function MainMahasiswaPage() {
-	const { data: mahasiswaSelf } = useGetMahasiswaSelf();
+	const isAuthenticated = Boolean(getAuthToken());
+	const { data: mahasiswaSelf } = useGetMahasiswaSelf({
+		enabled: isAuthenticated,
+	});
 
 	const { activeKeyword, activeSort, setActiveKeyword, setActiveSort } =
 		useAppSearchQueryContext();
@@ -18,7 +24,16 @@ export function MainMahasiswaPage() {
 	return (
 		<HomePageLayout>
 			<HomeHeaderLayout isAdmin={false} title="Kelass">
-				<MahasiswaSelfProfile />
+				{isAuthenticated ? (
+					<MahasiswaSelfProfile />
+				) : (
+					<Link
+						to="/mahasiswa/login"
+						className={buttonVariants({ variant: 'default' })}
+					>
+						Login
+					</Link>
+				)}
 			</HomeHeaderLayout>
 
 			<main className="flex flex-col gap-4 grow">
@@ -32,33 +47,19 @@ export function MainMahasiswaPage() {
 					{(mahasiswa, virtualItem) => {
 						if (mahasiswa === undefined) {
 							return (
-								<li
-									key={virtualItem.key}
-									className="absolute pt-1 inset-x-1"
-									style={{
-										height: `${virtualItem.size}px`,
-										transform: `translateY(${virtualItem.start}px)`,
-									}}
-								>
+								<VirtualItemWrapper virtualItem={virtualItem}>
 									Gagal mengambil data mahasiswa
-								</li>
+								</VirtualItemWrapper>
 							);
 						}
 
 						return (
-							<li
-								key={virtualItem.key}
-								className="absolute pt-1 inset-x-1"
-								style={{
-									height: `${virtualItem.size}px`,
-									transform: `translateY(${virtualItem.start}px)`,
-								}}
-							>
+							<VirtualItemWrapper virtualItem={virtualItem}>
 								<MahasiswaListItem
 									isOwnProfile={Number(mahasiswa.id) === mahasiswaSelf?.id}
 									mahasiswa={mahasiswa}
 								/>
-							</li>
+							</VirtualItemWrapper>
 						);
 					}}
 				</MahasiswaList>
