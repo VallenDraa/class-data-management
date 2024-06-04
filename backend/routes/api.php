@@ -15,9 +15,10 @@ use Domain\Mahasiswa\Actions\UpdateMahasistaAction;
 use Domain\Mahasiswa\Actions\ChangePasswordMahasiswaAction;
 use Domain\Mahasiswa\Actions\AddFotoProfileMahasiswaAction;
 
-
-Route::get('mahasiswa', ReadAllMahasiswaAction::class);
-Route::get('mahasiswa/{id}', ReadMahasiswaAction::class);
+Route::group(['middleware' => 'read.auth.optional'], function ($router) {
+    Route::get('mahasiswa', ReadAllMahasiswaAction::class);
+    Route::get('mahasiswa/{id}', ReadMahasiswaAction::class);
+});
 
 Route::group(['middleware' => 'auth:sanctum'], function ($router) {
     Route::post('logout', DeleteTokenAction::class);

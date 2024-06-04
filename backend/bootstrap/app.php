@@ -1,6 +1,6 @@
 <?php
 
-use Domain\Shared\Actions\HandleSanctumToken;
+use App\Http\Middleware\ReadAuthOptionalMiddleware;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
@@ -13,7 +13,7 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
-        $middleware->alias(['handle.sanctum.token' => HandleSanctumToken::class]);
+        $middleware->alias(['read.auth.optional' => ReadAuthOptionalMiddleware::class]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //
