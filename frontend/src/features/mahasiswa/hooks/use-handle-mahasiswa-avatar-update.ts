@@ -23,8 +23,6 @@ export function useHandleMahasiswaAvatarUpdate(mahasiswaId: number) {
 				await updateAvatar({ image: imageBase64 });
 			} catch (error) {
 				toast.error(getErrorMessage(error));
-
-				throw error;
 			}
 		},
 		[updateAvatar],
