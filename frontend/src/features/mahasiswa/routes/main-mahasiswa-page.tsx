@@ -8,6 +8,7 @@ import { useGetMahasiswaSelf } from '../api';
 import { useAppSearchQueryContext } from '~/providers';
 import { VirtualItemWrapper } from '~/components/ui';
 import { getAuthToken } from '~/utils/auth-token';
+import { Helmet } from 'react-helmet-async';
 
 export function MainMahasiswaPage() {
 	const isAuthenticated = Boolean(getAuthToken());
@@ -24,6 +25,10 @@ export function MainMahasiswaPage() {
 			isAdmin={false}
 			title="Kelass"
 		>
+			<Helmet>
+				<title>Kelass | Halaman Mahasiswa</title>
+			</Helmet>
+
 			<main className="flex flex-col gap-4 grow">
 				<MahasiswaSearchBar
 					keyword={activeKeyword}

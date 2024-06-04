@@ -12,6 +12,8 @@ import { buttonVariants, ErrorMessageSection } from '~/components/ui';
 import { ArrowLeftIcon } from '@radix-ui/react-icons';
 import { cn } from '~/utils/shadcn';
 import { getAuthToken } from '~/utils/auth-token';
+import { Helmet } from 'react-helmet-async';
+import { getErrorMessage } from '~/utils/get-error-message';
 
 export function SelfMahasiswaProfilePage() {
 	const isAuthenticated = Boolean(getAuthToken());
@@ -35,6 +37,10 @@ export function SelfMahasiswaProfilePage() {
 			isAdmin={false}
 			title="Profil Anda"
 		>
+			<Helmet>
+				<title>Kelass | Profil Anda</title>
+			</Helmet>
+
 			<main className="flex flex-col gap-2 grow">
 				<Link
 					to={toMahasiswaMainPath()}
@@ -50,7 +56,7 @@ export function SelfMahasiswaProfilePage() {
 				{error && (
 					<ErrorMessageSection
 						refreshPage
-						message={error.message}
+						message={getErrorMessage(error)}
 						title="Gagal memuat data profile anda"
 					/>
 				)}

@@ -6,6 +6,7 @@ import { queryClient } from '~/lib/react-query';
 import { TourContextProvider } from './tour-provider';
 import { ThemeProvider } from 'next-themes';
 import { UpdateIcon } from '@radix-ui/react-icons';
+import { HelmetProvider } from 'react-helmet-async';
 
 type AppProviderProps = {
 	children: React.ReactNode;
@@ -20,18 +21,20 @@ export const AppProvider = ({ children }: AppProviderProps) => {
 				</div>
 			}
 		>
-			<ThemeProvider
-				enableSystem
-				themes={['dark', 'light', 'system']}
-				attribute="class"
-			>
-				<QueryClientProvider client={queryClient}>
-					<TourContextProvider>
-						{env.DEV && <ReactQueryDevtools />}
-						{children}
-					</TourContextProvider>
-				</QueryClientProvider>
-			</ThemeProvider>
+			<HelmetProvider>
+				<ThemeProvider
+					enableSystem
+					themes={['dark', 'light', 'system']}
+					attribute="class"
+				>
+					<QueryClientProvider client={queryClient}>
+						<TourContextProvider>
+							{env.DEV && <ReactQueryDevtools />}
+							{children}
+						</TourContextProvider>
+					</QueryClientProvider>
+				</ThemeProvider>
+			</HelmetProvider>
 		</React.Suspense>
 	);
 };

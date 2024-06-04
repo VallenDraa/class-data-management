@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet-async';
 import { Link, useRouteError } from 'react-router-dom';
 import { ErrorPageLayout } from '~/components/layouts';
 import { Button, buttonVariants } from '~/components/ui';
@@ -17,6 +18,10 @@ export function ErrorPage() {
 				title="Error 404!"
 				message="Halaman yang anda cari tidak bisa ditemukan."
 			>
+				<Helmet>
+					<title>Kelass | Error 404</title>
+				</Helmet>
+
 				<Link
 					to="/mahasiswa"
 					className={buttonVariants({
@@ -34,6 +39,10 @@ export function ErrorPage() {
 			title="Oops!"
 			message="Ada error yang terjadi. Silahkan refresh halaman atau coba lagi nanti."
 		>
+			<Helmet>
+				<title>Kelass | Halaman Error</title>
+			</Helmet>
+
 			<div className="flex flex-col items-center w-full gap-8">
 				<span className="text-sm text-neutral-500">
 					Pesan untuk admin: <i>{errorMessage}</i>
