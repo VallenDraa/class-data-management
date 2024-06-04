@@ -1,13 +1,15 @@
-import { Button } from './button';
+import { Link } from 'react-router-dom';
+import { Button, buttonVariants } from './button';
 
 export type ErrorMessageSectionProps = {
 	title: string;
 	message: string;
 	refreshPage?: boolean;
+	backToHome?: boolean;
 };
 
 export function ErrorMessageSection(props: ErrorMessageSectionProps) {
-	const { message, title, refreshPage = false } = props;
+	const { message, title, refreshPage = false, backToHome = false } = props;
 
 	return (
 		<div className="flex flex-col items-center">
@@ -18,6 +20,12 @@ export function ErrorMessageSection(props: ErrorMessageSectionProps) {
 				<Button onClick={() => window.location.reload()}>
 					Refresh Halaman
 				</Button>
+			)}
+
+			{backToHome && (
+				<Link to="/" className={buttonVariants({ variant: 'default' })}>
+					Kembali
+				</Link>
 			)}
 		</div>
 	);
