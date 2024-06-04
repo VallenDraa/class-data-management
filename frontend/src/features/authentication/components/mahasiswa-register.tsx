@@ -19,10 +19,7 @@ import {
 	mahasiswaRegisterValidator,
 } from '../api';
 import { toast } from 'sonner';
-import {
-	DEFAULT_ERROR_MESSAGE,
-	getErrorMessage,
-} from '~/utils/get-error-message';
+import { getErrorMessage } from '~/utils/get-error-message';
 
 export function MahasiswaRegister() {
 	const form = useForm<MahasiswaRegisterSchema>({
@@ -35,8 +32,6 @@ export function MahasiswaRegister() {
 		},
 	});
 
-	console.log(form.formState.errors);
-
 	const navigate = useNavigate();
 	const onSubmit = async (data: MahasiswaRegisterSchema) => {
 		try {
@@ -45,12 +40,7 @@ export function MahasiswaRegister() {
 			toast.success(message);
 			navigate('/mahasiswa/login', { replace: true });
 		} catch (error) {
-			if (error instanceof Error) {
-				toast.error(getErrorMessage(error));
-				return;
-			}
-
-			toast.error(DEFAULT_ERROR_MESSAGE);
+			toast.error(getErrorMessage(error));
 		}
 	};
 
