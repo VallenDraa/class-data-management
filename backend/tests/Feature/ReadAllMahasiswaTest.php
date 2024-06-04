@@ -14,7 +14,7 @@ class ReadAllMahasiswaTest extends TestCase
         $faker = Faker::create();
 
         $headers = [
-            'Authorization' => 'Bearer ' . $this->getAuthToken(),
+            // 'Authorization' => 'Bearer ' . $this->getAuthToken(),
             'Accept' => 'application/json',
         ];
 
