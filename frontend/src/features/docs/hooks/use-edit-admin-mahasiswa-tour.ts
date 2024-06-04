@@ -22,6 +22,7 @@ const tourSteps: Step[] = [
 		target: '#change-avatar',
 		hideBackButton: true,
 		placement: 'top-start',
+		disableBeacon: true,
 		disableScrolling: true,
 		disableScrollParentFix: true,
 		content:
@@ -31,6 +32,7 @@ const tourSteps: Step[] = [
 		locale: BUTTON_LOCALE,
 		target: '#edit-profile',
 		placement: 'top-start',
+		disableBeacon: true,
 		disableScrolling: true,
 		disableScrollParentFix: true,
 		content:
@@ -40,6 +42,7 @@ const tourSteps: Step[] = [
 		locale: BUTTON_LOCALE,
 		target: '#edit-profile',
 		placement: 'top-start',
+		disableBeacon: true,
 		disableScrolling: true,
 		disableScrollParentFix: true,
 		content: 'Itu saja, Selamat mencoba!',

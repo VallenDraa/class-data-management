@@ -14,18 +14,21 @@ const tourSteps = [
 	{
 		locale: BUTTON_LOCALE,
 		target: '#search-sort-type',
+		disableBeacon: true,
 		content:
 			'Kemudian anda bisa mengurutkan hasil pencarian disini berdasarkan data terbaru, terlama, huruf A-Z, atau huruf Z-A.',
 	},
 	{
 		locale: BUTTON_LOCALE,
 		target: '#search-results',
+		disableBeacon: true,
 		content:
 			'Hasil pencarian akan ditampilkan disini. Anda bisa melihat detail mahasiswa dengan mengklik salah satu hasil pencarian.',
 	},
 	{
 		locale: BUTTON_LOCALE,
 		target: '#search-results',
+		disableBeacon: true,
 		content: 'Itu saja, Selamat mencoba!',
 	},
 ];

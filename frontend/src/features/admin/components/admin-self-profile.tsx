@@ -1,12 +1,10 @@
 import {
-	Avatar,
-	AvatarImage,
-	AvatarFallback,
 	DropdownMenu,
 	DropdownMenuTrigger,
 	DropdownMenuContent,
 	DropdownMenuItem,
 	Skeleton,
+	AvatarWithSkeleton,
 } from '~/components/ui';
 import { useGetAdminSelf } from '../api';
 import { ExitIcon, PersonIcon } from '@radix-ui/react-icons';
@@ -23,14 +21,12 @@ export function AdminSelfProfile() {
 	return (
 		<DropdownMenu>
 			<DropdownMenuTrigger className="rounded-full">
-				{!isAdminLoading && admin ? (
-					<Avatar>
-						<AvatarImage src={admin.foto_profile} alt={admin.nama} />
-						<AvatarFallback>{admin.nama.slice(0, 2)}</AvatarFallback>
-					</Avatar>
-				) : (
-					<Skeleton className="w-10 h-10 rounded-full" />
-				)}
+				<AvatarWithSkeleton
+					isLoading={isAdminLoading || !admin}
+					src={admin?.foto_profile ?? ''}
+					alt={admin?.nama ?? ''}
+					fallback={admin?.nama.slice(0, 2) ?? ''}
+				/>
 
 				<span className="sr-only">Open Profile Popover</span>
 			</DropdownMenuTrigger>

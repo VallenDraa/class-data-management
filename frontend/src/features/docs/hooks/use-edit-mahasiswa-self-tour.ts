@@ -42,18 +42,21 @@ const tourSteps: Step[] = [
 	{
 		locale: BUTTON_LOCALE,
 		target: '#edit-profile',
+		disableBeacon: true,
 		content:
 			'Lalu untuk mengedit data profil, anda dapat menekan tombol "Edit Profil".',
 	},
 	{
 		locale: BUTTON_LOCALE,
 		target: '#change-password',
+		disableBeacon: true,
 		content:
 			'Terakhir, password bisa diubah dengan menekan tombol "Ganti Password".',
 	},
 	{
 		locale: BUTTON_LOCALE,
 		target: '#edit-profile',
+		disableBeacon: true,
 		content: 'Itu saja, Selamat mencoba!',
 	},
 ];

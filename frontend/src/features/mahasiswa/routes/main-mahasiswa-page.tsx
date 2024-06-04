@@ -6,9 +6,9 @@ import {
 } from '../components';
 import { useGetMahasiswaSelf } from '../api';
 import { useAppSearchQueryContext } from '~/providers';
-import { HomeHeaderLayout } from '~/components/layouts/home';
 import { VirtualItemWrapper } from '~/components/ui';
 import { getAuthToken } from '~/utils/auth-token';
+import { Helmet } from 'react-helmet-async';
 
 export function MainMahasiswaPage() {
 	const isAuthenticated = Boolean(getAuthToken());
@@ -20,12 +20,14 @@ export function MainMahasiswaPage() {
 		useAppSearchQueryContext();
 
 	return (
-		<HomePageLayout>
-			<HomeHeaderLayout
-				isAuthenticatedMahasiswa={isAuthenticated}
-				isAdmin={false}
-				title="Kelass"
-			/>
+		<HomePageLayout
+			isAuthenticatedMahasiswa={isAuthenticated}
+			isAdmin={false}
+			title="Kelass"
+		>
+			<Helmet>
+				<title>Kelass | Halaman Mahasiswa</title>
+			</Helmet>
 
 			<main className="flex flex-col gap-4 grow">
 				<MahasiswaSearchBar
@@ -38,14 +40,20 @@ export function MainMahasiswaPage() {
 					{(mahasiswa, virtualItem) => {
 						if (mahasiswa === undefined) {
 							return (
-								<VirtualItemWrapper virtualItem={virtualItem}>
+								<VirtualItemWrapper
+									key={virtualItem.key}
+									virtualItem={virtualItem}
+								>
 									Gagal mengambil data mahasiswa
 								</VirtualItemWrapper>
 							);
 						}
 
 						return (
-							<VirtualItemWrapper virtualItem={virtualItem}>
+							<VirtualItemWrapper
+								key={virtualItem.key}
+								virtualItem={virtualItem}
+							>
 								<MahasiswaListItem
 									isOwnProfile={Number(mahasiswa.id) === mahasiswaSelf?.id}
 									mahasiswa={mahasiswa}

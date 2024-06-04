@@ -1,6 +1,6 @@
 import { Link, useParams } from 'react-router-dom';
 import { useGetSingleMahasiswa } from '../api';
-import { HomeHeaderLayout, HomePageLayout } from '~/components/layouts/home';
+import { HomePageLayout } from '~/components/layouts/home';
 import { MahasiswaEditForm, MahasiswaEditSkeleton } from '../components';
 import {
 	useHandleMahasiswaAvatarUpdate,
@@ -12,6 +12,8 @@ import { buttonVariants, ErrorMessageSection } from '~/components/ui';
 import { ArrowLeftIcon } from '@radix-ui/react-icons';
 import { cn } from '~/utils/shadcn';
 import { getAuthToken } from '~/utils/auth-token';
+import { Helmet } from 'react-helmet-async';
+import { getErrorMessage } from '~/utils/get-error-message';
 
 export function MahasiswaProfilePage() {
 	const isAuthenticated = Boolean(getAuthToken());
@@ -32,12 +34,14 @@ export function MahasiswaProfilePage() {
 	const { handleMahasiswaPasswordUpdate } = useHandleMahasiswaPasswordUpdate();
 
 	return (
-		<HomePageLayout>
-			<HomeHeaderLayout
-				isAdmin={false}
-				title={`Profil Mahasiswa`}
-				isAuthenticatedMahasiswa={isAuthenticated}
-			/>
+		<HomePageLayout
+			isAdmin={false}
+			title={`Profil Mahasiswa`}
+			isAuthenticatedMahasiswa={isAuthenticated}
+		>
+			<Helmet>
+				<title>{`Kelass | ${`Profil ${data?.nama ?? 'Mahasiswa'}`}`}</title>
+			</Helmet>
 
 			<main className="flex flex-col gap-2 grow">
 				<Link
@@ -54,7 +58,7 @@ export function MahasiswaProfilePage() {
 				{error && (
 					<ErrorMessageSection
 						backToHome
-						message={error.message}
+						message={getErrorMessage(error)}
 						title="Gagal memuat data mahasiswa"
 					/>
 				)}

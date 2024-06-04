@@ -11,8 +11,15 @@ import {
 	useEditMahasiswaSelfTour,
 	useSearchMahasiswaTour,
 } from '~/features/docs/hooks';
+import { getAuthToken, getLoginType } from '~/utils/auth-token';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'sonner';
 
 export function MahasiswaTour() {
+	const isAuthenticated =
+		getLoginType() === 'mahasiswa' && Boolean(getAuthToken());
+	const navigate = useNavigate();
+
 	const { showEditProfileTour } = useEditMahasiswaSelfTour();
 	const { showSearchMahasiswa } = useSearchMahasiswaTour();
 
@@ -28,7 +35,16 @@ export function MahasiswaTour() {
 				<DropdownMenuItem onClick={() => showSearchMahasiswa('/mahasiswa')}>
 					Cara Cari Mahasiswa
 				</DropdownMenuItem>
-				<DropdownMenuItem onClick={() => showEditProfileTour('/mahasiswa')}>
+				<DropdownMenuItem
+					onClick={() => {
+						if (isAuthenticated) {
+							showEditProfileTour('/mahasiswa');
+						} else {
+							toast.warning('Login terlebih dahulu untuk melihat panduan ini.');
+							navigate('/mahasiswa/login');
+						}
+					}}
+				>
 					Cara Edit Profil
 				</DropdownMenuItem>
 			</DropdownMenuContent>

@@ -25,9 +25,8 @@ export function HomeHeaderLayout(props: HomeHeaderLayoutProps) {
 				</div>
 				{isAdmin && <AdminSelfProfile />}
 
-				{isAuthenticatedMahasiswa ? (
-					<MahasiswaSelfProfile />
-				) : (
+				{isAuthenticatedMahasiswa && !isAdmin && <MahasiswaSelfProfile />}
+				{!isAuthenticatedMahasiswa && !isAdmin && (
 					<Link
 						to="/mahasiswa/login"
 						className={buttonVariants({ variant: 'default' })}

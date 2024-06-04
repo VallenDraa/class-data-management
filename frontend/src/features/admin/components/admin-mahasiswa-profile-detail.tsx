@@ -1,21 +1,17 @@
 import * as React from 'react';
 import {
-	ErrorMessageSection,
 	Tabs,
 	TabsContent,
 	TabsList,
 	TabsTrigger,
 	VirtualItemWrapper,
 } from '~/components/ui';
-import {
-	AdminMahasiswaEditForm,
-	AdminMahasiswaEditFormSkeleton,
-} from './admin-mahasiswa-edit-form';
-import { useGetSingleMahasiswa } from '~/features/mahasiswa/api';
+import { AdminMahasiswaEditForm } from './admin-mahasiswa-edit-form';
 import { MahasiswaHistoryList } from './mahasiswa-history-list';
 import { MahasiswaHistoryItem } from './mahasiswa-history-item';
 import { useHandleAdminMahasiswaUpdate } from '../hooks/use-handle-admin-mahasiswa-update';
 import { useHandleMahasiwaDelete } from '../hooks';
+import { Mahasiswa } from '~/features/mahasiswa/types';
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const mahasiswaProfileDetailTabs = {
@@ -24,27 +20,24 @@ export const mahasiswaProfileDetailTabs = {
 };
 
 export type AdminMahasiswaProfileDetailProps = {
-	mahasiswaId: number;
+	mahasiswa: Mahasiswa;
 };
 
 export function AdminMahasiswaProfileDetail(
 	props: AdminMahasiswaProfileDetailProps,
 ) {
-	const { mahasiswaId } = props;
+	const { mahasiswa } = props;
 
 	const [activeTab, setActiveTab] = React.useState(
 		mahasiswaProfileDetailTabs.profile,
 	);
 
-	const {
-		data: mahasiswa,
-		isLoading: isMahasiswaLoading,
-		error,
-	} = useGetSingleMahasiswa({ id: mahasiswaId });
-	const { handleAdminMahasiswaUpdate } =
-		useHandleAdminMahasiswaUpdate(mahasiswaId);
-	const { handleMahasiswaDelete, isDeleting } =
-		useHandleMahasiwaDelete(mahasiswaId);
+	const { handleAdminMahasiswaUpdate } = useHandleAdminMahasiswaUpdate(
+		mahasiswa.id,
+	);
+	const { handleMahasiswaDelete, isDeleting } = useHandleMahasiwaDelete(
+		mahasiswa.id,
+	);
 
 	return (
 		<Tabs
@@ -72,45 +65,37 @@ export function AdminMahasiswaProfileDetail(
 				className="mt-2.5 overflow-auto grow"
 				value={mahasiswaProfileDetailTabs.profile}
 			>
-				{error && (
-					<ErrorMessageSection
-						backToHome
-						message={error.message}
-						title="Gagal mengambil data mahasiswa"
-					/>
-				)}
-
-				{isMahasiswaLoading && !mahasiswa && !error && (
-					<AdminMahasiswaEditFormSkeleton />
-				)}
-
-				{mahasiswa && (
-					<AdminMahasiswaEditForm
-						mahasiswa={mahasiswa}
-						isDeleting={isDeleting}
-						onDataUpdate={handleAdminMahasiswaUpdate}
-						onMahasiswaDelete={handleMahasiswaDelete}
-					/>
-				)}
+				<AdminMahasiswaEditForm
+					mahasiswa={mahasiswa}
+					isDeleting={isDeleting}
+					onDataUpdate={handleAdminMahasiswaUpdate}
+					onMahasiswaDelete={handleMahasiswaDelete}
+				/>
 			</TabsContent>
 
 			<TabsContent
 				className="overflow-auto grow"
 				value={mahasiswaProfileDetailTabs.userActivity}
 			>
-				<MahasiswaHistoryList mahasiswaId={mahasiswaId}>
+				<MahasiswaHistoryList mahasiswaId={mahasiswa.id}>
 					{(history, virtualItem) => {
 						if (history === undefined) {
 							return (
-								<VirtualItemWrapper virtualItem={virtualItem}>
+								<VirtualItemWrapper
+									key={virtualItem.key}
+									virtualItem={virtualItem}
+								>
 									Gagal mengambil data mahasiswa
 								</VirtualItemWrapper>
 							);
 						}
 
 						return (
-							<VirtualItemWrapper virtualItem={virtualItem}>
-								<MahasiswaHistoryItem key={virtualItem.key} history={history} />
+							<VirtualItemWrapper
+								key={virtualItem.key}
+								virtualItem={virtualItem}
+							>
+								<MahasiswaHistoryItem history={history} />
 							</VirtualItemWrapper>
 						);
 					}}

@@ -1,4 +1,4 @@
-import { HomePageLayout, HomeHeaderLayout } from '~/components/layouts/home';
+import { HomePageLayout } from '~/components/layouts/home';
 import {
 	MahasiswaSearchBar,
 	MahasiswaList,
@@ -16,6 +16,7 @@ import {
 	TourMahasiswaList,
 } from '~/features/docs/components/tour-placeholders';
 import { VirtualItemWrapper } from '~/components/ui';
+import { Helmet } from 'react-helmet-async';
 
 export function MainAdminPage() {
 	const { activeKeyword, activeSort, setActiveKeyword, setActiveSort } =
@@ -31,12 +32,10 @@ export function MainAdminPage() {
 	const isOnTour = isOnMahasiswaDeleteTour || isOnEditAdminMahasiswaTour;
 
 	return (
-		<HomePageLayout>
-			<HomeHeaderLayout
-				isAdmin
-				title="Admin"
-				isAuthenticatedMahasiswa={false}
-			/>
+		<HomePageLayout isAdmin title="Admin" isAuthenticatedMahasiswa={false}>
+			<Helmet>
+				<title>Kelass | Halaman Admin</title>
+			</Helmet>
 
 			<main className="relative flex flex-col gap-4 grow">
 				<MahasiswaSearchBar

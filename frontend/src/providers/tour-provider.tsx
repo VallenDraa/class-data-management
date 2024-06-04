@@ -57,7 +57,7 @@ export function TourContextProvider({
 
 	const handleTourCallback = React.useCallback(
 		(state: CallBackProps) => {
-			if (state.action === 'skip') {
+			if (state.action === 'skip' || state.action === 'close') {
 				tourState.onClose?.(state);
 				setTourState(defaultTourValue);
 				return;
@@ -96,6 +96,8 @@ export function TourContextProvider({
 				continuous
 				scrollToFirstStep
 				showProgress
+				disableCloseOnEsc
+				disableOverlayClose
 				showSkipButton
 				stepIndex={tourState.stepIndex}
 				callback={handleTourCallback}

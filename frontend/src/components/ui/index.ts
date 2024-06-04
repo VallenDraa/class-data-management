@@ -25,3 +25,4 @@ export * from './user-editable-avatar';
 export * from './error-message-section';
 export * from './theme-chooser';
 export * from './virtual-item-wrapper';
+export * from './avatar-with-skeleton';

@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useGetMahasiswaSelf } from '../api';
-import { HomeHeaderLayout, HomePageLayout } from '~/components/layouts/home';
+import { HomePageLayout } from '~/components/layouts/home';
 import { MahasiswaEditForm, MahasiswaEditSkeleton } from '../components';
 import {
 	useHandleMahasiswaAvatarUpdate,
@@ -12,6 +12,8 @@ import { buttonVariants, ErrorMessageSection } from '~/components/ui';
 import { ArrowLeftIcon } from '@radix-ui/react-icons';
 import { cn } from '~/utils/shadcn';
 import { getAuthToken } from '~/utils/auth-token';
+import { Helmet } from 'react-helmet-async';
+import { getErrorMessage } from '~/utils/get-error-message';
 
 export function SelfMahasiswaProfilePage() {
 	const isAuthenticated = Boolean(getAuthToken());
@@ -30,12 +32,14 @@ export function SelfMahasiswaProfilePage() {
 	const { handleMahasiswaPasswordUpdate } = useHandleMahasiswaPasswordUpdate();
 
 	return (
-		<HomePageLayout>
-			<HomeHeaderLayout
-				isAuthenticatedMahasiswa={isAuthenticated}
-				isAdmin={false}
-				title="Profil Anda"
-			/>
+		<HomePageLayout
+			isAuthenticatedMahasiswa={isAuthenticated}
+			isAdmin={false}
+			title="Profil Anda"
+		>
+			<Helmet>
+				<title>Kelass | Profil Anda</title>
+			</Helmet>
 
 			<main className="flex flex-col gap-2 grow">
 				<Link
@@ -52,7 +56,7 @@ export function SelfMahasiswaProfilePage() {
 				{error && (
 					<ErrorMessageSection
 						refreshPage
-						message={error.message}
+						message={getErrorMessage(error)}
 						title="Gagal memuat data profile anda"
 					/>
 				)}

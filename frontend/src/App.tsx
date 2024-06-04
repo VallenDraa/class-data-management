@@ -7,7 +7,7 @@ function App() {
 	return (
 		<AppProvider>
 			<RouterProvider router={router} />
-			<Toaster richColors position="bottom-center" />
+			<Toaster closeButton richColors position="bottom-center" />
 		</AppProvider>
 	);
 }

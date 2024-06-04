@@ -1,9 +1,12 @@
 import { useHandleAdminPath } from '../hooks';
-import { HomeHeaderLayout, HomePageLayout } from '~/components/layouts/home';
-import { AdminMahasiswaProfileDetail } from '../components';
+import { HomePageLayout } from '~/components/layouts/home';
+import {
+	AdminMahasiswaEditFormSkeleton,
+	AdminMahasiswaProfileDetail,
+} from '../components';
 import { Link, useParams } from 'react-router-dom';
 import { cn } from '~/utils/shadcn';
-import { buttonVariants } from '~/components/ui';
+import { buttonVariants, ErrorMessageSection } from '~/components/ui';
 import { ArrowLeftIcon } from '@radix-ui/react-icons';
 import {
 	useDeleteMahasiswaTour,
@@ -15,6 +18,9 @@ import {
 	MAHASISWA_PLACEHOLDER,
 	VOID_FN,
 } from '~/constants/placeholders';
+import { useGetSingleMahasiswa } from '~/features/mahasiswa/api';
+import { getErrorMessage } from '~/utils/get-error-message';
+import { Helmet } from 'react-helmet-async';
 
 export function AdminMahasiswaProfilePage() {
 	const { toAdminMainPath } = useHandleAdminPath();
@@ -24,13 +30,19 @@ export function AdminMahasiswaProfilePage() {
 	const { isOnEditAdminMahasiswaTour } = useEditAdminMahasiswaTour();
 	const isOnTour = isOnMahasiswaDeleteTour || isOnEditAdminMahasiswaTour;
 
+	const { data, isLoading, error } = useGetSingleMahasiswa({
+		id: Number(mahasiswaId),
+	});
+
 	return (
-		<HomePageLayout>
-			<HomeHeaderLayout
-				isAuthenticatedMahasiswa={false}
-				isAdmin
-				title="Profil Mahasiswa"
-			/>
+		<HomePageLayout
+			isAuthenticatedMahasiswa={false}
+			isAdmin
+			title="Profil Mahasiswa"
+		>
+			<Helmet>
+				<title>{`Kelass | ${`Profil ${data?.nama ?? 'Mahasiswa'}`}`}</title>
+			</Helmet>
 
 			<main className="flex flex-col h-screen">
 				<Link
@@ -52,7 +64,18 @@ export function AdminMahasiswaProfilePage() {
 						historyItems={MAHASISWA_HISTORY_LIST_PLACEHOLDER}
 					/>
 				) : (
-					<AdminMahasiswaProfileDetail mahasiswaId={Number(mahasiswaId)} />
+					<>
+						{error && (
+							<ErrorMessageSection
+								backToHome
+								message={getErrorMessage(error)}
+								title="Gagal mengambil data mahasiswa"
+							/>
+						)}
+
+						{isLoading && !data && !error && <AdminMahasiswaEditFormSkeleton />}
+						{data && <AdminMahasiswaProfileDetail mahasiswa={data} />}
+					</>
 				)}
 			</main>
 		</HomePageLayout>
