@@ -12,6 +12,7 @@ use Domain\Shared\Exceptions\BadRequestException;
 use Domain\Shared\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Lorisleiva\Actions\Concerns\AsAction;
 
 class ReadAllMahasiswaAction
@@ -63,8 +64,9 @@ class ReadAllMahasiswaAction
     }
     public function asController(Request $request): JsonResponse
     {
-        if (UserData::fromAuth()->role->canAddHistory())
-            AddMahasiswaHistoryAction::handle("Melihat seluruh data mahasiswa yang tersedia", UserData::fromAuth()->id);
+        if (isset(Auth::user()->id))
+            if (UserData::fromAuth()->role->canAddHistory())
+                AddMahasiswaHistoryAction::handle("Melihat seluruh data mahasiswa yang tersedia", UserData::fromAuth()->id);
 
         return response()->json([
             'success' => $this->handle($request)

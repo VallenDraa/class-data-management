@@ -14,7 +14,7 @@ class ReadMahasiswaTest extends TestCase
             'Accept' => 'application/json',
         ];
 
-        $response = $this->get('/api/mahasiswa/20', $headers);
+        $response = $this->get('/api/mahasiswa/self', $headers);
 
         dump($response->json());
 
