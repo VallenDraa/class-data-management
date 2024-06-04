@@ -1,13 +1,23 @@
+import z from 'zod';
 import { api } from '~/lib/api-client';
 import { ApiResponse } from '~/types';
 import { setAuthToken } from '~/utils/auth-token';
 import { getErrorMessage } from '~/utils/get-error-message';
 
-export async function mahasiswaLogin(nim: string, password: string) {
+export const mahasiswaLoginValidator = z.object({
+	nim: z.string().min(1, 'NIM tidak valid'),
+	password: z.string().min(1, 'Password tidak boleh kosong'),
+});
+
+export type MahasiswaLoginSchema = z.infer<typeof mahasiswaLoginValidator>;
+
+export async function mahasiswaLogin(data: MahasiswaLoginSchema) {
 	try {
+		const validatedData = await mahasiswaLoginValidator.parseAsync(data);
+
 		const response = await api.post<
 			ApiResponse<{ message: string; token: string }>
-		>('/mahasiswa/login', { nim, password });
+		>('/mahasiswa/login', validatedData);
 
 		setAuthToken(response.data.success.token, 'mahasiswa');
 

@@ -7,15 +7,16 @@ import {
 	FormItem,
 	FormLabel,
 	FormMessage,
+	DatePicker,
 } from '~/components/ui';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { RedirectLink } from './redirect-link';
 import { useNavigate } from 'react-router-dom';
 import {
-	mahasiswaLogin,
-	MahasiswaLoginSchema,
-	mahasiswaLoginValidator,
+	mahasiswaRegister,
+	MahasiswaRegisterSchema,
+	mahasiswaRegisterValidator,
 } from '../api';
 import { toast } from 'sonner';
 import {
@@ -23,18 +24,26 @@ import {
 	getErrorMessage,
 } from '~/utils/get-error-message';
 
-export function MahasiswaLogin() {
-	const form = useForm<MahasiswaLoginSchema>({
-		resolver: zodResolver(mahasiswaLoginValidator),
-		defaultValues: { nim: '', password: '' },
+export function MahasiswaRegister() {
+	const form = useForm<MahasiswaRegisterSchema>({
+		resolver: zodResolver(mahasiswaRegisterValidator),
+		defaultValues: {
+			nim: '',
+			nama: '',
+			alamat: '',
+			tanggal_lahir: new Date().toISOString(),
+		},
 	});
 
+	console.log(form.formState.errors);
+
 	const navigate = useNavigate();
-	const onSubmit = async (data: MahasiswaLoginSchema) => {
+	const onSubmit = async (data: MahasiswaRegisterSchema) => {
 		try {
-			const message = await mahasiswaLogin(data);
+			const message = await mahasiswaRegister(data);
+
 			toast.success(message);
-			navigate('/mahasiswa', { replace: true });
+			navigate('/mahasiswa/login', { replace: true });
 		} catch (error) {
 			if (error instanceof Error) {
 				toast.error(getErrorMessage(error));
@@ -68,26 +77,59 @@ export function MahasiswaLogin() {
 
 					<FormField
 						control={form.control}
-						name="password"
+						name="nama"
 						render={({ field }) => (
 							<FormItem>
-								<FormLabel>Password</FormLabel>
+								<FormLabel>Nama</FormLabel>
 								<FormControl>
-									<Input type="password" placeholder="Password" {...field} />
+									<Input placeholder="Nama" {...field} />
 								</FormControl>
 								<FormMessage />
 							</FormItem>
 						)}
 					/>
+
+					<div className="items-end gap-2 space-y-2 sm:flex">
+						<FormField
+							control={form.control}
+							name="tanggal_lahir"
+							render={({ field }) => (
+								<FormItem>
+									<FormLabel>Tanggal lahir</FormLabel>
+									<DatePicker
+										date={new Date(field.value ?? new Date())}
+										className="disabled:opacity-100 disabled:cursor-auto"
+										onChange={date => field.onChange(date?.toString())}
+									/>
+									<FormMessage />
+								</FormItem>
+							)}
+						/>
+
+						<FormField
+							control={form.control}
+							name="alamat"
+							render={({ field }) => (
+								<FormItem>
+									<FormLabel>Alamat</FormLabel>
+									<FormControl>
+										<Input type="alamat" placeholder="Alamat" {...field} />
+									</FormControl>
+									<FormMessage />
+								</FormItem>
+							)}
+						/>
+					</div>
+
 					<Button disabled={form.formState.isSubmitting} type="submit">
-						Sign In
+						Register
 					</Button>
 				</form>
 			</Form>
 
 			<div className="my-2">
-				<RedirectLink className="my-0" to="/mahasiswa/register">
-					Register Mahasiswa
+				<RedirectLink className="my-0" to="/mahasiswa/login">
+					Login Sebagai Mahasiswa
 				</RedirectLink>
 				<RedirectLink className="my-0" to="/admin/login">
 					Login Sebagai Admin

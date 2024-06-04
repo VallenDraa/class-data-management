@@ -74,7 +74,7 @@ export function AdminMahasiswaProfileDetail(
 			>
 				{error && (
 					<ErrorMessageSection
-						refreshPage
+						backToHome
 						message={error.message}
 						title="Gagal mengambil data mahasiswa"
 					/>

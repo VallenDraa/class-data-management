@@ -52,7 +52,7 @@ export function MahasiswaProfilePage() {
 
 				{error && (
 					<ErrorMessageSection
-						refreshPage
+						backToHome
 						message={error.message}
 						title="Gagal memuat data mahasiswa"
 					/>

@@ -1,6 +1,6 @@
 import { type Mahasiswa } from '../types';
 import { api } from '~/lib/api-client';
-import { useQuery } from '@tanstack/react-query';
+import { UndefinedInitialDataOptions, useQuery } from '@tanstack/react-query';
 import { MAHASISWA_QUERY_KEY } from '../constants';
 
 export const getMahasiswaSelf = async () => {
@@ -9,8 +9,14 @@ export const getMahasiswaSelf = async () => {
 	return response.data;
 };
 
-export const useGetMahasiswaSelf = () => {
+export type UseGetMahasiswaSelfOptions = Omit<
+	UndefinedInitialDataOptions<Mahasiswa, Error, Mahasiswa, string[]>,
+	'queryKey' | 'queryFn'
+>;
+
+export const useGetMahasiswaSelf = (options?: UseGetMahasiswaSelfOptions) => {
 	return useQuery({
+		...options,
 		queryKey: [MAHASISWA_QUERY_KEY, 'self'],
 		queryFn: getMahasiswaSelf,
 	});

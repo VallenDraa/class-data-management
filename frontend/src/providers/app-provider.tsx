@@ -5,6 +5,7 @@ import { env } from '~/config/env';
 import { queryClient } from '~/lib/react-query';
 import { TourContextProvider } from './tour-provider';
 import { ThemeProvider } from 'next-themes';
+import { UpdateIcon } from '@radix-ui/react-icons';
 
 type AppProviderProps = {
 	children: React.ReactNode;
@@ -12,17 +13,25 @@ type AppProviderProps = {
 
 export const AppProvider = ({ children }: AppProviderProps) => {
 	return (
-		<ThemeProvider
-			enableSystem
-			themes={['dark', 'light', 'system']}
-			attribute="class"
+		<React.Suspense
+			fallback={
+				<div className="flex items-center justify-center w-screen h-screen bg-white dark:bg-neutral-950">
+					<UpdateIcon className="text-2xl animate-spin text-sky-600 dark:text-sky-800" />
+				</div>
+			}
 		>
-			<QueryClientProvider client={queryClient}>
-				<TourContextProvider>
-					{env.DEV && <ReactQueryDevtools />}
-					{children}
-				</TourContextProvider>
-			</QueryClientProvider>
-		</ThemeProvider>
+			<ThemeProvider
+				enableSystem
+				themes={['dark', 'light', 'system']}
+				attribute="class"
+			>
+				<QueryClientProvider client={queryClient}>
+					<TourContextProvider>
+						{env.DEV && <ReactQueryDevtools />}
+						{children}
+					</TourContextProvider>
+				</QueryClientProvider>
+			</ThemeProvider>
+		</React.Suspense>
 	);
 };
