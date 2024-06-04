@@ -62,9 +62,15 @@ dependencies:
   date-fns:
     specifier: ^3.6.0
     version: 3.6.0
+  just-debounce:
+    specifier: ^1.1.0
+    version: 1.1.0
   leaflet:
     specifier: ^1.9.4
     version: 1.9.4
+  leaflet-control-geocoder:
+    specifier: ^2.4.0
+    version: 2.4.0(leaflet@1.9.4)
   leaflet-routing-machine:
     specifier: ^3.2.12
     version: 3.2.12
@@ -2759,11 +2765,25 @@ packages:
     hasBin: true
     dev: true
 
+  /just-debounce@1.1.0:
+    resolution: {integrity: sha512-qpcRocdkUmf+UTNBYx5w6dexX5J31AKK1OmPwH630a83DdVVUIngk55RSAiIGpQyoH0dlr872VHfPjnQnK1qDQ==}
+    dev: false
+
   /keyv@4.5.4:
     resolution: {integrity: sha512-oxVHkHR/EJf2CNXnWxRLW6mg7JyCCUcG0DtEGmL2ctUo1PNTin1PUil+r/+4r5MpVgC/fn1kjsx7mjSujKqIpw==}
     dependencies:
       json-buffer: 3.0.1
     dev: true
+
+  /leaflet-control-geocoder@2.4.0(leaflet@1.9.4):
+    resolution: {integrity: sha512-b2QlxuFd40uIDbnoUI3U9fzfnB4yKUYlmsXjquJ2d2YjoJqnyVYcIJeErAVv3kPvX3nI0gzvBq1XHMgSVFrGkQ==}
+    peerDependencies:
+      leaflet: ^1.6.0
+    dependencies:
+      leaflet: 1.9.4
+    optionalDependencies:
+      open-location-code: 1.0.3
+    dev: false
 
   /leaflet-routing-machine@3.2.12:
     resolution: {integrity: sha512-HLde58G1YtD9xSIzZavJ6BPABZaV1hHeGst8ouhzuxmSC3s32NVtADT+njbIUMW1maHRCrsgTk/E4hz5QH7FrA==}
@@ -2940,6 +2960,12 @@ packages:
     dependencies:
       wrappy: 1.0.2
     dev: true
+
+  /open-location-code@1.0.3:
+    resolution: {integrity: sha512-DBm14BSn40Ee241n80zIFXIT6+y8Tb0I+jTdosLJ8Sidvr2qONvymwqymVbHV2nS+1gkDZ5eTNpnOIVV0Kn2fw==}
+    requiresBuild: true
+    dev: false
+    optional: true
 
   /optionator@0.9.4:
     resolution: {integrity: sha512-6IpQ7mKUxRcZNLIObR0hz7lxsapSSIYNZJwXPGeF0mTVqGKFIXj1DQcMoT22S3ROcLyY/rz0PWaWZ9ayWmad9g==}
