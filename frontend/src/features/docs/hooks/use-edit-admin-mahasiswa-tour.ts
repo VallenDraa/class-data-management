@@ -21,18 +21,27 @@ const tourSteps: Step[] = [
 		locale: BUTTON_LOCALE,
 		target: '#change-avatar',
 		hideBackButton: true,
+		placement: 'top-start',
+		disableScrolling: true,
+		disableScrollParentFix: true,
 		content:
 			'Untuk mengubah foto, anda dapat menekan foto profile anda sekarang.',
 	},
 	{
 		locale: BUTTON_LOCALE,
 		target: '#edit-profile',
+		placement: 'top-start',
+		disableScrolling: true,
+		disableScrollParentFix: true,
 		content:
 			'Terakhir untuk mengedit data profil, anda dapat menekan tombol "Edit Profil".',
 	},
 	{
 		locale: BUTTON_LOCALE,
 		target: '#edit-profile',
+		placement: 'top-start',
+		disableScrolling: true,
+		disableScrollParentFix: true,
 		content: 'Itu saja, Selamat mencoba!',
 	},
 ];

@@ -26,23 +26,31 @@ const tourSteps: Step[] = [
 		hideFooter: true,
 		hideCloseButton: true,
 		hideBackButton: true,
+		disableScrolling: true,
+		disableScrollParentFix: true,
 		content: 'Kemudian tekan tombol "Hapus Mahasiswa".',
 	},
 	{
 		locale: BUTTON_LOCALE,
 		target: '#confirm-delete-mahasiswa-button',
+		disableScrolling: true,
+		disableScrollParentFix: true,
 		content:
 			'Setelah itu anda dapat menekan tombol "Hapus", untuk mengkonfirmasi penghapusan mahasiswa.',
 	},
 	{
 		locale: BUTTON_LOCALE,
 		target: '#cancel-delete-mahasiswa-button',
+		disableScrolling: true,
+		disableScrollParentFix: true,
 		content:
 			'Jika anda tidak jadi ingin menghapus, anda bisa menekan tombol "Cancel".',
 	},
 	{
 		locale: BUTTON_LOCALE,
 		target: '#cancel-delete-mahasiswa-button',
+		disableScrolling: true,
+		disableScrollParentFix: true,
 		content: 'Itu saja, Selamat mencoba!',
 	},
 ];
