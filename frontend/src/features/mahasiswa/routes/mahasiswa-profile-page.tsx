@@ -1,11 +1,7 @@
 import { Link, useParams } from 'react-router-dom';
 import { useGetSingleMahasiswa } from '../api';
 import { HomeHeaderLayout, HomePageLayout } from '~/components/layouts/home';
-import {
-	MahasiswaSelfProfile,
-	MahasiswaEditForm,
-	MahasiswaEditSkeleton,
-} from '../components';
+import { MahasiswaEditForm, MahasiswaEditSkeleton } from '../components';
 import {
 	useHandleMahasiswaAvatarUpdate,
 	useHandleMahasiswaDataUpdate,
@@ -15,8 +11,11 @@ import {
 import { buttonVariants, ErrorMessageSection } from '~/components/ui';
 import { ArrowLeftIcon } from '@radix-ui/react-icons';
 import { cn } from '~/utils/shadcn';
+import { getAuthToken } from '~/utils/auth-token';
 
 export function MahasiswaProfilePage() {
+	const isAuthenticated = Boolean(getAuthToken());
+
 	const { mahasiswaId } = useParams();
 	const numberMahasiswaId = Number(mahasiswaId);
 
@@ -34,9 +33,11 @@ export function MahasiswaProfilePage() {
 
 	return (
 		<HomePageLayout>
-			<HomeHeaderLayout isAdmin={false} title={`Profil Mahasiswa`}>
-				<MahasiswaSelfProfile />
-			</HomeHeaderLayout>
+			<HomeHeaderLayout
+				isAdmin={false}
+				title={`Profil Mahasiswa`}
+				isAuthenticatedMahasiswa={isAuthenticated}
+			/>
 
 			<main className="flex flex-col gap-2 grow">
 				<Link

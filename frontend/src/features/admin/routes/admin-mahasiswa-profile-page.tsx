@@ -1,6 +1,6 @@
 import { useHandleAdminPath } from '../hooks';
 import { HomeHeaderLayout, HomePageLayout } from '~/components/layouts/home';
-import { AdminMahasiswaProfileDetail, AdminSelfProfile } from '../components';
+import { AdminMahasiswaProfileDetail } from '../components';
 import { Link, useParams } from 'react-router-dom';
 import { cn } from '~/utils/shadcn';
 import { buttonVariants } from '~/components/ui';
@@ -26,9 +26,11 @@ export function AdminMahasiswaProfilePage() {
 
 	return (
 		<HomePageLayout>
-			<HomeHeaderLayout isAdmin title="Profil Mahasiswa">
-				<AdminSelfProfile />
-			</HomeHeaderLayout>
+			<HomeHeaderLayout
+				isAuthenticatedMahasiswa={false}
+				isAdmin
+				title="Profil Mahasiswa"
+			/>
 
 			<main className="flex flex-col h-screen">
 				<Link

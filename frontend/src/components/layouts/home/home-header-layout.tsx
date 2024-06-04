@@ -1,16 +1,18 @@
-import * as React from 'react';
 import { MahasiswaTour } from '~/features/docs/components/tour';
-import { ThemeChooser } from '~/components/ui';
+import { buttonVariants, ThemeChooser } from '~/components/ui';
 import { AdminTour } from '~/features/docs/components/tour/admin-tour';
+import { AdminSelfProfile } from '~/features/admin/components';
+import { MahasiswaSelfProfile } from '~/features/mahasiswa/components';
+import { Link } from 'react-router-dom';
 
 export type HomeHeaderLayoutProps = {
+	isAuthenticatedMahasiswa: boolean;
 	isAdmin: boolean;
 	title: string;
-	children: React.ReactNode;
 };
 
 export function HomeHeaderLayout(props: HomeHeaderLayoutProps) {
-	const { isAdmin, children, title } = props;
+	const { isAuthenticatedMahasiswa, isAdmin, title } = props;
 
 	return (
 		<header className="flex items-center justify-between px-1 py-4 pb-2">
@@ -21,7 +23,18 @@ export function HomeHeaderLayout(props: HomeHeaderLayoutProps) {
 					{isAdmin ? <AdminTour /> : <MahasiswaTour />}
 					<ThemeChooser />
 				</div>
-				{children}
+				{isAdmin && <AdminSelfProfile />}
+
+				{isAuthenticatedMahasiswa ? (
+					<MahasiswaSelfProfile />
+				) : (
+					<Link
+						to="/mahasiswa/login"
+						className={buttonVariants({ variant: 'default' })}
+					>
+						Login
+					</Link>
+				)}
 			</div>
 		</header>
 	);
