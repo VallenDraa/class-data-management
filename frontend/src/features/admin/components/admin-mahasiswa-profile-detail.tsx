@@ -102,15 +102,21 @@ export function AdminMahasiswaProfileDetail(
 					{(history, virtualItem) => {
 						if (history === undefined) {
 							return (
-								<VirtualItemWrapper virtualItem={virtualItem}>
+								<VirtualItemWrapper
+									key={virtualItem.key}
+									virtualItem={virtualItem}
+								>
 									Gagal mengambil data mahasiswa
 								</VirtualItemWrapper>
 							);
 						}
 
 						return (
-							<VirtualItemWrapper virtualItem={virtualItem}>
-								<MahasiswaHistoryItem key={virtualItem.key} history={history} />
+							<VirtualItemWrapper
+								key={virtualItem.key}
+								virtualItem={virtualItem}
+							>
+								<MahasiswaHistoryItem history={history} />
 							</VirtualItemWrapper>
 						);
 					}}

@@ -1,4 +1,4 @@
-import { HomePageLayout, HomeHeaderLayout } from '~/components/layouts/home';
+import { HomePageLayout } from '~/components/layouts/home';
 import {
 	MahasiswaSearchBar,
 	MahasiswaList,
@@ -31,13 +31,7 @@ export function MainAdminPage() {
 	const isOnTour = isOnMahasiswaDeleteTour || isOnEditAdminMahasiswaTour;
 
 	return (
-		<HomePageLayout>
-			<HomeHeaderLayout
-				isAdmin
-				title="Admin"
-				isAuthenticatedMahasiswa={false}
-			/>
-
+		<HomePageLayout isAdmin title="Admin" isAuthenticatedMahasiswa={false}>
 			<main className="relative flex flex-col gap-4 grow">
 				<MahasiswaSearchBar
 					keyword={activeKeyword}

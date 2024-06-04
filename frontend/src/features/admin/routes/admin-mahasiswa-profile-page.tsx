@@ -1,5 +1,5 @@
 import { useHandleAdminPath } from '../hooks';
-import { HomeHeaderLayout, HomePageLayout } from '~/components/layouts/home';
+import { HomePageLayout } from '~/components/layouts/home';
 import { AdminMahasiswaProfileDetail } from '../components';
 import { Link, useParams } from 'react-router-dom';
 import { cn } from '~/utils/shadcn';
@@ -25,13 +25,11 @@ export function AdminMahasiswaProfilePage() {
 	const isOnTour = isOnMahasiswaDeleteTour || isOnEditAdminMahasiswaTour;
 
 	return (
-		<HomePageLayout>
-			<HomeHeaderLayout
-				isAuthenticatedMahasiswa={false}
-				isAdmin
-				title="Profil Mahasiswa"
-			/>
-
+		<HomePageLayout
+			isAuthenticatedMahasiswa={false}
+			isAdmin
+			title="Profil Mahasiswa"
+		>
 			<main className="flex flex-col h-screen">
 				<Link
 					to={toAdminMainPath()}

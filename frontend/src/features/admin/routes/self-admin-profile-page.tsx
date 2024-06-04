@@ -1,4 +1,4 @@
-import { HomeHeaderLayout, HomePageLayout } from '~/components/layouts/home';
+import { HomePageLayout } from '~/components/layouts/home';
 import { AdminEditForm, AdminEditFormSkeleton } from '../components';
 import { useHandleAdminPath } from '../hooks';
 import { Link } from 'react-router-dom';
@@ -16,13 +16,7 @@ export function SelfAdminProfilePage() {
 	};
 
 	return (
-		<HomePageLayout>
-			<HomeHeaderLayout
-				isAdmin
-				title="Admin"
-				isAuthenticatedMahasiswa={false}
-			/>
-
+		<HomePageLayout isAdmin title="Admin" isAuthenticatedMahasiswa={false}>
 			<main className="h-screen">
 				<Link
 					to={toAdminMainPath()}

@@ -6,7 +6,6 @@ import {
 } from '../components';
 import { useGetMahasiswaSelf } from '../api';
 import { useAppSearchQueryContext } from '~/providers';
-import { HomeHeaderLayout } from '~/components/layouts/home';
 import { VirtualItemWrapper } from '~/components/ui';
 import { getAuthToken } from '~/utils/auth-token';
 
@@ -20,13 +19,11 @@ export function MainMahasiswaPage() {
 		useAppSearchQueryContext();
 
 	return (
-		<HomePageLayout>
-			<HomeHeaderLayout
-				isAuthenticatedMahasiswa={isAuthenticated}
-				isAdmin={false}
-				title="Kelass"
-			/>
-
+		<HomePageLayout
+			isAuthenticatedMahasiswa={isAuthenticated}
+			isAdmin={false}
+			title="Kelass"
+		>
 			<main className="flex flex-col gap-4 grow">
 				<MahasiswaSearchBar
 					keyword={activeKeyword}
@@ -38,14 +35,20 @@ export function MainMahasiswaPage() {
 					{(mahasiswa, virtualItem) => {
 						if (mahasiswa === undefined) {
 							return (
-								<VirtualItemWrapper virtualItem={virtualItem}>
+								<VirtualItemWrapper
+									key={virtualItem.key}
+									virtualItem={virtualItem}
+								>
 									Gagal mengambil data mahasiswa
 								</VirtualItemWrapper>
 							);
 						}
 
 						return (
-							<VirtualItemWrapper virtualItem={virtualItem}>
+							<VirtualItemWrapper
+								key={virtualItem.key}
+								virtualItem={virtualItem}
+							>
 								<MahasiswaListItem
 									isOwnProfile={Number(mahasiswa.id) === mahasiswaSelf?.id}
 									mahasiswa={mahasiswa}

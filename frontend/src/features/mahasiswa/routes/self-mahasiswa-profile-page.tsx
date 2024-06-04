@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useGetMahasiswaSelf } from '../api';
-import { HomeHeaderLayout, HomePageLayout } from '~/components/layouts/home';
+import { HomePageLayout } from '~/components/layouts/home';
 import { MahasiswaEditForm, MahasiswaEditSkeleton } from '../components';
 import {
 	useHandleMahasiswaAvatarUpdate,
@@ -30,13 +30,11 @@ export function SelfMahasiswaProfilePage() {
 	const { handleMahasiswaPasswordUpdate } = useHandleMahasiswaPasswordUpdate();
 
 	return (
-		<HomePageLayout>
-			<HomeHeaderLayout
-				isAuthenticatedMahasiswa={isAuthenticated}
-				isAdmin={false}
-				title="Profil Anda"
-			/>
-
+		<HomePageLayout
+			isAuthenticatedMahasiswa={isAuthenticated}
+			isAdmin={false}
+			title="Profil Anda"
+		>
 			<main className="flex flex-col gap-2 grow">
 				<Link
 					to={toMahasiswaMainPath()}

@@ -1,12 +1,10 @@
 import {
-	Avatar,
-	AvatarImage,
-	AvatarFallback,
 	DropdownMenu,
 	DropdownMenuTrigger,
 	DropdownMenuContent,
 	DropdownMenuItem,
 	Skeleton,
+	AvatarWithSkeleton,
 } from '~/components/ui';
 import { useGetMahasiswaSelf } from '../api';
 import { ExitIcon, PersonIcon } from '@radix-ui/react-icons';
@@ -27,14 +25,12 @@ export function MahasiswaSelfProfile() {
 	return (
 		<DropdownMenu onOpenChange={openProfileDropdownStep}>
 			<DropdownMenuTrigger className="rounded-full">
-				{!isMahasiswaLoading && mahasiswa ? (
-					<Avatar id="user-profile">
-						<AvatarImage src={mahasiswa.foto_profile} alt={mahasiswa.nama} />
-						<AvatarFallback>{mahasiswa.nama.slice(0, 2)}</AvatarFallback>
-					</Avatar>
-				) : (
-					<Skeleton className="w-10 h-10 rounded-full" />
-				)}
+				<AvatarWithSkeleton
+					isLoading={isMahasiswaLoading || !mahasiswa}
+					src={mahasiswa?.foto_profile ?? ''}
+					alt={mahasiswa?.nama ?? ''}
+					fallback={mahasiswa?.nama.slice(0, 2) ?? ''}
+				/>
 
 				<span className="sr-only">Open Profile Popover</span>
 			</DropdownMenuTrigger>
