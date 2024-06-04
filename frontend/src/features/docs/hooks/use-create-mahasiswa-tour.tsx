@@ -20,7 +20,7 @@ const tourSteps: Step[] = [
 		locale: BUTTON_LOCALE,
 		target: '#create-mahasiswa-form-fields',
 		disableOverlayClose: true,
-
+		disableBeacon: true,
 		content:
 			'Kemudian anda dapat mengisi form ini dengan data-data mahasiswa yang ingin ditambahkan.',
 	},

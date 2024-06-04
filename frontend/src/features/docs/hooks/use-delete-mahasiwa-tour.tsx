@@ -34,6 +34,7 @@ const tourSteps: Step[] = [
 		locale: BUTTON_LOCALE,
 		target: '#confirm-delete-mahasiswa-button',
 		disableScrolling: true,
+		disableBeacon: true,
 		disableScrollParentFix: true,
 		content:
 			'Setelah itu anda dapat menekan tombol "Hapus", untuk mengkonfirmasi penghapusan mahasiswa.',
@@ -42,6 +43,7 @@ const tourSteps: Step[] = [
 		locale: BUTTON_LOCALE,
 		target: '#cancel-delete-mahasiswa-button',
 		disableScrolling: true,
+		disableBeacon: true,
 		disableScrollParentFix: true,
 		content:
 			'Jika anda tidak jadi ingin menghapus, anda bisa menekan tombol "Cancel".',
@@ -51,6 +53,7 @@ const tourSteps: Step[] = [
 		target: '#cancel-delete-mahasiswa-button',
 		disableScrolling: true,
 		disableScrollParentFix: true,
+		disableBeacon: true,
 		content: 'Itu saja, Selamat mencoba!',
 	},
 ];
