@@ -11,8 +11,20 @@ export const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
 	const { handleLogout } = useHandleLogout(`/admin/login`);
 
 	React.useEffect(() => {
-		if (pathname.startsWith('/admin') && !authToken && loginType !== 'admin') {
+		if (
+			pathname === '/mahasiswa/self' &&
+			(!authToken || loginType !== 'mahasiswa')
+		) {
 			handleLogout();
+			return;
+		}
+
+		if (
+			pathname.startsWith('/admin') &&
+			(!authToken || loginType !== 'admin')
+		) {
+			handleLogout();
+			return;
 		}
 
 		// eslint-disable-next-line react-hooks/exhaustive-deps
