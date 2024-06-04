@@ -15,7 +15,10 @@ import { RedirectLink } from './redirect-link';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'sonner';
 import { adminLogin } from '../api';
-import { DEFAULT_ERROR_MESSAGE } from '~/utils/get-error-message';
+import {
+	DEFAULT_ERROR_MESSAGE,
+	getErrorMessage,
+} from '~/utils/get-error-message';
 
 // Schema untuk form admin
 const adminValidator = z.object({
@@ -39,7 +42,7 @@ export function AdminLogin() {
 			navigate('/admin', { replace: true });
 		} catch (error) {
 			if (error instanceof Error) {
-				toast.error(error.message);
+				toast.error(getErrorMessage(error));
 				return;
 			}
 

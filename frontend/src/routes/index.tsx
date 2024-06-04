@@ -9,6 +9,7 @@ import { SelfMahasiswaProfilePage } from '~/features/mahasiswa/routes/self-mahas
 import { MahasiswaProfilePage } from '~/features/mahasiswa/routes/mahasiswa-profile-page';
 import { AdminMahasiswaProfilePage } from '~/features/admin/routes/admin-mahasiswa-profile-page';
 import { SelfAdminProfilePage } from '~/features/admin/routes/self-admin-profile-page';
+import { MahasiswaRegisterPage } from '~/features/authentication/routes/mahasiswa-register-page';
 
 export const router = createBrowserRouter([
 	{
@@ -17,6 +18,7 @@ export const router = createBrowserRouter([
 		children: [
 			{ path: '/mahasiswa/login', element: <MahasiswaLoginPage /> },
 			{ path: '/admin/login', element: <AdminLoginPage /> },
+			{ path: '/mahasiswa/register', element: <MahasiswaRegisterPage /> },
 			{
 				path: '/',
 				element: <Root />,
