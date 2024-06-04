@@ -1,36 +1,103 @@
 import { createBrowserRouter } from 'react-router-dom';
-import { ErrorPage } from './error-page';
-import { Root } from '~/root';
-import { MainMahasiswaPage } from '~/features/mahasiswa/routes/main-mahasiswa-page';
-import { MainAdminPage } from '~/features/admin/routes/main-admin-page';
-import { MahasiswaLoginPage } from '~/features/authentication/routes/mahasiswa-login-page';
-import { AdminLoginPage } from '~/features/authentication/routes/admin-login-page';
-import { SelfMahasiswaProfilePage } from '~/features/mahasiswa/routes/self-mahasiswa-profile-page';
-import { MahasiswaProfilePage } from '~/features/mahasiswa/routes/mahasiswa-profile-page';
-import { AdminMahasiswaProfilePage } from '~/features/admin/routes/admin-mahasiswa-profile-page';
-import { SelfAdminProfilePage } from '~/features/admin/routes/self-admin-profile-page';
-import { MahasiswaRegisterPage } from '~/features/authentication/routes/mahasiswa-register-page';
 
 export const router = createBrowserRouter([
 	{
 		path: '',
-		errorElement: <ErrorPage />,
+		lazy: async () => {
+			const { ErrorPage } = await import('./error-page');
+			return { errorElement: <ErrorPage /> };
+		},
 		children: [
-			{ path: '/mahasiswa/login', element: <MahasiswaLoginPage /> },
-			{ path: '/admin/login', element: <AdminLoginPage /> },
-			{ path: '/mahasiswa/register', element: <MahasiswaRegisterPage /> },
+			{
+				path: '/mahasiswa/login',
+				lazy: async () => {
+					const { MahasiswaLoginPage } = await import(
+						'~/features/authentication/routes/mahasiswa-login-page'
+					);
+					return { Component: MahasiswaLoginPage };
+				},
+			},
+			{
+				path: '/admin/login',
+				lazy: async () => {
+					const { AdminLoginPage } = await import(
+						'~/features/authentication/routes/admin-login-page'
+					);
+					return { Component: AdminLoginPage };
+				},
+			},
+			{
+				path: '/mahasiswa/register',
+				lazy: async () => {
+					const { MahasiswaRegisterPage } = await import(
+						'~/features/authentication/routes/mahasiswa-register-page'
+					);
+					return { Component: MahasiswaRegisterPage };
+				},
+			},
 			{
 				path: '/',
-				element: <Root />,
+				lazy: async () => {
+					const { Root } = await import('~/root');
+
+					return { Component: Root };
+				},
 				children: [
-					{ path: 'mahasiswa', element: <MainMahasiswaPage /> },
-					{ path: 'mahasiswa/self', element: <SelfMahasiswaProfilePage /> },
-					{ path: 'mahasiswa/:mahasiswaId', element: <MahasiswaProfilePage /> },
-					{ path: 'admin', element: <MainAdminPage /> },
-					{ path: 'admin/self', element: <SelfAdminProfilePage /> },
+					{
+						path: 'mahasiswa',
+						lazy: async () => {
+							const { MainMahasiswaPage } = await import(
+								'~/features/mahasiswa/routes/main-mahasiswa-page'
+							);
+							return { Component: MainMahasiswaPage };
+						},
+					},
+					{
+						path: 'mahasiswa/self',
+						lazy: async () => {
+							const { SelfMahasiswaProfilePage } = await import(
+								'~/features/mahasiswa/routes/self-mahasiswa-profile-page'
+							);
+							return { Component: SelfMahasiswaProfilePage };
+						},
+					},
+					{
+						path: 'mahasiswa/:mahasiswaId',
+						lazy: async () => {
+							const { MahasiswaProfilePage } = await import(
+								'~/features/mahasiswa/routes/mahasiswa-profile-page'
+							);
+							return { Component: MahasiswaProfilePage };
+						},
+					},
+					{
+						path: 'admin',
+
+						lazy: async () => {
+							const { MainAdminPage } = await import(
+								'~/features/admin/routes/main-admin-page'
+							);
+							return { Component: MainAdminPage };
+						},
+					},
+					{
+						path: 'admin/self',
+						lazy: async () => {
+							const { SelfAdminProfilePage } = await import(
+								'~/features/admin/routes/self-admin-profile-page'
+							);
+							return { Component: SelfAdminProfilePage };
+						},
+					},
 					{
 						path: 'admin/mahasiswa/:mahasiswaId',
-						element: <AdminMahasiswaProfilePage />,
+
+						lazy: async () => {
+							const { AdminMahasiswaProfilePage } = await import(
+								'~/features/admin/routes/admin-mahasiswa-profile-page'
+							);
+							return { Component: AdminMahasiswaProfilePage };
+						},
 					},
 				],
 			},
