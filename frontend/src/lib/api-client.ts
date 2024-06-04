@@ -1,8 +1,6 @@
 import axios from 'axios';
-import { toast } from 'sonner';
 import { env } from '~/config/env';
 import { getAuthToken, removeAuthToken } from '~/utils/auth-token';
-import { getErrorMessage } from '~/utils/get-error-message';
 
 export const api = axios.create({
 	baseURL: env.BASE_API_URL,
@@ -26,8 +24,6 @@ api.interceptors.response.use(
 	response => response,
 	error => {
 		if (error instanceof Error) {
-			toast.error(getErrorMessage(error));
-
 			if (axios.isAxiosError(error)) {
 				if (error.response?.status === 401 || error.response?.status === 403) {
 					removeAuthToken();
