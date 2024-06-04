@@ -14,7 +14,7 @@ class ReadAllMahasiswaTest extends TestCase
         $faker = Faker::create();
 
         $headers = [
-            // 'Authorization' => 'Bearer ' . $this->getAuthToken(),
+            'Authorization' => 'Bearer ' . $this->getAuthToken(),
             'Accept' => 'application/json',
         ];
 
@@ -36,15 +36,15 @@ class ReadAllMahasiswaTest extends TestCase
 
     public function getAuthToken(): string
     {
-        $response = $this->postJson('/api/admin/login', [
-            'email' => 'oskhar@gmail.com',
-            'password' => '12345678'
-        ]);
-
-        // $response = $this->postJson('/api/mahasiswa/login', [
-        //     'nim' => '12345678',
+        // $response = $this->postJson('/api/admin/login', [
+        //     'email' => 'oskhar@gmail.com',
         //     'password' => '12345678'
         // ]);
+
+        $response = $this->postJson('/api/mahasiswa/login', [
+            'nim' => '12345678',
+            'password' => '12345678'
+        ]);
 
         dump($response->json());
 
