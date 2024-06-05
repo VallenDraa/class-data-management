@@ -20,7 +20,7 @@ export function useHandleMahasiwaDelete(mahasiswaId: number) {
 			setIsDeleting(true);
 			await mutateAsync({ id: Number(mahasiswaId) });
 			setIsOpen(false);
-			toast.error('Berhasil menghapus mahasiswa');
+			toast.success('Berhasil menghapus mahasiswa');
 		} catch (error) {
 			toast.error(getErrorMessage(error));
 		} finally {
