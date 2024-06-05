@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useNavigate } from 'react-router-dom';
 import {
 	Button,
 	Dialog,
@@ -25,6 +26,13 @@ export function DeleteMahasiswaDialog(props: DeleteMahasiswaProps) {
 	} = useDeleteMahasiswaTour();
 
 	const [isOpen, setOpen] = React.useState(false);
+	const navigate = useNavigate();
+
+	async function handleDelete() {
+		await onDelete();
+		setOpen(false);
+		navigate('/');
+	}
 
 	return (
 		<Dialog
@@ -51,7 +59,7 @@ export function DeleteMahasiswaDialog(props: DeleteMahasiswaProps) {
 					</Button>
 					<Button
 						id="confirm-delete-mahasiswa-button"
-						onClick={onDelete}
+						onClick={handleDelete}
 						variant="destructive"
 					>
 						Hapus
