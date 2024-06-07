@@ -4,7 +4,10 @@ import { VitePWA, VitePWAOptions } from 'vite-plugin-pwa';
 import { defineConfig } from 'vite';
 
 const manifestForPlugin: Partial<VitePWAOptions> = {
-	registerType: 'prompt',
+	registerType: 'autoUpdate',
+	minify: true,
+	workbox: { clientsClaim: true, skipWaiting: true },
+	devOptions: { enabled: true },
 	includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'masked-icon.svg'],
 	manifest: {
 		name: 'Kelass',
@@ -32,6 +35,12 @@ const manifestForPlugin: Partial<VitePWAOptions> = {
 				sizes: '225x225',
 				type: 'image/png',
 				purpose: 'any maskable',
+			},
+			{
+				src: '/android-icon-144x144.png',
+				sizes: '144x144',
+				type: 'image/png',
+				purpose: 'any',
 			},
 		],
 		theme_color: '#0284c7',
